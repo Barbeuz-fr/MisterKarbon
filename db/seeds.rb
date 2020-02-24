@@ -6,31 +6,31 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+p "reset seed database"
+User.destroy_all
+
 # ==============================================================================
 # USERS
 # ==============================================================================
 
-puts 'Creating 100 fake users...'
-100.times do
-  # remplacer puts par User.new
-    puts "
-    first_name:    #{Faker::Name.first_name},
-    last_name: #{Faker::Name.last_name},
-    Email: #{Faker::Name.first_name}.#{Faker::Name.first_name}@gmail.com,
-    address: #{Faker::Address.street_address}, #{Faker::Address.city},
-    job: #{Faker::Job.title},
-    position: #{Faker::Job.position}
-    "
-    # ADD company_id
-end
-# pour Faker::Job.title faire .sample avec les positions qui nous interesse
-# Faker::Job.title #=> "Lead Accounting Associate"
-# Faker::Job.field #=> "Manufacturing"
-# Faker::Job.seniority #=> "Lead"
-# Faker::Job.position #=> "Supervisor"
-# Faker::Job.key_skill #=> "Teamwork"
-# Faker::Job.employment_type #=> "Full-time"
-# Faker::Job.education_level #=> "Bachelor"
+# TO DO : REMOVE when SEED company updated
+ strawberry = Company.create!(name: "Strawberry")
 
+puts 'Creating 100 fake users...'
+
+100.times do
+    user = User.new(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: "#{Faker::Name.first_name}.#{Faker::Name.first_name}@gmail.com",
+    # pour job position et organisation position, peut etre mettre un array.sample
+    #sur ce qui nous interesse
+    job_position: Faker::Job.title,
+    organization_position: Faker::Job.position,
+    password: "qwerty123",
+    company_id: strawberry.id
+    )
+    user.save!
+end
 
 puts 'USER DONE!'
