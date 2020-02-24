@@ -1,0 +1,2 @@
+class EmissionModule < ApplicationRecord
+end

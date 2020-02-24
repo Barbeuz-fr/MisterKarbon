@@ -1,0 +1,2 @@
+class ReportScopeOrgasController < ApplicationController
+end

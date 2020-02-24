@@ -1,0 +1,2 @@
+class ReportScopesController < ApplicationController
+end
