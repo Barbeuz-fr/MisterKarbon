@@ -4,7 +4,26 @@
 # chargement du csv ADEME formatté
 # ajout des questions pour 1 module electricité et 1 module transport
 # ajout des réponses pour un exemple de projet
+# ajout photo pour users
 
+# ==============================================================================
+# IMPORTATION CSV ADEME
+# ==============================================================================
+
+p "starting csv import ADEME"
+require 'csv'
+
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'base_carbone_ademe_csv.csv'))
+csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+csv.each do |row|
+  t = AdemeEmissionFactor.new()
+  t.name = row['Code de la catégorie']
+  t.emission_value = row['Total poste non décomposé']
+  t.unit = row['Unité français']
+  t.save
+end
+
+p "import done"
 
 # ==============================================================================
 # RESET
