@@ -1,10 +1,11 @@
 class ReportScopeOrgasController < ApplicationController
   def new
+    @report_scope = ReportScope.all
+    @emission_module = EmissionModule.all
     @report_scope_orga = ReportScopeOrga.new()
     # A decommenter quand les routes sont actives pour l'orga
     # @orga = Orga.find(params[:orga_id])
     # @report_scope = Orga.find(params[:report_scope_id])
-
 
     # @user = current_user
     # authorize @report_scope_orgas

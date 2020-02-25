@@ -1,5 +1,8 @@
 <h1 class="text-center">Create a new report scope orga</h1>
 <div class="container">
+  <% @report_scope.each do |report_scope| %>
+  <%= emission_id = report_scope.emission_module.name %>
+  <% end %>
   <%= simple_form_for(@report_scope_orga) do |f|%>
     <%= f.association :orga %>
     <%= f.association :report_scope, as: :check_boxes %>
