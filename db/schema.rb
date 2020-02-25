@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2020_02_25_103230) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "scope"
   end
 
   create_table "orgas", force: :cascade do |t|
