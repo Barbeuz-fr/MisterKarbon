@@ -7,6 +7,24 @@
 # ajout photo pour users
 
 # ==============================================================================
+# RESET
+# ==============================================================================
+
+
+p "reset database"
+
+AdemeEmissionFactor.destroy_all
+EmissionModule.destroy_all
+Orga.destroy_all
+Answer.destroy_all
+ReportScopeOrgaUser.destroy_all
+ReportScopeOrga.destroy_all
+ReportScope.destroy_all
+Report.destroy_all
+User.destroy_all
+Company.destroy_all
+
+# ==============================================================================
 # IMPORTATION CSV ADEME
 # ==============================================================================
 
@@ -25,22 +43,12 @@ end
 
 p "import done"
 
-# ==============================================================================
-# RESET
-# ==============================================================================
+p "last line ADEME emission factor"
+p AdemeEmissionFactor.last
 
+p "count ADEME line"
+AdemeEmissionFactor.count
 
-p "reset database"
-
-EmissionModule.destroy_all
-Orga.destroy_all
-Answer.destroy_all
-ReportScopeOrgaUser.destroy_all
-ReportScopeOrga.destroy_all
-ReportScope.destroy_all
-Report.destroy_all
-User.destroy_all
-Company.destroy_all
 
 # ==============================================================================
 # COMPANY
@@ -50,6 +58,13 @@ Company.destroy_all
 p "create company"
 
 company = Company.create!(name: "Strawberry")
+
+supplier_logistique = Company.create!(name: "Norbert Transport")
+
+supplier_mineraux = Company.create!(name: "Aremis")
+
+supplier_IT = Company.create!(name: "IT & co")
+
 
 # ==============================================================================
 # USERS
@@ -61,7 +76,8 @@ puts 'Creating 10 fake users...'
 
 manager = User.new(
   first_name: "JC",
-  last_name: "Bertrand"
+  last_name: "Bertrand",
+  company_id: company.id
   )
 manager.save
 
@@ -80,8 +96,28 @@ manager.save
     user.save!
 end
 
-puts 'USER DONE!'
+employee_logistique = User.new(
+  first_name: "Gérard",
+  last_name: "Transport",
+  company_id: supplier_logistique.id
+  )
+employee_logistique.save
 
+employee_mineraux = User.new(
+  first_name: "Antoine",
+  last_name: "Macadam",
+  company_id: supplier_mineraux.id
+  )
+employee_mineraux.save
+
+employee_IT = User.new(
+  first_name: "Jean-Michel",
+  last_name: "Haiti",
+  company_id: supplier_IT.id
+  )
+employee_IT.save
+
+puts 'User done'
 
 # ==============================================================================
 # ORGA
@@ -113,6 +149,12 @@ finance.save
 prod_dev = Orga.new(name: "Product Development")
 prod_dev.company = company
 prod_dev.save
+
+
+hr = Orga.new(name: "HR")
+hr.company = company
+hr.save
+
 
 # ==============================================================================
 # REPORTS
