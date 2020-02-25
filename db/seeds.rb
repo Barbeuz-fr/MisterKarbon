@@ -9,10 +9,10 @@
 p "reset database"
 
 EmissionModule.destroy_all
-Orga.destroy_all
-Company.destroy_all
-Report.destroy_all
 User.destroy_all
+Orga.destroy_all
+Report.destroy_all
+Company.destroy_all
 
 p "create company"
 
@@ -36,7 +36,7 @@ puts 'Creating 100 fake users...'
     job_position: Faker::Job.title,
     organization_position: Faker::Job.position,
     password: "qwerty123",
-    company_id: strawberry.id
+    company_id: company.id
     )
     user.save!
 end
@@ -66,7 +66,8 @@ orga1.company = company
 orga1.save
 
 p "create reports"
-
+report_1 = Report.new(name: "Projet1", year: 2020, user_id: User.first.id, company_id: company.id)
+report_1.save
 
 p "create emission_modules"
 
