@@ -12,42 +12,42 @@
 
   p "reset database"
 
-  # AdemeEmissionFactor.destroy_all
-  EmissionModule.destroy_all
+  ReportScopeOrgaUser.destroy_all
+  ReportScopeOrga.destroy_all
   Orga.destroy_all
   Answer.destroy_all
   Question.destroy_all
-  ReportScopeOrgaUser.destroy_all
-  ReportScopeOrga.destroy_all
+  AdemeEmissionFactor.destroy_all
   ReportScope.destroy_all
   Report.destroy_all
   User.destroy_all
   Company.destroy_all
+  EmissionModule.destroy_all
 
 # ==============================================================================
 # IMPORTATION CSV ADEME
 # ==============================================================================
 
-  # p "starting csv import ADEME"
-  # require 'csv'
+  p "starting csv import ADEME"
+  require 'csv'
 
-  # csv_text = File.read(Rails.root.join('lib', 'seeds', 'base_carbone_ademe_csv.csv'))
-  # csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-  # csv.each do |row|
-  #   t = AdemeEmissionFactor.new()
-  #   t.name = row['Code de la catégorie']
-  #   t.emission_value = row['Total poste non décomposé']
-  #   t.unit = row['Unité français']
-  #   t.save
-  # end
+  csv_text = File.read(Rails.root.join('lib', 'seeds', 'base_carbone_ademe_csv.csv'))
+  csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+  csv.each do |row|
+    t = AdemeEmissionFactor.new()
+    t.name = row['Code de la catégorie']
+    t.emission_value = row['Total poste non décomposé']
+    t.unit = row['Unité français']
+    t.save
+  end
 
-  # p "import done"
+  p "import done"
 
-  # p "last line ADEME emission factor"
-  # p AdemeEmissionFactor.last
+  p "last line ADEME emission factor"
+  p AdemeEmissionFactor.last
 
-  # p "count ADEME line"
-  # AdemeEmissionFactor.count
+  p "count ADEME line"
+  AdemeEmissionFactor.count
 
 # ==============================================================================
 # COMPANY
@@ -81,6 +81,8 @@
 
   manager = User.new(
     first_name: "JC",
+    email: "test@gmail.com",
+    password: 123456,
     last_name: "Bertrand",
     company_id: company.id
     )
@@ -104,9 +106,65 @@
       p user.first_name
   end
 
+  company_employee_1 = User.new(
+    first_name: "Germain",
+    last_name: "Dubreuil",
+    email: "germain.dubreuil@strawberry.com",
+    password: "123456",
+    company_id: company.id
+    )
+  company_employee_1.save
+
+  company_employee_2 = User.new(
+    first_name: "Antoine",
+    last_name: "Fraveaux",
+    email: "Antoine.Fraveaux@strawberry.com",
+    password: "123456",
+    company_id: company.id
+    )
+  company_employee_2.save
+
+  company_employee_3 = User.new(
+    first_name: "Jeremy",
+    last_name: "Kerviel",
+    email: "Jeremy.Kerviel@strawberry.com",
+    password: "123456",
+    company_id: company.id
+    )
+  company_employee_3.save
+
+  company_employee_3 = User.new(
+    first_name: "Jason",
+    last_name: "Bourne",
+    email: "Jason.Bourne@strawberry.com",
+    password: "123456",
+    company_id: company.id
+    )
+  company_employee_3.save
+
+  company_employee_4 = User.new(
+    first_name: "Greta",
+    last_name: "Garbo",
+    email: "Greta.Garbo@strawberry.com",
+    password: "123456",
+    company_id: company.id
+    )
+  company_employee_4.save
+
+  company_employee_5 = User.new(
+    first_name: "Jason",
+    last_name: "Statham",
+    email: "Jason.Statham@strawberry.com",
+    password: "123456",
+    company_id: company.id
+    )
+  company_employee_5.save
+
   employee_logistique = User.new(
     first_name: "Gérard",
     last_name: "Transport",
+    email: "gerard.transport@logistik.com",
+    password: "123456",
     company_id: supplier_logistique.id
     )
   employee_logistique.save
@@ -114,6 +172,8 @@
   employee_mineraux = User.new(
     first_name: "Antoine",
     last_name: "Macadam",
+    email: "antoine.macadam@Minerals.com",
+    password: "123456",
     company_id: supplier_mineraux.id
     )
   employee_mineraux.save
@@ -121,6 +181,8 @@
   employee_IT = User.new(
     first_name: "Jean-Michel",
     last_name: "Haiti",
+    email: "jean-michel.haiti@ITandco.com",
+    password: "123456",
     company_id: supplier_IT.id
     )
   employee_IT.save
@@ -333,7 +395,7 @@
   # 2 users de 2 entreprises pour report1_scope1 : manufacturing - combustibles fossiles
 
   report1_scope1_orga_user = ReportScopeOrgaUser.new(
-    user_id: 1,
+    user_id: company_employee_1.id,
     report_scope_orga_id: report1_scope1_orga.id
     )
   report1_scope1_orga_user.save
@@ -347,7 +409,7 @@
   # ----------------------------------------------
 
   report1_scope2_orga_user = ReportScopeOrgaUser.new(
-    user_id: 2,
+    user_id: company_employee_2.id,
     report_scope_orga_id: report1_scope2_orga.id
     )
   report1_scope2_orga_user.save
@@ -355,7 +417,7 @@
   # ----------------------------------------------
 
   report1_scope3_orga_user = ReportScopeOrgaUser.new(
-    user_id: 3,
+    user_id: company_employee_3.id,
     report_scope_orga_id: report1_scope3_orga.id
     )
   report1_scope3_orga_user.save
@@ -363,7 +425,7 @@
   # ----------------------------------------------
 
   report1_scope4_orga_user = ReportScopeOrgaUser.new(
-    user_id: 4,
+    user_id: company_employee_4.id,
     report_scope_orga_id: report1_scope4_orga.id
     )
   report1_scope4_orga_user.save
@@ -371,7 +433,7 @@
   # ----------------------------------------------
 
   report1_scope5_orga_user = ReportScopeOrgaUser.new(
-    user_id: 5,
+    user_id: company_employee_5.id,
     report_scope_orga_id: report1_scope5_orga.id
     )
   report1_scope5_orga_user.save
@@ -417,14 +479,13 @@
       question = Question.new(
         calculation: true,
         content: "#{i}. Some question",
-        ademe_emission_factor_id: i,
+        ademe_emission_factor_id: AdemeEmissionFactor.first.id,
         emission_module_id: emission_module.id)
       question.save
-      p question.content
       answer = Answer.new(
         calculation: true,
         question_id: question.id,
-        report_scope_id: i,
+        report_scope_id: emission_module.report_scopes.first.id,
         content: 1)
       answer.save
     end
