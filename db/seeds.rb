@@ -1,22 +1,70 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# TO DO
+
+# ajout du scope détaillé pour un exemple de projet
+# chargement du csv ADEME formatté
+# ajout des questions pour 1 module electricité et 1 module transport
+# ajout des réponses pour un exemple de projet
+# ajout photo pour users
+
+# ==============================================================================
+# RESET
+# ==============================================================================
+
 
 p "reset database"
 
+AdemeEmissionFactor.destroy_all
 EmissionModule.destroy_all
 Orga.destroy_all
-Company.destroy_all
+Answer.destroy_all
+ReportScopeOrgaUser.destroy_all
+ReportScopeOrga.destroy_all
+ReportScope.destroy_all
 Report.destroy_all
 User.destroy_all
+Company.destroy_all
+
+# ==============================================================================
+# IMPORTATION CSV ADEME
+# ==============================================================================
+
+p "starting csv import ADEME"
+require 'csv'
+
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'base_carbone_ademe_csv.csv'))
+csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+csv.each do |row|
+  t = AdemeEmissionFactor.new()
+  t.name = row['Code de la catégorie']
+  t.emission_value = row['Total poste non décomposé']
+  t.unit = row['Unité français']
+  t.save
+end
+
+p "import done"
+
+p "last line ADEME emission factor"
+p AdemeEmissionFactor.last
+
+p "count ADEME line"
+AdemeEmissionFactor.count
+
+
+# ==============================================================================
+# COMPANY
+# ==============================================================================
+
 
 p "create company"
 
 company = Company.create!(name: "Strawberry")
+
+supplier_logistique = Company.create!(name: "Norbert Transport")
+
+supplier_mineraux = Company.create!(name: "Aremis")
+
+supplier_IT = Company.create!(name: "IT & co")
+
 
 # ==============================================================================
 # USERS
@@ -24,9 +72,16 @@ company = Company.create!(name: "Strawberry")
 
 p "Create users"
 
-puts 'Creating 100 fake users...'
+puts 'Creating 10 fake users...'
 
-100.times do
+manager = User.new(
+  first_name: "JC",
+  last_name: "Bertrand",
+  company_id: company.id
+  )
+manager.save
+
+10.times do
     user = User.new(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -36,36 +91,98 @@ puts 'Creating 100 fake users...'
     job_position: Faker::Job.title,
     organization_position: Faker::Job.position,
     password: "qwerty123",
-    company_id: strawberry.id
+    company_id: company.id
     )
     user.save!
 end
 
-puts 'USER DONE!'
+employee_logistique = User.new(
+  first_name: "Gérard",
+  last_name: "Transport",
+  company_id: supplier_logistique.id
+  )
+employee_logistique.save
+
+employee_mineraux = User.new(
+  first_name: "Antoine",
+  last_name: "Macadam",
+  company_id: supplier_mineraux.id
+  )
+employee_mineraux.save
+
+employee_IT = User.new(
+  first_name: "Jean-Michel",
+  last_name: "Haiti",
+  company_id: supplier_IT.id
+  )
+employee_IT.save
+
+puts 'User done'
+
+# ==============================================================================
+# ORGA
+# ==============================================================================
+
 
 p "create orga"
 
-orga1 = Orga.new(name: "Supply Chain")
-orga1.company = company
-orga1.save
+supply_chain = Orga.new(name: "Supply Chain")
+supply_chain.company = company
+supply_chain.save
 
-orga1 = Orga.new(name: "Manufacturing")
-orga1.company = company
-orga1.save
+manufacturing = Orga.new(name: "Manufacturing")
+manufacturing.company = company
+manufacturing.save
 
-orga1 = Orga.new(name: "Marketing")
-orga1.company = company
-orga1.save
+marketing = Orga.new(name: "Marketing")
+marketing.company = company
+marketing.save
 
-orga1 = Orga.new(name: "Sales")
-orga1.company = company
-orga1.save
+sales = Orga.new(name: "Sales")
+sales.company = company
+sales.save
 
-orga1 = Orga.new(name: "Finance")
-orga1.company = company
-orga1.save
+finance = Orga.new(name: "Finance")
+finance.company = company
+finance.save
+
+prod_dev = Orga.new(name: "Product Development")
+prod_dev.company = company
+prod_dev.save
+
+
+hr = Orga.new(name: "HR")
+hr.company = company
+hr.save
+
+
+# ==============================================================================
+# REPORTS
+# ==============================================================================
+
 
 p "create reports"
+
+report_1 = Report.new(
+  name: "Manufacturing",
+  year: 2019)
+report_1.company_id = company.id
+report_1.user_id = manager.id
+report_1.save
+
+
+
+report_2 = Report.new(
+  name: "Product Development",
+  year: 2019)
+report_2.company_id = company.id
+report_2.user_id = manager.id
+report_2.save
+
+
+# ==============================================================================
+# EMISSION MODULES
+# ==============================================================================
 
 
 p "create emission_modules"
@@ -111,6 +228,140 @@ voirie = EmissionModule.create!(name: "Construction de voirie", scope: 3)
 eau = EmissionModule.create!(name: "Traitement de l'eau", scope: 3)
 consommables = EmissionModule.create!(name: "Consommables de bureaux", scope: 3)
 dechets = EmissionModule.create!(name: "Traitement des", scope: 3)
+
+# ==============================================================================
+# REPORT 1 SCOPES
+# ==============================================================================
+
+# Report 1 : combustibles fossibles, process industriels, refrigeration, dechets,
+# electricité
+
+p "report 1 scopes: combustibles, process, refrigeration, dechet, electricité"
+
+report1_scope1 = ReportScope.new(
+  deadline: DateTime.new(2020,6,1),
+  status: "To send")
+report1_scope1.report_id = report_1.id
+report1_scope1.emission_module_id = comb_fossiles.id
+report1_scope1.save
+
+report1_scope2 = ReportScope.new(
+  deadline: DateTime.new(2020,6,1),
+  status: "To send")
+report1_scope2.report_id = report_1.id
+report1_scope2.emission_module_id = process_industriels.id
+report1_scope2.save
+
+report1_scope3 = ReportScope.new(
+  deadline: DateTime.new(2020,6,1),
+  status: "To send")
+report1_scope3.report_id = report_1.id
+report1_scope3.emission_module_id = refrigeration.id
+report1_scope3.save
+
+report1_scope4 = ReportScope.new(
+  deadline: DateTime.new(2020,6,1),
+  status: "To send")
+report1_scope4.report_id = report_1.id
+report1_scope4.emission_module_id = dechets.id
+report1_scope4.save
+
+report1_scope5 = ReportScope.new(
+  deadline: DateTime.new(2020,6,1),
+  status: "To send")
+report1_scope5.report_id = report_1.id
+report1_scope5.emission_module_id = electricite.id
+report1_scope5.save
+
+# ==============================================================================
+# REPORT 1 SCOPE ORGAS
+# ==============================================================================
+
+# Report 1 uniquement sur le manufacturing
+
+p "report 1 scope orga (manufacturing)"
+
+report1_scope1_orga = ReportScopeOrga.new(
+  report_scope_id:report1_scope1.id,
+  orga_id: manufacturing.id
+  )
+report1_scope1_orga.save
+
+
+report1_scope2_orga = ReportScopeOrga.new(
+  report_scope_id:report1_scope2.id,
+  orga_id: manufacturing.id
+  )
+report1_scope2_orga.save
+
+
+report1_scope3_orga = ReportScopeOrga.new(
+  report_scope_id:report1_scope3.id,
+  orga_id: manufacturing.id
+  )
+report1_scope3_orga.save
+
+
+report1_scope4_orga = ReportScopeOrga.new(
+  report_scope_id:report1_scope4.id,
+  orga_id: manufacturing.id
+  )
+report1_scope4_orga.save
+
+
+report1_scope5_orga = ReportScopeOrga.new(
+  report_scope_id:report1_scope5.id,
+  orga_id: manufacturing.id
+  )
+report1_scope5_orga.save
+
+# ==============================================================================
+# REPORT1 SCOPE ORGA USERS
+# ==============================================================================
+
+p "Report scope orga users"
+# 5 profils associes aux 5 perimetres
+
+
+report1_scope1_orga_user = ReportScopeOrgaUser.new(
+  user_id: 1,
+  report_scope_orga_id: report1_scope1_orga.id
+  )
+report1_scope1_orga_user.save
+
+report1_scope2_orga_user = ReportScopeOrgaUser.new(
+  user_id: 2,
+  report_scope_orga_id: report1_scope2_orga.id
+  )
+report1_scope2_orga_user.save
+
+report1_scope3_orga_user = ReportScopeOrgaUser.new(
+  user_id: 3,
+  report_scope_orga_id: report1_scope3_orga.id
+  )
+report1_scope3_orga_user.save
+
+report1_scope4_orga_user = ReportScopeOrgaUser.new(
+  user_id: 4,
+  report_scope_orga_id: report1_scope4_orga.id
+  )
+report1_scope4_orga_user.save
+
+report1_scope5_orga_user = ReportScopeOrgaUser.new(
+  user_id: 5,
+  report_scope_orga_id: report1_scope5_orga.id
+  )
+report1_scope5_orga_user.save
+
+
+# ==============================================================================
+# QUESTIONS
+# ==============================================================================
+
+
+# ==============================================================================
+# REPORT EXAMPLE ANSWERS
+# ==============================================================================
 
 
 
