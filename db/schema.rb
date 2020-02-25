@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_25_103230) do
+ActiveRecord::Schema.define(version: 2020_02_25_224852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,11 +27,11 @@ ActiveRecord::Schema.define(version: 2020_02_25_103230) do
     t.string "content"
     t.boolean "calculation"
     t.bigint "question_id", null: false
-    t.bigint "report_scope_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "report_scope_orga_id", null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
-    t.index ["report_scope_id"], name: "index_answers_on_report_scope_id"
+    t.index ["report_scope_orga_id"], name: "index_answers_on_report_scope_orga_id"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -81,13 +81,13 @@ ActiveRecord::Schema.define(version: 2020_02_25_103230) do
     t.bigint "report_scope_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
     t.index ["orga_id"], name: "index_report_scope_orgas_on_orga_id"
     t.index ["report_scope_id"], name: "index_report_scope_orgas_on_report_scope_id"
   end
 
   create_table "report_scopes", force: :cascade do |t|
     t.date "deadline"
-    t.string "status"
     t.bigint "report_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -126,7 +126,7 @@ ActiveRecord::Schema.define(version: 2020_02_25_103230) do
   end
 
   add_foreign_key "answers", "questions"
-  add_foreign_key "answers", "report_scopes"
+  add_foreign_key "answers", "report_scope_orgas"
   add_foreign_key "orgas", "companies"
   add_foreign_key "questions", "ademe_emission_factors"
   add_foreign_key "questions", "emission_modules"

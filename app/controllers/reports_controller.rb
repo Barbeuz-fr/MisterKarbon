@@ -12,36 +12,37 @@ class ReportsController < ApplicationController
     redirect_to reports_path
   end
 
+  def show
+    @report = Report.find(params[:id])
+  end
 
   def result
     @reports = Report.all
     @report = Report.find(params[:id])
     @report_scopes_array = @report.report_scopes
 
-    @output_calc = []
+    # Output_array: array avec les hash de chaque emissions par question
+    @output_array = []
 
     @report_scopes_array.each do |report_scope|
-      report_scope.answers.each do |answer|
-        if answer.calculation == true
-          element = {
-            emission_value: answer.content * answer.question.ademe_emission_factor.emission_value,
-            emission_module_name: report_scope.emission_module.name,
-            orga_scope_name: report_scope.report_scope_orgas.orga.name
-          }
-          @output_calc << element
+      report_scope.report_scope_orgas.each do |report_scope_orga|
+        report_scope_orga.answers.each do |answer|
+          if answer.calculation == true
+            element = {
+              answer: answer.content.to_f,
+              answer_number: answer.id,
+              ademe_factor: answer.question.ademe_emission_factor.emission_value.to_f,
+              ademe_factor_unit: answer.question.ademe_emission_factor.unit,
+              emission_value: answer.content.to_f * answer.question.ademe_emission_factor.emission_value.to_f,
+              emission_module_name: report_scope.emission_module.name,
+              orga_scope_name: report_scope_orga.orga.name
+            }
+            @output_array << element
+          end
         end
       end
     end
-
-    # Boucle sur report_scope_array
-      # Boucle sur answers
-    # si calculation = true
-      # Output : array de hash avec:
-        # emission_value =  answer.content * question.content
-        # emission factor (Ademe_emission_factor.name)
-        # type d'emission (emission_module.name)
-        # orga scope (report_scope.report_scope_orga.orga.name)
-    end
+  end
 
   private
 
