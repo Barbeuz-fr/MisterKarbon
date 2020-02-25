@@ -1,3 +1,3 @@
-class BusinessUnit < ApplicationRecord
+aclass BusinessUnit < ApplicationRecord
   belongs_to :company
 end
