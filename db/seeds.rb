@@ -1,5 +1,5 @@
 # TO DO
-
+require "open-uri"
 # ajout du scope détaillé pour un exemple de projet
 # chargement du csv ADEME formatté
 # ajout des questions pour 1 module electricité et 1 module transport
@@ -25,6 +25,14 @@
   EmissionModule.destroy_all
 
 # ==============================================================================
+# IMAGES REPORTS
+# ==============================================================================
+
+  p "save images report"
+  report_1_file = URI.open('https://cdn.pixabay.com/photo/2015/04/23/22/01/tree-736887_1280.jpg')
+  report_2_file = URI.open('https://cdn.pixabay.com/photo/2013/10/09/02/26/coast-192979_1280.jpg')
+
+# --------------------------------------------------------------------------------------
 # IMPORTATION CSV ADEME
 # ==============================================================================
 
@@ -228,20 +236,25 @@
 
   p "create reports"
 
-  report_1 = Report.create!(
+  report_1 = Report.new(
     name: "Manufacturing",
     year: 2019,
     company_id: company.id,
     user_id: manager.id)
+  report_1.photo.attach(io: report_1_file, filename: 'report_1.jpg', content_type: 'image/jpg')
+  report_1.save!
   p report_1
 
   p report_1.name
 
-  report_2 = Report.create!(
+  report_2 = Report.new(
     name: "Product Development",
     year: 2019,
     company_id: company.id,
     user_id: manager.id)
+  report_2.photo.attach(io: report_2_file, filename: 'report_2.jpg', content_type: 'image/jpg')
+  report_2.save!
+
   p report_2
 
   p report_2.name
@@ -305,36 +318,31 @@
   p "report 1 scopes: combustibles, process, refrigeration, dechet, electricité"
 
   report1_scope1 = ReportScope.new(
-    deadline: DateTime.new(2020,6,1),
-    status: "To send")
+    deadline: DateTime.new(2020,6,1))
   report1_scope1.report_id = report_1.id
   report1_scope1.emission_module_id = comb_fossiles.id
   report1_scope1.save
 
   report1_scope2 = ReportScope.new(
-    deadline: DateTime.new(2020,6,1),
-    status: "To send")
+    deadline: DateTime.new(2020,6,1))
   report1_scope2.report_id = report_1.id
   report1_scope2.emission_module_id = process_industriels.id
   report1_scope2.save
 
   report1_scope3 = ReportScope.new(
-    deadline: DateTime.new(2020,6,1),
-    status: "To send")
+    deadline: DateTime.new(2020,6,1))
   report1_scope3.report_id = report_1.id
   report1_scope3.emission_module_id = refrigeration.id
   report1_scope3.save
 
   report1_scope4 = ReportScope.new(
-    deadline: DateTime.new(2020,6,1),
-    status: "To send")
+    deadline: DateTime.new(2020,6,1))
   report1_scope4.report_id = report_1.id
   report1_scope4.emission_module_id = dechets.id
   report1_scope4.save
 
   report1_scope5 = ReportScope.new(
-    deadline: DateTime.new(2020,6,1),
-    status: "To send")
+    deadline: DateTime.new(2020,6,1))
   report1_scope5.report_id = report_1.id
   report1_scope5.emission_module_id = electricite.id
   report1_scope5.save
@@ -349,7 +357,8 @@
 
   report1_scope1_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope1.id,
-    orga_id: manufacturing.id
+    orga_id: manufacturing.id,
+    status: "To send"
     )
   report1_scope1_orga.save
 
@@ -357,7 +366,8 @@
 
   report1_scope2_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope2.id,
-    orga_id: manufacturing.id
+    orga_id: manufacturing.id,
+    status: "To send"
     )
   report1_scope2_orga.save
 
@@ -365,7 +375,8 @@
 
   report1_scope3_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope3.id,
-    orga_id: manufacturing.id
+    orga_id: manufacturing.id,
+    status: "To send"
     )
   report1_scope3_orga.save
 
@@ -373,7 +384,8 @@
 
   report1_scope4_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope4.id,
-    orga_id: manufacturing.id
+    orga_id: manufacturing.id,
+    status: "To send"
     )
   report1_scope4_orga.save
 
@@ -381,9 +393,18 @@
 
   report1_scope5_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope5.id,
-    orga_id: manufacturing.id
+    orga_id: manufacturing.id,
+    status: "To send"
     )
   report1_scope5_orga.save
+
+report_scope_array = [
+  report1_scope1_orga,
+  report1_scope2_orga,
+  report1_scope3_orga,
+  report1_scope4_orga,
+  report1_scope5_orga
+]
 
 # ==============================================================================
 # REPORT1 SCOPE ORGA USERS
@@ -470,11 +491,14 @@
                               dechets,
                               electricite]
 
+  p "array emission_modules_used_in_report1"
+  p emission_modules_used_in_report1
+
   emission_modules_used_in_report1.each_with_index { |emission_module, i|
     p "emission_module"
     p emission_module.name
 
-    10.times do
+    5.times do
       question = Question.new(
         calculation: true,
         content: "#{i}. Some question",
@@ -484,7 +508,7 @@
       answer = Answer.new(
         calculation: true,
         question_id: question.id,
-        report_scope_id: emission_module.report_scopes.first.id,
+        report_scope_orga_id: report_scope_array[i].id,
         content: 1)
       answer.save
     end

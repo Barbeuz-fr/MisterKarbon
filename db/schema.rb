@@ -10,10 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_02_26_132538) do
+=======
+ActiveRecord::Schema.define(version: 2020_02_26_094308) do
+>>>>>>> 67eb851428a167d17feed26b6d879ccf0d877061
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "ademe_emission_factors", force: :cascade do |t|
     t.string "name"
@@ -27,11 +52,11 @@ ActiveRecord::Schema.define(version: 2020_02_26_132538) do
     t.string "content"
     t.boolean "calculation"
     t.bigint "question_id", null: false
-    t.bigint "report_scope_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "report_scope_orga_id", null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
-    t.index ["report_scope_id"], name: "index_answers_on_report_scope_id"
+    t.index ["report_scope_orga_id"], name: "index_answers_on_report_scope_orga_id"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -90,13 +115,13 @@ ActiveRecord::Schema.define(version: 2020_02_26_132538) do
     t.bigint "report_scope_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
     t.index ["orga_id"], name: "index_report_scope_orgas_on_orga_id"
     t.index ["report_scope_id"], name: "index_report_scope_orgas_on_report_scope_id"
   end
 
   create_table "report_scopes", force: :cascade do |t|
     t.date "deadline"
-    t.string "status"
     t.bigint "report_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -134,8 +159,9 @@ ActiveRecord::Schema.define(version: 2020_02_26_132538) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "answers", "questions"
-  add_foreign_key "answers", "report_scopes"
+  add_foreign_key "answers", "report_scope_orgas"
   add_foreign_key "orgas", "companies"
   add_foreign_key "questions", "ademe_emission_factors"
   add_foreign_key "questions", "emission_modules"

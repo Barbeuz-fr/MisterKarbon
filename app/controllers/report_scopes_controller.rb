@@ -1,5 +1,12 @@
 class ReportScopesController < ApplicationController
 
+  def show
+    @report = Report.find(params[:id])
+    @module_scopes = EmissionModule.all
+    @report_scopes = ReportScope.all
+    @report_scope = ReportScope.new()
+  end
+
   def create
     @report_scope = ReportScope.new(report_scope_params)
     @report_scope.save!
