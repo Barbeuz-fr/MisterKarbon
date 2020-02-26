@@ -1,11 +1,26 @@
-<h1 class="text-center">Create a new report scope orga</h1>
-<div class="container">
-  <% @report_scope.each do |report_scope| %>
-  <%= emission_id = report_scope.emission_module.name %>
-  <% end %>
-  <%= simple_form_for(@report_scope_orga) do |f|%>
-    <%= f.association :orga %>
-    <%= f.association :report_scope, as: :check_boxes %>
-    <%= f.submit %>
-  <% end %>
+<!-- <h1 class="text-center">Create a new report scope orga</h1> -->
+<!-- <div class="container">
+  <%# @report_scope.each do |report_scope| %>
+  <%#= emission_id = report_scope.emission_module.name %>
+  <%# end %>
+</div> -->
+
+
+<div class="container width-form">
+    <div class="align-new">
+      <div class="form-post">
+        <h1>Choose the modules for a business unit</h1>
+        <%= simple_form_for(@report_scope_orga) do |f| %>
+        <div class="row">
+          <%= f.association :orga, label_html: {class: "width-list"} %>
+        </div>
+        <div class="row">
+          <%= f.association :report_scope, as: :check_boxes %>
+        </div>
+          <!-- Inject categories here -->
+          <%= f.submit "Save", class: "btn btn-primary"  %>
+        <% end %>
+      </div>
+    </div>
 </div>
+

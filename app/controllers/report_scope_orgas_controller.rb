@@ -12,21 +12,28 @@ class ReportScopeOrgasController < ApplicationController
   end
 
   def create
-    @report_scope_orga = ReportScopeOrga.new(report_scope_orga_params)
+    report_scope_ids = report_scope_orga_params[:report_scope_id].reject{ |id| id == "" }
+    # iterer sur report scope ids
+    report_scope_ids.each do |report_scope_id|
+      ReportScopeOrga.create(orga_id: report_scope_orga_params[:orga_id], report_scope_id: report_scope_id)
+    end
+    # creer un report scope orga pour chaque id
+    #raise
+    #@report_scope_orga = ReportScopeOrga.new(report_scope_orga_params)
     # @orga = Orga.find(params[:orga_id])
     # @report_scope = Orga.find(params[:report_scope_id])
     # @user = current_user
-    if @report_scope_orga.save
+    #if @report_scope_orga.save
     # authorize @report_scope_orgas
     # redirect_to user_path(current_user) To be defined
-    else
-      render :new
-    end
+    #else
+     # render :new
+    #end
   end
 
   private
 
   def report_scope_orga_params
-    params.require(:report_scope_orga).permit(:orga_id, :report_scope_id)
+    params.require(:report_scope_orga).permit(:orga_id, report_scope_id: [])
   end
 end
