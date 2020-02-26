@@ -1,7 +1,18 @@
 class ReportsController < ApplicationController
+
   def index
     @reports = Report.all
     @report = Report.new()
+  end
+
+  def show
+    @report = Report.find(params[:id])
+
+    @module_scopes = EmissionModule.all
+
+    @report_scopes = ReportScope.all
+
+    @report_scope = ReportScope.new()
   end
 
   def create
@@ -49,6 +60,8 @@ class ReportsController < ApplicationController
       end
     end
   end
+
+
 
   private
 
