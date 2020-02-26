@@ -1,0 +1,38 @@
+.tab-button {
+  background-color: #E0FBFC;
+  height: 5vh;
+}
+
+.tab-button h2 {
+  font-size: 16px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.active-tab {
+  background-color: #0C60AF !important;
+}
+
+.active-tab h2 {
+  color: white;
+}
+
+.tab-header {
+  background-color: #0C60AF;
+  height: 5vh;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.tab-header h3 {
+  font-size: 16px;
+  color: white;
+}
+
+.tab-content {
+  text-align:center;
+}
+
+.tab-content p {
+
+}

@@ -14,11 +14,54 @@ class ReportsController < ApplicationController
 
   def show
     @report = Report.find(params[:id])
+
+    # Identification s'il y a des reports avec le status "To send"
+    @counter_reports_to_send = 0
+    @report.report_scopes.each do |report_scope|
+      report_scope.report_scope_orgas.each do |report_scope_orga|
+        if report_scope_orga.status == "To send"
+          @counter_reports_to_send += 1
+        end
+      end
+    end
+
+    # Calcul des KPIs d'avancement
+
+    @status_to_send = 0
+    @status_sent = 0
+    @status_ongoing = 0
+    @status_pending_validation = 0
+    @status_done = 0
+    @report.report_scopes.each do |report_scope|
+      report_scope.report_scope_orgas.each do |report_scope_orga|
+        if report_scope_orga.status == "To send"
+          @status_to_send += 1
+        elsif report_scope_orga.status == "Sent, to start"
+          @status_sent += 1
+        elsif report_scope_orga.status == "On-going"
+          @status_ongoing += 1
+        elsif report_scope_orga.status == "Pending validation"
+          @status_pending_validation += 1
+        elsif report_scope_orga.status == "Done"
+          @status_done += 1
+        end
+      end
+    end
+    @status_total = @status_to_send
+                    + @status_sent
+                    + @status_ongoing
+                    + @status_pending_validation
+                    + @status_done
+  end
+
+  def send_report
+    @report = Report.find(params[:id])
+
   end
 
   def result
     @reports = Report.all
-    @report = Report.find(params[:id])
+    @report = Report.find(params[:report_id])
     @report_scopes_array = @report.report_scopes
 
     # Output_array: array avec les hash de chaque emissions par question
