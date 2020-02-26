@@ -1,0 +1,27 @@
+<div class="container">
+
+<h1>Test show</h1>
+
+<p>Report name: <%= @report.name %></p>
+
+<!-- Affichage d'un tableau avec tous les modules x orga x email -->
+
+<ul>
+  <% @report.report_scopes.each do |report_scope|  %>
+    <li>
+    <p>Emission Module: <%= report_scope.emission_module.name %></p>
+    <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
+    <p>Organization: <%= report_scope_orga.orga.name %></p>
+      <% report_scope_orga.report_scope_orga_users.each do |report_scope_orga_user| %>
+        <p>Contacts: </p>
+        <p><%= report_scope_orga_user.user.email  %></p>
+      <% end %>
+      <p>Status: <%= report_scope_orga.status %></p>
+    <% end %>
+    </li>
+  <% end %>
+  <h3>Status</h3>
+</ul>
+
+
+</div>

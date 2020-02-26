@@ -319,36 +319,31 @@ require "open-uri"
   p "report 1 scopes: combustibles, process, refrigeration, dechet, electricité"
 
   report1_scope1 = ReportScope.new(
-    deadline: DateTime.new(2020,6,1),
-    status: "To send")
+    deadline: DateTime.new(2020,6,1))
   report1_scope1.report_id = report_1.id
   report1_scope1.emission_module_id = comb_fossiles.id
   report1_scope1.save
 
   report1_scope2 = ReportScope.new(
-    deadline: DateTime.new(2020,6,1),
-    status: "To send")
+    deadline: DateTime.new(2020,6,1))
   report1_scope2.report_id = report_1.id
   report1_scope2.emission_module_id = process_industriels.id
   report1_scope2.save
 
   report1_scope3 = ReportScope.new(
-    deadline: DateTime.new(2020,6,1),
-    status: "To send")
+    deadline: DateTime.new(2020,6,1))
   report1_scope3.report_id = report_1.id
   report1_scope3.emission_module_id = refrigeration.id
   report1_scope3.save
 
   report1_scope4 = ReportScope.new(
-    deadline: DateTime.new(2020,6,1),
-    status: "To send")
+    deadline: DateTime.new(2020,6,1))
   report1_scope4.report_id = report_1.id
   report1_scope4.emission_module_id = dechets.id
   report1_scope4.save
 
   report1_scope5 = ReportScope.new(
-    deadline: DateTime.new(2020,6,1),
-    status: "To send")
+    deadline: DateTime.new(2020,6,1))
   report1_scope5.report_id = report_1.id
   report1_scope5.emission_module_id = electricite.id
   report1_scope5.save
@@ -363,7 +358,8 @@ require "open-uri"
 
   report1_scope1_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope1.id,
-    orga_id: manufacturing.id
+    orga_id: manufacturing.id,
+    status: "To send"
     )
   report1_scope1_orga.save
 
@@ -371,7 +367,8 @@ require "open-uri"
 
   report1_scope2_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope2.id,
-    orga_id: manufacturing.id
+    orga_id: manufacturing.id,
+    status: "To send"
     )
   report1_scope2_orga.save
 
@@ -379,7 +376,8 @@ require "open-uri"
 
   report1_scope3_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope3.id,
-    orga_id: manufacturing.id
+    orga_id: manufacturing.id,
+    status: "To send"
     )
   report1_scope3_orga.save
 
@@ -387,7 +385,8 @@ require "open-uri"
 
   report1_scope4_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope4.id,
-    orga_id: manufacturing.id
+    orga_id: manufacturing.id,
+    status: "To send"
     )
   report1_scope4_orga.save
 
@@ -395,9 +394,18 @@ require "open-uri"
 
   report1_scope5_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope5.id,
-    orga_id: manufacturing.id
+    orga_id: manufacturing.id,
+    status: "To send"
     )
   report1_scope5_orga.save
+
+report_scope_array = [
+  report1_scope1_orga,
+  report1_scope2_orga,
+  report1_scope3_orga,
+  report1_scope4_orga,
+  report1_scope5_orga
+]
 
 # ==============================================================================
 # REPORT1 SCOPE ORGA USERS
@@ -484,11 +492,14 @@ require "open-uri"
                               dechets,
                               electricite]
 
+  p "array emission_modules_used_in_report1"
+  p emission_modules_used_in_report1
+
   emission_modules_used_in_report1.each_with_index { |emission_module, i|
     p "emission_module"
     p emission_module.name
 
-    10.times do
+    5.times do
       question = Question.new(
         calculation: true,
         content: "#{i}. Some question",
@@ -498,7 +509,7 @@ require "open-uri"
       answer = Answer.new(
         calculation: true,
         question_id: question.id,
-        report_scope_id: emission_module.report_scopes.first.id,
+        report_scope_orga_id: report_scope_array[i].id,
         content: 1)
       answer.save
     end
