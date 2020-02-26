@@ -21,6 +21,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+# Cloudinary for image storage
+gem 'cloudinary', '~> 1.12.0'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -37,6 +39,11 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 
 gem 'faker'
+
+# charts
+gem 'chart-js-rails'
+
+
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'

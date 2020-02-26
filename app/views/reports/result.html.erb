@@ -1,0 +1,22 @@
+<div class="container">
+  <nav class="nav nav-pills nav-fill">
+    <a class="nav-item nav-link" href="../<%= @report.id %>">Progress</a>
+    <a class="nav-item nav-link active" href="#">Result</a>
+  </nav>
+</div>
+
+  <div class="container mt-3 mb-2">
+    <h3>Your report : <%= @report.name %> - <%= @report.year %></h3>
+  </div>
+
+<div class="container">
+  <ul>
+    <% @output_array.each do |item| %>
+    <li>
+      <p><%= item[:emission_module_name] %> - <%= item[:orga_scope_name] %> - <%= item[:answer_number] %></p>
+      <p>Emission value: <%= item[:emission_value] %></p>
+    </li>
+    <% end %>
+  </ul>
+</div>
+

@@ -1,137 +1,213 @@
 <div class="container">
-  <div class="card mb-3">
-    <h3 class="ml-3 mt-3">ÉMISSIONS DIRECTES</h3>
-    <p class="text-muted ml-3">Scope 1</p>
-    <% @module_scopes.where(scope: 1).each do |module_scope1| %>
-      <div class="card border-right-0 border-left-0 border-bottom-0">
-        <div class="row no-gutters">
-          <div class="col-md-2">
-            <!-- <img src="#" class="card-img" alt="..."> -->
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-10">
-                  <h5 class="card-title"><%= module_scope1.name %></h5>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-                <div class="col-md-2 align-self-center">
-                  <% if ReportScope.new(emission_module_id: module_scope1.id, report_id: params[:id]).valid? %>
-                    <%= simple_form_for [@report, @report_scope] do |f| %>
-                      <%= f.input :emission_module_id, input_html: { value: module_scope1.id }, as: :hidden %>
-                      <%= f.input :report_id, input_html: { value: params[:id] }, as: :hidden %>
-                      <%= f.submit "➕", class: "bg-transparent border-0" %>
-                    <% end %>
-                  <% else %>
-                    <%= link_to "🗑",
-                       report_scope_path(@report.report_scopes.find_by(emission_module_id: module_scope1.id)),
-                      method: :delete,
-                      data: { confirm: "Are you sure?" } %>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
+  <nav class="nav nav-pills nav-fill">
+    <a class="nav-item nav-link active" href="#">Progress</a>
+    <a class="nav-item nav-link" href="/reports/<%= @report.id %>/results">Result</a>
+  </nav>
+</div>
+
+
+<!-- Titre report -->
+<div class="container mt-3 mb-2">
+  <h3>Your report : <%= @report.name %> - <%= @report.year %></h3>
+</div>
+
+<!-- Message si tous les reports sont envoyés -->
+
+<% if @counter_reports_to_send == 0 %>
+  <div class="container">
+    <p>All your data requests have been sent</p>
+  </div>
+<% else %>
+
+  <!-- Table title -->
+  <div class="container">
+    <h3>Pending data requests</h3>
   </div>
 
-  <div class="card mb-3">
-    <h3 class="ml-3 mt-3">ÉMISSIONS INDIRECTES - ÉNERGIE</h3>
-    <p class="text-muted ml-3">Scope 2</p>
 
-    <% @module_scopes.where(scope: 2).each do |module_scope2| %>
-      <div class="card border-right-0 border-left-0 border-bottom-0">
-        <div class="row no-gutters">
-          <div class="col-md-2">
-            <!-- <img src="#" class="card-img" alt="..."> -->
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-10">
-                  <h5 class="card-title"><%= module_scope2.name %></h5>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-                <div class="col-md-2 align-self-center">
-                  <% if ReportScope.new(emission_module_id: module_scope2.id, report_id: params[:id]).valid? %>
-                    <%= simple_form_for [@report, @report_scope] do |f| %>
-                      <%= f.input :emission_module_id, input_html: { value: module_scope2.id }, as: :hidden %>
-                      <%= f.input :report_id, input_html: { value: params[:id] }, as: :hidden %>
-                      <%= f.submit "➕", class: "bg-transparent border-0" %>
-                    <% end %>
-                  <% else %>
-                    <%= link_to "🗑",
-                       report_scope_path(@report.report_scopes.find_by(emission_module_id: module_scope2.id)),
-                      method: :delete,
-                      data: { confirm: "Are you sure?" } %>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          </div>
+  <!-- Header tableau -->
+  <div class="container mb-2">
+    <div class="row">
+      <div class="col-2">
+        <div class="tab-header">
+          <h3>Organization</h3>
         </div>
       </div>
-    <% end %>
+      <div class="col-2">
+        <div class="tab-header">
+          <h3>Emission module</h3>
+        </div>
+      </div>
+      <div class="col-5">
+        <div class="tab-header">
+          <h3>Contributors</h3>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="tab-header">
+          <h3>Status</h3>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="card mb-3">
-    <h3 class="ml-3 mt-3">ÉMISSIONS INDIRECTES - AUTRES</h3>
-    <p class="text-muted ml-3">Scope 3</p>
-
-    <% @module_scopes.where(scope: 3).each do |module_scope3| %>
-      <div class="card border-right-0 border-left-0 border-bottom-0">
-        <div class="row no-gutters">
-          <div class="col-md-2">
-            <!-- <img src="#" class="card-img" alt="..."> -->
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-10">
-                  <h5 class="card-title"><%= module_scope3.name %></h5>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-                <div class="col-md-2 align-self-center">
-                  <% if ReportScope.new(emission_module_id: module_scope3.id, report_id: params[:id]).valid? %>
-                    <%= simple_form_for [@report, @report_scope] do |f| %>
-                      <%= f.input :emission_module_id, input_html: { value: module_scope3.id }, as: :hidden %>
-                      <%= f.input :report_id, input_html: { value: params[:id] }, as: :hidden %>
-                      <%= f.submit "➕", class: "bg-transparent border-0" %>
-                    <% end %>
-                  <% else %>
-                    <%= link_to "🗑",
-                       report_scope_path(@report.report_scopes.find_by(emission_module_id: module_scope3.id)),
-                      method: :delete,
-                      data: { confirm: "Are you sure?" } %>
-                  <% end %>
-                </div>
-              </div>
+  <!-- Affichage d'un tableau avec tous les modules x orga x email -->
+  <div class="container">
+    <div class="row">
+      <% @report.report_scopes.each do |report_scope|  %>
+        <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
+          <% if report_scope_orga.status == "To send" %>
+            <div class="col-2 flex-cell">
+              <p><%= report_scope_orga.orga.name %></p>
             </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
+            <div class="col-2 flex-cell">
+              <p><%= report_scope.emission_module.name %></p>
+            </div>
+            <div class="col-5 flex-cell">
+            <% report_scope_orga.report_scope_orga_users.each do |report_scope_orga_user| %>
+              <p><%= report_scope_orga_user.user.email  %></p>
+            <% end %>
+            </div>
+            <div class="col-3 flex-cell">
+                <p>
+                  <%= link_to "#{report_scope_orga.status}",
+                        report_scope_orga_send_report_path(report_scope_orga),
+                        class:"btn btn-success" %>
+                </p>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 
-<!--   <div class="card mb-3">
-    <h3 class="ml-3 mt-3">REPORT SCOPE</h3>
 
-    <%# @report_scopes.each do |report_scope| %>
-      <div class="card border-right-0 border-left-0 border-bottom-0">
-        <div class="row no-gutters">
-          <div class="col-md-2">
-            <img src="#" class="card-img" alt="...">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title"><%#= report_scope.report.name %></h5>
-            </div>
-          </div>
-        </div>
+<!-- Ajout d'un bouton "send all" -->
+
+<% end %>
+
+<!-- Title -->
+
+<div class="container">
+  <div class="mt-3 mb-2">
+    <h3>Your progress</h3>
+  </div>
+</div>
+
+<!-- KPI progress -->
+<div class="container">
+
+  <div class="wrapper">
+    <div class="flex-cell lightblue-bg">
+      <div>
+        <p>To send </p>
       </div>
-    <%# end %>
-  </div> -->
+      <div class="bg-white p-1 rounded">
+        <p><%= @status_to_send %> / <%= @status_total %></p>
+      </div>
+    </div>
+    <div class="flex-cell lightblue-bg">
+      <div>
+        <p>Sent, not <br>yet started</p>
+      </div>
+      <div class="bg-white p-1 rounded">
+      <p><%= @status_sent %> / <%= @status_total %></p>
+      </div>
+    </div>
+    <div class="flex-cell lightblue-bg">
+      <div>
+        <p>On-going</p>
+      </div>
+      <div class="bg-white p-1 rounded">
+        <p><%= @status_ongoing %> / <%= @status_total %></p>
+      </div>
+    </div>
+    <div class="flex-cell lightblue-bg">
+      <div>
+        <p>Pending validation</p>
+      </div>
+      <div class="bg-white p-1 rounded">
+        <p><%= @status_pending_validation %> / <%= @status_total %></p>
+      </div>
+    </div>
+    <div class="flex-cell lightblue-bg">
+      <div>
+        <p>Done! </p>
+      </div>
+      <div class="bg-white p-1 rounded">
+        <p><%= @status_done %> / <%= @status_total %></p>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!-- Structure tableau -->
+<div class="container mt-3 mb-2">
+  <div class="row">
+    <div class="col-2">
+      <div class="tab-header">
+        <h3>Organization</h3>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="tab-header">
+        <h3>Emission module</h3>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="tab-header">
+        <h3>Contributors</h3>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="tab-header">
+        <h3>Status</h3>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="tab-header">
+        <h3>Team discussion</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Contenu tableau -->
+
+<div class="container">
+  <div class="row">
+    <% @report.report_scopes.each do |report_scope|  %>
+      <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
+        <div class="col-2 flex-cell">
+          <p class="text-center"><%= report_scope_orga.orga.name %></p>
+        </div>
+        <div class="col-2 flex-cell">
+          <p class="text-center"><%= report_scope.emission_module.name %></p>
+        </div>
+        <div class="col-3 flex-cell">
+          <ul>
+        <% report_scope_orga.report_scope_orga_users.each do |report_scope_orga_user| %>
+            <li>
+              <p class="text-left"><%= report_scope_orga_user.user.email  %></p>
+            </li>
+        <% end %>
+          </ul>
+        </div>
+        <div class="col-3 flex-cell">
+          <% if report_scope_orga.status == "To send" %>
+            <p class="text-center">
+              <%= link_to "#{report_scope_orga.status}",
+                    report_scope_orga_send_report_path(report_scope_orga),
+                    class:"btn btn-success" %>
+            </p>
+          <% else %>
+            <p class="text-center"><%= report_scope_orga.status %></p>
+          <% end %>
+        </div>
+        <div class="col-2 flex-cell">
+          <p class="text-center"><i class="far fa-envelope"></i></p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>
