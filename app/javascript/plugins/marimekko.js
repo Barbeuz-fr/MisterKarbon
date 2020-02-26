@@ -30,6 +30,6 @@ square.style("fill", "orange");
 
 
 
-export { test2 };
-export { test };
-export { square };
+// export { test2 };
+// export { test };
+// export { square };

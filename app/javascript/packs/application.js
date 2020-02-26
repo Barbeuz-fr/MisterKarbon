@@ -7,7 +7,7 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-require Chart.min
+// require Chart.min
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -23,12 +23,12 @@ require Chart.min
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
 import "bootstrap";
-import * as d3 from "d3";
+// import * as d3 from "d3";
 
-import { test } from "../plugins/marimekko";
-import { test2 } from "../plugins/marimekko";
-import { square } from "../plugins/marimekko";
+// import { test } from "../plugins/marimekko";
+// import { test2 } from "../plugins/marimekko";
+// import { square } from "../plugins/marimekko";
 
-test();
-test2();
-square();
+// test();
+// test2();
+// square();
