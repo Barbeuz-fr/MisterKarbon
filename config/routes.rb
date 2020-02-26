@@ -12,6 +12,4 @@ Rails.application.routes.draw do
     get "send_report", to: "report_scope_orgas#send_report"
   end
 
-
-
 end

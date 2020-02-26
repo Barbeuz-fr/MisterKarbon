@@ -1,5 +1,5 @@
 <!-- Navigation tabs -->
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     <div class="col-6">
       <div class="tab-button active-tab">
@@ -12,7 +12,15 @@
       </div>
     <div >
   </div>
+</div> -->
+
+<div class="container">
+  <nav class="nav nav-pills nav-fill">
+    <a class="nav-item nav-link active" href="#">Progress</a>
+    <a class="nav-item nav-link" href="/reports/<%= @report.id %>/results">Result</a>
+  </nav>
 </div>
+
 
 <!-- Titre report -->
 <div class="container mt-3 mb-2">
@@ -22,7 +30,9 @@
 <!-- Message si tous les reports sont envoyés -->
 
 <% if @counter_reports_to_send == 0 %>
-  <p>All your data requests have been sent</p>
+  <div class="container">
+    <p>All your data requests have been sent</p>
+  </div>
 <% else %>
 
   <!-- Table title -->
@@ -102,26 +112,61 @@
 </div>
 
 <!-- KPI progress -->
+<!--
+<div class="d-inline-block bg-primary">
+  <h3>To send</h3>
+  <h2><%= @status_to_send %> / <%= @status_total %></h2>
+</div>
+<div class="d-inline-block bg-primary">
+  <h3>Sent, not year started</h3>
+  <h2><%= @status_sent %> / <%= @status_total %></h2>
+</div>
+ -->
+
 <!-- Count sur les emission_module x orga -->
-<div class="card">
-  <p>To send </p>
-  <p><%= @status_to_send %> / <%= @status_total %></p>
-</div>
-<div class="card">
-  <p>Sent, not year started</p>
-  <p><%= @status_sent %> / <%= @status_total %></p>
-</div>
-<div class="card">
-  <p>On-going</p>
-  <p><%= @status_ongoing %> / <%= @status_total %></p>
-</div>
-<div class="card">
-  <p>Pending validation</p>
-  <p><%= @status_pending_validation %> / <%= @status_total %></p>
-</div>
-<div class="card">
-  <p>Done! </p>
-  <p><%= @status_done %> / <%= @status_total %></p>
+<div class="container">
+  <div id="progress_cards_container">
+    <div class="kpi-card">
+      <div>
+        <p>To send </p>
+      </div>
+      <div class="bg-white p-3">
+        <p><%= @status_to_send %> / <%= @status_total %></p>
+      </div>
+    </div>
+    <div class="kpi-card">
+      <div>
+        <p>Sent, not year started</p>
+      </div>
+      <div class="bg-white p-3">
+      <p><%= @status_sent %> / <%= @status_total %></p>
+      </div>
+    </div>
+    <div class="kpi-card">
+      <div>
+        <p>On-going</p>
+      </div>
+      <div class="bg-white p-3">
+        <p><%= @status_ongoing %> / <%= @status_total %></p>
+      </div>
+    </div>
+    <div class="kpi-card">
+      <div>
+        <p>Pending validation</p>
+      </div>
+      <div class="bg-white p-3">
+        <p><%= @status_pending_validation %> / <%= @status_total %></p>
+      </div>
+    </div>
+    <div class="kpi-card">
+      <div>
+        <p>Done! </p>
+      </div>
+      <div class="bg-white p-3">
+      <p><%= @status_done %> / <%= @status_total %></p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Structure tableau -->

@@ -1,18 +1,9 @@
 <div class="container">
-  <div class="row">
-    <div class="col-6">
-      <div class="tab-button text-center">
-        <%= link_to "Progress", report_path(@report)%>
-      </div>
-    </div>
-    <div class="col-6">
-      <div class="tab-button active-tab">
-        <h2 >Result</h2>
-      </div>
-    <div >
-  </div>
+  <nav class="nav nav-pills nav-fill">
+    <a class="nav-item nav-link" href="../<%= @report.id %>">Progress</a>
+    <a class="nav-item nav-link active" href="#">Result</a>
+  </nav>
 </div>
-
 
   <div class="container mt-3 mb-2">
     <h3>Your report : <%= @report.name %> - <%= @report.year %></h3>

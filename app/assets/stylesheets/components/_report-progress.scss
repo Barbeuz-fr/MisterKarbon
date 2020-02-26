@@ -36,3 +36,33 @@
 .tab-content p {
 
 }
+
+#progress_cards_container {
+ width:100%;
+ text-align:center;
+}
+#progress_cards_container > div {
+ width: calc(100% / 5);
+ display: inline-block;
+ vertical-align: top;
+ border:1px solid  #0C60AF;
+ text-align:center;
+ padding:10px;
+}
+
+
+.card {display:inline-block;}
+
+.kpi-card {
+  background-color: #F4F4F4;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px  #0C60AF;
+}
+
+.kpi-card > div {
+  display: inline-block;
+  border-radius: 5px;
+  font-size: 14px;
+  font-style: bolder;
+  text-align: center
+}
