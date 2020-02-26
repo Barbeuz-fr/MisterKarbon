@@ -51,25 +51,24 @@
     </div>
   </div>
 
-
   <!-- Affichage d'un tableau avec tous les modules x orga x email -->
   <div class="container">
     <div class="row">
       <% @report.report_scopes.each do |report_scope|  %>
         <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
           <% if report_scope_orga.status == "To send" %>
-            <div class="col-2 card">
+            <div class="col-2 flex-cell">
               <p><%= report_scope_orga.orga.name %></p>
             </div>
-            <div class="col-2 card">
+            <div class="col-2 flex-cell">
               <p><%= report_scope.emission_module.name %></p>
             </div>
-            <div class="col-5 card">
+            <div class="col-5 flex-cell">
             <% report_scope_orga.report_scope_orga_users.each do |report_scope_orga_user| %>
               <p><%= report_scope_orga_user.user.email  %></p>
             <% end %>
             </div>
-            <div class="col-3 card">
+            <div class="col-3 flex-cell">
                 <p>
                   <%= link_to "#{report_scope_orga.status}",
                         report_scope_orga_send_report_path(report_scope_orga),
@@ -96,65 +95,53 @@
 </div>
 
 <!-- KPI progress -->
-<!--
-<div class="d-inline-block bg-primary">
-  <h3>To send</h3>
-  <h2><%= @status_to_send %> / <%= @status_total %></h2>
-</div>
-<div class="d-inline-block bg-primary">
-  <h3>Sent, not year started</h3>
-  <h2><%= @status_sent %> / <%= @status_total %></h2>
-</div>
- -->
-
-<!-- Count sur les emission_module x orga -->
 <div class="container">
-  <div id="progress_cards_container">
-    <div class="kpi-card">
+
+  <div class="wrapper">
+    <div class="flex-cell lightblue-bg">
       <div>
         <p>To send </p>
       </div>
-      <div class="bg-white p-3">
+      <div class="bg-white p-1 rounded">
         <p><%= @status_to_send %> / <%= @status_total %></p>
       </div>
     </div>
-    <div class="kpi-card">
+    <div class="flex-cell lightblue-bg">
       <div>
-        <p>Sent, not year started</p>
+        <p>Sent, not <br>yet started</p>
       </div>
-      <div class="bg-white p-3">
+      <div class="bg-white p-1 rounded">
       <p><%= @status_sent %> / <%= @status_total %></p>
       </div>
     </div>
-    <div class="kpi-card">
+    <div class="flex-cell lightblue-bg">
       <div>
         <p>On-going</p>
       </div>
-      <div class="bg-white p-3">
+      <div class="bg-white p-1 rounded">
         <p><%= @status_ongoing %> / <%= @status_total %></p>
       </div>
     </div>
-    <div class="kpi-card">
+    <div class="flex-cell lightblue-bg">
       <div>
         <p>Pending validation</p>
       </div>
-      <div class="bg-white p-3">
+      <div class="bg-white p-1 rounded">
         <p><%= @status_pending_validation %> / <%= @status_total %></p>
       </div>
     </div>
-    <div class="kpi-card">
+    <div class="flex-cell lightblue-bg">
       <div>
         <p>Done! </p>
       </div>
-      <div class="bg-white p-3">
-      <p><%= @status_done %> / <%= @status_total %></p>
+      <div class="bg-white p-1 rounded">
+        <p><%= @status_done %> / <%= @status_total %></p>
       </div>
     </div>
   </div>
 </div>
 
 <!-- Structure tableau -->
-<!-- Organization - Emission Module - Contributors - Status - Team discussion -->
 <div class="container mt-3 mb-2">
   <div class="row">
     <div class="col-2">
@@ -191,25 +178,33 @@
   <div class="row">
     <% @report.report_scopes.each do |report_scope|  %>
       <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
-        <div class="col-2 card">
-          <p><%= report_scope_orga.orga.name %></p>
+        <div class="col-2 flex-cell">
+          <p class="text-center"><%= report_scope_orga.orga.name %></p>
         </div>
-        <div class="col-2 card">
-          <p><%= report_scope.emission_module.name %></p>
+        <div class="col-2 flex-cell">
+          <p class="text-center"><%= report_scope.emission_module.name %></p>
         </div>
-        <div class="col-3 card">
+        <div class="col-3 flex-cell">
+          <ul>
         <% report_scope_orga.report_scope_orga_users.each do |report_scope_orga_user| %>
-          <p><%= report_scope_orga_user.user.email  %></p>
+            <li>
+              <p class="text-left"><%= report_scope_orga_user.user.email  %></p>
+            </li>
         <% end %>
+          </ul>
         </div>
-        <div class="col-3 card">
+        <div class="col-3 flex-cell">
           <% if report_scope_orga.status == "To send" %>
-            <p class="btn btn-success"><%= report_scope_orga.status %></p>
+            <p class="text-center">
+              <%= link_to "#{report_scope_orga.status}",
+                    report_scope_orga_send_report_path(report_scope_orga),
+                    class:"btn btn-success" %>
+            </p>
           <% else %>
-            <p><%= report_scope_orga.status %></p>
+            <p class="text-center"><%= report_scope_orga.status %></p>
           <% end %>
         </div>
-        <div class="col-2 card">
+        <div class="col-2 flex-cell">
           <p class="text-center"><i class="far fa-envelope"></i></p>
         </div>
       <% end %>

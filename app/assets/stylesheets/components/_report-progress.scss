@@ -13,6 +13,17 @@
   background-color: #0C60AF !important;
 }
 
+.flex-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.flex-cell p {
+  margin: 0px;
+}
+
 .active-tab h2 {
   color: white;
 }
@@ -21,12 +32,15 @@
   background-color: #0C60AF;
   height: 5vh;
   border-radius: 5px;
-  text-align: center;
-}
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
 
 .tab-header h3 {
   font-size: 16px;
   color: white;
+  margin: 0px;
 }
 
 .tab-content {
@@ -65,4 +79,24 @@
   font-size: 14px;
   font-style: bolder;
   text-align: center
+}
+
+.lightblue-bg {
+  background-color: #98C1D9 !important;
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.wrapper > div {
+  margin: 5px;
+  padding: 5px;
+  flex: 1 1 150px;
+  justify-content: space-around;
+  text-align:center;
+  border-radius: 5px;
+  background-color: #F4F4F4;
+  box-shadow: 1px 1px 1px  lightgrey;
 }
