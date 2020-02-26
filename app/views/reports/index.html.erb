@@ -8,12 +8,23 @@
   <% @reports.each do |report| %>
     <div class="card-product">
       <%= link_to report_path(report) do %>
-       <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+      <% if report.photo.attached? %>
+        <%= cl_image_tag report.photo.key, height: 100, width: 120, crop: :fill %>
+      <% else %>
+        <%= image_tag "clouds-default-img.png", alt: "default-report-img", height: 100, width: 200 %>
+      <% end %>
       <% end %>
       <div class="card-product-infos">
-        <h2><%= report.name %></h2>
-        <h2><%= report.year %></h2>
-        <p>Product description with <strong>relevant info</strong> only.</p>
+        <h2><%= report.name %> - <%= report.year %></h2>
+            <% report.report_scopes.each do |report_scope| %>
+              <div class= "info-scope">
+                <p><%= report_scope.emission_module.name %></p>
+              <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
+                <p><%= report_scope_orga.orga.name %></p>
+              </div>
+              <% end  %>
+            <% end %>
+        <%= button_to "delete", report_path(report), method: :delete, data: {confirm: "Are you sure?"}%>
       </div>
     </div>
   <% end %>
@@ -33,11 +44,11 @@
         <%= simple_form_for (@report) do |f| %>
             <%= f.input :name, label_html: {class: "label_new"} %>
             <%= f.input :year, label_html: {class: "label_new"} %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <%= f.submit "Create your report", class: "btn btn-primary" %>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <%= f.submit "Create your report", class: "btn btn-primary", data: { confirm: "Well done ! New report succefully created!" } %>
         <% end %>
+        </div>
       </div>
     </div>
   </div>
