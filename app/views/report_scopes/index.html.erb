@@ -1,0 +1,96 @@
+<div class="container">
+  <div class="card mb-3">
+    <h3 class="ml-3 mt-3">ÉMISSIONS DIRECTES</h3>
+    <p class="text-muted ml-3">Scope 1</p>
+    <% @modules_scope1.each do |module_scope1| %>
+      <div class="card border-right-0 border-left-0 border-bottom-0">
+        <div class="row no-gutters">
+          <div class="col-md-2">
+            <!-- <img src="#" class="card-img" alt="..."> -->
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title"><%= module_scope1.name %></h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+
+              <%= simple_form_for @report_scope do |f| %>
+                <%= f.input :emission_module_id, input_html: { value: module_scope1.id }, as: :hidden %>
+                <%= f.submit %>
+              <% end %>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="card mb-3">
+    <h3 class="ml-3 mt-3">ÉMISSIONS INDIRECTES - ÉNERGIE</h3>
+    <p class="text-muted ml-3">Scope 2</p>
+
+    <% @modules_scope2.each do |module_scope2| %>
+      <div class="card border-right-0 border-left-0 border-bottom-0">
+        <div class="row no-gutters">
+          <div class="col-md-2">
+            <!-- <img src="#" class="card-img" alt="..."> -->
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title"><%= module_scope2.name %></h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="card mb-3">
+    <h3 class="ml-3 mt-3">ÉMISSIONS INDIRECTES - AUTRES</h3>
+    <p class="text-muted ml-3">Scope 3</p>
+
+    <% @modules_scope3.each do |module_scope3| %>
+      <div class="card border-right-0 border-left-0 border-bottom-0">
+        <div class="row no-gutters">
+          <div class="col-md-2">
+            <!-- <img src="#" class="card-img" alt="..."> -->
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title"><%= module_scope3.name %></h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="card mb-3">
+    <h3 class="ml-3 mt-3">REPORT SCOPE</h3>
+
+    <% @report_scopes.each do |report_scope| %>
+      <div class="card border-right-0 border-left-0 border-bottom-0">
+        <div class="row no-gutters">
+          <div class="col-md-2">
+            <!-- <img src="#" class="card-img" alt="..."> -->
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title"><%= report_scope %></h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</div>
+
+
+
+      <%#= simple_form_for(report_scopes_path) do |f|%>
+      <%#= f.submit class: "btn"%>
+      <%# end %>
+

@@ -1,0 +1,55 @@
+<div class="container">
+  <h1> list of all your reports</h1>
+  <%= link_to "Create new project",
+              "#",
+              class: "btn btn-ghost",
+              "data-toggle" => "modal",
+              "data-target" => "#exampleModalCenter"%>
+  <% @reports.each do |report| %>
+    <div class="card-product">
+      <%= link_to report_path(report) do %>
+      <% if report.photo.attached? %>
+        <%= cl_image_tag report.photo.key, height: 100, width: 120, crop: :fill %>
+      <% else %>
+        <%= image_tag "clouds-default-img.png", alt: "default-report-img", height: 100, width: 200 %>
+      <% end %>
+      <% end %>
+      <div class="card-product-infos">
+        <h2><%= report.name %> - <%= report.year %></h2>
+            <% report.report_scopes.each do |report_scope| %>
+              <div class= "info-scope">
+                <p><%= report_scope.emission_module.name %></p>
+              <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
+                <p><%= report_scope_orga.orga.name %></p>
+              </div>
+              <% end  %>
+            <% end %>
+        <%= button_to "delete", report_path(report), method: :delete, data: {confirm: "Are you sure?"}%>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<!-- Modal Creation de report  -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Create new Project</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for (@report) do |f| %>
+            <%= f.input :name, label_html: {class: "label_new"} %>
+            <%= f.input :year, label_html: {class: "label_new"} %>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <%= f.submit "Create your report", class: "btn btn-primary", data: { confirm: "Well done ! New report succefully created!" } %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
