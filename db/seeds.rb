@@ -1,5 +1,5 @@
 # TO DO
-
+require "open-uri"
 # ajout du scope détaillé pour un exemple de projet
 # chargement du csv ADEME formatté
 # ajout des questions pour 1 module electricité et 1 module transport
@@ -25,6 +25,14 @@
   EmissionModule.destroy_all
 
 # ==============================================================================
+# IMAGES REPORTS
+# ==============================================================================
+
+  p "save images report"
+  report_1_file = URI.open('https://cdn.pixabay.com/photo/2015/04/23/22/01/tree-736887_1280.jpg')
+  report_2_file = URI.open('https://cdn.pixabay.com/photo/2013/10/09/02/26/coast-192979_1280.jpg')
+
+# --------------------------------------------------------------------------------------
 # IMPORTATION CSV ADEME
 # ==============================================================================
 
@@ -229,20 +237,25 @@
 
   p "create reports"
 
-  report_1 = Report.create!(
+  report_1 = Report.new(
     name: "Manufacturing",
     year: 2019,
     company_id: company.id,
     user_id: manager.id)
+  report_1.photo.attach(io: report_1_file, filename: 'report_1.jpg', content_type: 'image/jpg')
+  report_1.save!
   p report_1
 
   p report_1.name
 
-  report_2 = Report.create!(
+  report_2 = Report.new(
     name: "Product Development",
     year: 2019,
     company_id: company.id,
     user_id: manager.id)
+  report_2.photo.attach(io: report_2_file, filename: 'report_2.jpg', content_type: 'image/jpg')
+  report_2.save!
+
   p report_2
 
   p report_2.name
