@@ -1,4 +1,4 @@
 class ReportScopeOrgaUser < ApplicationRecord
   belongs_to :user
-  belongs_to :report_scope_orga
+  has_many :report_scope_orgas
 end
