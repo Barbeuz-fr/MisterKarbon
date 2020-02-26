@@ -46,6 +46,12 @@ class ReportScopeOrgasController < ApplicationController
     #end
   end
 
+  def destroy
+    @report_scope_orga = ReportScopeOrga.find(params[:report_scope_orga_id])
+    @report_scope_orga.destroy
+    redirect_to report_report_scope_orgas_path
+  end
+
   private
 
   def report_scope_orga_params
