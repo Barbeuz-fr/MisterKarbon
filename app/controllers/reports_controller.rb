@@ -5,15 +5,6 @@ class ReportsController < ApplicationController
     @report = Report.new()
   end
 
-  def show
-    @report = Report.find(params[:id])
-
-    @module_scopes = EmissionModule.all
-
-    @report_scopes = ReportScope.all
-
-    @report_scope = ReportScope.new()
-  end
 
   def create
     @report = Report.new(report_params)
@@ -29,6 +20,7 @@ class ReportsController < ApplicationController
     redirect_to reports_path
   end
 
+  # Laurent
   def show
     @report = Report.find(params[:id])
 
@@ -71,11 +63,12 @@ class ReportsController < ApplicationController
                     + @status_done
   end
 
+  # Laurent
   def send_report
     @report = Report.find(params[:id])
-
   end
 
+  # Laurent
   def result
     @reports = Report.all
     @report = Report.find(params[:report_id])
@@ -104,14 +97,11 @@ class ReportsController < ApplicationController
     end
   end
 
-
-
   private
 
   def report_params
-    params.require(:report).permit(:name, :year, :company_id, :id, :user_id,  :photo)
+    params.require(:report).permit(:name, :year, :company_id, :id, :user_id, :photo)
   end
-
 
 end
 
