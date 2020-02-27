@@ -1,5 +1,6 @@
 class ReportScopeOrgasController < ApplicationController
   def index
+    # @report_scope_orga = policy_scope(ReportScopeOrga).where(params[:report_id])
     @report_scope_orga = ReportScopeOrga.all
     @orga = Orga.all
     @report_scope = ReportScope.all

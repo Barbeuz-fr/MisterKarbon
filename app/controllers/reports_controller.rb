@@ -1,21 +1,23 @@
 class ReportsController < ApplicationController
 
   def index
-    @reports = Report.all
+    @reports = policy_scope(Report)
     @report = Report.new()
   end
 
 
   def create
     @report = Report.new(report_params)
-    @report.user_id = User.last.id
+    @report.user = current_user
     @report.company_id = Company.first.id
+    authorize @report
     @report.save!
     redirect_to reports_path
   end
 
   def destroy
     @report = Report.find(params[:id])
+    authorize @report
     @report.destroy
     redirect_to reports_path
   end
@@ -23,6 +25,7 @@ class ReportsController < ApplicationController
   # Laurent
   def show
     @report = Report.find(params[:id])
+    authorize @report
 
     # Identification s'il y a des reports avec le status "To send"
     @counter_reports_to_send = 0
@@ -63,8 +66,13 @@ class ReportsController < ApplicationController
 
   # Laurent
   def result
-    @reports = Report.all
-    @report = Report.find(params[:report_id])
+    # refacto (new)
+    @report = Report.find(params[:id])
+    authorize @report
+    # refacto (old)
+    # @reports = Report.all
+    # @report = Report.find(params[:report_id])
+
     @report_scopes_array = @report.report_scopes
 
     # Output_array: array avec les hash de chaque emissions par question
