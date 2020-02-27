@@ -1,11 +1,11 @@
 <div class="container">
 
-  <h1>Please select the contributor you want to add</h1>
-    <h2>Organization:</h2>
-    <h2>Emission module: </h2>
+  <div class="mt-3 mb-3">
+    <h4>Please select the contributor you want to add</h4>
+  </div>
 
     <div>
-    <%= form_tag new_report_report_scope_orga_user_path, method: :get do %>
+    <%= form_tag new_report_scope_orga_report_scope_orga_user_path(@report_scope_orga), method: :get do %>
       <div class="input-group mb-3">
         <%= text_field_tag :query, params[:query], class:"form-control "%>
       <div class="input-group-append">
@@ -20,16 +20,20 @@
           <div class="card-body">
             <h5 class="card-title"><%= result.first_name %> <%= result.last_name %></h5>
             <p class="card-text">Email : <%= result.email %></p>
-            <p class="card-text">Company : <%= result.company.name %></p>
+            <p class="card-text">Company : <%= result.company&.name %></p>
             <p class="card-text">Job position : <%= result.job_position %></p>
             <p class="card-text">Organization position : <%= result.organization_position %></p>
-            <a href="#" class="btn btn-primary position-relative">Add</a>
+            <%= simple_form_for [@report_scope_orga, @report_scope_orga_user] do |f|%>
+              <%= f.input :user_id, input_html: { value: result.id }, as: :hidden  %>
+              <%= hidden_field_tag :query, params[:query] %>
+              <%= f.submit "Add", class: "btn btn-primary" %>
+            <% end %>
           </div>
         </div>
       <% end %>
     </div>
   </div>
 
-  <%= link_to "Back to your contributors list", report_report_scope_orga_users_path %>
+  <%= link_to "Back to your contributors list", report_report_scope_orga_users_path(@report_scope_orga.report_scope.report), class:"btn btn-primary" %>
 
 </div>
