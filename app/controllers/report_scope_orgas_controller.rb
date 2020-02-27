@@ -1,9 +1,7 @@
 class ReportScopeOrgasController < ApplicationController
   def index
-    @report_scope_orga = ReportScopeOrga.all
     @orga = Orga.all
-    @report_scope = ReportScope.all
-    @emission_module = EmissionModule.all
+    @report_scope = ReportScope.where(report_id: params[:report_id])
   end
 
   def send_report
@@ -15,14 +13,11 @@ class ReportScopeOrgasController < ApplicationController
   end
 
   def new
-    @report_scope = ReportScope.all
-    @emission_module = EmissionModule.all
+    @report = Report.find(params[:report_id])
     @report_scope_orga = ReportScopeOrga.new()
-    # A decommenter quand les routes sont actives pour l'orga
-    # @orga = Orga.find(params[:orga_id])
-    # @report_scope = Orga.find(params[:report_scope_id])
 
-    # @user = current_user
+    @report_scope_orgas = ReportScopeOrga.all
+
   end
 
   def create
@@ -32,18 +27,8 @@ class ReportScopeOrgasController < ApplicationController
       ReportScopeOrga.create(orga_id: report_scope_orga_params[:orga_id], report_scope_id: report_scope_id)
     end
 
-    redirect_to report_report_scope_orgas_path
+    redirect_to new_report_report_scope_orga_path
 
-    #@report_scope_orga = ReportScopeOrga.new(report_scope_orga_params)
-    # @orga = Orga.find(params[:orga_id])
-    # @report_scope = Orga.find(params[:report_scope_id])
-    # @user = current_user
-    #if @report_scope_orga.save
-    # authorize @report_scope_orgas
-    # redirect_to user_path(current_user) To be defined
-    #else
-     # render :new
-    #end
   end
 
   def destroy

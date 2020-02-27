@@ -19,16 +19,5 @@
       <%= link_to "Add a module", report_report_scope_orgas_path, class:"btn btn-primary mt-3"  %>
     </div>
   </div>
-
-  <div class="row pt-5">
-    <% @report_scope_orga.group_by(&:orga).each do |orga, array| %>
-      <div class="col-2">
-        <h3><%= orga.name %></h3>
-        <% array.each do |r| %>
-          <p><%= r.report_scope.emission_module.name %></p>
-        <% end %>
-      </div>
-      <% end %>
-  </div>
 </div>
 
