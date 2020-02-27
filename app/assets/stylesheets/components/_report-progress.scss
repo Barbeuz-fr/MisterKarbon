@@ -16,9 +16,15 @@
 .flex-cell {
   display: flex;
   align-items: center;
-  justify-content: center;
   padding: 10px;
+  justify-content: center;
 }
+
+.cell-justify-left {
+  justify-content: left !important;
+}
+
+
 
 .flex-cell p {
   margin: 0px;

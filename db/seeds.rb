@@ -39,13 +39,18 @@ require "open-uri"
   p "starting csv import ADEME"
   require 'csv'
 
-  csv_text = File.read(Rails.root.join('lib', 'seeds', 'base_carbone_ademe_csv.csv'))
+  count = 0
+  csv_text = File.read(Rails.root.join('lib', 'seeds', 'Base Carbone - V17 vLBA v2 csv.csv'))
   csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
   csv.each do |row|
+    count += 1
     t = AdemeEmissionFactor.new()
+    t.count = count
     t.name = row['Code de la catégorie']
     t.emission_value = row['Total poste non décomposé']
-    t.unit = row['Unité français']
+    t.unit = row['Unité anglais']
+    t.id_ademe = row["Identifiant de l'élément"]
+    t.nom_base = row['Nom base français']
     t.save
   end
 
@@ -106,9 +111,9 @@ require "open-uri"
   finance.company = company
   finance.save
 
-  prod_dev = Orga.new(name: "Product Development")
-  prod_dev.company = company
-  prod_dev.save
+  product_development = Orga.new(name: "Product Development")
+  product_development.company = company
+  product_development.save
 
   hr = Orga.new(name: "HR")
   hr.company = company
@@ -254,7 +259,7 @@ require "open-uri"
   p report_1.name
 
   report_2 = Report.new(
-    name: "Product Development",
+    name: "Support functions",
     year: 2019,
     company_id: company.id,
     user_id: manager.id)
@@ -312,7 +317,7 @@ require "open-uri"
   voirie = EmissionModule.create!(name: "Construction de voirie", scope: 3)
   eau = EmissionModule.create!(name: "Traitement de l'eau", scope: 3)
   consommables = EmissionModule.create!(name: "Consommables de bureaux", scope: 3)
-  dechets = EmissionModule.create!(name: "Traitement des", scope: 3)
+  dechets = EmissionModule.create!(name: "Traitement des déchets", scope: 3)
 
 # ==============================================================================
 # REPORT 1 SCOPES
@@ -353,13 +358,35 @@ require "open-uri"
   report1_scope5.emission_module_id = electricite.id
   report1_scope5.save
 
+
+# ==============================================================================
+# REPORT 2 SCOPES
+# ==============================================================================
+
+  # Report 2 : refrigeration, electricité
+
+  p "report 2 scopes: electricité, clim"
+
+  report_2_scope1 = ReportScope.new(
+    deadline: DateTime.new(2020,6,1))
+  report_2_scope1.report_id = report_2.id
+  report_2_scope1.emission_module_id = electricite.id
+  report_2_scope1.save
+
+  report_2_scope2 = ReportScope.new(
+    deadline: DateTime.new(2020,6,1))
+  report_2_scope2.report_id = report_2.id
+  report_2_scope2.emission_module_id = clim.id
+  report_2_scope2.save
+
+
 # ==============================================================================
 # REPORT 1 SCOPE ORGAS
 # ==============================================================================
 
-  # Report 1 uniquement sur le manufacturing
+  # Report 1 sur le manufacturing et product development
 
-  p "report 1 scope orga (manufacturing)"
+  p "report 1 scope orga (manufacturing et product development)"
 
   report1_scope1_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope1.id,
@@ -390,7 +417,7 @@ require "open-uri"
 
   report1_scope4_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope4.id,
-    orga_id: manufacturing.id,
+    orga_id: product_development.id,
     status: "To send"
     )
   report1_scope4_orga.save
@@ -399,21 +426,47 @@ require "open-uri"
 
   report1_scope5_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope5.id,
-    orga_id: manufacturing.id,
+    orga_id: product_development.id,
     status: "To send"
     )
   report1_scope5_orga.save
 
-report_scope_array = [
-  report1_scope1_orga,
-  report1_scope2_orga,
-  report1_scope3_orga,
-  report1_scope4_orga,
-  report1_scope5_orga
-]
+    report_scope_array = [
+      report1_scope1_orga,
+      report1_scope2_orga,
+      report1_scope3_orga,
+      report1_scope4_orga,
+      report1_scope5_orga
+   ]
+
 
 # ==============================================================================
-# REPORT1 SCOPE ORGA USERS
+# REPORT 2 SCOPE ORGAS
+# ==============================================================================
+
+  # Report 2 sur le RH et Finance
+
+  p "report 1 scope orga (RH et Finance)"
+
+  report_2_scope1_orga = ReportScopeOrga.new(
+    report_scope_id:report_2_scope1.id,
+    orga_id: finance.id,
+    status: "To send"
+    )
+  report_2_scope1_orga.save
+
+  # ----------------------------------------------
+
+  report_2_scope2_orga = ReportScopeOrga.new(
+    report_scope_id:report_2_scope2.id,
+    orga_id: hr.id,
+    status: "To send"
+    )
+  report_2_scope2_orga.save
+
+
+# ==============================================================================
+# REPORT 1 SCOPE ORGA USERS
 # ==============================================================================
 
   p "Report scope orga users"
@@ -463,6 +516,7 @@ report_scope_array = [
     report_scope_orga_id: report1_scope5_orga.id
     )
   report1_scope5_orga_user.save
+
 
 # ==============================================================================
 # QUESTIONS - Modules for preview (must be meaningful ;) ) DO TO

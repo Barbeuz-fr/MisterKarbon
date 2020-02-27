@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
-  before_filter :show_project_create_nav
+  before_action :show_project_create_nav
 
   def show_project_create_nav
     @project_create_1_nav = false

@@ -1,9 +1,13 @@
 
 <div class="container">
-  <h3>Project: <%= @report.name %> </h3>
-  <h2>Add contributors to your project</h2>
-  <div class="mb-3">
-    <%= link_to "Start your project!", report_path(@report.id), class:"btn btn-primary" %>
+  <div class="row  mt-3 mb-3">
+    <div class="col-8">
+      <h4>Project: <%= @report.name %> - <%= @report.year %> </h4>
+      <h5>Add contributors to your project</h5>
+    </div>
+    <div class="col-4 ">
+      <%= link_to "Start your project!", report_path(@report.id), class:"btn btn-primary" %>
+    </div>
   </div>
 
 <!-- Headers tableau -->
@@ -20,16 +24,16 @@
           <h3>Emission module</h3>
         </div>
       </div>
-      <div class="col-4">
+      <div class="col-6">
         <div class="tab-header">
           <h3>Contributors</h3>
         </div>
       </div>
-      <div class="col-2">
+<!--       <div class="col-2">
         <div class="tab-header">
           <h3>Add a contributor</h3>
         </div>
-      </div>
+      </div>-->
     </div>
   </div>
 
@@ -44,26 +48,18 @@
           <div class="col-3 flex-cell">
             <p><%= report_scope.emission_module.name %></p>
           </div>
-          <div class="col-4 flex-cell">
+          <div class="col-6 flex-cell cell-justify-left">
             <ul>
               <% report_scope_orga.report_scope_orga_users.each do |report_scope_orga_user| %>
                 <li><%= report_scope_orga_user.user.email  %></li>
               <% end %>
-            </ul>
-          </div>
-          <div class="col-2 flex-cell">
-               <p>
+              <p>
                 <%= link_to "Add a contributor",
                       new_report_scope_orga_report_scope_orga_user_path(report_scope_orga.id),
                       class:"btn btn-success" %>
               </p>
-<!--               <p>
-                <%= simple_form_for [@report] do |f| %>
-                  <%= hidden_field_tag(:report_scope_orga_id, report_scope_orga.id) %>
-                  <%= f.submit "Add contrib", class: "btn btn-warning" %>
-                <% end %>
-              </p>
- -->          </div>
+            </ul>
+          </div>
         <% end %>
       <% end %>
     </div>
