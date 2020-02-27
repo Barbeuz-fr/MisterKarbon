@@ -6,6 +6,8 @@ class ReportScopesController < ApplicationController
     @module_scopes = EmissionModule.all
     @report_scopes = ReportScope.all
     @report_scope = ReportScope.new()
+
+    @project_create_1_nav = true
   end
 
   def create

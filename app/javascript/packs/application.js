@@ -7,7 +7,7 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-// require Chart.min
+// require("Chart.min")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -16,6 +16,12 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+import { initAjaxScroll } from '../plugins/ajax_scroll';
+initAjaxScroll();
+
+document.addEventListener('turbolinks:load', function () {
+}, false)
 
 
 // ----------------------------------------------------
@@ -31,4 +37,5 @@ import "bootstrap";
 
 // test();
 // test2();
+
 // square();

@@ -1,4 +1,6 @@
 .card-product {
+  margin-top: 30px;
+  margin-bottom: 30px;
   overflow: hidden;
   height: 120px;
   background: white;
@@ -29,4 +31,21 @@
 
 .card-product .card-product-infos {
   padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.card-full-height {
+  height: 100%;
+}
+
+#title-reports {
+  text-align: center;
+  margin-top: 30px;
+}
+
+a:hover {
+    text-decoration: none;
 }
