@@ -20,13 +20,6 @@ class ReportsController < ApplicationController
     redirect_to reports_path
   end
 
-  def destroy
-    @report = Report.find(params[:id])
-    @report.destroy
-    redirect_to reports_path
-  end
-
-  # Laurent
   def show
     @report = Report.find(params[:id])
 

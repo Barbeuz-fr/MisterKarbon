@@ -15,13 +15,14 @@
         <% end %>
         <div class="card-product-infos">
           <div>
-            <h2><%= report.name %> - <%= report.year %></h2>
+            <h2><%= report.name %></h2>
+            <h3><%= report.year %></h3>
           </div>
           <% report.report_scopes.each do |report_scope| %>
             <div class= "info-scope">
-              <p>☁︎<%= report_scope.emission_module.name %></p>
+              <p>☁︎ <%= report_scope.emission_module.name %></p>
               <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
-                <p>🏭<%= report_scope_orga.orga.name %></p>
+                <p>🏭 <%= report_scope_orga.orga.name %></p>
               <% end  %>
             </div>
           <% end %>
