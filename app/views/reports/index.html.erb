@@ -1,8 +1,8 @@
 <div class="container">
-  <h1 id="title-reports"> list of all your reports</h1>
+  <h3 id="title-reports"> Your carbon footprint reports</h3>
   <%= link_to "Create new report",
               "#",
-              class: "btn btn-light",
+              class: "btn btn-success btn-lg",
               "data-toggle" => "modal",
               "data-target" => "#exampleModalCenter"%>
   <% @reports.each do |report| %>
