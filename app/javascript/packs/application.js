@@ -23,12 +23,17 @@ require("channels")
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
 import "bootstrap";
-import * as d3 from "d3";
+// import * as d3 from "d3";
 
-import { test } from "../plugins/marimekko";
-import { test2 } from "../plugins/marimekko";
-import { square } from "../plugins/marimekko";
+// import { test } from "../plugins/marimekko";
+// import { test2 } from "../plugins/marimekko";
+// import { square } from "../plugins/marimekko";
 
+<<<<<<< HEAD
 test();
 test2();
+=======
+// test();
+// test2();
+>>>>>>> master
 // square();
