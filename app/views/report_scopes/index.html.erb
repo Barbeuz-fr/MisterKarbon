@@ -2,6 +2,7 @@
 <div class="container">
   <div class="card mb-3">
     <h3 class="ml-3 mt-3">ÉMISSIONS DIRECTES</h3>
+    <%= link_to "Next", report_report_scope_orgas_path(@report), class:"btn btn-primary ml-3" %>
     <p class="text-muted ml-3">Scope 1</p>
     <% @module_scopes.where(scope: 1).each do |module_scope1| %>
       <div class="card border-right-0 border-left-0 border-bottom-0">
@@ -17,21 +18,17 @@
                   <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 </div>
                 <div class="col-md-2 align-self-center">
-                  <%= module_scope1.id %>
-                  <%= params[:report_id] %>
-                  <%= ReportScope.new(emission_module_id: module_scope1.id, report_id: params[:report_id]).valid? %>
                   <% if ReportScope.new(emission_module_id: module_scope1.id, report_id: params[:report_id]).valid? %>
                     <%= simple_form_for [@report, @report_scope] do |f| %>
                       <%= f.input :emission_module_id, input_html: { value: module_scope1.id }, as: :hidden %>
                       <%= f.input :report_id, input_html: { value: params[:report_id] }, as: :hidden %>
                       <%= f.submit "➕", class: "bg-transparent border-0" %>
                     <% end %>
-<!--                   <%# else %>
-
-                    <%#= link_to "🗑",
-                       report_scope_path(@report_scopes.find_by(emission_module_id: module_scope1.id)),
+                    <% else %>
+                    <%= link_to "🗑",
+                      report_scope_path(@report.report_scopes.find_by(emission_module_id: module_scope1.id)),
                       method: :delete,
-                      data: { confirm: "Are you sure?" } %> -->
+                      data: { confirm: "Are you sure?" } %>
                   <% end %>
                 </div>
               </div>
@@ -61,7 +58,7 @@
                 </div>
                 <div class="col-md-2 align-self-center">
                   <% if ReportScope.new(emission_module_id: module_scope2.id, report_id: params[:report_id]).valid? %>
-                    <%= simple_form_for [@report_scope] do |f| %>
+                    <%= simple_form_for [@report, @report_scope] do |f| %>
                       <%= f.input :emission_module_id, input_html: { value: module_scope2.id }, as: :hidden %>
                       <%= f.input :report_id, input_html: { value: params[:report_id] }, as: :hidden %>
                       <%= f.submit "➕", class: "bg-transparent border-0" %>
@@ -100,7 +97,7 @@
                 </div>
                 <div class="col-md-2 align-self-center">
                   <% if ReportScope.new(emission_module_id: module_scope3.id, report_id: params[:report_id]).valid? %>
-                    <%= simple_form_for [@report_scope] do |f| %>
+                    <%= simple_form_for [@report, @report_scope] do |f| %>
                       <%= f.input :emission_module_id, input_html: { value: module_scope3.id }, as: :hidden %>
                       <%= f.input :report_id, input_html: { value: params[:report_id] }, as: :hidden %>
                       <%= f.submit "➕", class: "bg-transparent border-0" %>
@@ -120,15 +117,15 @@
     <% end %>
   </div>
 
-  <div class="card mb-3">
+<!--   <div class="card mb-3">
     <h3 class="ml-3 mt-3">REPORT SCOPE</h3>
 
-    <% @report_scopes.each do |report_scope| %>
+    <%# @report_scopes.where(report_id: params[:report_id]).each do |report_scope| %>
 
-              <h5 class="card-title"><%= report_scope.emission_module.name %></h5>
+              <h5 class="card-title"><%#= report_scope.emission_module.name %></h5>
 
-    <% end %>
-  </div>
+    <%# end %>
+  </div> -->
 
 </div>
 
