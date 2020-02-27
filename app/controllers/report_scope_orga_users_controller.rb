@@ -1,6 +1,7 @@
 class ReportScopeOrgaUsersController < ApplicationController
 
   def index
+    @report = Report.find(params[:report_id])
     @report_scope_orga_users = ReportScopeOrgaUser.all
 
 
