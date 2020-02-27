@@ -2,6 +2,7 @@ class ReportScopesController < ApplicationController
 
   def index
     @report = Report.find(params[:report_id])
+
     @module_scopes = EmissionModule.all
     @report_scopes = ReportScope.all
     @report_scope = ReportScope.new()

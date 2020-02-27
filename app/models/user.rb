@@ -3,9 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
   belongs_to :company
   has_many :orgas, through: :company
   has_many :reports
+  has_many :orgas, through: :company
   has_many :report_scopes, through: :reports
   has_many :report_scope_orga_users
   has_many :report_scope_orgas, through: :report_scope_orga_users

@@ -20,6 +20,12 @@ class ReportsController < ApplicationController
     redirect_to reports_path
   end
 
+  def destroy
+    @report = Report.find(params[:id])
+    @report.destroy
+    redirect_to reports_path
+  end
+
   # Laurent
   def show
     @report = Report.find(params[:id])
@@ -45,7 +51,7 @@ class ReportsController < ApplicationController
       report_scope.report_scope_orgas.each do |report_scope_orga|
         if report_scope_orga.status == "To send"
           @status_to_send += 1
-        elsif report_scope_orga.status == "Sent, to start"
+        elsif report_scope_orga.status == "Sent, not yet started"
           @status_sent += 1
         elsif report_scope_orga.status == "On-going"
           @status_ongoing += 1
@@ -56,16 +62,9 @@ class ReportsController < ApplicationController
         end
       end
     end
-    @status_total = @status_to_send
-                    + @status_sent
-                    + @status_ongoing
-                    + @status_pending_validation
-                    + @status_done
-  end
 
-  # Laurent
-  def send_report
-    @report = Report.find(params[:id])
+    # Count total status
+    @status_total = @status_to_send + @status_sent + @status_ongoing + @status_pending_validation + @status_done
   end
 
   # Laurent
