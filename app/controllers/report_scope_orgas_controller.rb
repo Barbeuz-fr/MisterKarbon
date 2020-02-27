@@ -1,4 +1,11 @@
 class ReportScopeOrgasController < ApplicationController
+  def index
+    @report_scope_orga = ReportScopeOrga.all
+    @orga = Orga.all
+    @report_scope = ReportScope.all
+    @emission_module = EmissionModule.all
+  end
+
   def send_report
     # Recuperation des params
     @report_scope_orga = ReportScopeOrga.find(params[:report_scope_orga_id])
@@ -8,6 +15,7 @@ class ReportScopeOrgasController < ApplicationController
   end
 
   def new
+    @report = Report.find(params[:report_id])
     @report_scope = ReportScope.all
     @emission_module = EmissionModule.all
     @report_scope_orga = ReportScopeOrga.new()
@@ -16,7 +24,6 @@ class ReportScopeOrgasController < ApplicationController
     # @report_scope = Orga.find(params[:report_scope_id])
 
     # @user = current_user
-    # authorize @report_scope_orgas
   end
 
   def create
@@ -25,8 +32,8 @@ class ReportScopeOrgasController < ApplicationController
     report_scope_ids.each do |report_scope_id|
       ReportScopeOrga.create(orga_id: report_scope_orga_params[:orga_id], report_scope_id: report_scope_id)
     end
-    # creer un report scope orga pour chaque id
-    #raise
+      redirect_to report_report_scope_orgas_path
+
     #@report_scope_orga = ReportScopeOrga.new(report_scope_orga_params)
     # @orga = Orga.find(params[:orga_id])
     # @report_scope = Orga.find(params[:report_scope_id])
@@ -37,6 +44,12 @@ class ReportScopeOrgasController < ApplicationController
     #else
      # render :new
     #end
+  end
+
+  def destroy
+    @report_scope_orga = ReportScopeOrga.find(params[:report_scope_orga_id])
+    @report_scope_orga.destroy
+    redirect_to report_report_scope_orgas_path
   end
 
   private
