@@ -1,6 +1,71 @@
 
 <div class="container">
-  <h1>report_scope_orga_users</h1>
+  <h3>Project: <%= @report.name %> </h3>
+  <h2>Add contributors to your project</h2>
+
+<!-- Headers tableau -->
+<!-- Organization - Emission module - Contributors - Add a contributor -->
+  <div class="container mb-2">
+    <div class="row">
+      <div class="col-3">
+        <div class="tab-header">
+          <h3>Organization</h3>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="tab-header">
+          <h3>Emission module</h3>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="tab-header">
+          <h3>Contributors</h3>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="tab-header">
+          <h3>Add a contributor</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Contenu du tableau avec bouton d'ajout de contributeur-->
+  <div class="container">
+    <div class="row">
+      <% @report.report_scopes.each do |report_scope|  %>
+        <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
+          <div class="col-3 flex-cell">
+            <p><%= report_scope_orga.orga.name %></p>
+          </div>
+          <div class="col-3 flex-cell">
+            <p><%= report_scope.emission_module.name %></p>
+          </div>
+          <div class="col-4 flex-cell">
+            <ul>
+              <% report_scope_orga.report_scope_orga_users.each do |report_scope_orga_user| %>
+                <li><%= report_scope_orga_user.user.email  %></li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="col-2 flex-cell">
+               <p>
+                <%= link_to "Add a contributor",
+                      new_report_report_scope_orga_user_path(@report.id),
+                      class:"btn btn-success" %>
+              </p>
+<!--               <p>
+                <%= simple_form_for [@report] do |f| %>
+                  <%= hidden_field_tag(:report_scope_orga_id, report_scope_orga.id) %>
+                  <%= f.submit "Add contrib", class: "btn btn-warning" %>
+                <% end %>
+              </p>
+ -->          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
 
   <%= form_tag report_report_scope_orga_users_path, method: :get do %>
     <div class="input-group mb-3">
