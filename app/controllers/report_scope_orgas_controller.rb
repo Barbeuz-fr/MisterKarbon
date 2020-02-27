@@ -16,6 +16,7 @@ class ReportScopeOrgasController < ApplicationController
 
   def new
     @report = Report.find(params[:report_id])
+    @report = Report.find(params[:report_id])
     @report_scope = ReportScope.all
     @emission_module = EmissionModule.all
     @report_scope_orga = ReportScopeOrga.new()

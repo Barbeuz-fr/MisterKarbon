@@ -2,7 +2,7 @@
   <h1> list of all your reports</h1>
   <%= link_to "Create new report",
               "#",
-              class: "btn btn-ghost",
+              class: "btn btn-light",
               "data-toggle" => "modal",
               "data-target" => "#exampleModalCenter"%>
   <% @reports.each do |report| %>
@@ -15,16 +15,20 @@
       <% end %>
       <% end %>
       <div class="card-product-infos">
-        <h2><%= report.name %> - <%= report.year %></h2>
-            <% report.report_scopes.each do |report_scope| %>
-              <div class= "info-scope">
-                <p><%= report_scope.emission_module.name %></p>
-              <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
-                <p><%= report_scope_orga.orga.name %></p>
-              </div>
-              <% end  %>
-            <% end %>
-        <%= button_to "delete", report_path(report), method: :delete, data: {confirm: "Are you sure?"}%>
+        <div>
+          <h2><%= report.name %> - <%= report.year %></h2>
+        </div>
+              <% report.report_scopes.each do |report_scope| %>
+                <div class= "info-scope">
+                  <p><%= report_scope.emission_module.name %></p>
+                    <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
+                  <p><%= report_scope_orga.orga.name %></p>
+                </div>
+                    <% end  %>
+              <% end %>
+            <div>
+              <%= button_to "delete", report_path(report), method: :delete, data: {confirm: "Are you sure?"}%>
+            </div>
       </div>
     </div>
   <% end %>
@@ -46,7 +50,7 @@
             <%= f.input :year, label_html: {class: "label_new"} %>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <%= f.submit "Create your report", class: "btn btn-primary", data: { confirm: "Well done ! New report succefully created!" } %>
+          <%= f.submit "Create your report", class: "btn btn-primary" %>
         <% end %>
         </div>
       </div>
