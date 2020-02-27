@@ -2,6 +2,9 @@
 <div class="container">
   <h3>Project: <%= @report.name %> </h3>
   <h2>Add contributors to your project</h2>
+  <div class="mb-3">
+    <%= link_to "Start your project!", report_path(@report.id), class:"btn btn-primary" %>
+  </div>
 
 <!-- Headers tableau -->
 <!-- Organization - Emission module - Contributors - Add a contributor -->
@@ -51,7 +54,7 @@
           <div class="col-2 flex-cell">
                <p>
                 <%= link_to "Add a contributor",
-                      new_report_report_scope_orga_user_path(@report.id),
+                      new_report_scope_orga_report_scope_orga_user_path(report_scope_orga.id),
                       class:"btn btn-success" %>
               </p>
 <!--               <p>
@@ -67,28 +70,3 @@
   </div>
 
 
-  <%= form_tag report_report_scope_orga_users_path, method: :get do %>
-    <div class="input-group mb-3">
-      <%= text_field_tag :query, params[:query], class:"form-control "%>
-    <div class="input-group-append">
-      <%= submit_tag "Search", class:"btn btn-primary text-white text-center btn-outline-secondary px-5" %>
-    </div>
-  <% end %>
-
-  <div class="cards">
-    <% @results.each do |result| %>
-      <div class="card m-2" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title"><%= result.first_name %> <%= result.last_name %></h5>
-          <p class="card-text">Email : <%= result.email %></p>
-          <p class="card-text">Company : <%= result.company.name %></p>
-          <p class="card-text">Job position : <%= result.job_position %></p>
-          <p class="card-text">Organization position : <%= result.organization_position %></p>
-          <a href="#" class="btn btn-primary position-relative">Add</a>
-        </div>
-      </div>
-    <% end %>
-  </div>
-</div>
-
-<%= link_to "Start your project!", report_path(@report.id) %>
