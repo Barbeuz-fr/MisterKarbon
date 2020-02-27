@@ -15,9 +15,6 @@ Rails.application.routes.draw do
     get "results", to: "reports#result"
   end
 
-  # TO DO: DEFINIR LA ROUTE POUR AJOUTER UN EMAIL
-
-  # Route pour update du status
   resources :report_scope_orgas, only: [] do
     get "send_report", to: "report_scope_orgas#send_report"
   end

@@ -15,7 +15,6 @@ class ReportScopeOrgasController < ApplicationController
   end
 
   def new
-    @report = Report.find(params[:report_id])
     @report_scope = ReportScope.all
     @emission_module = EmissionModule.all
     @report_scope_orga = ReportScopeOrga.new()
@@ -32,7 +31,8 @@ class ReportScopeOrgasController < ApplicationController
     report_scope_ids.each do |report_scope_id|
       ReportScopeOrga.create(orga_id: report_scope_orga_params[:orga_id], report_scope_id: report_scope_id)
     end
-      redirect_to report_report_scope_orgas_path
+
+    redirect_to report_report_scope_orgas_path
 
     #@report_scope_orga = ReportScopeOrga.new(report_scope_orga_params)
     # @orga = Orga.find(params[:orga_id])

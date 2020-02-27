@@ -5,5 +5,5 @@ class ReportScopeOrga < ApplicationRecord
 
   has_many :report_scope_orga_users, dependent: :destroy
 
-  has_many :answers
+  has_many :answers, dependent: :destroy
 end

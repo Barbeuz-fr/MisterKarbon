@@ -35,7 +35,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  }
+}
 
 .tab-header h3 {
   font-size: 16px;
@@ -48,13 +48,13 @@
 }
 
 .tab-content p {
-
 }
 
 #progress_cards_container {
  width:100%;
  text-align:center;
 }
+
 #progress_cards_container > div {
  width: calc(100% / 5);
  display: inline-block;
@@ -63,7 +63,6 @@
  text-align:center;
  padding:10px;
 }
-
 
 .card {display:inline-block;}
 
@@ -90,6 +89,7 @@
   display: flex;
   flex-wrap: wrap;
 }
+
 .wrapper > div {
   margin: 5px;
   padding: 5px;

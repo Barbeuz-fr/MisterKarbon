@@ -19,4 +19,8 @@ class ReportScopeOrgaUsersController < ApplicationController
     end
   end
 
+  def create
+
+  end
+
 end

@@ -11,6 +11,12 @@ class ReportsController < ApplicationController
     @report.user_id = User.last.id
     @report.company_id = Company.first.id
     @report.save!
+    redirect_to report_report_scopes_path(@report.id)
+  end
+
+  def destroy
+    @report = Report.find(params[:id])
+    @report.destroy
     redirect_to reports_path
   end
 
