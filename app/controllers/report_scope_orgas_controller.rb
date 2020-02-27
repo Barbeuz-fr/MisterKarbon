@@ -4,6 +4,9 @@ class ReportScopeOrgasController < ApplicationController
     @orga = Orga.all
     @report_scope = ReportScope.all
     @emission_module = EmissionModule.all
+
+    # affichage sous-navbar
+    @project_create_2_nav = true
   end
 
   def send_report
@@ -25,6 +28,10 @@ class ReportScopeOrgasController < ApplicationController
     # @report_scope = Orga.find(params[:report_scope_id])
 
     # @user = current_user
+
+    # affichage sous-navbar
+    @project_create_2_nav = true
+
   end
 
   def create

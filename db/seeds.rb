@@ -79,6 +79,41 @@ require "open-uri"
 
   p supplier_IT.name
 
+
+# ==============================================================================
+# ORGA
+# ==============================================================================
+
+  p "create orga"
+
+  supply_chain = Orga.new(name: "Supply Chain")
+  supply_chain.company = company
+  supply_chain.save
+
+  manufacturing = Orga.new(name: "Manufacturing")
+  manufacturing.company = company
+  manufacturing.save
+
+  marketing = Orga.new(name: "Marketing")
+  marketing.company = company
+  marketing.save
+
+  sales = Orga.new(name: "Sales")
+  sales.company = company
+  sales.save
+
+  finance = Orga.new(name: "Finance")
+  finance.company = company
+  finance.save
+
+  prod_dev = Orga.new(name: "Product Development")
+  prod_dev.company = company
+  prod_dev.save
+
+  hr = Orga.new(name: "HR")
+  hr.company = company
+  hr.save
+
 # ==============================================================================
 # USERS
 # ==============================================================================
@@ -97,20 +132,24 @@ require "open-uri"
   p manager
   p manager.first_name
 
-  10.times do
-      user = User.new(
-      first_name: Faker::Name.first_name,
-      last_name: Faker::Name.last_name,
-      email: "#{Faker::Name.first_name}.#{Faker::Name.first_name}@gmail.com",
-      # pour job position et organisation position, peut etre mettre un array.sample
-      #sur ce qui nous interesse
-      job_position: Faker::Job.title,
-      organization_position: Faker::Job.position,
-      password: "qwerty123",
-      company_id: company.id
-      )
-      user.save!
-      p user.first_name
+  p "Generation des users pour les orgas"
+
+  orga_pour_faker = ["Marketing", "Manufacturing", "Suppy Chain", "HR", "Finance", "Product Development"]
+  orga_pour_faker.each do |orga|
+    10.times do
+        user = User.new(
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name,
+        email: "#{Faker::Name.first_name}.#{Faker::Name.first_name}@#{company.name}.com",
+        # pour job position et organisation position, peut etre mettre un array.sample
+        #sur ce qui nous interesse
+        job_position: Faker::Job.title,
+        organization_position: orga,
+        password: "qwerty123",
+        company_id: company.id
+        )
+        user.save!
+    end
   end
 
   company_employee_1 = User.new(
@@ -196,39 +235,6 @@ require "open-uri"
 
   puts 'User done'
 
-# ==============================================================================
-# ORGA
-# ==============================================================================
-
-  p "create orga"
-
-  supply_chain = Orga.new(name: "Supply Chain")
-  supply_chain.company = company
-  supply_chain.save
-
-  manufacturing = Orga.new(name: "Manufacturing")
-  manufacturing.company = company
-  manufacturing.save
-
-  marketing = Orga.new(name: "Marketing")
-  marketing.company = company
-  marketing.save
-
-  sales = Orga.new(name: "Sales")
-  sales.company = company
-  sales.save
-
-  finance = Orga.new(name: "Finance")
-  finance.company = company
-  finance.save
-
-  prod_dev = Orga.new(name: "Product Development")
-  prod_dev.company = company
-  prod_dev.save
-
-  hr = Orga.new(name: "HR")
-  hr.company = company
-  hr.save
 
 # ==============================================================================
 # REPORTS

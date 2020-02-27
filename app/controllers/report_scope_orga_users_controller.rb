@@ -3,25 +3,20 @@ class ReportScopeOrgaUsersController < ApplicationController
   def index
     @report = Report.find(params[:report_id])
 
-    # PgSearch.multisearch_options = {
-    #   using: { tsearch: { prefix: true } }
-    # }
-
-    # if (params[:query].present?)
-    #   PgSearch::Multisearch.rebuild(User)
-    #   PgSearch::Multisearch.rebuild(Company)
-
-    #   @results = PgSearch.multisearch(params[:query]).map{|result| result.searchable.model_name.name == 'Company' ? result.searchable.users : result.searchable }.flatten.uniq
-    # else
-    #   @results=[]
-    # end
+    # affichage sous-navbar
+    @project_create_3_nav = true
   end
 
   def new
+      # Creation des instances
       @report_scope_orga = ReportScopeOrga.find(params[:report_scope_orga_id])
-      # TO DO : définir @report_scope_orga
       @report_scope_orga_user = ReportScopeOrgaUser.new
 
+      # affichage sous-navbar
+      @project_create_3_nav = true
+
+
+      # Fonction de recherche
       PgSearch.multisearch_options = {
       using: { tsearch: { prefix: true } }
     }

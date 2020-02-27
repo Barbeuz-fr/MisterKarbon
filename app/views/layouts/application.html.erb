@@ -13,6 +13,9 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
+    <%= render 'shared/project-create-1' if @project_create_1_nav %>
+    <%= render 'shared/project-create-2' if @project_create_2_nav %>
+    <%= render 'shared/project-create-3' if @project_create_3_nav %>
 
     <%= yield %>
     <%= render 'shared/footer' %>
