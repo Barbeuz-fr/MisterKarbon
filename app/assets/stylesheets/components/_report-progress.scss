@@ -24,7 +24,11 @@
   justify-content: left !important;
 }
 
-
+.cell-white-background {
+  padding: 5px 15px 5px 15px;
+  background-clip: content-box;
+  background-color: white;
+}
 
 .flex-cell p {
   margin: 0px;
