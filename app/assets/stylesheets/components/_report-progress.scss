@@ -16,8 +16,18 @@
 .flex-cell {
   display: flex;
   align-items: center;
-  justify-content: center;
   padding: 10px;
+  justify-content: center;
+}
+
+.cell-justify-left {
+  justify-content: left !important;
+}
+
+.cell-white-background {
+  padding: 5px 15px 5px 15px;
+  background-clip: content-box;
+  background-color: white;
 }
 
 .flex-cell p {
