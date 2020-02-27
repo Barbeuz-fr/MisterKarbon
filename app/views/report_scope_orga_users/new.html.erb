@@ -1,0 +1,35 @@
+<div class="container">
+
+  <h1>Please select the contributor you want to add</h1>
+    <h2>Organization:</h2>
+    <h2>Emission module: </h2>
+
+    <div>
+    <%= form_tag new_report_report_scope_orga_user_path, method: :get do %>
+      <div class="input-group mb-3">
+        <%= text_field_tag :query, params[:query], class:"form-control "%>
+      <div class="input-group-append">
+        <%= submit_tag "Search", class:"btn btn-primary text-white text-center btn-outline-secondary px-5" %>
+      </div>
+    <% end %>
+    </div>
+
+    <div class="cards">
+      <% @results.each do |result| %>
+        <div class="card m-2" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title"><%= result.first_name %> <%= result.last_name %></h5>
+            <p class="card-text">Email : <%= result.email %></p>
+            <p class="card-text">Company : <%= result.company.name %></p>
+            <p class="card-text">Job position : <%= result.job_position %></p>
+            <p class="card-text">Organization position : <%= result.organization_position %></p>
+            <a href="#" class="btn btn-primary position-relative">Add</a>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <%= link_to "Back to your contributors list", report_report_scope_orga_users_path %>
+
+</div>
