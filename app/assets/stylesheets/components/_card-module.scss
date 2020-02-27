@@ -1,0 +1,44 @@
+.selected-modules {
+  position: fixed;
+  background-color: white;
+  width: 300px;
+  min-height: 150px;
+  border-radius: 4px;
+}
+
+.card-title {
+  margin: 0px;
+}
+
+.card-title h5 {
+  margin: 0px;
+}
+
+.flash-module {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  margin: 8px;
+}
+
+
+.flash-modules {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.flash-module-selected {
+  border: 2px solid #159570;
+}
+
+.flash-module-unselected {
+  border: 2px solid #69D5F8;
+}
+
+.form-group {
+  margin: 0px;
+}
