@@ -101,6 +101,14 @@ require "open-uri"
   manufacturing.company = company
   manufacturing.save
 
+  rd = Orga.new(name: "R&D")
+  rd.company = company
+  rd.save
+
+  product_development = Orga.new(name: "Product Development")
+  product_development.company = company
+  product_development.save
+
   marketing = Orga.new(name: "Marketing")
   marketing.company = company
   marketing.save
@@ -112,10 +120,6 @@ require "open-uri"
   finance = Orga.new(name: "Finance")
   finance.company = company
   finance.save
-
-  product_development = Orga.new(name: "Product Development")
-  product_development.company = company
-  product_development.save
 
   hr = Orga.new(name: "HR")
   hr.company = company
@@ -529,6 +533,37 @@ require "open-uri"
 
   # ----------------------------------------------
 
+# ==============================================================================
+# REPORT 3 SCOPE ORGAS
+# ==============================================================================
+
+  p "report 3 scope orga (R&D)"
+
+  # report_3_scope1 >> electricite.id
+  # report_3_scope2 >> clim.id
+  # report_3_scope3 >> process_industriels.id
+
+
+  report_3_scope1_orga = ReportScopeOrga.new(
+    report_scope_id:report_3_scope1.id,
+    orga_id: rd.id,
+    status: "To send"
+    )
+  report_3_scope1_orga.save
+
+  report_3_scope2_orga = ReportScopeOrga.new(
+    report_scope_id:report_3_scope2.id,
+    orga_id: rd.id,
+    status: "To send"
+    )
+  report_3_scope2_orga.save
+
+  report_3_scope3_orga = ReportScopeOrga.new(
+    report_scope_id:report_3_scope3.id,
+    orga_id: rd.id,
+    status: "To send"
+    )
+  report_3_scope3_orga.save
 
 # ==============================================================================
 # REPORT 1 SCOPE ORGA USERS
