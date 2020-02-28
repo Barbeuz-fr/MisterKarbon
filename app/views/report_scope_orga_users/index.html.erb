@@ -1,9 +1,15 @@
+<div class="container">
+  <div class="d-flex justify-content-between">
+    <%= link_to "Previous", new_report_report_scope_orga_path(@report), class:"btn btn-secondary mt-3" %>
+    <%= link_to "Start your project!", report_path(@report.id), class:"btn btn-primary mt-3" %>
+  </div>
+</div>
 
 <div class="container">
   <div class="row  mt-3 mb-3">
-    <div class="col-8">
-      <h4>Project: <%= @report.name %> - <%= @report.year %> </h4>
-      <h5>Add contributors to your project</h5>
+    <div class="col-8 ml-3">
+      <h4>Add contributors to your project</h4>
+      <h5>Project: <%= @report.name %> - <%= @report.year %> </h5>
     </div>
   </div>
 
@@ -11,19 +17,19 @@
 <!-- Organization - Emission module - Contributors - Add a contributor -->
   <div class="container mb-2">
     <div class="row">
-      <div class="col-4">
+      <div class="col-3">
         <div class="tab-header">
-          <h3>Organization</h3>
+          <h3 class="text-center">Organization</h3>
         </div>
       </div>
-      <div class="col-4">
+      <div class="col-3">
         <div class="tab-header">
-          <h3>Emission module</h3>
+          <h3 class="text-center">Emission module</h3>
         </div>
       </div>
-      <div class="col-4">
+      <div class="col-6">
         <div class="tab-header">
-          <h3>Contributors</h3>
+          <h3 class="text-center">Contributors</h3>
         </div>
       </div>
 <!--       <div class="col-2">
@@ -35,39 +41,33 @@
   </div>
 
 <!-- Contenu du tableau avec bouton d'ajout de contributeur-->
-  <div class="container">
-    <div class="row">
-      <% @report.report_scopes.each do |report_scope|  %>
-        <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
-          <div class="col-4 flex-cell cell-white-background">
-            <div class="bg-white">
-              <p><%= report_scope_orga.orga.name %></p>
+<div class="container">
+  <div class="row">
+    <% @report.report_scopes.each do |report_scope|  %>
+      <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
+        <div class="col-3 flex-cell cell-white-background">
+          <div class="bg-white">
+            <p class="text-center"><%= report_scope_orga.orga.name %></p>
+          </div>
+        </div>
+        <div class="col-3 flex-cell cell-white-background">
+          <p class="text-center"><%= report_scope.emission_module.name %></p>
+        </div>
+        <div class="col-6 flex-cell cell-justify-left cell-white-background">
+          <div class="mt-2 mb-2">
+          <ul>
+            <% report_scope_orga.report_scope_orga_users.each do |report_scope_orga_user| %>
+              <p = class="m-0"><%= report_scope_orga_user.user.email %></p>
+            <% end %>
+            <div class="mt-2">
+                <%= link_to "Add a contributor",
+                      new_report_scope_orga_report_scope_orga_user_path(report_scope_orga.id),
+                      class:"btn btn-success" %>
             </div>
           </div>
-          <div class="col-4 flex-cell cell-white-background">
-            <p><%= report_scope.emission_module.name %></p>
-          </div>
-          <div class="col-4 flex-cell cell-justify-left cell-white-background">
-            <ul>
-              <% report_scope_orga.report_scope_orga_users.each do |report_scope_orga_user| %>
-                <li><%= report_scope_orga_user.user.email  %></li>
-              <% end %>
-              <div class="mt-2 mb-2">
-                <p>
-                  <%= link_to "Add a contributor",
-                        new_report_scope_orga_report_scope_orga_user_path(report_scope_orga.id),
-                        class:"btn btn-success" %>
-                </p>
-              </div>
-            </ul>
-          </div>
-        <% end %>
+          </ul>
+        </div>
       <% end %>
-    </div>
-  </div>
-
-<div class="container">
-  <div class="text-center mt-3">
-    <%= link_to "Start your project!", report_path(@report.id), class:"btn btn-primary btn-lg" %>
+    <% end %>
   </div>
 </div>

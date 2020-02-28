@@ -35,7 +35,6 @@ class ReportScopeOrgasController < ApplicationController
     end
 
     redirect_to new_report_report_scope_orga_path
-
   end
 
   def destroy
