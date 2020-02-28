@@ -20,7 +20,7 @@ class ReportScopeOrgasController < ApplicationController
     # @emission_module = EmissionModule.all
     @report_scope_orga = ReportScopeOrga.new()
 
-    @report_scope_orgas = ReportScopeOrga.all
+    @report_scope_orgas = @report.report_scope_orgas
 
     # affichage sous-navbar
     @project_create_2_nav = true
