@@ -1,5 +1,4 @@
-<div class="container">
-  <h3 id="title-reports"> Your carbon footprint reports</h3>
+<!--   <h3 id="title-reports"> Your carbon footprint reports</h3>
   <%= link_to "Create new report",
               "#",
               class: "btn btn-success btn-lg",
@@ -27,12 +26,53 @@
             </div>
           <% end %>
           <div>
-            <%= button_to "delete", report_path(report), method: :delete, data: {confirm: "Are you sure?"}%>
+            <%= button_to "🗑", report_path(report), method: :delete, data: {confirm: "Are you sure?"}, class: 'delete-button'%>
           </div>
         </div>
       </div>
     <% end %>
   <% end %>
+</div> -->
+
+<!-- nouvelles cards -->
+<%= link_to "Create new report",
+            "#",
+            class: "btn btn-primary btn-lg mt-3 ml-3",
+            "data-toggle" => "modal",
+            "data-target" => "#exampleModalCenter"%>
+<div class="container">
+  <div class="row">
+    <% @reports.each do |report| %>
+      <%= link_to report_path(report), class: "col-6 mb-3" do %>
+        <div class="card" style="height: 100%;">
+          <% if report.photo.attached? %>
+            <%= cl_image_tag report.photo.key, crop: :fill, class: 'img-report-card' %>
+          <% else %>
+            <%= image_tag "clouds-default-img.png", alt: "default-report-img", class: 'img-report-card'%>
+          <% end %>
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <div class="d-flex">
+                <h2><%= report.name %></h2><span> - </span>
+                <h3><%= report.year %></h3>
+              </div>
+              <div>
+                <%= button_to "🗑", report, method: :delete, data: {confirm: "Are you sure?"}, class: 'delete-button'%>
+              </div>
+            </div>
+            <div class="card-text">
+              <% report.report_scopes.each do |report_scope| %>
+                <p>☁︎ <%= report_scope.emission_module.name %></p>
+                  <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
+                    <p>🏭 <%= report_scope_orga.orga.name %></p>
+                  <% end  %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>
 
 <!-- Modal Creation de report  -->
