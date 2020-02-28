@@ -4,9 +4,12 @@
   <%#= emission_id = report_scope.emission_module.name %>
   <%# end %>
 </div> -->
-
-<%= link_to "Previous", report_report_scopes_path(params[:report_id]), class:"btn btn-secondary mt-3 ml-5" %>
-<%= link_to "Next", report_report_scope_orga_users_path(params[:report_id]), class:"btn btn-primary mt-3" %>
+<div class="container">
+  <div class="d-flex justify-content-between">
+    <%= link_to "Previous", report_report_scopes_path(params[:report_id]), class:"btn btn-secondary mt-3 ml-5" %>
+    <%= link_to "Next", report_report_scope_orga_users_path(params[:report_id]), class:"btn btn-primary mt-3" %>
+  </div>
+</div>
 
 <div class="container width-form">
   <div class="form-post mt-0">
@@ -27,18 +30,20 @@
 </div>
 
 <!-- <div class="container"> -->
-  <div class="mx-5">
-    <div class="row">
-      <% @report_scope_orgas.group_by(&:orga).each do |orga, array| %>
-        <div class="col-3">
-          <ul class="list-group m-3">
-            <li class="list-group-item active"><%= orga.name %></li>
-            <% array.each do |r| %>
-              <li class="list-group-item"><%= r.report_scope.emission_module.name %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+  <div class="container">
+    <div class="mx-5">
+      <div class="row">
+        <% @report_scope_orgas.group_by(&:orga).each do |orga, array| %>
+          <div class="col-3">
+            <ul class="list-group m-3">
+              <li class="list-group-item active"><%= orga.name %></li>
+              <% array.each do |r| %>
+                <li class="list-group-item"><%= r.report_scope.emission_module.name %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 <!-- </div> -->

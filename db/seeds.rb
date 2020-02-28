@@ -142,10 +142,12 @@ require "open-uri"
   orga_pour_faker = ["Marketing", "Manufacturing", "Suppy Chain", "HR", "Finance", "Product Development"]
   orga_pour_faker.each do |orga|
     10.times do
+        first_name = Faker::Name.first_name
+        last_name = Faker::Name.last_name
         user = User.new(
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
-        email: "#{Faker::Name.first_name}.#{Faker::Name.first_name}@#{company.name}.com",
+        email: "#{first_name}.#{last_name}@#{company.name}.com",
         # pour job position et organisation position, peut etre mettre un array.sample
         #sur ce qui nous interesse
         job_position: Faker::Job.title,

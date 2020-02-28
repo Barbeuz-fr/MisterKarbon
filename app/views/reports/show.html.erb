@@ -20,32 +20,32 @@
 <% else %>
 
   <!-- Table title -->
-  <div class="container">
+  <div class="container mt-4">
     <h3>Pending data requests</h3>
   </div>
 
 
   <!-- Header tableau -->
-  <div class="container mb-2">
+  <div class="container mt-3 mb-2">
     <div class="row">
       <div class="col-2">
         <div class="tab-header">
-          <h3>Organization</h3>
+          <h3 class="text-center">Organization</h3>
         </div>
       </div>
       <div class="col-2">
         <div class="tab-header">
-          <h3>Emission module</h3>
+          <h3 class="text-center">Emission module</h3>
         </div>
       </div>
       <div class="col-5">
         <div class="tab-header">
-          <h3>Contributors</h3>
+          <h3 class="text-center">Contributors</h3>
         </div>
       </div>
       <div class="col-3">
         <div class="tab-header">
-          <h3>Status</h3>
+          <h3 class="text-center">Status</h3>
         </div>
       </div>
     </div>
@@ -57,16 +57,18 @@
       <% @report.report_scopes.each do |report_scope|  %>
         <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
           <% if report_scope_orga.status == "To send" %>
-            <div class="col-2 flex-cell">
-              <p><%= report_scope_orga.orga.name %></p>
+            <div class="col-2 flex-cell cell-white-background">
+              <p class="text-center"><%= report_scope_orga.orga.name %></p>
             </div>
-            <div class="col-2 flex-cell">
-              <p><%= report_scope.emission_module.name %></p>
+            <div class="col-2 flex-cell cell-white-background">
+              <p class="text-center"><%= report_scope.emission_module.name %></p>
             </div>
-            <div class="col-5 flex-cell">
+            <div class="col-5 flex-cell cell-white-background">
+            <ul class="m-0 p-0">
             <% report_scope_orga.report_scope_orga_users.each do |report_scope_orga_user| %>
               <p><%= report_scope_orga_user.user.email  %></p>
             <% end %>
+            </ul>
             </div>
             <div class="col-3 flex-cell">
                 <p>
@@ -83,13 +85,21 @@
 
 
 <!-- Ajout d'un bouton "send all" -->
+<div class="container">
+
+  <div class="row">
+    <div class="col-9"></div>
+    <div class="flex-cell col-3">
+      <button type="button" class="btn btn-success btn-lg">Send all</button>
+  </div>
+</div>
 
 <% end %>
 
 <!-- Title -->
 
 <div class="container">
-  <div class="mt-3 mb-2">
+  <div class="mt-4 mb-2">
     <h3>Your progress</h3>
   </div>
 </div>
@@ -124,7 +134,7 @@
     </div>
     <div class="flex-cell lightblue-bg">
       <div>
-        <p>Pending validation</p>
+        <p>Pending <br> validation</p>
       </div>
       <div class="bg-white p-1 rounded">
         <p><%= @status_pending_validation %> / <%= @status_total %></p>
@@ -132,7 +142,7 @@
     </div>
     <div class="flex-cell lightblue-bg">
       <div>
-        <p>Done! </p>
+        <p>Done!</p>
       </div>
       <div class="bg-white p-1 rounded">
         <p><%= @status_done %> / <%= @status_total %></p>
@@ -146,27 +156,27 @@
   <div class="row">
     <div class="col-2">
       <div class="tab-header">
-        <h3>Organization</h3>
+        <h3 class="text-center">Organization</h3>
       </div>
     </div>
     <div class="col-2">
       <div class="tab-header">
-        <h3>Emission module</h3>
+        <h3 class="text-center">Emission module</h3>
       </div>
     </div>
-    <div class="col-3">
+    <div class="col-4">
       <div class="tab-header">
-        <h3>Contributors</h3>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="tab-header">
-        <h3>Status</h3>
+        <h3 class="text-center">Contributors</h3>
       </div>
     </div>
     <div class="col-2">
       <div class="tab-header">
-        <h3>Team discussion</h3>
+        <h3 class="text-center">Status</h3>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="tab-header">
+        <h3 class="text-center">Team discussion</h3>
       </div>
     </div>
   </div>
@@ -178,30 +188,28 @@
   <div class="row">
     <% @report.report_scopes.each do |report_scope|  %>
       <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
-        <div class="col-2 flex-cell">
-          <p class="text-center"><%= report_scope_orga.orga.name %></p>
+        <div class="col-2 flex-cell cell-white-background">
+          <p class="text-center small-text"><%= report_scope_orga.orga.name %></p>
         </div>
-        <div class="col-2 flex-cell">
-          <p class="text-center"><%= report_scope.emission_module.name %></p>
+        <div class="col-2 flex-cell cell-white-background">
+          <p class="text-center small-text"><%= report_scope.emission_module.name %></p>
         </div>
-        <div class="col-3 flex-cell">
-          <ul>
-        <% report_scope_orga.report_scope_orga_users.each do |report_scope_orga_user| %>
-            <li>
-              <p class="text-left"><%= report_scope_orga_user.user.email  %></p>
-            </li>
-        <% end %>
+        <div class="col-4 flex-cell cell-white-background">
+          <ul class="m-0 p-0">
+            <% report_scope_orga.report_scope_orga_users.each do |report_scope_orga_user| %>
+              <p class="text-left small-text"><%= report_scope_orga_user.user.email  %></p>
+            <% end %>
           </ul>
         </div>
-        <div class="col-3 flex-cell">
+        <div class="col-2 flex-cell">
           <% if report_scope_orga.status == "To send" %>
-            <p class="text-center">
+            <p class="text-center small-text">
               <%= link_to "#{report_scope_orga.status}",
                     report_scope_orga_send_report_path(report_scope_orga),
-                    class:"btn btn-success" %>
+                    class:"btn btn-success small-text" %>
             </p>
           <% else %>
-            <p class="text-center"><%= report_scope_orga.status %></p>
+            <p class="text-center small-text"><%= report_scope_orga.status %></p>
           <% end %>
         </div>
         <div class="col-2 flex-cell">

@@ -17,9 +17,10 @@ class ReportScopeOrgasController < ApplicationController
 
   def new
     @report = Report.find(params[:report_id])
-    # @report_scope = ReportScope.all
     # @emission_module = EmissionModule.all
     @report_scope_orga = ReportScopeOrga.new()
+
+    @report_scope_orgas = ReportScopeOrga.all
 
     # affichage sous-navbar
     @project_create_2_nav = true
