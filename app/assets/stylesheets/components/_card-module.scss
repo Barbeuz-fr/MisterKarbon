@@ -8,6 +8,7 @@
 
 .card-title {
   margin: 0px;
+  text-align: left;
 }
 
 .card-title h5 {
@@ -15,7 +16,9 @@
 }
 
 .flash-module {
-  padding: 20px;
+  padding: 15px;
+  min-height: 77px;
+  padding-right: 1px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,6 +28,20 @@
   margin: 8px;
 }
 
+.flash-module-mini {
+  padding: 15px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  margin: 8px;
+  background-color: #3DCF8D;
+  color: white;
+}
+
+.flash-module-mini p {
+  padding: 0px;
+  margin: 0px;
+  font-size: 13px;
+}
 
 .flash-modules {
   display: grid;
@@ -32,11 +49,13 @@
 }
 
 .flash-module-selected {
-  border: 2px solid #159570;
+  background-color: #3DCF8D;
+  color: white;
 }
 
 .flash-module-unselected {
-  border: 2px solid #69D5F8;
+  background-color: #6B7C93;
+  color: white;
 }
 
 .form-group {

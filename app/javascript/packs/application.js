@@ -17,10 +17,12 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-import { initAjaxScroll } from '../plugins/ajax_scroll';
+import { initAjaxScroll, preserveTab } from '../plugins/ajax_scroll';
 initAjaxScroll();
 
 document.addEventListener('turbolinks:load', function () {
+  preserveTab();
+
 }, false)
 
 
