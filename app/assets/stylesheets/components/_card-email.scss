@@ -6,6 +6,11 @@
   grid-gap: 16px;
 }
 
+.margin-card-email{
+  margin: 8px 0px 0px 0px;
+;
+}
+
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {

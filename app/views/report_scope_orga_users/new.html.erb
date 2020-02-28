@@ -28,13 +28,23 @@
 
     <div class="cards">
       <% @results.each do |result| %>
-        <div class="card m-2" style="width: 18rem;">
+        <div class="card m-2" style="width: 20rem;">
           <div class="card-body">
             <h5 class="card-title"><%= result.first_name %> <%= result.last_name %></h5>
-            <p class="card-text">Email : <%= result.email %></p>
-            <p class="card-text">Company : <%= result.company&.name %></p>
-            <p class="card-text">Job position : <%= result.job_position %></p>
-            <p class="card-text"> Organization position : <%= result.organization_position %></p>
+            <p class="card-text margin-card-email">
+              <%= result.email %>
+              </p>
+            <p class="card-text margin-card-email">
+              <em>Company:</em><br> <%= result.company&.name %>
+            </p>
+            <p class="card-text margin-card-email">
+              <em>Position:</em><br> <%= result.job_position %>
+            </p>
+            <p class="card-text margin-card-email">
+              <em>Organization:</em><br>
+              <%= result.organization_position %>
+            </p>
+            <br>
             <!-- Si result.id est dans @report_scope_orga_users -->
             <% if @report_scope_orga_users.all?{|item| item.user.id != result.id} %>
               <!-- formulaire Add -->
@@ -44,10 +54,10 @@
                 <%= f.submit "Add", class: "btn btn-primary" %>
               <% end %>
             <% else %>
-              <!-- Pour commencer, ne pas afficher -->
-              <!-- Puis afficher un simple form text "Delete" -->
-              <p><em>Already added</em></p>
-            <% end %>
+              <!-- Afficher un simple form text "Delete" -->
+              <p class="btn btn-secondary">Already added</p>
+<!--               <%= link_to "Remove", report_scope_orga_report_scope_orga_user_path(@report_scope_orga.id, result.id), method: :delete, class:"btn" %>
+ -->            <% end %>
           </div>
         </div>
       <% end %>

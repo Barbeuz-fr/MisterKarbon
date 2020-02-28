@@ -29,8 +29,6 @@ class ReportScopeOrgaUsersController < ApplicationController
     end
   end
 
-
-
   def create
     # Creation des instances
     @report_scope_orga_user = ReportScopeOrgaUser.new(report_scope_orga_user_params)
@@ -42,6 +40,12 @@ class ReportScopeOrgaUsersController < ApplicationController
     @report_scope_orga_user.save
     @report_scope_orga.save
     redirect_to new_report_scope_orga_report_scope_orga_user_path(@report_scope_orga, query: params[:query])
+  end
+
+  def destroy
+    @report_scope_orga_user = ReportScopeOrgaUser.find(params[:id])
+    @report_scope_orga_user.destroy
+    redirect_to :back
   end
 
   private
