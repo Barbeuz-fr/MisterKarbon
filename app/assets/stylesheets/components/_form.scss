@@ -12,7 +12,7 @@
 }
 
 .form-check {
-  background-color: #06417A;
+  background-color: #6B7C93;
   margin: 30px;
   position: relative;
   height: 54px;
@@ -35,7 +35,6 @@
   }
   label:hover {
     color: white;
-    border: solid;
     border-radius: 4px;
     background-color: #3DCF8D;
   }
@@ -47,7 +46,6 @@
   input:checked {
     + label {
       color: white;
-      border: solid;
       border-radius: 4px;
       background-color: #3DCF8D;
     }
