@@ -1,9 +1,15 @@
+<div class="container">
+  <div class="d-flex justify-content-between">
+    <%= link_to "Previous", new_report_report_scope_orga_path(@report), class:"btn btn-secondary mt-3 ml-5" %>
+    <%= link_to "Start your project!", report_path(@report.id), class:"btn btn-primary mt-3 ml-5" %>
+  </div>
+</div>
 
 <div class="container">
   <div class="row  mt-3 mb-3">
-    <div class="col-8">
-      <h4>Project: <%= @report.name %> - <%= @report.year %> </h4>
-      <h5>Add contributors to your project</h5>
+    <div class="col-8 ml-3">
+      <h4>Add contributors to your project</h4>
+      <h5>Project: <%= @report.name %> - <%= @report.year %> </h5>
     </div>
   </div>
 
@@ -35,39 +41,33 @@
   </div>
 
 <!-- Contenu du tableau avec bouton d'ajout de contributeur-->
-  <div class="container">
-    <div class="row">
-      <% @report.report_scopes.each do |report_scope|  %>
-        <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
-          <div class="col-4 flex-cell cell-white-background">
-            <div class="bg-white">
-              <p><%= report_scope_orga.orga.name %></p>
-            </div>
-          </div>
-          <div class="col-4 flex-cell cell-white-background">
-            <p><%= report_scope.emission_module.name %></p>
-          </div>
-          <div class="col-4 flex-cell cell-justify-left cell-white-background">
-            <ul>
-              <% report_scope_orga.report_scope_orga_users.each do |report_scope_orga_user| %>
-                <li><%= report_scope_orga_user.user.email  %></li>
-              <% end %>
-              <div class="mt-2 mb-2">
-                <p>
-                  <%= link_to "Add a contributor",
-                        new_report_scope_orga_report_scope_orga_user_path(report_scope_orga.id),
-                        class:"btn btn-success" %>
-                </p>
-              </div>
-            </ul>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-
 <div class="container">
-  <div class="text-center mt-3">
-    <%= link_to "Start your project!", report_path(@report.id), class:"btn btn-primary btn-lg" %>
+  <div class="row">
+    <% @report.report_scopes.each do |report_scope|  %>
+      <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
+        <div class="col-4 flex-cell cell-white-background">
+          <div class="bg-white">
+            <p><%= report_scope_orga.orga.name %></p>
+          </div>
+        </div>
+        <div class="col-4 flex-cell cell-white-background">
+          <p><%= report_scope.emission_module.name %></p>
+        </div>
+        <div class="col-4 flex-cell cell-justify-left cell-white-background">
+          <ul>
+            <% report_scope_orga.report_scope_orga_users.each do |report_scope_orga_user| %>
+              <li><%= report_scope_orga_user.user.email  %></li>
+            <% end %>
+            <div class="mt-2 mb-2">
+              <p>
+                <%= link_to "Add a contributor",
+                      new_report_scope_orga_report_scope_orga_user_path(report_scope_orga.id),
+                      class:"btn btn-success" %>
+              </p>
+            </div>
+          </ul>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
