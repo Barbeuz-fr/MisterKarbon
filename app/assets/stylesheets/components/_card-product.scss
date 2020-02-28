@@ -9,6 +9,17 @@
   // align-items: center;
 }
 
+.card-email {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  overflow: hidden;
+  height: 100%;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  // display: flex;
+  // align-items: center;
+}
+
 // .card-product img {
 //   height: 100%;
 //   width: 120px;
@@ -68,6 +79,13 @@ a:hover {
   }
 }
 
+.card-text-email {
+  display: flex;
+  flex-wrap: wrap;
+  p {
+    width: 50%;
+  }
+}
 
 .btn .btn-primary .btn-lg {
   margin-top: 30px;
