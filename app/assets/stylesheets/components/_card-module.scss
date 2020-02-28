@@ -1,13 +1,26 @@
+.title-module-selection {
+  padding-right: 55px;
+}
+
+.tableFixHead          { overflow-y: auto; height: 500px; }
+.tableFixHead thead th { position: sticky; top: 0; }
+
+/* Just common table stuff. Really. */
+table  { border-collapse: collapse; width: 100%; }
+th, td { padding: 8px 16px; }
+th     { background: white; }
+
 .selected-modules {
-  position: fixed;
   background-color: white;
   width: 300px;
+  padding: 10px;
   min-height: 150px;
   border-radius: 4px;
 }
 
 .card-title {
   margin: 0px;
+  text-align: left;
 }
 
 .card-title h5 {
@@ -15,7 +28,9 @@
 }
 
 .flash-module {
-  padding: 20px;
+  padding: 15px;
+  min-height: 77px;
+  padding-right: 1px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,6 +40,24 @@
   margin: 8px;
 }
 
+.flash-module-mini {
+  min-height: 77px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  margin-right: 4px;
+  margin-left: 4px;
+  background-color: #3DCF8D;
+  color: white;
+}
+
+.flash-module-mini p {
+  padding: 0px;
+  margin: 0px;
+  font-size: 13px;
+}
 
 .flash-modules {
   display: grid;
@@ -32,11 +65,13 @@
 }
 
 .flash-module-selected {
-  border: 2px solid #159570;
+  background-color: #3DCF8D;
+  color: white;
 }
 
 .flash-module-unselected {
-  border: 2px solid #69D5F8;
+  background-color: #6B7C93;
+  color: white;
 }
 
 .form-group {

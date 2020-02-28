@@ -17,4 +17,12 @@ const initAjaxScroll = () => {
   }, false)
 }
 
-export { initAjaxScroll }
+const preserveTab = () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const myParam = urlParams.get('tab_name');
+  if(myParam) {
+    document.getElementById(myParam).click();
+  }
+}
+
+export { initAjaxScroll, preserveTab }
