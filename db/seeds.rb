@@ -1,7 +1,8 @@
-# TO DO
+# ==============================================================================
+# REQUIRE
+# ==============================================================================
+
 require "open-uri"
-# ajout du scope détaillé pour un exemple de projet
-# chargement du csv ADEME formatté
 # ajout des questions pour 1 module electricité et 1 module transport
 # ajout des réponses pour un exemple de projet
 # ajout photo pour users
@@ -29,8 +30,9 @@ require "open-uri"
 # ==============================================================================
 
   p "save images report"
-  report_1_file = URI.open('https://cdn.pixabay.com/photo/2015/04/23/22/01/tree-736887_1280.jpg')
-  report_2_file = URI.open('https://cdn.pixabay.com/photo/2013/10/09/02/26/coast-192979_1280.jpg')
+  report_1_file = URI.open('https://images.unsplash.com/photo-1560574188-6a6774965120?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')
+  report_2_file = URI.open('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1302&q=80')
+  report_3_file = URI.open('https://images.unsplash.com/photo-1524684009724-bee13ad8305f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=716&q=80')
 
 # --------------------------------------------------------------------------------------
 # IMPORTATION CSV ADEME
@@ -254,7 +256,7 @@ require "open-uri"
     year: 2019,
     company_id: company.id,
     user_id: manager.id)
-  report_1.photo.attach(io: report_1_file, filename: 'report_1.jpg', content_type: 'image/jpg')
+  report_1.photo.attach(io: report_1_file, filename: 'report_1.jpg', content_type: 'image/jpeg')
   report_1.save!
   p report_1
 
@@ -265,12 +267,19 @@ require "open-uri"
     year: 2019,
     company_id: company.id,
     user_id: manager.id)
-  report_2.photo.attach(io: report_2_file, filename: 'report_2.jpg', content_type: 'image/jpg')
+  report_2.photo.attach(io: report_2_file, filename: 'report_2.jpeg', content_type: 'image/jpeg')
   report_2.save!
 
-  p report_2
 
   p report_2.name
+
+  report_3 = Report.new(
+    name: "R&D",
+    year: 2019,
+    company_id: company.id,
+    user_id: manager.id)
+  report_3.photo.attach(io: report_3_file, filename: 'report_3.jpg', content_type: 'image/jpeg')
+  report_3.save!
 
 # ==============================================================================
 # EMISSION MODULES
@@ -280,46 +289,46 @@ require "open-uri"
   p "create emission_modules"
 
   p "scope 1"
-  comb_fossiles = EmissionModule.create!(name: "Combustibles fossiles", scope: 1)
-  comb_organiques = EmissionModule.create!(name: "Combustibles organiques", scope: 1 )
-  changement_affectation_sols = EmissionModule.create!(name: "Changement affectation des sols", scope: 1)
+  comb_fossiles = EmissionModule.create!(name: "Fossil fuels", scope: 1)
+  # comb_organiques = EmissionModule.create!(name: "Combustibles organiques", scope: 1 )
+  changement_affectation_sols = EmissionModule.create!(name: "Change in land use", scope: 1)
   deforestation = EmissionModule.create!(name: "Deforestation & reforestation", scope: 1)
-  refrigeration = EmissionModule.create!(name: "Refrigération", scope: 1)
-  clim = EmissionModule.create!(name: "Climatisation", scope: 1)
+  refrigeration = EmissionModule.create!(name: "Refrigeration", scope: 1)
+  clim = EmissionModule.create!(name: "Air conditioning", scope: 1)
   agriculture = EmissionModule.create!(name: "Agriculture", scope: 1)
-  process_industriels = EmissionModule.create!(name: "Process industriels", scope: 1)
-  dechets = EmissionModule.create!(name: "Déchets", scope: 1)
+  process_industriels = EmissionModule.create!(name: "Industrial processes", scope: 1)
+  dechets = EmissionModule.create!(name: "Waste", scope: 1)
 
 
   p "scope 2"
-  electricite = EmissionModule.create!(name: "Electricité", scope: 2)
-  reseaux_chaleur_froid = EmissionModule.create!(name: "Réseaux de chaleur et froid", scope: 2)
+  electricite = EmissionModule.create!(name: "Electricity", scope: 2)
+  reseaux_chaleur_froid = EmissionModule.create!(name: "Heating & cooling networks", scope: 2)
 
   p "scope 3"
-  transport_marchandise_routier = EmissionModule.create!(name: "Transport routier de marchandises", scope: 3)
-  transport_marchandise_ferroviaire = EmissionModule.create!(name: "Transport ferroviaire de marchandises", scope: 3)
-  transport_marchandise_aerien = EmissionModule.create!(name: "Transport aérien de marchandises", scope: 3)
-  transport_marchandise_maritime = EmissionModule.create!(name: "Transport maritime de marchandises", scope: 3)
-  transport_marchandise_fluvial = EmissionModule.create!(name: "Transport fluvial de marchandises", scope: 3)
+  transport_marchandise_routier = EmissionModule.create!(name: "Road freight", scope: 3)
+  transport_marchandise_ferroviaire = EmissionModule.create!(name: "Rail freight", scope: 3)
+  transport_marchandise_aerien = EmissionModule.create!(name: "Air freight", scope: 3)
+  transport_marchandise_maritime = EmissionModule.create!(name: "Sea freight", scope: 3)
+  transport_marchandise_fluvial = EmissionModule.create!(name: "River freight", scope: 3)
 
-  transport_personne_routier = EmissionModule.create!(name: "Transport routier de personnes", scope: 3)
-  transport_personne_ferroviaire = EmissionModule.create!(name: "Transport ferroviaire de personnes", scope: 3)
-  transport_personne_aerien = EmissionModule.create!(name: "Transport aérien de personnes", scope: 3)
-  transport_personne_maritime = EmissionModule.create!(name: "Transport maritime de personnes", scope: 3)
-  transport_personne_fluvial = EmissionModule.create!(name: "Transport fluvial de personnes", scope: 3)
+  transport_personne_routier = EmissionModule.create!(name: "Road transport", scope: 3)
+  transport_personne_ferroviaire = EmissionModule.create!(name: "Rail passenger transport", scope: 3)
+  transport_personne_aerien = EmissionModule.create!(name: "Air traffic", scope: 3)
+  # transport_personne_maritime = EmissionModule.create!(name: "Transport maritime de personnes", scope: 3)
+  transport_personne_fluvial = EmissionModule.create!(name: "River transport", scope: 3)
 
-  achat_produit_agri = EmissionModule.create!(name: "Achat de produits agricoles", scope: 3)
-  achat_bois_papier_carton = EmissionModule.create!(name: "Achat de bois, papier, carton", scope: 3)
-  achat_mineraux = EmissionModule.create!(name: "Achat de minéraux & produits métalliques", scope: 3)
-  achat_machines = EmissionModule.create!(name: "Achat de machines et équipements", scope: 3)
-  achat_vehicules = EmissionModule.create!(name: "Achat de véhicules", scope: 3)
-  achat_mobiliers = EmissionModule.create!(name: "Achat de mobiliers", scope: 3)
-  achat_textiles = EmissionModule.create!(name: "Achat de textiles et habits", scope: 3)
-  batiment = EmissionModule.create!(name: "Construction de batiment", scope: 3)
-  voirie = EmissionModule.create!(name: "Construction de voirie", scope: 3)
-  eau = EmissionModule.create!(name: "Traitement de l'eau", scope: 3)
-  consommables = EmissionModule.create!(name: "Consommables de bureaux", scope: 3)
-  dechets = EmissionModule.create!(name: "Traitement des déchets", scope: 3)
+  achat_produit_agri = EmissionModule.create!(name: "Purchasing - Agricultural products", scope: 3)
+  achat_bois_papier_carton = EmissionModule.create!(name: "Purchasing - wood, pulp & paper", scope: 3)
+  achat_mineraux = EmissionModule.create!(name: "Purchasing - Minerals & metals", scope: 3)
+  achat_machines = EmissionModule.create!(name: "Purchasing - Machines & equipment", scope: 3)
+  achat_vehicules = EmissionModule.create!(name: "Purchasing - Vehicles", scope: 3)
+  achat_mobiliers = EmissionModule.create!(name: "Purchasing - Furniture", scope: 3)
+  achat_textiles = EmissionModule.create!(name: "Purchasing - Textile & clothing", scope: 3)
+  consommables = EmissionModule.create!(name: "Office consumables", scope: 3)
+  batiment = EmissionModule.create!(name: "Building construction", scope: 3)
+  voirie = EmissionModule.create!(name: "Road & public infrastructure construction", scope: 3)
+  eau = EmissionModule.create!(name: "Water treatment", scope: 3)
+  dechets = EmissionModule.create!(name: "Waste management", scope: 3)
 
 # ==============================================================================
 # REPORT 1 SCOPES
@@ -345,27 +354,27 @@ require "open-uri"
   report1_scope3 = ReportScope.new(
     deadline: DateTime.new(2020,6,1))
   report1_scope3.report_id = report_1.id
-  report1_scope3.emission_module_id = refrigeration.id
+  report1_scope3.emission_module_id = electricite.id
   report1_scope3.save
 
-  report1_scope4 = ReportScope.new(
-    deadline: DateTime.new(2020,6,1))
-  report1_scope4.report_id = report_1.id
-  report1_scope4.emission_module_id = dechets.id
-  report1_scope4.save
+  # report1_scope4 = ReportScope.new(
+  #   deadline: DateTime.new(2020,6,1))
+  # report1_scope4.report_id = report_1.id
+  # report1_scope4.emission_module_id = process_industriels.id
+  # report1_scope4.save
 
-  report1_scope5 = ReportScope.new(
-    deadline: DateTime.new(2020,6,1))
-  report1_scope5.report_id = report_1.id
-  report1_scope5.emission_module_id = electricite.id
-  report1_scope5.save
+  # report1_scope5 = ReportScope.new(
+  #   deadline: DateTime.new(2020,6,1))
+  # report1_scope5.report_id = report_1.id
+  # report1_scope5.emission_module_id = electricite.id
+  # report1_scope5.save
 
 
 # ==============================================================================
 # REPORT 2 SCOPES
 # ==============================================================================
 
-  # Report 2 : refrigeration, electricité
+  # Report 2 : clim, electricité
 
   p "report 2 scopes: electricité, clim"
 
@@ -383,6 +392,30 @@ require "open-uri"
 
 
 # ==============================================================================
+# REPORT 3 SCOPES
+# ==============================================================================
+
+  p "report 2 scopes: electricité, clim, process_industriels"
+
+  report_3_scope1 = ReportScope.new(
+    deadline: DateTime.new(2020,6,1))
+  report_3_scope1.report_id = report_3.id
+  report_3_scope1.emission_module_id = electricite.id
+  report_3_scope1.save
+
+  report_3_scope2 = ReportScope.new(
+    deadline: DateTime.new(2020,6,1))
+  report_3_scope2.report_id = report_3.id
+  report_3_scope2.emission_module_id = clim.id
+  report_3_scope2.save
+
+  report_3_scope3 = ReportScope.new(
+    deadline: DateTime.new(2020,6,1))
+  report_3_scope3.report_id = report_3.id
+  report_3_scope3.emission_module_id = process_industriels.id
+  report_3_scope3.save
+
+# ==============================================================================
 # REPORT 1 SCOPE ORGAS
 # ==============================================================================
 
@@ -390,10 +423,16 @@ require "open-uri"
 
   p "report 1 scope orga (manufacturing et product development)"
 
+
+  # report1_scope1 => comb fossiles
+  # report1_scope2 => process_industriels
+  # report1_scope3 => electricite
+
+
   report1_scope1_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope1.id,
     orga_id: manufacturing.id,
-    status: "To send"
+    status: "Sent, not yet started"
     )
   report1_scope1_orga.save
 
@@ -402,7 +441,7 @@ require "open-uri"
   report1_scope2_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope2.id,
     orga_id: manufacturing.id,
-    status: "To send"
+    status: "On-going"
     )
   report1_scope2_orga.save
 
@@ -411,25 +450,25 @@ require "open-uri"
   report1_scope3_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope3.id,
     orga_id: manufacturing.id,
-    status: "To send"
+    status: "On-going"
     )
   report1_scope3_orga.save
 
   # ----------------------------------------------
 
   report1_scope4_orga = ReportScopeOrga.new(
-    report_scope_id:report1_scope4.id,
+    report_scope_id:report1_scope2.id,
     orga_id: product_development.id,
-    status: "To send"
+    status: "Pending validation"
     )
   report1_scope4_orga.save
 
   # ----------------------------------------------
 
   report1_scope5_orga = ReportScopeOrga.new(
-    report_scope_id:report1_scope5.id,
+    report_scope_id:report1_scope3.id,
     orga_id: product_development.id,
-    status: "To send"
+    status: "Done"
     )
   report1_scope5_orga.save
 
@@ -448,7 +487,11 @@ require "open-uri"
 
   # Report 2 sur le RH et Finance
 
-  p "report 1 scope orga (RH et Finance)"
+  # report_2_scope1 =>  electricite
+  # report_2_scope2 => clim
+
+
+  p "report 2 scope orga (RH et Finance)"
 
   report_2_scope1_orga = ReportScopeOrga.new(
     report_scope_id:report_2_scope1.id,
@@ -461,10 +504,30 @@ require "open-uri"
 
   report_2_scope2_orga = ReportScopeOrga.new(
     report_scope_id:report_2_scope2.id,
-    orga_id: hr.id,
-    status: "To send"
+    orga_id: finance.id,
+    status: "Sent, not yet started"
     )
   report_2_scope2_orga.save
+
+  # ----------------------------------------------
+
+  report_2_scope3_orga = ReportScopeOrga.new(
+    report_scope_id:report_2_scope1.id,
+    orga_id: hr.id,
+    status: "On-going"
+    )
+  report_2_scope3_orga.save
+
+  # ----------------------------------------------
+
+  report_2_scope4_orga = ReportScopeOrga.new(
+    report_scope_id:report_2_scope2.id,
+    orga_id: hr.id,
+    status: "On-going"
+    )
+  report_2_scope4_orga.save
+
+  # ----------------------------------------------
 
 
 # ==============================================================================
@@ -480,6 +543,8 @@ require "open-uri"
     report_scope_orga_id: report1_scope1_orga.id
     )
   report1_scope1_orga_user.save
+
+  # ----------------------------------------------
 
   report1_scope1_orga_user2 = ReportScopeOrgaUser.new(
     user_id: employee_mineraux.id,
@@ -518,6 +583,11 @@ require "open-uri"
     report_scope_orga_id: report1_scope5_orga.id
     )
   report1_scope5_orga_user.save
+
+
+# ==============================================================================
+# REPORT 2 SCOPE ORGA USERS
+# ==============================================================================
 
 
 # ==============================================================================

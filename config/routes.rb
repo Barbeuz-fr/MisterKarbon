@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :report_scope_orgas, only: [] do
     get "send_report", to: "report_scope_orgas#send_report"
     # Route pour definir un email
-    resources :report_scope_orga_users, only: [:new, :create]
+    resources :report_scope_orga_users, only: [:new, :create, :destroy]
   end
 
 end

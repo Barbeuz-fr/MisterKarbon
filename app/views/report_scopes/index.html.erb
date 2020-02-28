@@ -1,127 +1,146 @@
 <div class="container">
+
+  <div class="d-flex justify-content-between">
+    <div>
+      <h4 class=" ml-1 pt-3">Please select your emission modules</h4>
+      <h6 class="ml-1">Project: <%= @report.name %> - <%= @report.year %> </h6>
+    </div>
+    <%= link_to "Next", new_report_report_scope_orga_path(@report), class:"btn btn-primary mt-3 mb-4" %>
+  </div>
+
   <div class="row">
-    <h5 class="ml-3 pt-3">Please select your emission modules</h5>
-    <div class="col-9">
+    <div class="col-8">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Emissions directes (scope 1)</a>
+          <a class="nav-link active" id="scope1-tab" data-toggle="tab" href="#scope1" role="tab" aria-controls="scope1" aria-selected="true">Direct emissions</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">(scope 2)</a>
+          <a class="nav-link" id="scope2-tab" data-toggle="tab" href="#scope2" role="tab" aria-controls="scope2" aria-selected="false">Indirect emissions</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">(scope 3)</a>
+          <a class="nav-link" id="scope3-tab" data-toggle="tab" href="#scope3" role="tab" aria-controls="scope3" aria-selected="false">Induced emissions</a>
         </li>
       </ul>
     </div>
 
-    <div class="col-3">
-      <div class="selected-modules">
-        <h5 class="text-center p-2">Your selected modules</h5>
-        <%= link_to "Next", new_report_report_scope_orga_path(@report), class:"btn btn-primary ml-3" %>
-      </div>
+    <div class="col-4">
+      <h5 class="text-center title-module-selection">Your selected modules</h5>
     </div>
 
-  <!--Scope 1 -->
-    <div class="tab-content m-0 p-0 col-9" id="myTabContent">
-      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-        <div class="flash-modules">
-          <% @module_scopes.where(scope: 1).each do |module_scope1| %>
-            <% if ReportScope.new(emission_module_id: module_scope1.id, report_id: params[:report_id]).valid? %>
-              <div class="row flash-module flash-module-unselected">
-                <h6 class="card-title"><%= module_scope1.name %></h6>
-                <div class="col-md-2 align-self-center">
-                  <%= simple_form_for [@report, @report_scope], remote: true do |f| %>
-                    <%= f.input :emission_module_id, input_html: { value: module_scope1.id }, as: :hidden %>
-                    <%= f.input :report_id, input_html: { value: params[:report_id] }, as: :hidden %>
-                    <%= f.submit "➕", class: "bg-transparent border-0" %>
-                  <% end %>
+    <!--Scope 1 -->
+      <div class="tab-content m-0 p-0 col-8" id="myTabContent">
+        <div class="tab-pane fade show active" id="scope1" role="tabpanel" aria-labelledby="scope1-tab">
+          <div class="flash-modules">
+            <% @module_scopes.where(scope: 1).each do |module_scope1| %>
+              <% if ReportScope.new(emission_module_id: module_scope1.id, report_id: params[:report_id]).valid? %>
+                <div class="row flash-module flash-module-unselected">
+                  <h7 class="col-9 card-title"><%= module_scope1.name %></h7>
+                  <div class="col-2 align-self-center">
+                    <%= simple_form_for [@report, @report_scope], remote: true do |f| %>
+                      <%= f.input :emission_module_id, input_html: { value: module_scope1.id }, as: :hidden %>
+                      <%= f.input :report_id, input_html: { value: params[:report_id] }, as: :hidden %>
+                      <%= hidden_field_tag :tab_name, 'scope1-tab' %>
+                      <%= f.submit "➕", class: "bg-transparent border-0" %>
+                    <% end %>
+                  </div>
                 </div>
-              </div>
-            <% else %>
-              <div class="row flash-module flash-module-selected">
-                <h6 class="card-title"><%= module_scope1.name %></h6>
-                <div class="col-md-2 align-self-center">
-                  <%= link_to "🗑",
-                  report_scope_path(@report.report_scopes.find_by(emission_module_id: module_scope1.id)),
-                  method: :delete, remote: true %>
+              <% else %>
+                <div class="row flash-module flash-module-selected">
+                  <h7 class="col-9 card-title"><%= module_scope1.name %></h7>
+                  <div class="col-2 align-self-center">
+                    <%= link_to "🗑",
+                    report_scope_path(@report.report_scopes.find_by(emission_module_id: module_scope1.id)),
+                    method: :delete, remote: true %>
+                  </div>
                 </div>
-              </div>
+              <% end %>
             <% end %>
-          <% end %>
+          </div>
+        </div>
+
+    <!--Scope 2 -->
+        <div class="tab-pane fade show" id="scope2" role="tabpanel" aria-labelledby="scope2-tab">
+          <div class="flash-modules">
+            <% @module_scopes.where(scope: 2).each do |module_scope2| %>
+              <% if ReportScope.new(emission_module_id: module_scope2.id, report_id: params[:report_id]).valid? %>
+                <div class="row flash-module flash-module-unselected">
+                  <h7 class="col-9 card-title"><%= module_scope2.name %></h7>
+                  <div class="col-2 align-self-center">
+                    <%= simple_form_for [@report, @report_scope], remote: true do |f| %>
+                      <%= f.input :emission_module_id, input_html: { value: module_scope2.id }, as: :hidden %>
+                      <%= f.input :report_id, input_html: { value: params[:report_id] }, as: :hidden %>
+                      <%= hidden_field_tag :tab_name, 'scope2-tab' %>
+                      <%= f.submit "➕", class: "bg-transparent border-0" %>
+                    <% end %>
+                  </div>
+                </div>
+              <% else %>
+                <div class="row flash-module flash-module-selected">
+                  <h7 class="col-9 card-title"><%= module_scope2.name %></h7>
+                  <div class="col-2 align-self-center">
+                    <%= link_to "🗑",
+                    report_scope_path(@report.report_scopes.find_by(emission_module_id: module_scope2.id)),
+                    method: :delete, remote: true %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
+    <!--Scope 3 -->
+        <div class="tab-pane fade show" id="scope3" role="tabpanel" aria-labelledby="scope3-tab">
+          <div class="flash-modules">
+            <% @module_scopes.where(scope: 3).each do |module_scope3| %>
+              <% if ReportScope.new(emission_module_id: module_scope3.id, report_id: params[:report_id]).valid? %>
+                <div class="row flash-module flash-module-unselected">
+                  <h7 class="col-9 card-title"><%= module_scope3.name %></h7>
+                  <div class="col-2 align-self-center">
+                    <%= simple_form_for [@report, @report_scope], remote: true do |f| %>
+                      <%= f.input :emission_module_id, input_html: { value: module_scope3.id }, as: :hidden %>
+                      <%= f.input :report_id, input_html: { value: params[:report_id] }, as: :hidden %>
+                      <%= hidden_field_tag :tab_name, 'scope3-tab' %>
+                      <%= f.submit "➕", class: "bg-transparent border-0" %>
+                    <% end %>
+                  </div>
+                </div>
+              <% else %>
+                <div class="row flash-module flash-module-selected">
+                  <h7 class="col-9 card-title"><%= module_scope3.name %></h7>
+                  <div class="col-2 align-self-center">
+                    <%= hidden_field_tag :tab_name, 'scope3-tab' %>
+                    <%= link_to "🗑",
+                    report_scope_path(@report.report_scopes.find_by(emission_module_id: module_scope3.id)),
+                    method: :delete, remote: true %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
 
-  <!--Scope 2 -->
-      <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-        <div class="flash-modules">
-          <% @module_scopes.where(scope: 2).each do |module_scope2| %>
-            <% if ReportScope.new(emission_module_id: module_scope2.id, report_id: params[:report_id]).valid? %>
-              <div class="row flash-module flash-module-unselected">
-                <h6 class="card-title"><%= module_scope2.name %></h6>
-                <div class="col-md-2 align-self-center">
-                  <%= simple_form_for [@report, @report_scope], remote: true do |f| %>
-                    <%= f.input :emission_module_id, input_html: { value: module_scope2.id }, as: :hidden %>
-                    <%= f.input :report_id, input_html: { value: params[:report_id] }, as: :hidden %>
-                    <%= f.submit "➕", class: "bg-transparent border-0" %>
-                  <% end %>
+    <div class="col-4 tableFixHead">
+      <table class="selected-modules">
+        <tbody>
+          <% @module_scopes.each do |module_scope| %>
+            <% if ReportScope.new(emission_module_id: module_scope.id, report_id: params[:report_id]).valid? == false %>
+              <tr><td>
+                <div class="row flash-module-mini">
+                  <p class="col-9 card-title"><%= module_scope.name %></p>
+                  <div class="col-2 align-self-center">
+                    <%= link_to "🗑",
+                    report_scope_path(@report.report_scopes.find_by(emission_module_id: module_scope.id)),
+                    method: :delete, remote: true %>
+                  </div>
                 </div>
-              </div>
-            <% else %>
-              <div class="row flash-module flash-module-selected">
-                <h6 class="card-title"><%= module_scope2.name %></h6>
-                <div class="col-md-2 align-self-center">
-                  <%= link_to "🗑",
-                  report_scope_path(@report.report_scopes.find_by(emission_module_id: module_scope2.id)),
-                  method: :delete, remote: true %>
-                </div>
-              </div>
+              </td></tr>
             <% end %>
           <% end %>
-        </div>
-      </div>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-  <!--Scope 3 -->
-      <div class="tab-pane fade show" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-        <div class="flash-modules">
-          <% @module_scopes.where(scope: 3).each do |module_scope3| %>
-            <% if ReportScope.new(emission_module_id: module_scope3.id, report_id: params[:report_id]).valid? %>
-              <div class="row flash-module flash-module-unselected">
-                <h6 class="card-title"><%= module_scope3.name %></h6>
-                <div class="col-md-3 align-self-center">
-                  <%= simple_form_for [@report, @report_scope], remote: true do |f| %>
-                    <%= f.input :emission_module_id, input_html: { value: module_scope3.id }, as: :hidden %>
-                    <%= f.input :report_id, input_html: { value: params[:report_id] }, as: :hidden %>
-                    <%= f.submit "➕", class: "bg-transparent border-0" %>
-                  <% end %>
-                </div>
-              </div>
-            <% else %>
-              <div class="row flash-module flash-module-selected">
-                <h6 class="card-title"><%= module_scope3.name %></h6>
-                <div class="col-md-3 align-self-center">
-                  <%= link_to "🗑",
-                  report_scope_path(@report.report_scopes.find_by(emission_module_id: module_scope3.id)),
-                  method: :delete, remote: true %>
-                </div>
-              </div>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
 </div>
-
-
-
-<!--   <div class="card mb-3">
-    <h3 class="ml-3 mt-3">REPORT SCOPE</h3>
-
-    <%# @report_scopes.where(report_id: params[:report_id]).each do |report_scope| %>
-
-              <h5 class="card-title"><%#= report_scope.emission_module.name %></h5>
-
-    <%# end %>
-  </div> -->
-
-
 

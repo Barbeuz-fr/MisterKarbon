@@ -1,10 +1,27 @@
 .nav .nav-link {
   background-color:rgba(0,0,0,0.1);
-  margin: 0px 5px 0px 5px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  margin: 0px 0px 0px 0px;
+  border-radius: 0px;
 }
 
-// .nav-item .nav-link .active {
-//   background-color:red;
-// }
+.arrow-right-selected {
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+
+  border-left: 20px solid  #32325C;
+}
+
+.arrow-right-not-selected {
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+
+  border-left: 20px solid #DBDBDB;
+}
+
+.arrow-left-background {
+
+}

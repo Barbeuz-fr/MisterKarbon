@@ -13,7 +13,7 @@ class ReportScopesController < ApplicationController
   def create
     @report_scope = ReportScope.new(report_scope_params)
     @report_scope.save
-    redirect_to report_report_scopes_path(@report_scope.report_id)
+    redirect_to report_report_scopes_path(@report_scope.report_id, tab_name: params[:tab_name])
   end
 
   def destroy
