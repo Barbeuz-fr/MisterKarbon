@@ -1,7 +1,19 @@
+.title-module-selection {
+  padding-right: 55px;
+}
+
+.tableFixHead          { overflow-y: auto; height: 500px; }
+.tableFixHead thead th { position: sticky; top: 0; }
+
+/* Just common table stuff. Really. */
+table  { border-collapse: collapse; width: 100%; }
+th, td { padding: 8px 16px; }
+th     { background: white; }
+
 .selected-modules {
-  position: fixed;
   background-color: white;
   width: 300px;
+  padding: 10px;
   min-height: 150px;
   border-radius: 4px;
 }
@@ -29,10 +41,14 @@
 }
 
 .flash-module-mini {
+  min-height: 77px;
+  align-items: center;
+  justify-content: space-between;
   padding: 15px;
   box-shadow: 0 0 8px rgba(0,0,0,0.2);
   border-radius: 4px;
-  margin: 8px;
+  margin-right: 4px;
+  margin-left: 4px;
   background-color: #3DCF8D;
   color: white;
 }
