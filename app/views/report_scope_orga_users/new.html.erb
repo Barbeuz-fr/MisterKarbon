@@ -1,18 +1,30 @@
 <div class="container">
+  <div class="d-flex justify-content-between">
+    <%= link_to "Back to your contributors list",
+                report_report_scope_orga_users_path(@report_scope_orga.report_scope.report),
+                class:"btn btn-secondary mt-3" %>
+  </div>
+</div>
+
+<div class="container">
 
   <div class="mt-3 mb-3">
     <h4>Please select the contributor you want to add</h4>
   </div>
 
     <div>
-    <%= form_tag new_report_scope_orga_report_scope_orga_user_path(@report_scope_orga), method: :get do %>
-      <div class="input-group mb-3">
-        <%= text_field_tag :query, params[:query], class:"form-control "%>
-      <div class="input-group-append">
-        <%= submit_tag "Search", class:"btn btn-primary text-white text-center btn-outline-secondary px-5" %>
+      <div class="row">
+        <div class="col-6">
+          <%= form_tag new_report_scope_orga_report_scope_orga_user_path(@report_scope_orga), method: :get do %>
+            <div class="input-group mb-3">
+              <%= text_field_tag :query, params[:query], class:"form-control "%>
+            <div class="input-group-append">
+              <%= submit_tag "Search", class:"btn btn-primary text-white text-center btn-outline-secondary px-5" %>
+            </div>
+          <% end %>
+          </div>
+        </div>
       </div>
-    <% end %>
-    </div>
 
     <div class="cards">
       <% @results.each do |result| %>
@@ -22,11 +34,19 @@
             <p class="card-text">Email : <%= result.email %></p>
             <p class="card-text">Company : <%= result.company&.name %></p>
             <p class="card-text">Job position : <%= result.job_position %></p>
-            <p class="card-text">Organization position : <%= result.organization_position %></p>
-            <%= simple_form_for [@report_scope_orga, @report_scope_orga_user] do |f|%>
-              <%= f.input :user_id, input_html: { value: result.id }, as: :hidden  %>
-              <%= hidden_field_tag :query, params[:query] %>
-              <%= f.submit "Add", class: "btn btn-primary" %>
+            <p class="card-text"> Organization position : <%= result.organization_position %></p>
+            <!-- Si result.id est dans @report_scope_orga_users -->
+            <% if @report_scope_orga_users.all?{|item| item.user.id != result.id} %>
+              <!-- formulaire Add -->
+              <%= simple_form_for [@report_scope_orga, @report_scope_orga_user] do |f|%>
+                <%= f.input :user_id, input_html: { value: result.id }, as: :hidden  %>
+                <%= hidden_field_tag :query, params[:query] %>
+                <%= f.submit "Add", class: "btn btn-primary" %>
+              <% end %>
+            <% else %>
+              <!-- Pour commencer, ne pas afficher -->
+              <!-- Puis afficher un simple form text "Delete" -->
+              <p><em>Already added</em></p>
             <% end %>
           </div>
         </div>
@@ -34,6 +54,5 @@
     </div>
   </div>
 
-  <%= link_to "Back to your contributors list", report_report_scope_orga_users_path(@report_scope_orga.report_scope.report), class:"btn btn-primary" %>
 
 </div>
