@@ -30,8 +30,9 @@ require "open-uri"
 # ==============================================================================
 
   p "save images report"
-  report_1_file = URI.open('https://cdn.pixabay.com/photo/2015/04/23/22/01/tree-736887_1280.jpg')
-  report_2_file = URI.open('https://cdn.pixabay.com/photo/2013/10/09/02/26/coast-192979_1280.jpg')
+  report_1_file = URI.open('https://images.unsplash.com/photo-1560574188-6a6774965120?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')
+  report_2_file = URI.open('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1302&q=80')
+  report_3_file = URI.open('https://images.unsplash.com/photo-1524684009724-bee13ad8305f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=716&q=80')
 
 # --------------------------------------------------------------------------------------
 # IMPORTATION CSV ADEME
@@ -255,7 +256,7 @@ require "open-uri"
     year: 2019,
     company_id: company.id,
     user_id: manager.id)
-  report_1.photo.attach(io: report_1_file, filename: 'report_1.jpg', content_type: 'image/jpg')
+  report_1.photo.attach(io: report_1_file, filename: 'report_1.jpg', content_type: 'image/jpeg')
   report_1.save!
   p report_1
 
@@ -266,12 +267,19 @@ require "open-uri"
     year: 2019,
     company_id: company.id,
     user_id: manager.id)
-  report_2.photo.attach(io: report_2_file, filename: 'report_2.jpg', content_type: 'image/jpg')
+  report_2.photo.attach(io: report_2_file, filename: 'report_2.jpeg', content_type: 'image/jpeg')
   report_2.save!
 
-  p report_2
 
   p report_2.name
+
+  report_3 = Report.new(
+    name: "R&D",
+    year: 2019,
+    company_id: company.id,
+    user_id: manager.id)
+  report_3.photo.attach(io: report_3_file, filename: 'report_3.jpg', content_type: 'image/jpeg')
+  report_3.save!
 
 # ==============================================================================
 # EMISSION MODULES
@@ -382,6 +390,30 @@ require "open-uri"
   report_2_scope2.emission_module_id = clim.id
   report_2_scope2.save
 
+
+# ==============================================================================
+# REPORT 3 SCOPES
+# ==============================================================================
+
+  p "report 2 scopes: electricité, clim, process_industriels"
+
+  report_3_scope1 = ReportScope.new(
+    deadline: DateTime.new(2020,6,1))
+  report_3_scope1.report_id = report_3.id
+  report_3_scope1.emission_module_id = electricite.id
+  report_3_scope1.save
+
+  report_3_scope2 = ReportScope.new(
+    deadline: DateTime.new(2020,6,1))
+  report_3_scope2.report_id = report_3.id
+  report_3_scope2.emission_module_id = clim.id
+  report_3_scope2.save
+
+  report_3_scope3 = ReportScope.new(
+    deadline: DateTime.new(2020,6,1))
+  report_3_scope3.report_id = report_3.id
+  report_3_scope3.emission_module_id = process_industriels.id
+  report_3_scope3.save
 
 # ==============================================================================
 # REPORT 1 SCOPE ORGAS
