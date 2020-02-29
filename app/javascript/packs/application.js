@@ -33,9 +33,9 @@ document.addEventListener('turbolinks:load', function () {
 import "bootstrap";
 
 import { barChart } from '../plugins/bar_chart';
-// import { stackedBar } from '../plugins/bar_chart';
+import { stackedBar } from '../plugins/bar_chart';
 barChart();
-// stackedBar();
+stackedBar();
 
 // import { ordersChart } from '../plugins/bar_chart';
 // ordersChart();
