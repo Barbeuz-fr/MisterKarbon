@@ -42,7 +42,12 @@
                 <ul class="list-group m-3">
                   <li class="list-group-item active"><%= orga.name %></li>
                   <% array.each do |r| %>
-                    <li class="list-group-item"><%= r.report_scope.emission_module.name %></li>
+                    <li class="list-group-item"><%= r.report_scope.emission_module.name %>
+                    <%= link_to "🗑",
+                     report_report_scope_orga_path(@report.id, r.id),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" } %>
+                  </li>
                   <% end %>
                   <li class="list-group-item">
                     <button type="button" class="btn" data-toggle="modal" data-target="#staticBackdrop<%= orga.name.gsub(
