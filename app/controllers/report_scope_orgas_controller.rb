@@ -1,6 +1,6 @@
 class ReportScopeOrgasController < ApplicationController
   def index
-    @orga = Orga.all
+    @orgas = Orga.all
     @report_scope = ReportScope.where(report_id: params[:report_id])
 
     # affichage sous-navbar
@@ -16,6 +16,7 @@ class ReportScopeOrgasController < ApplicationController
   end
 
   def new
+    @orgas = Orga.all
     @report = Report.find(params[:report_id])
     # @emission_module = EmissionModule.all
     @report_scope_orga = ReportScopeOrga.new()
