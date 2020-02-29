@@ -1,0 +1,59 @@
+<div class="container">
+
+  <h1>ADEME emission factor database</h1>
+  <div class="row">
+    <div class="col-2">
+      <p>Count</p>
+    </div>
+    <div class="col-2">
+      <p>Name</p>
+    </div>
+    <div class="col-2">
+      <p>Emission value</p>
+    </div>
+    <div class="col-2">
+      <p>Unit</p>
+    </div>
+    <div class="col-2">
+      <p>Nom base</p>
+    </div>
+    <div class="col-2">
+      <p>ID Ademe</p>
+    </div>
+  </div>
+  <div class="row">
+
+  <% @ademe_emission_factors.each do |f| %>
+    <div class="col-2">
+      <%= f.count %>
+    </div>
+    <div class="col-2">
+      <%= f.name %>
+    </div>
+    <div class="col-2">
+      <%= f.emission_value %>
+    </div>
+    <div class="col-2">
+      <%= f.unit %>
+    </div>
+    <div class="col-2">
+      <%= f.nom_base %>
+    </div>
+    <div class="col-2">
+      <%= f.id_ademe %>
+    </div>
+  <% end %>
+  </div>
+
+</div>
+
+<!-- Elements de la base
+    t.string "name"
+    t.float "emission_value"
+    t.string "unit"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "id_ademe"
+    t.string "nom_base"
+    t.integer "count"
+ -->

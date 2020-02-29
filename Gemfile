@@ -43,6 +43,8 @@ gem 'faker'
 # charts
 gem 'chart-js-rails'
 
+# DB management
+
 
 
 group :development, :test do  gem 'pry-byebug'

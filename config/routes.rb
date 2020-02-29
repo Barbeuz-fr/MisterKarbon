@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   # creation et destroy de report_scope lors de la creation d'un projet
   resources :report_scopes, only: [:destroy]
 
+  # Vue sur la base ADEME
+  resources :ademe_emission_factors, only: [:index]
+
   resources :reports do
     resources :report_scopes, except: :destroy
     resources :report_scope_orgas

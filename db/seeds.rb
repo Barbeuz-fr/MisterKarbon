@@ -18,7 +18,7 @@ require "open-uri"
   Orga.destroy_all
   Answer.destroy_all
   Question.destroy_all
-  AdemeEmissionFactor.destroy_all
+  # AdemeEmissionFactor.destroy_all
   ReportScope.destroy_all
   Report.destroy_all
   User.destroy_all
@@ -38,31 +38,33 @@ require "open-uri"
 # IMPORTATION CSV ADEME
 # ==============================================================================
 
-  p "starting csv import ADEME"
+  # p "starting csv import ADEME"
   require 'csv'
 
-  count = 0
-  csv_text = File.read(Rails.root.join('lib', 'seeds', 'Base Carbone - V17 vLBA v2 csv.csv'))
-  csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-  csv.each do |row|
-    count += 1
-    t = AdemeEmissionFactor.new()
-    t.count = count
-    t.name = row['Code de la catégorie']
-    t.emission_value = row['Total poste non décomposé']
-    t.unit = row['Unité anglais']
-    t.id_ademe = row["Identifiant de l'élément"]
-    t.nom_base = row['Nom base français']
-    t.save
-  end
+  # count = 0
+  # csv_text = File.read(Rails.root.join('lib', 'seeds', 'csv_for_seed.csv'))
+  # csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+  # csv.each do |row|
+  #   count += 1
+  #   t = AdemeEmissionFactor.new()
+  #   t.count = count
+  #   p row['Code de la catégorie']
+  #   t.name = row['Code de la catégorie']
+  #   t.emission_value = row['Somme de Total poste non décomposé2']
+  #   p t.emission_value
+  #   t.unit = row['Unité anglais']
+  #   t.id_ademe = row["Identifiant de l'élément"]
+  #   t.nom_base = row['Nom base français']
+  #   t.save
+  # end
 
-  p "import done"
+  # p "import done"
 
-  p "last line ADEME emission factor"
-  p AdemeEmissionFactor.last
+  # p "last line ADEME emission factor"
+  # p AdemeEmissionFactor.last
 
-  p "count ADEME line"
-  AdemeEmissionFactor.count
+  # p "count ADEME line"
+  # AdemeEmissionFactor.count
 
 # ==============================================================================
 # COMPANY
@@ -654,8 +656,6 @@ require "open-uri"
 
   emission_modules_used_in_report1 = [comb_fossiles,
                               process_industriels,
-                              refrigeration,
-                              dechets,
                               electricite]
 
   p "array emission_modules_used_in_report1"
@@ -665,10 +665,12 @@ require "open-uri"
     p "emission_module"
     p emission_module.name
 
+    counter_question = 0
     5.times do
+      counter_question += 1
       question = Question.new(
         calculation: true,
-        content: "#{i}. Some question",
+        content: "Question number #{i}. To be detailed",
         ademe_emission_factor_id: AdemeEmissionFactor.first.id,
         emission_module_id: emission_module.id)
       question.save
@@ -676,10 +678,19 @@ require "open-uri"
         calculation: true,
         question_id: question.id,
         report_scope_orga_id: report_scope_array[i].id,
-        content: 1)
+        content: counter_question * 100)
       answer.save
     end
   }
+
+# Electricité
+
+
+# Combustibles fossiles
+
+
+# Processus industriels
+
 
 
 
