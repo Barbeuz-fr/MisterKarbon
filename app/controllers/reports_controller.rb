@@ -68,17 +68,20 @@ class ReportsController < ApplicationController
 
     # Output_array: array avec les hash de chaque emissions par question
     @output_array = []
+    @output_numbers = []
 
+    # Definition de l'array de tous les résultats
     @report_scopes_array.each do |report_scope|
       report_scope.report_scope_orgas.each do |report_scope_orga|
         report_scope_orga.answers.each do |answer|
           if answer.calculation == true
+            calculation = answer.content.to_f * answer.question.ademe_emission_factor.emission_value.to_f
             element = {
               answer: answer.content.to_f,
               answer_number: answer.id,
               ademe_factor: answer.question.ademe_emission_factor.emission_value.to_f,
               ademe_factor_unit: answer.question.ademe_emission_factor.unit,
-              emission_answer_calculation: answer.content.to_f * answer.question.ademe_emission_factor.emission_value.to_f,
+              emission_answer_calculation: calculation,
               emission_module_name: report_scope.emission_module.name,
               orga_scope_name: report_scope_orga.orga.name
             }
@@ -87,6 +90,8 @@ class ReportsController < ApplicationController
         end
       end
     end
+
+    # Definition du hash avec les données pour barchart simple (a améliorer)
   end
 
   private

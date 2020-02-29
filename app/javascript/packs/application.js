@@ -31,13 +31,16 @@ document.addEventListener('turbolinks:load', function () {
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
 import "bootstrap";
+
+import { barChart } from '../plugins/bar_chart';
+// import { stackedBar } from '../plugins/bar_chart';
+barChart();
+// stackedBar();
+
+// import { ordersChart } from '../plugins/bar_chart';
+// ordersChart();
+
+
 // import * as d3 from "d3";
-
 // import { test } from "../plugins/marimekko";
-// import { test2 } from "../plugins/marimekko";
-// import { square } from "../plugins/marimekko";
-
 // test();
-// test2();
-
-// square();
