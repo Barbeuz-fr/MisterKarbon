@@ -337,6 +337,16 @@ require "open-uri"
   dechets = EmissionModule.create!(name: "Waste management", scope: 3)
 
 # ==============================================================================
+# EMISSION MODULES DESCRIPTION
+# ==============================================================================
+
+  desc_elec = "This questionnaire covers all carbon emissions induced by electricity consumption. Sourcing of renewables with green/white certificates can be specified."
+  electricite.general_description = desc_elec
+  factor_elec = "2019 national average in kgCO2e/kWh."
+  electricite.emission_factor_description = factor_elec
+  electricite.save
+
+# ==============================================================================
 # REPORT 1 SCOPES
 # ==============================================================================
 
@@ -362,19 +372,6 @@ require "open-uri"
   report1_scope3.report_id = report_1.id
   report1_scope3.emission_module_id = electricite.id
   report1_scope3.save
-
-  # report1_scope4 = ReportScope.new(
-  #   deadline: DateTime.new(2020,6,1))
-  # report1_scope4.report_id = report_1.id
-  # report1_scope4.emission_module_id = process_industriels.id
-  # report1_scope4.save
-
-  # report1_scope5 = ReportScope.new(
-  #   deadline: DateTime.new(2020,6,1))
-  # report1_scope5.report_id = report_1.id
-  # report1_scope5.emission_module_id = electricite.id
-  # report1_scope5.save
-
 
 # ==============================================================================
 # REPORT 2 SCOPES
@@ -429,11 +426,9 @@ require "open-uri"
 
   p "report 1 scope orga (manufacturing et product development)"
 
-
   # report1_scope1 => comb fossiles
   # report1_scope2 => process_industriels
   # report1_scope3 => electricite
-
 
   report1_scope1_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope1.id,
@@ -647,7 +642,7 @@ require "open-uri"
   }
 
 # ==============================================================================
-# QUESTIONS & ANSWER - Modules for graph only (data can be dummy)
+# QUESTIONS & ANSWER - Modules for graph only (dummy data)
 # ==============================================================================
 
   # TO DO - variabiliser ademe_emission_factor_id
@@ -655,8 +650,7 @@ require "open-uri"
   p "creation des Q&A pour les modules utilisés dans l'exemple 'Manufacturing'"
 
   emission_modules_used_in_report1 = [comb_fossiles,
-                              process_industriels,
-                              electricite]
+                              process_industriels]
 
   p "array emission_modules_used_in_report1"
   p emission_modules_used_in_report1
@@ -683,14 +677,98 @@ require "open-uri"
     end
   }
 
-# Electricité
+# ==============================================================================
+# Q&A - Electricity
+# ==============================================================================
+
+  # Electricité - questions
+  question_elec_1 = Question.create!(
+    calculation: false,
+    content: "Please indicate the country for the electricity consumption",
+    ademe_emission_factor_id: AdemeEmissionFactor.find{ |item| item.count == 1088 }.id,
+    emission_module_id: electricite.id)
+
+  question_elec_2 = Question.create!(
+    calculation: true,
+    content: "What is the total annual electricity consumption in kWh?",
+    ademe_emission_factor_id: AdemeEmissionFactor.find{ |item| item.count == 1088 }.id,
+    emission_module_id: electricite.id)
+
+  question_elec_2 = Question.create!(
+    calculation: false,
+    content: "What is the share of this consumption that is purchased with green certificates (i.e. guaranteed renewable production)",
+    ademe_emission_factor_id: AdemeEmissionFactor.find{ |item| item.count == 1088 }.id,
+    emission_module_id: electricite.id)
+
+  # Electricité answers
+
+  # Question 1
+    # Electricity x manufacturing
+    answer_elect_1_manuf = Answer.create!(
+        calculation: false,
+        question_id: question_elec_1.id,
+        report_scope_orga_id: report1_scope3_orga.id,
+        content: "France")
+
+    # Electricity x product development
+    answer_elect_1_productdev = Answer.create!(
+        calculation: false,
+        question_id: question_elec_1.id,
+        report_scope_orga_id: report1_scope5_orga.id,
+        content: "France")
+
+  # Question 2
+    # Electricity x manufacturing
+    answer_elect_2_manuf = Answer.create!(
+        calculation: true,
+        question_id: question_elec_1.id,
+        report_scope_orga_id: report1_scope3_orga.id,
+        content: 45000)
+
+    # Electricity x product development
+    answer_elect_2_productdev = Answer.create!(
+        calculation: true,
+        question_id: question_elec_1.id,
+        report_scope_orga_id: report1_scope5_orga.id,
+        content: 12000)
+
+  # Question 3
+    # Electricity x manufacturing
+    answer_elect_3_manuf = Answer.create!(
+        calculation: false,
+        question_id: question_elec_1.id,
+        report_scope_orga_id: report1_scope3_orga.id,
+        content: "0%")
+
+    # Electricity x product development
+    answer_elect_3_productdev = Answer.create!(
+        calculation: false,
+        question_id: question_elec_1.id,
+        report_scope_orga_id: report1_scope5_orga.id,
+        content: "0%")
+
+# ==============================================================================
+# Q&A - Combustibles fossiles
+# ==============================================================================
 
 
-# Combustibles fossiles
+  # Combustibles fossiles - questions
 
 
-# Processus industriels
 
+  # Combustibles fossiles - answers
+
+
+# ==============================================================================
+# Q&A - Process industriels
+# ==============================================================================
+
+
+
+  # Processus industriels - questions
+
+
+  # Processus industriels - answers
 
 
 

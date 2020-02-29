@@ -43,6 +43,14 @@
                       <%= f.submit "➕", class: "bg-transparent border-0" %>
                     <% end %>
                   </div>
+                  <!-- Laurent edit - modale avec preview du contenu -->
+                  <div>
+                    <%= link_to "Preview",
+                      "#",
+                      class: "btn btn-primary btn",
+                      "data-toggle" => "modal",
+                      "data-target" => "#exampleModalCenter"%>
+                  </div>
                 </div>
               <% else %>
                 <div class="row flash-module flash-module-selected">
@@ -73,6 +81,14 @@
                       <%= f.submit "➕", class: "bg-transparent border-0" %>
                     <% end %>
                   </div>
+                  <!-- Laurent edit - modale avec preview du contenu -->
+                  <div>
+                    <%= link_to "Preview",
+                      "#",
+                      class: "btn btn-primary btn",
+                      "data-toggle" => "modal",
+                      "data-target" => "#exampleModalCenter"%>
+                  </div>
                 </div>
               <% else %>
                 <div class="row flash-module flash-module-selected">
@@ -102,6 +118,14 @@
                       <%= hidden_field_tag :tab_name, 'scope3-tab' %>
                       <%= f.submit "➕", class: "bg-transparent border-0" %>
                     <% end %>
+                  </div>
+                  <!-- Laurent edit - modale avec preview du contenu -->
+                  <div>
+                    <%= link_to "Preview",
+                      "#",
+                      class: "btn btn-primary btn",
+                      "data-toggle" => "modal",
+                      "data-target" => "#exampleModalCenter"%>
                   </div>
                 </div>
               <% else %>
@@ -142,5 +166,32 @@
     </div>
   </div>
 
+</div>
+
+
+<!-- Modal affichage des informations détaillées par module  -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle"><%= @module_scopes.last.name %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p><%= @module_scopes.last.general_description %></p>
+        <h5>Emission factor</h5>
+        <p> <%= @module_scopes.last.emission_factor_description %></p>
+        <h5>Questions</h5>
+          <ul>
+            <% @module_scopes.last.questions.each do |question| %>
+              <p><%= question.content %></p>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
