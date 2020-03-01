@@ -76,8 +76,11 @@ class ReportsController < ApplicationController
         report_scope_orga.answers.each do |answer|
           if answer.calculation == true
             element = {
+              calculation: answer.question.calculation,
+              question: answer.question.content,
               answer: answer.content.to_f,
               answer_number: answer.id,
+              answer_unit: answer.unit,
               ademe_factor: answer.question.ademe_emission_factor.emission_value.to_f,
               ademe_factor_unit: answer.question.ademe_emission_factor.unit,
               emission_answer_calculation: answer.content.to_f * answer.question.ademe_emission_factor.emission_value.to_f,
@@ -115,6 +118,8 @@ class ReportsController < ApplicationController
 
     # 3/ Création d'un array pour stocker le nom des orga parcourues (en légende)
     @label_orga = []
+
+    # TO DO - DONNEES A CORRIGER
     # 4/ Itérer sur les valeurs pour les stocker dans @y_axis_organizations
     @report_scopes_array.each_with_index do |report_scope, index_module|
       report_scope.report_scope_orgas.each_with_index do |report_scope_orga, index_orga|
@@ -130,29 +135,6 @@ class ReportsController < ApplicationController
       @label_orga << report_scope_orga.orga.name
       end
     end
-
-
-
-
-    # total_answer = 0
-    # @report_scopes_array.each do |report_scope|
-    #   # On rentre dans un module
-
-    #   report_scope.report_scope_orgas.each do |report_scope_orga|
-    #     # On rentre dans un module x orga
-    #     report_scope_orga.answers.each do |answer|
-    #       if answer.calculation == true
-    #         total_answer += answer.content
-    #       end
-    #     end
-    #   end
-    # end
-
-
-
-
-    # Axe Y : total des questions par orga x module
-
   end
 
   private

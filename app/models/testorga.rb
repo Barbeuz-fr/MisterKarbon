@@ -1,0 +1,2 @@
+class Testorga < ApplicationRecord
+end
