@@ -9,12 +9,37 @@
     <h3>Your report : <%= @report.name %> - <%= @report.year %></h3>
   </div>
 
+
+<!--
+----------------------------------------------------------
+STACKED BAR CHART
+ ----------------------------------------------------------
+ -->
+
+
+<div class="container">
+  <h4>Greenhouse gases summary</h4>
+  <p>Unit: kgCO2e</p>
+  <!-- Déclaration données : orga et emissions -->
+  <div class="d-flex align-items-center">
+    <%= content_tag :div, '',
+                    id: 'bar_chart_data',
+                    data: {emissions: @y_axis_organizations,
+                          orga: @label_orga} %>
+    <%= content_tag 'canvas', '',
+                    id: 'mybarChart',
+                    width: '600', height: '400',
+                    data: {titles: @x_axis_modules} %>
+    </div>
+</div>
+
 <!--
 ----------------------------------------------------------
 DATA TABLE
  ----------------------------------------------------------
 -->
 
+<!-- TO DO - mettre ongletes -->
 <!-- <br><br>
 <%= @y_axis_organizations %>
 <br><br>
@@ -95,36 +120,10 @@ SIMPLE BAR CHART
 </div>
  -->
 
-<!--
-----------------------------------------------------------
-STACKED BAR CHART
- ----------------------------------------------------------
- -->
-
 
 <div class="container">
-
-
-<!-- Déclaration données : orga et emissions -->
-  <%= content_tag :div, '',
-                  id: 'bar_chart_data',
-                  data: {emissions: @y_axis_organizations,
-                        orga: @label_orga} %>
-
-  <p>Test 2</p>
-  <%= content_tag 'canvas', '',
-                  id: 'mybarChart',
-                  width: '1000', height: '600',
-                  data: {titles: @x_axis_modules} %>
-</div>
-
-<!-- y_axis: @y_axis_organizations  -->
-
-<div class="container">
-  <h2>Ajout de tab avec les resultats </h2>
+  <h5>Ajout de tab avec les resultats </h5>
   <p>Tab par type d'orga</p>
   <p>avec les infos de chaque module : question & réponse</p>
-
-
 </div>
 
