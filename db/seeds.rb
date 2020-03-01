@@ -342,9 +342,17 @@ require "open-uri"
 
   desc_elec = "This questionnaire covers all carbon emissions induced by electricity consumption. Sourcing of renewables with green/white certificates can be specified."
   electricite.general_description = desc_elec
-  factor_elec = "2019 national average in kgCO2e/kWh."
+  factor_elec = "2019 national average emissions from electricity generation, in kgCO2e/kWh."
   electricite.emission_factor_description = factor_elec
   electricite.save
+
+  desc_comb_fossiles = "This questionnaire covers all carbon fossile combustibles used by your organization."
+  comb_fossiles.general_description = desc_comb_fossiles
+  factor_comb_fossiles = "Standard emissions from combustion in kgCO2e/l or kgCO2/m3."
+  comb_fossiles.emission_factor_description = factor_comb_fossiles
+  comb_fossiles.save
+
+
 
 # ==============================================================================
 # REPORT 1 SCOPES
@@ -618,28 +626,11 @@ require "open-uri"
 
 
 # ==============================================================================
-# REPORT 2 SCOPE ORGA USERS
+# REPORT 2 SCOPE ORGA USERS (TO DO)
 # ==============================================================================
 
 
-# ==============================================================================
-# QUESTIONS - Modules for preview (must be meaningful ;) ) DO TO
-# ==============================================================================
 
-  p "creation des questions pour les modules en preview"
-
-  question_list = ["1) How many tonnes x km have been transported on large trucks?",
-                  "2) How many tonnes x km have been transported on small trucks?"
-                ]
-
-  question_list.each_with_index { |question, i|
-      q = Question.new(
-        calculation: true,
-        content: question,
-        emission_module_id: transport_marchandise_routier.id,
-        ademe_emission_factor_id: i)
-      q.save
-  }
 
 # ==============================================================================
 # QUESTIONS & ANSWER - Modules for graph only (dummy data)
@@ -678,7 +669,7 @@ require "open-uri"
   }
 
 # ==============================================================================
-# Q&A - Electricity
+# QUESTIONS - Electricity
 # ==============================================================================
 
   # Electricité - questions
@@ -699,6 +690,10 @@ require "open-uri"
     content: "What is the share of this consumption that is purchased with green certificates (i.e. guaranteed renewable production)",
     ademe_emission_factor_id: AdemeEmissionFactor.find{ |item| item.count == 1088 }.id,
     emission_module_id: electricite.id)
+
+# ==============================================================================
+# ANSWER REPORT 1 - Electricity
+# ==============================================================================
 
   # Electricité answers
 
@@ -748,12 +743,51 @@ require "open-uri"
         content: "0%")
 
 # ==============================================================================
-# Q&A - Combustibles fossiles
+# QUESTIONS - COMBUSTIBLES FOSSILES
 # ==============================================================================
 
+  # Combustibles fossibles - questions
+  question_comb_fossiles_1 = Question.create!(
+    calculation: true,
+    content: "What is your annual natural gas consumption in m3? ",
+    ademe_emission_factor_id: AdemeEmissionFactor.find{ |item| item.count == 1221 }.id,
+    emission_module_id: comb_fossiles.id)
 
-  # Combustibles fossiles - questions
+  question_comb_fossiles_2 = Question.create!(
+    calculation: true,
+    content: "What is your annual propane consumption in liters?",
+    ademe_emission_factor_id: AdemeEmissionFactor.find{ |item| item.count == 4484 }.id,
+    emission_module_id: comb_fossiles.id)
 
+  question_comb_fossiles_3 = Question.create!(
+    calculation: true,
+    content: "What is your annual heavy fuel oil consumption in liters?",
+    ademe_emission_factor_id: AdemeEmissionFactor.find{ |item| item.count == 1165 }.id,
+    emission_module_id: comb_fossiles.id)
+
+  question_comb_fossiles_4 = Question.create!(
+    calculation: true,
+    content: "What is your annual butane consumption in liters?",
+    ademe_emission_factor_id: AdemeEmissionFactor.find{ |item| item.count == 4494 }.id,
+    emission_module_id: comb_fossiles.id)
+
+  question_comb_fossiles_5 = Question.create!(
+    calculation: true,
+    content: "What is your annual petrol (95, 95-E10, 98) consumption in liters?",
+    ademe_emission_factor_id: AdemeEmissionFactor.find{ |item| item.count == 1145 }.id,
+    emission_module_id: comb_fossiles.id)
+
+  question_comb_fossiles_6 = Question.create!(
+    calculation: true,
+    content: "What is your annual petrol (E85) consumption in liters?",
+    ademe_emission_factor_id: AdemeEmissionFactor.find{ |item| item.count == 1489 }.id,
+    emission_module_id: comb_fossiles.id)
+
+  question_comb_fossiles_7 = Question.create!(
+    calculation: true,
+    content: "What is your annual gasoil consumption in liters?",
+    ademe_emission_factor_id: AdemeEmissionFactor.find{ |item| item.count == 1161 }.id,
+    emission_module_id: comb_fossiles.id)
 
 
   # Combustibles fossiles - answers

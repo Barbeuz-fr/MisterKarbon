@@ -32,13 +32,11 @@ document.addEventListener('turbolinks:load', function () {
 // ----------------------------------------------------
 import "bootstrap";
 
-import { barChart } from '../plugins/bar_chart';
-import { stackedBar } from '../plugins/bar_chart';
-barChart();
-stackedBar();
+// import { barChart } from '../plugins/bar_chart';
+// barChart();
 
-// import { ordersChart } from '../plugins/bar_chart';
-// ordersChart();
+import { stackedBar } from '../plugins/bar_chart';
+stackedBar();
 
 
 // import * as d3 from "d3";
