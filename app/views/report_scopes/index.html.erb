@@ -189,6 +189,9 @@
               <p><%= question.content %></p>
             <% end %>
           </ul>
+          <% if @module_scopes.last.questions.count == 0 %>
+            <p>There are no questions to display yet</p>
+          <% end %>
         </div>
       </div>
     </div>

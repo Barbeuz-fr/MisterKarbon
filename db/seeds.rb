@@ -336,23 +336,62 @@ require "open-uri"
   eau = EmissionModule.create!(name: "Water treatment", scope: 3)
   dechets = EmissionModule.create!(name: "Waste management", scope: 3)
 
+  list_of_emission_modules = [comb_fossiles,
+    changement_affectation_sols,
+    deforestation,
+    refrigeration,
+    clim,
+    agriculture,
+    agriculture,
+    process_industriels,
+    dechets,
+    electricite,
+    reseaux_chaleur_froid,
+    transport_marchandise_routier,
+    transport_marchandise_ferroviaire,
+    transport_marchandise_aerien,
+    transport_marchandise_maritime,
+    transport_marchandise_fluvial,
+    transport_personne_routier,
+    transport_personne_ferroviaire,
+    transport_personne_aerien,
+    transport_personne_fluvial,
+    achat_produit_agri,
+    achat_bois_papier_carton,
+    achat_mineraux,
+    achat_machines,
+    achat_vehicules,
+    achat_mobiliers,
+    achat_textiles,
+    consommables,
+    batiment,
+    voirie,
+    eau,
+    dechets
+  ]
+
 # ==============================================================================
 # EMISSION MODULES DESCRIPTION
 # ==============================================================================
 
-  desc_elec = "This questionnaire covers all carbon emissions induced by electricity consumption. Sourcing of renewables with green/white certificates can be specified."
-  electricite.general_description = desc_elec
-  factor_elec = "2019 national average emissions from electricity generation, in kgCO2e/kWh."
-  electricite.emission_factor_description = factor_elec
-  electricite.save
+    # Default values
+    list_of_emission_modules.each do |element|
+      element.general_description = "This module covers the following category: #{element.name}"
+      element.emission_factor_description = "Not specified yet
+      element.save"
+    end
 
-  desc_comb_fossiles = "This questionnaire covers all carbon fossile combustibles used by your organization."
-  comb_fossiles.general_description = desc_comb_fossiles
-  factor_comb_fossiles = "Standard emissions from combustion in kgCO2e/l or kgCO2/m3."
-  comb_fossiles.emission_factor_description = factor_comb_fossiles
-  comb_fossiles.save
+    desc_elec = "This questionnaire covers all carbon emissions induced by electricity consumption. Sourcing of renewables with green/white certificates can be specified."
+    electricite.general_description = desc_elec
+    factor_elec = "2019 national average emissions from electricity generation, in kgCO2e/kWh."
+    electricite.emission_factor_description = factor_elec
+    electricite.save
 
-
+    desc_comb_fossiles = "This questionnaire covers all carbon fossile combustibles used by your organization."
+    comb_fossiles.general_description = desc_comb_fossiles
+    factor_comb_fossiles = "Standard emissions from combustion in kgCO2e/l or kgCO2/m3."
+    comb_fossiles.emission_factor_description = factor_comb_fossiles
+    comb_fossiles.save
 
 # ==============================================================================
 # REPORT 1 SCOPES
@@ -438,6 +477,7 @@ require "open-uri"
   # report1_scope2 => process_industriels
   # report1_scope3 => electricite
 
+  # report1_scope1 => comb fossiles
   report1_scope1_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope1.id,
     orga_id: manufacturing.id,
@@ -447,6 +487,7 @@ require "open-uri"
 
   # ----------------------------------------------
 
+  # report1_scope2 => process_industriels
   report1_scope2_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope2.id,
     orga_id: manufacturing.id,
@@ -456,6 +497,7 @@ require "open-uri"
 
   # ----------------------------------------------
 
+  # report1_scope3 => electricite
   report1_scope3_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope3.id,
     orga_id: manufacturing.id,
@@ -465,6 +507,7 @@ require "open-uri"
 
   # ----------------------------------------------
 
+  # report1_scope2 => process_industriels
   report1_scope4_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope2.id,
     orga_id: product_development.id,
@@ -474,6 +517,7 @@ require "open-uri"
 
   # ----------------------------------------------
 
+  # report1_scope3 => electricite
   report1_scope5_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope3.id,
     orga_id: product_development.id,
@@ -640,8 +684,7 @@ require "open-uri"
 
   p "creation des Q&A pour les modules utilisés dans l'exemple 'Manufacturing'"
 
-  emission_modules_used_in_report1 = [comb_fossiles,
-                              process_industriels]
+  emission_modules_used_in_report1 = [process_industriels]
 
   p "array emission_modules_used_in_report1"
   p emission_modules_used_in_report1
@@ -791,6 +834,49 @@ require "open-uri"
 
 
   # Combustibles fossiles - answers
+
+  #  combustibles fossiles x manufacturing
+    answer_comb_fossiles_1_manuf = Answer.create!(
+        calculation: true,
+        question_id: question_comb_fossiles_1.id,
+        report_scope_orga_id: report1_scope1_orga.id,
+        content: 10000)
+
+    answer_comb_fossiles_2_manuf = Answer.create!(
+        calculation: true,
+        question_id: question_comb_fossiles_2.id,
+        report_scope_orga_id: report1_scope1_orga.id,
+        content: 20000)
+
+    answer_comb_fossiles_3_manuf = Answer.create!(
+        calculation: true,
+        question_id: question_comb_fossiles_3.id,
+        report_scope_orga_id: report1_scope1_orga.id,
+        content: 100000)
+
+    answer_comb_fossiles_4_manuf = Answer.create!(
+        calculation: true,
+        question_id: question_comb_fossiles_4.id,
+        report_scope_orga_id: report1_scope1_orga.id,
+        content: 200000)
+
+    answer_comb_fossiles_5_manuf = Answer.create!(
+        calculation: true,
+        question_id: question_comb_fossiles_5.id,
+        report_scope_orga_id: report1_scope1_orga.id,
+        content: 10000)
+
+    answer_comb_fossiles_6_manuf = Answer.create!(
+        calculation: true,
+        question_id: question_comb_fossiles_6.id,
+        report_scope_orga_id: report1_scope1_orga.id,
+        content: 15000)
+
+    answer_comb_fossiles_7_manuf = Answer.create!(
+        calculation: true,
+        question_id: question_comb_fossiles_7.id,
+        report_scope_orga_id: report1_scope1_orga.id,
+        content: 5000)
 
 
 # ==============================================================================
