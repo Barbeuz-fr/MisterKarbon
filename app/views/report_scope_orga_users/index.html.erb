@@ -34,6 +34,17 @@
           <h3 class="text-center">Team</h3>
         </div>
       </div>
+      <div class="col-3">
+        <% if params[:scope].present? %>
+          <!-- Definition modale -->
+          <div id="addEmail">
+            <div class="tab-header">
+              <h3 class="text-center">Add a contributor</h3>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
 
 <!-- Contenu du tableau avec bouton d'ajout de contributeur-->
 
@@ -82,10 +93,6 @@
       <% if params[:scope].present? %>
         <!-- Definition modale -->
         <div id="addEmail">
-          <div class="tab-header">
-            <h3 class="text-center">Add a contributor</h3>
-          </div>
-
           <!-- Simple form barre de recherche-->
             <%= form_tag url_for(scope: params[:scope]), method: :get do %>
               <div class="input-group mb-3">
@@ -102,14 +109,23 @@
                 <% @results.each do |result| %>
                   <div class="card-email m-2">
                     <div class="email-card-body">
-                      <div class="avatar-name">
+                      <div class="d-flex flex-row">
+                        <div class="align-self-center">
+
                         <% if result.photo.attached?  %>
-                          <%= cl_image_tag result.photo.key, :crop=>"fill", class:"avatar ml-3", style:"width:50px; height:50px"%>
+                          <%= cl_image_tag result.photo.key, :crop=>"fill", class:"avatar", style:"width:50px; height:50px"%>
                         <% else %>
-                          <%= image_tag "http://www.tafecafe.com/wp-content/uploads/2015/09/default_avatar.png", class:"avatar ml-3", style:"width:50px; height:50px"%>
+                          <%= image_tag "http://www.tafecafe.com/wp-content/uploads/2015/09/default_avatar.png", class:"avatar", style:"width:40px; height:40px"%>
                         <% end %>
-                        <div class="avatar-name">
+                        </div>
+                        <div class="align-self-center pl-2">
                           <h5 class="card-title"><%= result.first_name %> <%= result.last_name %></h5>
+                        </div>
+                        <div class=" align-self-center pl-2">
+                        <%= link_to "Add",
+                                    report_scope_orga_report_scope_orga_users_path(params[:scope], report_scope_orga_user: { user_id: result.id }),
+                                    method: :post,
+                                    class: "btn btn-secondary btn-sm" %>
                         </div>
                       </div>
                       <p class="card-text margin-card-email smaller-text">
@@ -122,10 +138,6 @@
                         <%= result.company&.name %>
                       </p>
                       <!-- Bouton Add -->
-                      <%= link_to "Add",
-                                  report_scope_orga_report_scope_orga_users_path(params[:scope], report_scope_orga_user: { user_id: result.id }),
-                                  method: :post,
-                                  class: "btn btn-secondary btn-sm" %>
                     </div>
                   </div>
                 <% end %>
