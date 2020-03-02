@@ -1,0 +1,40 @@
+
+<div id="wrapper">
+
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <%= link_to "Create new report",
+          "#",
+          class: "btn btn-primary btn-lg mt-3 ml-3",
+          "data-toggle" => "modal",
+          "data-target" => "#exampleModalCenter"%>
+          <li class="sidebar-brand">
+              <a href="#"> My reports</a>
+          </li>
+          <li>
+             <% @reports.each do |report| %>
+              <h2><%= link_to report.name, report_path(report) %></h2>
+              <% end %>
+          </li>
+          <li>
+              <a href="#">Choose a module</a>
+          </li>
+          <li>
+              <a href="#">Contributors</a>
+          </li>
+          <li>
+              <a href="#">Organization</a>
+          </li>
+          <li>
+              <a href="#">Team</a>
+          </li>
+          <li>
+              <a href="#">Dashboard</a>
+          </li>
+          <li>
+              <a href="#">Log out</a>
+          </li>
+      </ul>
+    </div>
+</div>
+
