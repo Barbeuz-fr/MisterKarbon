@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_29_192418) do
+ActiveRecord::Schema.define(version: 2020_03_01_183035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2020_02_29_192418) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "report_scope_orga_id", null: false
+    t.string "unit"
     t.index ["question_id"], name: "index_answers_on_question_id"
     t.index ["report_scope_orga_id"], name: "index_answers_on_report_scope_orga_id"
   end
@@ -140,6 +141,13 @@ ActiveRecord::Schema.define(version: 2020_02_29_192418) do
     t.bigint "company_id", null: false
     t.index ["company_id"], name: "index_reports_on_company_id"
     t.index ["user_id"], name: "index_reports_on_user_id"
+  end
+
+  create_table "testorgas", force: :cascade do |t|
+    t.string "name"
+    t.integer "parent_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|

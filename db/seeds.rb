@@ -3,9 +3,8 @@
 # ==============================================================================
 
 require "open-uri"
-# ajout des questions pour 1 module electricité et 1 module transport
-# ajout des réponses pour un exemple de projet
-# ajout photo pour users
+# # ajout photo pour users et emission_module
+# # ajout orga à 2 ou 3 niveaux
 
 # ==============================================================================
 # RESET SEED
@@ -72,7 +71,7 @@ require "open-uri"
 
   p "create company"
 
-  company = Company.create!(name: "Strawberry")
+  company = Company.create!(name: "Bread & Co")
 
   p company.name
 
@@ -258,7 +257,7 @@ require "open-uri"
   p "create reports"
 
   report_1 = Report.new(
-    name: "Manufacturing",
+    name: "Bread Production",
     year: 2019,
     company_id: company.id,
     user_id: manager.id)
@@ -269,7 +268,7 @@ require "open-uri"
   p report_1.name
 
   report_2 = Report.new(
-    name: "Support functions",
+    name: "EMEA Support functions",
     year: 2019,
     company_id: company.id,
     user_id: manager.id)
@@ -280,7 +279,7 @@ require "open-uri"
   p report_2.name
 
   report_3 = Report.new(
-    name: "R&D",
+    name: "Global R&D",
     year: 2019,
     company_id: company.id,
     user_id: manager.id)
@@ -324,6 +323,8 @@ require "open-uri"
   transport_personne_fluvial = EmissionModule.create!(name: "River transport", scope: 3)
 
   achat_produit_agri = EmissionModule.create!(name: "Purchasing - Agricultural products", scope: 3)
+  peas = EmissionModule.create!(name: "Purchasing - Agricultural products - Peas", scope: 3)
+
   achat_bois_papier_carton = EmissionModule.create!(name: "Purchasing - wood, pulp & paper", scope: 3)
   achat_mineraux = EmissionModule.create!(name: "Purchasing - Minerals & metals", scope: 3)
   achat_machines = EmissionModule.create!(name: "Purchasing - Machines & equipment", scope: 3)
@@ -336,15 +337,63 @@ require "open-uri"
   eau = EmissionModule.create!(name: "Water treatment", scope: 3)
   dechets = EmissionModule.create!(name: "Waste management", scope: 3)
 
+  list_of_emission_modules = [comb_fossiles,
+    changement_affectation_sols,
+    deforestation,
+    refrigeration,
+    clim,
+    agriculture,
+    agriculture,
+    process_industriels,
+    dechets,
+    electricite,
+    reseaux_chaleur_froid,
+    transport_marchandise_routier,
+    transport_marchandise_ferroviaire,
+    transport_marchandise_aerien,
+    transport_marchandise_maritime,
+    transport_marchandise_fluvial,
+    transport_personne_routier,
+    transport_personne_ferroviaire,
+    transport_personne_aerien,
+    transport_personne_fluvial,
+    achat_produit_agri,
+    peas,
+    achat_bois_papier_carton,
+    achat_mineraux,
+    achat_machines,
+    achat_vehicules,
+    achat_mobiliers,
+    achat_textiles,
+    consommables,
+    batiment,
+    voirie,
+    eau,
+    dechets
+  ]
+
 # ==============================================================================
 # EMISSION MODULES DESCRIPTION
 # ==============================================================================
 
-  desc_elec = "This questionnaire covers all carbon emissions induced by electricity consumption. Sourcing of renewables with green/white certificates can be specified."
-  electricite.general_description = desc_elec
-  factor_elec = "2019 national average in kgCO2e/kWh."
-  electricite.emission_factor_description = factor_elec
-  electricite.save
+    # Default values
+    list_of_emission_modules.each do |element|
+      element.general_description = "This module covers the following category: #{element.name}"
+      element.emission_factor_description = "Not specified yet
+      element.save"
+    end
+
+    desc_elec = "This questionnaire covers all carbon emissions induced by electricity consumption. Sourcing of renewables with green/white certificates can be specified."
+    electricite.general_description = desc_elec
+    factor_elec = "2019 national average emissions from electricity generation, in kgCO2e/kWh."
+    electricite.emission_factor_description = factor_elec
+    electricite.save
+
+    desc_comb_fossiles = "This questionnaire covers all carbon fossile combustibles used by your organization."
+    comb_fossiles.general_description = desc_comb_fossiles
+    factor_comb_fossiles = "Standard emissions from combustion in kgCO2e/l or kgCO2/m3."
+    comb_fossiles.emission_factor_description = factor_comb_fossiles
+    comb_fossiles.save
 
 # ==============================================================================
 # REPORT 1 SCOPES
@@ -364,7 +413,7 @@ require "open-uri"
   report1_scope2 = ReportScope.new(
     deadline: DateTime.new(2020,6,1))
   report1_scope2.report_id = report_1.id
-  report1_scope2.emission_module_id = process_industriels.id
+  report1_scope2.emission_module_id = achat_produit_agri.id
   report1_scope2.save
 
   report1_scope3 = ReportScope.new(
@@ -427,27 +476,30 @@ require "open-uri"
   p "report 1 scope orga (manufacturing et product development)"
 
   # report1_scope1 => comb fossiles
-  # report1_scope2 => process_industriels
+  # report1_scope2 => achat_produit_agri
   # report1_scope3 => electricite
 
+  # report1_scope1 => comb fossiles
   report1_scope1_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope1.id,
     orga_id: manufacturing.id,
-    status: "Sent, not yet started"
+    status: "On-going"
     )
   report1_scope1_orga.save
 
   # ----------------------------------------------
 
+  # report1_scope2 => achat_produit_agri
   report1_scope2_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope2.id,
     orga_id: manufacturing.id,
-    status: "On-going"
+    status: "Pending validation"
     )
   report1_scope2_orga.save
 
   # ----------------------------------------------
 
+  # report1_scope3 => electricite
   report1_scope3_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope3.id,
     orga_id: manufacturing.id,
@@ -457,6 +509,7 @@ require "open-uri"
 
   # ----------------------------------------------
 
+  # report1_scope2 => achat_produit_agri
   report1_scope4_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope2.id,
     orga_id: product_development.id,
@@ -466,6 +519,7 @@ require "open-uri"
 
   # ----------------------------------------------
 
+  # report1_scope3 => electricite
   report1_scope5_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope3.id,
     orga_id: product_development.id,
@@ -616,69 +670,43 @@ require "open-uri"
     )
   report1_scope5_orga_user.save
 
-
-# ==============================================================================
-# REPORT 2 SCOPE ORGA USERS
-# ==============================================================================
-
-
-# ==============================================================================
-# QUESTIONS - Modules for preview (must be meaningful ;) ) DO TO
-# ==============================================================================
-
-  p "creation des questions pour les modules en preview"
-
-  question_list = ["1) How many tonnes x km have been transported on large trucks?",
-                  "2) How many tonnes x km have been transported on small trucks?"
-                ]
-
-  question_list.each_with_index { |question, i|
-      q = Question.new(
-        calculation: true,
-        content: question,
-        emission_module_id: transport_marchandise_routier.id,
-        ademe_emission_factor_id: i)
-      q.save
-  }
-
 # ==============================================================================
 # QUESTIONS & ANSWER - Modules for graph only (dummy data)
 # ==============================================================================
 
   # TO DO - variabiliser ademe_emission_factor_id
 
-  p "creation des Q&A pour les modules utilisés dans l'exemple 'Manufacturing'"
+  # p "creation des Q&A pour les modules utilisés dans l'exemple 'Manufacturing'"
 
-  emission_modules_used_in_report1 = [comb_fossiles,
-                              process_industriels]
+  # emission_modules_used_in_report1 = [process_industriels]
 
-  p "array emission_modules_used_in_report1"
-  p emission_modules_used_in_report1
+  # p "array emission_modules_used_in_report1"
+  # p emission_modules_used_in_report1
 
-  emission_modules_used_in_report1.each_with_index { |emission_module, i|
-    p "emission_module"
-    p emission_module.name
+  # emission_modules_used_in_report1.each_with_index { |emission_module, i|
+  #   p "emission_module"
+  #   p emission_module.name
 
-    counter_question = 0
-    5.times do
-      counter_question += 1
-      question = Question.new(
-        calculation: true,
-        content: "Question number #{i}. To be detailed",
-        ademe_emission_factor_id: AdemeEmissionFactor.first.id,
-        emission_module_id: emission_module.id)
-      question.save
-      answer = Answer.new(
-        calculation: true,
-        question_id: question.id,
-        report_scope_orga_id: report_scope_array[i].id,
-        content: counter_question * 100)
-      answer.save
-    end
-  }
+  #   counter_question = 0
+  #   5.times do
+  #     counter_question += 1
+  #     question = Question.new(
+  #       calculation: true,
+  #       content: "Question number #{i}. To be detailed",
+  #       ademe_emission_factor_id: AdemeEmissionFactor.find{ |item| item.count == 1330 }.id,
+  #       emission_module_id: emission_module.id)
+  #     question.save
+  #     answer = Answer.new(
+  #       calculation: true,
+  #       question_id: question.id,
+  #       report_scope_orga_id: report_scope_array[i].id,
+  #       content: counter_question * 100)
+  #     answer.save
+  #   end
+  # }
 
 # ==============================================================================
-# Q&A - Electricity
+# QUESTIONS - Electricity
 # ==============================================================================
 
   # Electricité - questions
@@ -700,6 +728,10 @@ require "open-uri"
     ademe_emission_factor_id: AdemeEmissionFactor.find{ |item| item.count == 1088 }.id,
     emission_module_id: electricite.id)
 
+# ==============================================================================
+# ANSWER REPORT 1 - Electricity
+# ==============================================================================
+
   # Electricité answers
 
   # Question 1
@@ -708,6 +740,7 @@ require "open-uri"
         calculation: false,
         question_id: question_elec_1.id,
         report_scope_orga_id: report1_scope3_orga.id,
+        unit: "",
         content: "France")
 
     # Electricity x product development
@@ -715,6 +748,7 @@ require "open-uri"
         calculation: false,
         question_id: question_elec_1.id,
         report_scope_orga_id: report1_scope5_orga.id,
+        unit: "",
         content: "France")
 
   # Question 2
@@ -723,6 +757,7 @@ require "open-uri"
         calculation: true,
         question_id: question_elec_1.id,
         report_scope_orga_id: report1_scope3_orga.id,
+        unit: "kWh",
         content: 45000)
 
     # Electricity x product development
@@ -730,6 +765,7 @@ require "open-uri"
         calculation: true,
         question_id: question_elec_1.id,
         report_scope_orga_id: report1_scope5_orga.id,
+        unit: "kWh",
         content: 12000)
 
   # Question 3
@@ -738,37 +774,177 @@ require "open-uri"
         calculation: false,
         question_id: question_elec_1.id,
         report_scope_orga_id: report1_scope3_orga.id,
-        content: "0%")
+        unit: "%",
+        content: "0")
 
     # Electricity x product development
     answer_elect_3_productdev = Answer.create!(
         calculation: false,
         question_id: question_elec_1.id,
         report_scope_orga_id: report1_scope5_orga.id,
-        content: "0%")
+        unit: "%",
+        content: "0")
 
 # ==============================================================================
-# Q&A - Combustibles fossiles
+# QUESTIONS - COMBUSTIBLES FOSSILES
 # ==============================================================================
 
+  # Combustibles fossibles - questions
+  question_comb_fossiles_1 = Question.create!(
+    calculation: true,
+    content: "What is your annual natural gas consumption in m3? ",
+    ademe_emission_factor_id: AdemeEmissionFactor.find{ |item| item.count == 1221 }.id,
+    emission_module_id: comb_fossiles.id)
 
-  # Combustibles fossiles - questions
+  question_comb_fossiles_2 = Question.create!(
+    calculation: true,
+    content: "What is your annual propane consumption in liters?",
+    ademe_emission_factor_id: AdemeEmissionFactor.find{ |item| item.count == 4484 }.id,
+    emission_module_id: comb_fossiles.id)
 
+  question_comb_fossiles_3 = Question.create!(
+    calculation: true,
+    content: "What is your annual heavy fuel oil consumption in liters?",
+    ademe_emission_factor_id: AdemeEmissionFactor.find{ |item| item.count == 1165 }.id,
+    emission_module_id: comb_fossiles.id)
+
+  question_comb_fossiles_4 = Question.create!(
+    calculation: true,
+    content: "What is your annual butane consumption in liters?",
+    ademe_emission_factor_id: AdemeEmissionFactor.find{ |item| item.count == 4494 }.id,
+    emission_module_id: comb_fossiles.id)
+
+  question_comb_fossiles_5 = Question.create!(
+    calculation: true,
+    content: "What is your annual petrol (95, 95-E10, 98) consumption in liters?",
+    ademe_emission_factor_id: AdemeEmissionFactor.find{ |item| item.count == 1145 }.id,
+    emission_module_id: comb_fossiles.id)
+
+  question_comb_fossiles_6 = Question.create!(
+    calculation: true,
+    content: "What is your annual petrol (E85) consumption in liters?",
+    ademe_emission_factor_id: AdemeEmissionFactor.find{ |item| item.count == 1489 }.id,
+    emission_module_id: comb_fossiles.id)
+
+  question_comb_fossiles_7 = Question.create!(
+    calculation: true,
+    content: "What is your annual gasoil consumption in liters?",
+    ademe_emission_factor_id: AdemeEmissionFactor.find{ |item| item.count == 1161 }.id,
+    emission_module_id: comb_fossiles.id)
 
 
   # Combustibles fossiles - answers
 
+  #  combustibles fossiles x manufacturing
+    answer_comb_fossiles_1_manuf = Answer.create!(
+        calculation: true,
+        question_id: question_comb_fossiles_1.id,
+        report_scope_orga_id: report1_scope1_orga.id,
+        unit: "cubic meters",
+        content: 10000)
+
+    answer_comb_fossiles_2_manuf = Answer.create!(
+        calculation: true,
+        question_id: question_comb_fossiles_2.id,
+        report_scope_orga_id: report1_scope1_orga.id,
+        unit: "liters",
+        content: 20000)
+
+    answer_comb_fossiles_3_manuf = Answer.create!(
+        calculation: true,
+        question_id: question_comb_fossiles_3.id,
+        report_scope_orga_id: report1_scope1_orga.id,
+        unit: "liters",
+        content: 10000)
+
+    answer_comb_fossiles_4_manuf = Answer.create!(
+        calculation: true,
+        question_id: question_comb_fossiles_4.id,
+        report_scope_orga_id: report1_scope1_orga.id,
+        unit: "liters",
+        content: 20000)
+
+    answer_comb_fossiles_5_manuf = Answer.create!(
+        calculation: true,
+        question_id: question_comb_fossiles_5.id,
+        report_scope_orga_id: report1_scope1_orga.id,
+        unit: "liters",
+        content: 1000)
+
+    answer_comb_fossiles_6_manuf = Answer.create!(
+        calculation: true,
+        question_id: question_comb_fossiles_6.id,
+        report_scope_orga_id: report1_scope1_orga.id,
+        unit: "liters",
+        content: 1500)
+
+    answer_comb_fossiles_7_manuf = Answer.create!(
+        calculation: true,
+        question_id: question_comb_fossiles_7.id,
+        report_scope_orga_id: report1_scope1_orga.id,
+        unit: "liters",
+        content: 5000)
 
 # ==============================================================================
-# Q&A - Process industriels
+# Q&A - ACHAT PRODUITS AGRICOLES
 # ==============================================================================
 
+  # achat_produit_agri - questions
 
+  question_achat_produit_agri_1 = Question.create!(
+    calculation: true,
+    content: "What is the quantity purchased of soft wheat? (in kg)",
+    ademe_emission_factor_id: AdemeEmissionFactor.find{ |item| item.count == 1400 }.id,
+    emission_module_id: achat_produit_agri.id)
 
-  # Processus industriels - questions
+  question_achat_produit_agri_2 = Question.create!(
+    calculation: true,
+    content: "What is the quantity purchased of durum wheat? (in kg)",
+    ademe_emission_factor_id: AdemeEmissionFactor.find{ |item| item.count == 1405 }.id,
+    emission_module_id: achat_produit_agri.id)
 
+  # achat_produit_agri - answers
 
-  # Processus industriels - answers
+  # achats pour le manufacturing only
 
+    answer_comb_fossiles_1_manuf = Answer.create!(
+        calculation: true,
+        question_id: question_achat_produit_agri_1.id,
+        report_scope_orga_id: report1_scope2_orga.id,
+        unit: "kg",
+        content: 500000)
 
+    answer_achat_produit_agri_2_manuf = Answer.create!(
+        calculation: true,
+        question_id: question_achat_produit_agri_2.id,
+        report_scope_orga_id: report1_scope2_orga.id,
+        unit: "kg",
+        content: 300000)
 
+# ==============================================================================
+# TESTORGA
+# ==============================================================================
+
+  my_company = Testorga.create!(
+    name: "Company")
+  amer = Testorga.create!(
+    name: "AMER",
+    parent_id: 0)
+  apac = Testorga.create!(
+    name: "APAC",
+    parent_id: 0)
+  emea = Testorga.create!(
+    name: "EMEA",
+    parent_id: 0)
+  manufacturing_amer = Testorga.create!(
+    name: "Manufacturing",
+    parent_id: 1
+    )
+  manufacturing_apac = Testorga.create!(
+    name: "Manufacturing",
+    parent_id: 2
+    )
+  manufacturing_emea = Testorga.create!(
+    name: "Manufacturing",
+    parent_id: 3
+    )

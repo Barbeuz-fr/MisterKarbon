@@ -22,4 +22,7 @@ Rails.application.routes.draw do
     resources :report_scope_orga_users, only: [:new, :create, :destroy]
   end
 
+# Test orga à plusieurs niveaux
+  resources :testorgas, only: [:index]
+
 end

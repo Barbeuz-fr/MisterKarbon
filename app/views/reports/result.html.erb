@@ -9,42 +9,121 @@
     <h3>Your report : <%= @report.name %> - <%= @report.year %></h3>
   </div>
 
+
+<!--
+----------------------------------------------------------
+STACKED BAR CHART
+ ----------------------------------------------------------
+ -->
+
+
+<div class="container">
+  <h4>Greenhouse gases summary</h4>
+  <p>Unit: kgCO2e</p>
+  <!-- Déclaration données : orga et emissions -->
+  <div class="d-flex align-items-center">
+    <%= content_tag :div, '',
+                    id: 'bar_chart_data',
+                    data: {emissions: @y_axis_organizations,
+                          orga: @label_orga} %>
+    <%= content_tag 'canvas', '',
+                    id: 'mybarChart',
+                    width: '600', height: '400',
+                    data: {titles: @x_axis_modules} %>
+    </div>
+</div>
+
+<!--
+----------------------------------------------------------
+DATA TABLE
+ ----------------------------------------------------------
+-->
+
+<!-- TO DO - mettre ongletes -->
+<!-- <br><br>
+<%= @y_axis_organizations %>
+<br><br>
+<%= @x_axis_modules %>
+<br><br>
+ -->
+
 <div class="container">
   <div class="row">
-    <div class="col-3">
-      <p>Question number</p>
+    <div class="col-2 tab-header text-white">
+      <p class="text-center">Module - Organization</p>
     </div>
-    <div class="col-3">
-      <p>Emission factor value</p>
+    <div class="col-4 tab-header text-white">
+      <div class="tab-header text-white">
+        <p class="text-center">Question</p>
+      </div>
     </div>
-    <div class="col-3">
-      <p>Answer</p>
+    <div class="col-2 tab-header text-white">
+      <div class="tab-header text-white">
+        <p class="text-center">Emission factor value</p>
+      </div>
     </div>
-    <div class="col-3">
-      <p>Calculation of total emissions</p>
+    <div class="col-2 tab-header text-white">
+      <div class="tab-header text-white">
+        <p class="text-center">Answer</p>
+      </div>
+    </div>
+    <div class="col-2 text-white">
+      <div class="tab-header text-white">
+        <p class="text-center">Calculation of total emissions</p>
+      </div>
     </div>
   </div>
 </div>
 
+
 <div class="container">
   <div class="row">
     <% @output_array.each do |item| %>
-        <div class="col-3">
+      <% if item[:calculation] == true %>
+        <div class="col-2">
+          <p><%= item[:emission_module_name] %> - <%= item[:orga_scope_name] %></p>
+        </div>
+        <div class="col-4">
           <!-- Question number -->
-          <p><%= item[:answer_number] %></p>
+          <p><%= item[:question] %></p>
         </div>
-        <div class="col-3">
+        <div class="col-2">
           <!-- Question emission factor name and value -->
-          <p><%= item[:ademe_factor] %></p>
+          <p><%= item[:ademe_factor] %> <%= item[:ademe_factor_unit] %></p>
         </div>
-        <div class="col-3">
+        <div class="col-2">
           <!-- Answer value -->
-          <p><%= item[:answer] %></p>
+          <p><%= item[:answer] %> <%= item[:answer_unit] %> </p>
         </div>
-        <div class="col-3">
+        <div class="col-2">
           <!-- Output (emission factur x answer value) -->
-          <p><%= item[:emission_answer_calculation] %></p>
+          <p><%= item[:emission_answer_calculation].truncate %>kgCO2e</p>
         </div>
+      <% end %>
     <% end %>
   </div>
 </div>
+
+<!--
+----------------------------------------------------------
+SIMPLE BAR CHART
+ ----------------------------------------------------------
+-->
+
+<!-- <div class="container">
+  <p>Test 1</p>
+  <div>
+    <%= content_tag 'canvas', '', id: 'myChart', width: '1000', height: '600',
+        data: {titles: @labels,
+              values: @emissions_bar_chart} %>
+  </div>
+</div>
+ -->
+
+
+<div class="container">
+  <h5>Ajout de tab avec les resultats </h5>
+  <p>Tab par type d'orga</p>
+  <p>avec les infos de chaque module : question & réponse</p>
+</div>
+
