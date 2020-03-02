@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   # creation et destroy de report_scope lors de la creation d'un projet
-  resources :report_scopes, only: [:destroy]
+  resources :report_scope_orgas, only: [:destroy]
 
   resources :reports do
     resources :report_scopes, except: :destroy

@@ -4,6 +4,7 @@
   <%#= emission_id = report_scope.emission_module.name %>
   <%# end %>
 </div> -->
+
 <div class="container">
   <div class="d-flex justify-content-between">
     <%= link_to "Previous", report_report_scopes_path(params[:report_id]), class:"btn btn-secondary mt-3" %>
@@ -11,41 +12,64 @@
   </div>
 </div>
 
-<div class="container width-form">
-  <div class="form-post mt-0">
-    <%= simple_form_for [@report, @report_scope_orga] do |f| %>
-    <div class="row">
-      <%= f.association :orga, as: :radio_buttons, label: 'Choose a business unit' %>
-    </div>
-    <div class="row">
-      <!-- afficher  -->
-      <%= f.association :report_scope, as: :check_boxes, label: 'Choose emission module(s)', label_html: { class: 'text-success' }, collection: @report.report_scopes %>
-    </div>
-      <!-- Inject categories here -->
-    <div class="row">
-      <%= f.submit "Save", class: "btn-lg btn-block btn-success text-white"  %>
-    </div>
-    <% end %>
-  </div>
+
+<div class="container mt-3">
+  <h4>Modules selected by business unit</h4>
+  <h5>Project: <%= @report.name %> - <%= @report.year %> </h5>
 </div>
 
-<!-- <div class="container"> -->
+
+<!-- </div> -->
+
   <div class="container">
     <div class="mx-5">
       <div class="row">
-        <% @report_scope_orgas.group_by(&:orga).each do |orga, array| %>
-          <div class="col-3">
-            <ul class="list-group m-3">
-              <li class="list-group-item active"><%= orga.name %></li>
-              <% array.each do |r| %>
-                <li class="list-group-item"><%= r.report_scope.emission_module.name %></li>
-              <% end %>
-            </ul>
-          </div>
+        <% @orgas.each do |orga| %>
+          <% unless @report_scope_orgas.find_by(orga_id: orga.id).present? %>
+            <div class="col-4">
+              <ul class="list-group m-3">
+                <li class="list-group-item active"><%= orga.name %></li>
+                <li class="list-group-item">
+                  <button type="button" class="btn" data-toggle="modal" data-target="#staticBackdrop<%= orga.name.gsub(" ", "") %>">
+                      Add a module
+                  </button>
+                </li>
+              </ul>
+            </div>
+          <% else %>
+            <% @report_scope_orgas.where(orga_id: orga.id).group_by(&:orga).each do |orga, array| %>
+              <div class="col-4">
+                <ul class="list-group m-3">
+                  <li class="list-group-item active"><%= orga.name %></li>
+                  <% array.each do |r| %>
+                    <li class="list-group-item"><%= r.report_scope.emission_module.name %>
+                    <%= link_to "🗑",
+                     report_report_scope_orga_path(@report.id, r.id),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" } %>
+                  </li>
+                  <% end %>
+                  <li class="list-group-item">
+                    <button type="button" class="btn" data-toggle="modal" data-target="#staticBackdrop<%= orga.name.gsub(
+                  " ", "") %>">
+                        Add a module
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            <% end %>
+          <% end %>
+            <%= render 'shared/modal-report-scope-orga', orga: orga %>
         <% end %>
       </div>
     </div>
   </div>
-<!-- </div> -->
+
+
+
+
+
+
+
 
 

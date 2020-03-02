@@ -1,0 +1,50 @@
+<div class="modal fade" id="staticBackdrop<%= orga.name.gsub(" ", "") %>" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content width-form">
+      <div class="modal-header width-form">
+        <h5 class="modal-title" id="staticBackdropLabel">Add module(s)</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container width-form">
+          <div class="form-post mt-0">
+            <%= simple_form_for [@report, @report_scope_orga],
+            html: {id: "new_report_scope_orga_#{orga.id}"} do |f| %>
+              <div class="row">
+                <%= f.association :orga, value_method: :id,
+                input_html: { value: orga.id, id: "report_scope_orga_orga_#{orga.id}" }, as: :hidden%>
+              </div>
+              <div class="row">
+                <!-- afficher  -->
+              <fieldset class="form-group check_boxes required report_scope_orga_report_scope">
+                <% @report.report_scopes.each do |report_scope| %>
+                   <div class="form-check">
+                    <input class="form-check-input check_boxes required" type="checkbox" value="<%= report_scope.id %>" name="report_scope_orga[report_scope_id][]" id="report_scope_orga_report_scope_id_<%=orga.id %>_<%=report_scope.id %>">
+                    <label class="form-check-label collection_check_boxes" for="report_scope_orga_report_scope_id_<%=orga.id %>_<%=report_scope.id %>" ><%= report_scope  %></label>
+                  </div>
+                <% end %>
+              </fieldset>
+                 <!-- input_html: { id: "report_scope_orga_report_scope_id_#{orga.id}_#{emission_module}" } -->
+              </div>
+                <!-- Inject categories here -->
+              <div class="row">
+                <%= f.submit "Save", class: "btn-lg btn-block btn-success text-white"  %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+<!--       <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+
+
+
+

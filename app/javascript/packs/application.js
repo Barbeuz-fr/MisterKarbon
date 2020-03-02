@@ -25,6 +25,13 @@ document.addEventListener('turbolinks:load', function () {
 
 }, false)
 
+// const button = document.getElementById('data-orga');
+// button.addEventListener('click', (event) => {
+//   console.log(event);
+// });
+
+
+
 
 // ----------------------------------------------------
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
