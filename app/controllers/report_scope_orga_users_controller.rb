@@ -1,6 +1,7 @@
 class ReportScopeOrgaUsersController < ApplicationController
 
   def index
+    @reports = Report.all
     @report = Report.find(params[:report_id])
 
     # affichage sous-navbar
