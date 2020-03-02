@@ -1,3 +1,4 @@
+<!-- Chevrons d'avancement (à supprimer?) -->
 <div class="container mt-2">
   <nav class="nav nav-pills nav-fill">
     <a class="nav-item nav-link">1. Module selection</a>
@@ -9,7 +10,7 @@
   </nav>
 </div>
 
-
+<!-- Boutons de navigation -->
 <div class="container">
   <div class="d-flex justify-content-between">
     <%= link_to "Previous", new_report_report_scope_orga_path(@report), class:"btn btn-secondary mt-3" %>
@@ -17,6 +18,7 @@
   </div>
 </div>
 
+<!-- Titre -->
 <div class="container">
   <div class="row  mt-3 mb-3">
     <div class="col-8 ml-3">
@@ -27,8 +29,6 @@
 
 
 <!-- Headers tableau -->
-<!-- Organization - Emission module - Contributors - Add a contributor -->
-
   <div class="container mb-2">
     <div class="row">
       <div class="col-3">
@@ -59,32 +59,41 @@
 
 
 <!-- Contenu du tableau avec bouton d'ajout de contributeur-->
-
 <div class="container">
   <div class="row">
     <div class="col-9">
       <% @report.report_scopes.each do |report_scope|  %>
         <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
-          <div class="row">
+          <% if params[:scope].to_i == report_scope_orga.id %>
+            <div class="row transparent">
+          <% else %>
+            <div class="row">
+          <% end %>
             <!-- Nom de l'organisation -->
-            <div class="col-4 flex-cell cell-white-background">
-              <div class="bg-white">
-                <p class="text-center"><%= report_scope_orga.orga.name %></p>
+            <div class="col-4 flex-cell cell-justify-left">
+              <div class="d-flex flex-row">
+                  <%= cl_image_tag report_scope_orga.orga.photo.key, :crop=>"fill", class:"avatar ml-3", style:"width:30px; height:30px"%>
+                  <p class= "pl-2"><%= report_scope_orga.orga.name %></p>
               </div>
             </div>
             <!-- Nom des emissions -->
-            <div class="col-4 flex-cell cell-white-background">
-              <p class="text-center"><%= report_scope.emission_module.name %></p>
+            <div class="col-4 flex-cell cell-justify-left">
+              <% if report_scope.emission_module.photo.attached?  %>
+                <%= cl_image_tag report_scope.emission_module.photo.key, :crop=>"fill", class:"avatar ml-3", style:"width:30px; height:30px"%>
+              <% else %>
+                <%= image_tag "https://cdn2.iconfinder.com/data/icons/vape-1/48/a-18-512.png", class:"avatar ml-3", style:"width:30px; height:30px"%>
+              <% end %>
+              <p class="pl-2"><%= report_scope.emission_module.name %></p>
             </div>
             <!-- Avatar des contributeurs et bouton "+" -->
-            <div class="col-4 flex-cell cell-justify-left cell-white-background">
+            <div class="col-4 flex-cell cell-justify-left">
               <div class="mt-2 mb-2">
                 <ul class= "m-0">
                   <% report_scope_orga.report_scope_orga_users.each do |report_scope_orga_user| %>
                     <% if report_scope_orga_user.user.photo.attached?  %>
-                      <%= cl_image_tag report_scope_orga_user.user.photo.key, :crop=>"fill", class:"avatar ml-3", style:"width:50px; height:50px"%>
+                      <%= cl_image_tag report_scope_orga_user.user.photo.key, :crop=>"fill", class:"avatar ml-3", style:"width:40px; height:40px"%>
                     <% else %>
-                      <%= image_tag "http://www.tafecafe.com/wp-content/uploads/2015/09/default_avatar.png", class:"avatar ml-3", style:"width:50px; height:50px"%>
+                      <%= image_tag "http://www.tafecafe.com/wp-content/uploads/2015/09/default_avatar.png", class:"avatar ml-3", style:"width:40px; height:40px"%>
                     <% end %>
                   <% end %>
                   <%= link_to "",
@@ -108,10 +117,10 @@
           <!-- Simple form barre de recherche-->
             <%= form_tag url_for(scope: params[:scope]), method: :get do %>
               <div class="input-group mb-3">
-                <%= text_field_tag :query, params[:query], class:"form-control "%>
+                <%= text_field_tag :query, params[:query], class:"form-control", autofocus: true%>
                 <%= hidden_field_tag :scope, params[:scope]%>
               <div class="input-group-append">
-                <%= submit_tag "🔎" %>
+                <%= submit_tag "🔎", id:"loupe" %>
               </div>
             <% end %>
 

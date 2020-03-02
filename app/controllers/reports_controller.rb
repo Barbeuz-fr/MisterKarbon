@@ -32,7 +32,7 @@ class ReportsController < ApplicationController
     @counter_reports_to_send = 0
     @report.report_scopes.each do |report_scope|
       report_scope.report_scope_orgas.each do |report_scope_orga|
-        if report_scope_orga.status == "To send"
+        if report_scope_orga.status == "Invite"
           @counter_reports_to_send += 1
         end
       end
@@ -51,11 +51,11 @@ class ReportsController < ApplicationController
     @status_done = 0
     @report.report_scopes.each do |report_scope|
       report_scope.report_scope_orgas.each do |report_scope_orga|
-        if report_scope_orga.status == "To send"
+        if report_scope_orga.status == "Invite"
           @status_to_send += 1
-        elsif report_scope_orga.status == "Sent, not yet started"
+        elsif report_scope_orga.status == "Invited, not yet started"
           @status_sent += 1
-        elsif report_scope_orga.status == "On-going"
+        elsif report_scope_orga.status == "On-going work"
           @status_ongoing += 1
         elsif report_scope_orga.status == "Pending validation"
           @status_pending_validation += 1
@@ -74,7 +74,6 @@ class ReportsController < ApplicationController
     @reports = Report.all
     @report = Report.find(params[:report_id])
     @report_scopes_array = @report.report_scopes
-
 
     # affichage side bar
     @sidebar_show = true
@@ -107,14 +106,40 @@ class ReportsController < ApplicationController
     end
 
     # Definition des variables avec les données pour barchart simple
-    @labels = []
-    @emissions_bar_chart = []
-    @output_array.each do |item|
-      @emissions_bar_chart << item[:emission_answer_calculation]
-      @labels << "#{item[:emission_module_name]} - #{item[:orga_scope_name]} - #{item[:answer_number]}"
+    # @labels = []
+    # @emissions_bar_chart = []
+    # @output_array.each do |item|
+    #   @emissions_bar_chart << item[:emission_answer_calculation]
+    #   @labels << "#{item[:emission_module_name]} - #{item[:orga_scope_name]} - #{item[:answer_number]}"
+    # end
+
+    # ------------------------------------------------------------------
+    # PIE CHART
+    # ------------------------------------------------------------------
+    # Calcul de l'array d'avancement
+    @progress_data = [0, 0, 0, 0, 0, 0]
+    @report.report_scopes.each do | report_scope |
+      report_scope.report_scope_orgas.each do |report_scope_orga|
+        if report_scope_orga.status == "Invite"
+          @progress_data[0] += 1
+        elsif report_scope_orga.status == "Invited, not yet started"
+          @progress_data[1] += 1
+        elsif report_scope_orga.status == "On-going work"
+          @progress_data[2] += 1
+        elsif report_scope_orga.status == "Pending validation"
+          @progress_data[3] += 1
+        elsif report_scope_orga.status == "Done"
+          @progress_data[4] += 1
+        else report_scope_orga.status == "n.a."
+          @progress_data[5] += 1
+        end
+      end
     end
 
 
+    # ------------------------------------------------------------------
+    # STACKED BAR CHART
+    # ------------------------------------------------------------------
 
     # Definition des variables pour stackedbarchart (module x orga)
     # 1/ Axe X : emission modules

@@ -9,30 +9,47 @@
     <h3>Your report : <%= @report.name %> - <%= @report.year %></h3>
   </div>
 
-
-<!--
-----------------------------------------------------------
-STACKED BAR CHART
- ----------------------------------------------------------
- -->
-
-
-<div class="container">
-  <h4>Greenhouse gases summary</h4>
-  <p>Unit: kgCO2e</p>
-  <!-- Déclaration données : orga et emissions -->
-  <div class="d-flex align-items-center">
-    <%= content_tag :div, '',
-                    id: 'bar_chart_data',
-                    data: {emissions: @y_axis_organizations,
-                          orga: @label_orga} %>
-    <%= content_tag 'canvas', '',
-                    id: 'mybarChart',
-                    width: '600', height: '400',
-                    data: {titles: @x_axis_modules} %>
+<div class="row">
+    <!--
+    ----------------------------------------------------------
+    PIE BAR CHART (PROGRESS)
+     ----------------------------------------------------------
+     -->
+  <div class="col-4">
+    <div class="container">
+      <h4>Report progress</h4>
+      <div class="d-flex align-items-center">
+        <%= content_tag 'canvas', '',
+                    id: 'progressPieChart',
+                    width: '200', height: '200',
+                    data: {progress: @progress_data } %>
+      </div>
     </div>
-</div>
+  </div>
+  <!--
+  ----------------------------------------------------------
+  STACKED BAR CHART (EMISSIONS)
+   ----------------------------------------------------------
+   -->
+  <div class="col-8">
+    <div class="container">
+      <h4>Greenhouse gases summary</h4>
+      <p>Unit: kgCO2e</p>
+      <!-- Déclaration données : orga et emissions -->
+      <div class="d-flex align-items-center">
+        <%= content_tag :div, '',
+                        id: 'bar_chart_data',
+                        data: {emissions: @y_axis_organizations,
+                              orga: @label_orga} %>
+        <%= content_tag 'canvas', '',
+                        id: 'mybarChart',
+                        width: '600', height: '400',
+                        data: {titles: @x_axis_modules} %>
+        </div>
+    </div>
+  </div>
 
+</div>
 <!--
 ----------------------------------------------------------
 DATA TABLE

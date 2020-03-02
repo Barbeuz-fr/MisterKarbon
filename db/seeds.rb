@@ -17,7 +17,7 @@ require "open-uri"
   Orga.destroy_all
   Answer.destroy_all
   Question.destroy_all
-  AdemeEmissionFactor.destroy_all
+  # AdemeEmissionFactor.destroy_all
   ReportScope.destroy_all
   Report.destroy_all
   User.destroy_all
@@ -42,6 +42,11 @@ require "open-uri"
   avatar_2_file = URI.open('https://3wpie932p5cn1pgjba40gtkbm83-wpengine.netdna-ssl.com/wp-content/uploads/2018/10/Julien-Lachance.jpg')
   avatar_3_file = URI.open('http://www.agenceartistique.com/DATA/PHOTO/359_grande.jpg')
 
+
+# ==============================================================================
+# IMAGES ORGA
+# ==============================================================================
+
 # --------------------------------------------------------------------------------------
 # IMPORTATION CSV ADEME
 # ==============================================================================
@@ -50,30 +55,30 @@ require "open-uri"
   p "starting csv import ADEME"
   require 'csv'
 
-  count = 0
-  csv_text = File.read(Rails.root.join('lib', 'seeds', 'csv_for_seed.csv'))
-  csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-  csv.each do |row|
-    count += 1
-    t = AdemeEmissionFactor.new()
-    t.count = count
-    p row['Code de la catégorie']
-    t.name = row['Code de la catégorie']
-    t.emission_value = row['Somme de Total poste non décomposé2']
-    p t.emission_value
-    t.unit = row['Unité anglais']
-    t.id_ademe = row["Identifiant de l'élément"]
-    t.nom_base = row['Nom base français']
-    t.save
-  end
+  # count = 0
+  # csv_text = File.read(Rails.root.join('lib', 'seeds', 'csv_for_seed.csv'))
+  # csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+  # csv.each do |row|
+  #   count += 1
+  #   t = AdemeEmissionFactor.new()
+  #   t.count = count
+  #   p row['Code de la catégorie']
+  #   t.name = row['Code de la catégorie']
+  #   t.emission_value = row['Somme de Total poste non décomposé2']
+  #   p t.emission_value
+  #   t.unit = row['Unité anglais']
+  #   t.id_ademe = row["Identifiant de l'élément"]
+  #   t.nom_base = row['Nom base français']
+  #   t.save
+  # end
 
-  p "import done"
+  # p "import done"
 
-  p "last line ADEME emission factor"
-  p AdemeEmissionFactor.last
+  # p "last line ADEME emission factor"
+  # p AdemeEmissionFactor.last
 
-  p "count ADEME line"
-  AdemeEmissionFactor.count
+  # p "count ADEME line"
+  # AdemeEmissionFactor.count
 
 # ==============================================================================
 # COMPANY
@@ -106,34 +111,58 @@ require "open-uri"
 
   supply_chain = Orga.new(name: "Supply Chain")
   supply_chain.company = company
+  supply_chain.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'supply-chain.png')),
+    filename: 'supply-chain.png', content_type: 'image/png')
   supply_chain.save
 
   manufacturing = Orga.new(name: "Manufacturing")
   manufacturing.company = company
+  manufacturing.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'manufacturing.png')),
+    filename: 'manufacturing.png', content_type: 'image/png')
   manufacturing.save
 
   rd = Orga.new(name: "R&D")
   rd.company = company
+  rd.photo.attach(
+  io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'rd.png')),
+  filename: 'rd.png', content_type: 'image/png')
   rd.save
 
   product_development = Orga.new(name: "Product Development")
   product_development.company = company
+  product_development.photo.attach(
+  io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'product-dev.png')),
+  filename: 'product-dev.png', content_type: 'image/png')
   product_development.save
 
   marketing = Orga.new(name: "Marketing")
   marketing.company = company
+  marketing.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'marketing.png')),
+    filename: 'marketing.png', content_type: 'image/png')
   marketing.save
 
   sales = Orga.new(name: "Sales")
   sales.company = company
+  sales.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'sales.png')),
+    filename: 'sales.png', content_type: 'image/png')
   sales.save
 
   finance = Orga.new(name: "Finance")
   finance.company = company
+  finance.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'finance.png')),
+    filename: 'finance.png', content_type: 'image/png')
   finance.save
 
   hr = Orga.new(name: "HR")
   hr.company = company
+  hr.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'hr.png')),
+    filename: 'hr.png', content_type: 'image/png')
   hr.save
 
 # ==============================================================================
@@ -507,7 +536,7 @@ require "open-uri"
   report1_scope1_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope1.id,
     orga_id: manufacturing.id,
-    status: "On-going"
+    status: "On-going work"
     )
   report1_scope1_orga.save
 
@@ -527,7 +556,7 @@ require "open-uri"
   report1_scope3_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope3.id,
     orga_id: manufacturing.id,
-    status: "On-going"
+    status: "On-going work"
     )
   report1_scope3_orga.save
 
@@ -575,7 +604,7 @@ require "open-uri"
   report_2_scope1_orga = ReportScopeOrga.new(
     report_scope_id:report_2_scope1.id,
     orga_id: finance.id,
-    status: "To send"
+    status: "Invite"
     )
   report_2_scope1_orga.save
 
@@ -584,7 +613,7 @@ require "open-uri"
   report_2_scope2_orga = ReportScopeOrga.new(
     report_scope_id:report_2_scope2.id,
     orga_id: finance.id,
-    status: "Sent, not yet started"
+    status: "Invited, not yet started"
     )
   report_2_scope2_orga.save
 
@@ -593,7 +622,7 @@ require "open-uri"
   report_2_scope3_orga = ReportScopeOrga.new(
     report_scope_id:report_2_scope1.id,
     orga_id: hr.id,
-    status: "On-going"
+    status: "On-going work"
     )
   report_2_scope3_orga.save
 
@@ -602,7 +631,7 @@ require "open-uri"
   report_2_scope4_orga = ReportScopeOrga.new(
     report_scope_id:report_2_scope2.id,
     orga_id: hr.id,
-    status: "On-going"
+    status: "On-going work"
     )
   report_2_scope4_orga.save
 
@@ -622,21 +651,21 @@ require "open-uri"
   report_3_scope1_orga = ReportScopeOrga.new(
     report_scope_id:report_3_scope1.id,
     orga_id: rd.id,
-    status: "To send"
+    status: "Invite"
     )
   report_3_scope1_orga.save
 
   report_3_scope2_orga = ReportScopeOrga.new(
     report_scope_id:report_3_scope2.id,
     orga_id: rd.id,
-    status: "To send"
+    status: "Invite"
     )
   report_3_scope2_orga.save
 
   report_3_scope3_orga = ReportScopeOrga.new(
     report_scope_id:report_3_scope3.id,
     orga_id: rd.id,
-    status: "To send"
+    status: "Invite"
     )
   report_3_scope3_orga.save
 
