@@ -17,7 +17,7 @@ require "open-uri"
   Orga.destroy_all
   Answer.destroy_all
   Question.destroy_all
-  # AdemeEmissionFactor.destroy_all
+  AdemeEmissionFactor.destroy_all
   ReportScope.destroy_all
   Report.destroy_all
   User.destroy_all
@@ -37,33 +37,33 @@ require "open-uri"
 # IMPORTATION CSV ADEME
 # ==============================================================================
 
-  # p "starting csv import ADEME"
+  p "starting csv import ADEME"
   require 'csv'
 
-  # count = 0
-  # csv_text = File.read(Rails.root.join('lib', 'seeds', 'csv_for_seed.csv'))
-  # csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-  # csv.each do |row|
-  #   count += 1
-  #   t = AdemeEmissionFactor.new()
-  #   t.count = count
-  #   p row['Code de la catégorie']
-  #   t.name = row['Code de la catégorie']
-  #   t.emission_value = row['Somme de Total poste non décomposé2']
-  #   p t.emission_value
-  #   t.unit = row['Unité anglais']
-  #   t.id_ademe = row["Identifiant de l'élément"]
-  #   t.nom_base = row['Nom base français']
-  #   t.save
-  # end
+  count = 0
+  csv_text = File.read(Rails.root.join('lib', 'seeds', 'csv_for_seed.csv'))
+  csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+  csv.each do |row|
+    count += 1
+    t = AdemeEmissionFactor.new()
+    t.count = count
+    p row['Code de la catégorie']
+    t.name = row['Code de la catégorie']
+    t.emission_value = row['Somme de Total poste non décomposé2']
+    p t.emission_value
+    t.unit = row['Unité anglais']
+    t.id_ademe = row["Identifiant de l'élément"]
+    t.nom_base = row['Nom base français']
+    t.save
+  end
 
-  # p "import done"
+  p "import done"
 
-  # p "last line ADEME emission factor"
-  # p AdemeEmissionFactor.last
+  p "last line ADEME emission factor"
+  p AdemeEmissionFactor.last
 
-  # p "count ADEME line"
-  # AdemeEmissionFactor.count
+  p "count ADEME line"
+  AdemeEmissionFactor.count
 
 # ==============================================================================
 # COMPANY
@@ -144,27 +144,27 @@ require "open-uri"
   p manager
   p manager.first_name
 
-  p "Generation des users pour les orgas"
+  # p "Generation des users pour les orgas"
 
-  orga_pour_faker = ["Marketing", "Manufacturing", "Suppy Chain", "HR", "Finance", "Product Development"]
-  orga_pour_faker.each do |orga|
-    10.times do
-        first_name = Faker::Name.first_name
-        last_name = Faker::Name.last_name
-        user = User.new(
-        first_name: Faker::Name.first_name,
-        last_name: Faker::Name.last_name,
-        email: "#{first_name}.#{last_name}@#{company.name}.com",
-        # pour job position et organisation position, peut etre mettre un array.sample
-        #sur ce qui nous interesse
-        job_position: Faker::Job.title,
-        organization_position: orga,
-        password: "qwerty123",
-        company_id: company.id
-        )
-        user.save!
-    end
-  end
+  # orga_pour_faker = ["Marketing", "Manufacturing", "Suppy Chain", "HR", "Finance", "Product Development"]
+  # orga_pour_faker.each do |orga|
+  #   10.times do
+  #       first_name = Faker::Name.first_name
+  #       last_name = Faker::Name.last_name
+  #       user = User.new(
+  #       first_name: Faker::Name.first_name,
+  #       last_name: Faker::Name.last_name,
+  #       email: "#{first_name}.#{last_name}@#{company.name}.com",
+  #       # pour job position et organisation position, peut etre mettre un array.sample
+  #       #sur ce qui nous interesse
+  #       job_position: Faker::Job.title,
+  #       organization_position: orga,
+  #       password: "qwerty123",
+  #       company_id: company.id
+  #       )
+  #       user.save!
+  #   end
+  # end
 
   company_employee_1 = User.new(
     first_name: "Germain",
