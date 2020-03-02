@@ -48,7 +48,6 @@ if (document.getElementById('mybarChart')) {
 // barChart();
 
 
-
 // import * as d3 from "d3";
 // import { test } from "../plugins/marimekko";
 // test();
