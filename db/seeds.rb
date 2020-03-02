@@ -46,6 +46,7 @@ require "open-uri"
 # IMPORTATION CSV ADEME
 # ==============================================================================
 
+
   p "starting csv import ADEME"
   require 'csv'
 
@@ -155,6 +156,7 @@ require "open-uri"
   manager.save
   p manager
   p manager.first_name
+
 
   p "Generation des users pour les orgas"
 
