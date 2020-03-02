@@ -47,6 +47,8 @@ if (document.getElementById('mybarChart')) {
 // import { stackedBar } from '../plugins/bar_chart';
 stackedBar();
 
+import { pieChartProgress } from '../plugins/pie_chart';
+
 
 // import * as d3 from "d3";
 // import { test } from "../plugins/marimekko";
