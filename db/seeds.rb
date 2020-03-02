@@ -42,6 +42,11 @@ require "open-uri"
   avatar_2_file = URI.open('https://3wpie932p5cn1pgjba40gtkbm83-wpengine.netdna-ssl.com/wp-content/uploads/2018/10/Julien-Lachance.jpg')
   avatar_3_file = URI.open('http://www.agenceartistique.com/DATA/PHOTO/359_grande.jpg')
 
+
+# ==============================================================================
+# IMAGES ORGA
+# ==============================================================================
+
 # --------------------------------------------------------------------------------------
 # IMPORTATION CSV ADEME
 # ==============================================================================
@@ -105,22 +110,37 @@ require "open-uri"
 
   supply_chain = Orga.new(name: "Supply Chain")
   supply_chain.company = company
+  supply_chain.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'supply-chain.png')),
+    filename: 'supply-chain.png', content_type: 'image/png')
   supply_chain.save
 
   manufacturing = Orga.new(name: "Manufacturing")
   manufacturing.company = company
+  manufacturing.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'manufacturing.png')),
+    filename: 'manufacturing.png', content_type: 'image/png')
   manufacturing.save
 
   rd = Orga.new(name: "R&D")
   rd.company = company
+  rd.photo.attach(
+  io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'rd.png')),
+  filename: 'rd.png', content_type: 'image/png')
   rd.save
 
   product_development = Orga.new(name: "Product Development")
   product_development.company = company
+  product_development.photo.attach(
+  io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'product-dev.png')),
+  filename: 'product-dev.png', content_type: 'image/png')
   product_development.save
 
   marketing = Orga.new(name: "Marketing")
   marketing.company = company
+  marketing.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'marketing.png')),
+    filename: 'marketing.png', content_type: 'image/png')
   marketing.save
 
   sales = Orga.new(name: "Sales")
@@ -129,10 +149,16 @@ require "open-uri"
 
   finance = Orga.new(name: "Finance")
   finance.company = company
+  finance.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'finance.png')),
+    filename: 'finance.png', content_type: 'image/png')
   finance.save
 
   hr = Orga.new(name: "HR")
   hr.company = company
+  hr.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'hr.png')),
+    filename: 'hr.png', content_type: 'image/png')
   hr.save
 
 # ==============================================================================
@@ -155,6 +181,7 @@ require "open-uri"
   manager.save
   p manager
   p manager.first_name
+
 
   p "Generation des users pour les orgas"
 
