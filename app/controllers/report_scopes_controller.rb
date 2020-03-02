@@ -9,6 +9,10 @@ class ReportScopesController < ApplicationController
     @report_scope = ReportScope.new()
 
     @project_create_1_nav = true
+
+    # affichage side bar
+    @sidebar_show = true
+
   end
 
   def create
