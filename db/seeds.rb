@@ -38,7 +38,7 @@ require "open-uri"
 # ==============================================================================
 
   # p "starting csv import ADEME"
-  require 'csv'
+  # require 'csv'
 
   # count = 0
   # csv_text = File.read(Rails.root.join('lib', 'seeds', 'csv_for_seed.csv'))
@@ -144,27 +144,27 @@ require "open-uri"
   p manager
   p manager.first_name
 
-  p "Generation des users pour les orgas"
+  # p "Generation des users pour les orgas"
 
-  orga_pour_faker = ["Marketing", "Manufacturing", "Suppy Chain", "HR", "Finance", "Product Development"]
-  orga_pour_faker.each do |orga|
-    10.times do
-        first_name = Faker::Name.first_name
-        last_name = Faker::Name.last_name
-        user = User.new(
-        first_name: Faker::Name.first_name,
-        last_name: Faker::Name.last_name,
-        email: "#{first_name}.#{last_name}@#{company.name}.com",
-        # pour job position et organisation position, peut etre mettre un array.sample
-        #sur ce qui nous interesse
-        job_position: Faker::Job.title,
-        organization_position: orga,
-        password: "qwerty123",
-        company_id: company.id
-        )
-        user.save!
-    end
-  end
+  #   10.times do
+  #       first_name = Faker::Name.first_name,
+  #       last_name = Faker::Name.last_name,
+  #       user = User.new(
+  #       first_name: first_name,
+  #       last_name: last_name,
+  #       email: "#{first_name}.#{last_name}@gmail.com",
+  #       # email: "#{first_name}.#{last_name}@gmail.com",
+  #       # pour job position et organisation position, peut etre mettre un array.sample
+  #       #sur ce qui nous interesse
+  #       company_id: company.id,
+  #       job_position: Faker::Job.title,
+  #       organization_position: ["Marketing", "Manufacturing", "Suppy Chain", "HR", "Finance", "Product Development"].sample,
+  #       password: "qwerty123",
+
+  #       )
+  #       p user
+  #       user.save!
+  #   end
 
   company_employee_1 = User.new(
     first_name: "Germain",

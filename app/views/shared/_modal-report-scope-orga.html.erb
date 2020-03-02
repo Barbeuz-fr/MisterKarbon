@@ -11,9 +11,9 @@
         <div class="container width-form">
           <div class="form-post mt-0">
             <%= simple_form_for [@report, @report_scope_orga],
-            html: {id: "new_report_scope_orga_#{orga.id}"} do |f| %>
+              html: {id: "new_report_scope_orga_#{orga.id}"} do |f| %>
               <div class="row">
-                <%= f.association :orga, value_method: :id,
+                <%= f.association :orga, as: :radio_buttons,
                 input_html: { value: orga.id, id: "report_scope_orga_orga_#{orga.id}" }, as: :hidden%>
               </div>
               <div class="row">
