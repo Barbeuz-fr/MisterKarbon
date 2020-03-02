@@ -44,8 +44,8 @@ if (document.getElementById('mybarChart')) {
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
 
-// import { barChart } from '../plugins/bar_chart';
-// barChart();
+// import { stackedBar } from '../plugins/bar_chart';
+stackedBar();
 
 
 // import * as d3 from "d3";

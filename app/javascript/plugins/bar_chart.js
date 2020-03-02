@@ -43,7 +43,6 @@ const stackedBar = () => {
     } ;
     datasets_for_barchart.push(new_hash)
   };
-  // console.log(datasets_for_barchart);
 
   new Chart(ctx2, {
      type: 'bar',
@@ -69,5 +68,4 @@ const stackedBar = () => {
 };
 
 
-// export { barChart };
 export { stackedBar };
