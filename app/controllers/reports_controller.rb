@@ -3,6 +3,10 @@ class ReportsController < ApplicationController
   def index
     @reports = Report.all
     @report = Report.new()
+
+    # affichage side bar
+    @sidebar_show = true
+
   end
 
 
@@ -33,6 +37,10 @@ class ReportsController < ApplicationController
         end
       end
     end
+
+
+    # affichage side bar
+    @sidebar_show = true
 
     # Calcul des KPIs d'avancement
 
@@ -66,6 +74,10 @@ class ReportsController < ApplicationController
     @reports = Report.all
     @report = Report.find(params[:report_id])
     @report_scopes_array = @report.report_scopes
+
+
+    # affichage side bar
+    @sidebar_show = true
 
     # Output_array: array avec les hash de chaque emission par question
     @output_array = []

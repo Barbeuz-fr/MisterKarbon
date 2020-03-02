@@ -1,10 +1,14 @@
 class ReportScopeOrgaUsersController < ApplicationController
 
   def index
+    @reports = Report.all
     @report = Report.find(params[:report_id])
 
     # affichage sous-navbar
     @project_create_3_nav = true
+
+    # affichage side bar
+    @sidebar_show = true
 
     # Fonction de recherche
     PgSearch.multisearch_options = {
@@ -24,6 +28,10 @@ class ReportScopeOrgaUsersController < ApplicationController
     @report_scope_orga = ReportScopeOrga.find(params[:report_scope_orga_id])
     @report_scope_orga_user = ReportScopeOrgaUser.new
     @report_scope_orga_users = ReportScopeOrgaUser.all
+
+
+    # affichage side bar
+    @sidebar_show = true
 
     # affichage sous-navbar
     @project_create_3_nav = true
