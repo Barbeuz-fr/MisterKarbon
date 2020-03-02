@@ -71,7 +71,7 @@ require "open-uri"
 
   p "create company"
 
-  company = Company.create!(name: "PeaCompany")
+  company = Company.create!(name: "Bread & Co")
 
   p company.name
 
@@ -257,7 +257,7 @@ require "open-uri"
   p "create reports"
 
   report_1 = Report.new(
-    name: "Peas Production",
+    name: "Bread Production",
     year: 2019,
     company_id: company.id,
     user_id: manager.id)
@@ -855,28 +855,28 @@ require "open-uri"
         question_id: question_comb_fossiles_3.id,
         report_scope_orga_id: report1_scope1_orga.id,
         unit: "liters",
-        content: 100000)
+        content: 10000)
 
     answer_comb_fossiles_4_manuf = Answer.create!(
         calculation: true,
         question_id: question_comb_fossiles_4.id,
         report_scope_orga_id: report1_scope1_orga.id,
         unit: "liters",
-        content: 200000)
+        content: 20000)
 
     answer_comb_fossiles_5_manuf = Answer.create!(
         calculation: true,
         question_id: question_comb_fossiles_5.id,
         report_scope_orga_id: report1_scope1_orga.id,
         unit: "liters",
-        content: 10000)
+        content: 1000)
 
     answer_comb_fossiles_6_manuf = Answer.create!(
         calculation: true,
         question_id: question_comb_fossiles_6.id,
         report_scope_orga_id: report1_scope1_orga.id,
         unit: "liters",
-        content: 15000)
+        content: 1500)
 
     answer_comb_fossiles_7_manuf = Answer.create!(
         calculation: true,
@@ -893,14 +893,14 @@ require "open-uri"
 
   question_achat_produit_agri_1 = Question.create!(
     calculation: true,
-    content: "What is the quantity purchased of winter peas? (in kg)",
-    ademe_emission_factor_id: AdemeEmissionFactor.find{ |item| item.count == 1330 }.id,
+    content: "What is the quantity purchased of soft wheat? (in kg)",
+    ademe_emission_factor_id: AdemeEmissionFactor.find{ |item| item.count == 1400 }.id,
     emission_module_id: achat_produit_agri.id)
 
   question_achat_produit_agri_2 = Question.create!(
     calculation: true,
-    content: "What is the quantity purchased of spring peas? (in kg)",
-    ademe_emission_factor_id: AdemeEmissionFactor.find{ |item| item.count == 1331 }.id,
+    content: "What is the quantity purchased of durum wheat? (in kg)",
+    ademe_emission_factor_id: AdemeEmissionFactor.find{ |item| item.count == 1405 }.id,
     emission_module_id: achat_produit_agri.id)
 
   # achat_produit_agri - answers
