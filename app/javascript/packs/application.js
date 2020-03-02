@@ -42,8 +42,8 @@ import "bootstrap";
 // import { barChart } from '../plugins/bar_chart';
 // barChart();
 
-import { stackedBar } from '../plugins/bar_chart';
-stackedBar();
+// import { stackedBar } from '../plugins/bar_chart';
+// stackedBar();
 
 
 // import * as d3 from "d3";
