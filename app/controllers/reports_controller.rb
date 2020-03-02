@@ -78,7 +78,7 @@ class ReportsController < ApplicationController
               answer_number: answer.id,
               ademe_factor: answer.question.ademe_emission_factor.emission_value.to_f,
               ademe_factor_unit: answer.question.ademe_emission_factor.unit,
-              emission_value: answer.content.to_f * answer.question.ademe_emission_factor.emission_value.to_f,
+              emission_answer_calculation: answer.content.to_f * answer.question.ademe_emission_factor.emission_value.to_f,
               emission_module_name: report_scope.emission_module.name,
               orga_scope_name: report_scope_orga.orga.name
             }

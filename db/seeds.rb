@@ -18,7 +18,7 @@ require "open-uri"
   Orga.destroy_all
   Answer.destroy_all
   Question.destroy_all
-  AdemeEmissionFactor.destroy_all
+  # AdemeEmissionFactor.destroy_all
   ReportScope.destroy_all
   Report.destroy_all
   User.destroy_all
@@ -38,31 +38,33 @@ require "open-uri"
 # IMPORTATION CSV ADEME
 # ==============================================================================
 
-  p "starting csv import ADEME"
+  # p "starting csv import ADEME"
   require 'csv'
 
-  count = 0
-  csv_text = File.read(Rails.root.join('lib', 'seeds', 'Base Carbone - V17 vLBA v2 csv.csv'))
-  csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-  csv.each do |row|
-    count += 1
-    t = AdemeEmissionFactor.new()
-    t.count = count
-    t.name = row['Code de la catégorie']
-    t.emission_value = row['Total poste non décomposé']
-    t.unit = row['Unité anglais']
-    t.id_ademe = row["Identifiant de l'élément"]
-    t.nom_base = row['Nom base français']
-    t.save
-  end
+  # count = 0
+  # csv_text = File.read(Rails.root.join('lib', 'seeds', 'csv_for_seed.csv'))
+  # csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+  # csv.each do |row|
+  #   count += 1
+  #   t = AdemeEmissionFactor.new()
+  #   t.count = count
+  #   p row['Code de la catégorie']
+  #   t.name = row['Code de la catégorie']
+  #   t.emission_value = row['Somme de Total poste non décomposé2']
+  #   p t.emission_value
+  #   t.unit = row['Unité anglais']
+  #   t.id_ademe = row["Identifiant de l'élément"]
+  #   t.nom_base = row['Nom base français']
+  #   t.save
+  # end
 
-  p "import done"
+  # p "import done"
 
-  p "last line ADEME emission factor"
-  p AdemeEmissionFactor.last
+  # p "last line ADEME emission factor"
+  # p AdemeEmissionFactor.last
 
-  p "count ADEME line"
-  AdemeEmissionFactor.count
+  # p "count ADEME line"
+  # AdemeEmissionFactor.count
 
 # ==============================================================================
 # COMPANY
@@ -335,6 +337,16 @@ require "open-uri"
   dechets = EmissionModule.create!(name: "Waste management", scope: 3)
 
 # ==============================================================================
+# EMISSION MODULES DESCRIPTION
+# ==============================================================================
+
+  desc_elec = "This questionnaire covers all carbon emissions induced by electricity consumption. Sourcing of renewables with green/white certificates can be specified."
+  electricite.general_description = desc_elec
+  factor_elec = "2019 national average in kgCO2e/kWh."
+  electricite.emission_factor_description = factor_elec
+  electricite.save
+
+# ==============================================================================
 # REPORT 1 SCOPES
 # ==============================================================================
 
@@ -360,19 +372,6 @@ require "open-uri"
   report1_scope3.report_id = report_1.id
   report1_scope3.emission_module_id = electricite.id
   report1_scope3.save
-
-  # report1_scope4 = ReportScope.new(
-  #   deadline: DateTime.new(2020,6,1))
-  # report1_scope4.report_id = report_1.id
-  # report1_scope4.emission_module_id = process_industriels.id
-  # report1_scope4.save
-
-  # report1_scope5 = ReportScope.new(
-  #   deadline: DateTime.new(2020,6,1))
-  # report1_scope5.report_id = report_1.id
-  # report1_scope5.emission_module_id = electricite.id
-  # report1_scope5.save
-
 
 # ==============================================================================
 # REPORT 2 SCOPES
@@ -427,11 +426,9 @@ require "open-uri"
 
   p "report 1 scope orga (manufacturing et product development)"
 
-
   # report1_scope1 => comb fossiles
   # report1_scope2 => process_industriels
   # report1_scope3 => electricite
-
 
   report1_scope1_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope1.id,
@@ -645,7 +642,7 @@ require "open-uri"
   }
 
 # ==============================================================================
-# QUESTIONS & ANSWER - Modules for graph only (data can be dummy)
+# QUESTIONS & ANSWER - Modules for graph only (dummy data)
 # ==============================================================================
 
   # TO DO - variabiliser ademe_emission_factor_id
@@ -653,10 +650,7 @@ require "open-uri"
   p "creation des Q&A pour les modules utilisés dans l'exemple 'Manufacturing'"
 
   emission_modules_used_in_report1 = [comb_fossiles,
-                              process_industriels,
-                              refrigeration,
-                              dechets,
-                              electricite]
+                              process_industriels]
 
   p "array emission_modules_used_in_report1"
   p emission_modules_used_in_report1
@@ -665,10 +659,12 @@ require "open-uri"
     p "emission_module"
     p emission_module.name
 
+    counter_question = 0
     5.times do
+      counter_question += 1
       question = Question.new(
         calculation: true,
-        content: "#{i}. Some question",
+        content: "Question number #{i}. To be detailed",
         ademe_emission_factor_id: AdemeEmissionFactor.first.id,
         emission_module_id: emission_module.id)
       question.save
@@ -676,10 +672,103 @@ require "open-uri"
         calculation: true,
         question_id: question.id,
         report_scope_orga_id: report_scope_array[i].id,
-        content: 1)
+        content: counter_question * 100)
       answer.save
     end
   }
+
+# ==============================================================================
+# Q&A - Electricity
+# ==============================================================================
+
+  # Electricité - questions
+  question_elec_1 = Question.create!(
+    calculation: false,
+    content: "Please indicate the country for the electricity consumption",
+    ademe_emission_factor_id: AdemeEmissionFactor.find{ |item| item.count == 1088 }.id,
+    emission_module_id: electricite.id)
+
+  question_elec_2 = Question.create!(
+    calculation: true,
+    content: "What is the total annual electricity consumption in kWh?",
+    ademe_emission_factor_id: AdemeEmissionFactor.find{ |item| item.count == 1088 }.id,
+    emission_module_id: electricite.id)
+
+  question_elec_2 = Question.create!(
+    calculation: false,
+    content: "What is the share of this consumption that is purchased with green certificates (i.e. guaranteed renewable production)",
+    ademe_emission_factor_id: AdemeEmissionFactor.find{ |item| item.count == 1088 }.id,
+    emission_module_id: electricite.id)
+
+  # Electricité answers
+
+  # Question 1
+    # Electricity x manufacturing
+    answer_elect_1_manuf = Answer.create!(
+        calculation: false,
+        question_id: question_elec_1.id,
+        report_scope_orga_id: report1_scope3_orga.id,
+        content: "France")
+
+    # Electricity x product development
+    answer_elect_1_productdev = Answer.create!(
+        calculation: false,
+        question_id: question_elec_1.id,
+        report_scope_orga_id: report1_scope5_orga.id,
+        content: "France")
+
+  # Question 2
+    # Electricity x manufacturing
+    answer_elect_2_manuf = Answer.create!(
+        calculation: true,
+        question_id: question_elec_1.id,
+        report_scope_orga_id: report1_scope3_orga.id,
+        content: 45000)
+
+    # Electricity x product development
+    answer_elect_2_productdev = Answer.create!(
+        calculation: true,
+        question_id: question_elec_1.id,
+        report_scope_orga_id: report1_scope5_orga.id,
+        content: 12000)
+
+  # Question 3
+    # Electricity x manufacturing
+    answer_elect_3_manuf = Answer.create!(
+        calculation: false,
+        question_id: question_elec_1.id,
+        report_scope_orga_id: report1_scope3_orga.id,
+        content: "0%")
+
+    # Electricity x product development
+    answer_elect_3_productdev = Answer.create!(
+        calculation: false,
+        question_id: question_elec_1.id,
+        report_scope_orga_id: report1_scope5_orga.id,
+        content: "0%")
+
+# ==============================================================================
+# Q&A - Combustibles fossiles
+# ==============================================================================
+
+
+  # Combustibles fossiles - questions
+
+
+
+  # Combustibles fossiles - answers
+
+
+# ==============================================================================
+# Q&A - Process industriels
+# ==============================================================================
+
+
+
+  # Processus industriels - questions
+
+
+  # Processus industriels - answers
 
 
 

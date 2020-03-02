@@ -10,12 +10,41 @@
   </div>
 
 <div class="container">
-  <ul>
+  <div class="row">
+    <div class="col-3">
+      <p>Question number</p>
+    </div>
+    <div class="col-3">
+      <p>Emission factor value</p>
+    </div>
+    <div class="col-3">
+      <p>Answer</p>
+    </div>
+    <div class="col-3">
+      <p>Calculation of total emissions</p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
     <% @output_array.each do |item| %>
-    <li>
-      <p><%= item[:emission_module_name] %> - <%= item[:orga_scope_name] %> - <%= item[:answer_number] %></p>
-      <p>Emission value: <%= item[:emission_value] %></p>
-    </li>
+        <div class="col-3">
+          <!-- Question number -->
+          <p><%= item[:answer_number] %></p>
+        </div>
+        <div class="col-3">
+          <!-- Question emission factor name and value -->
+          <p><%= item[:ademe_factor] %></p>
+        </div>
+        <div class="col-3">
+          <!-- Answer value -->
+          <p><%= item[:answer] %></p>
+        </div>
+        <div class="col-3">
+          <!-- Output (emission factur x answer value) -->
+          <p><%= item[:emission_answer_calculation] %></p>
+        </div>
     <% end %>
-  </ul>
+  </div>
 </div>
