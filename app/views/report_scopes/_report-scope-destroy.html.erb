@@ -1,0 +1,8 @@
+<div id="<%= module_scope.id %>" class="row flash-module flash-module-selected">
+  <h7 class="col-9 card-title"><%= module_scope.name %></h7>
+  <div class="col-2 align-self-center">
+    <%= link_to "➖",
+    report_scope_path(module_scope.report_scopes.first),
+    method: :delete, remote: true %>
+  </div>
+</div>
