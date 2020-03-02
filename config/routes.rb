@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     get "results", to: "reports#result"
   end
 
+  resources :report_scopes, only: :destroy
+
   resources :report_scope_orgas, only: [] do
     get "send_report", to: "report_scope_orgas#send_report"
     # Route pour definir un email
