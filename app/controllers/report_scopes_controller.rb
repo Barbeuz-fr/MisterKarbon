@@ -21,7 +21,6 @@ class ReportScopesController < ApplicationController
     @report_scope = ReportScope.find(params[:id])
     @report_scope.destroy
     redirect_to report_report_scopes_path(@report_scope.report_id)
-
   end
 
   private

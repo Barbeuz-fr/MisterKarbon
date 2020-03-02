@@ -6,13 +6,43 @@
   grid-gap: 16px;
 }
 
+.cards-email {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 8px;
+}
+
+
+.card-email {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  overflow: hidden;
+  // height: 100%;
+  background: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  // display: flex;
+  // align-items: center;
+}
+
 .margin-card-email{
   margin: 8px 0px 0px 0px;
 ;
 }
 
+.avatar-name {
+  display: inline;
+}
+
+
+.email-card-body {
+    -webkit-box-flex: 1;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1rem;
+}
+
 .smaller-text {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 // Smallest device

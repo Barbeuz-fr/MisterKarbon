@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :report_scope_orga_users
   has_many :report_scope_orgas, through: :report_scope_orga_users
 
+  has_one_attached :photo
+
   include PgSearch::Model
   multisearchable against: [
     :email,

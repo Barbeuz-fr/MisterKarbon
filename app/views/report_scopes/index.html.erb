@@ -57,7 +57,7 @@
                   <h7 class="col-9 card-title"><%= module_scope1.name %></h7>
                   <div class="col-2 align-self-center">
                     <%= link_to "🗑",
-                    report_scope_path(@report.report_scopes.find_by(emission_module_id: module_scope1.id)),
+                    report_scope_path(module_scope1.report_scopes.first),
                     method: :delete, remote: true %>
                   </div>
                 </div>
@@ -197,4 +197,5 @@
     </div>
   </div>
 </div>
+
 

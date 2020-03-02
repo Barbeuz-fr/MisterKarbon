@@ -13,8 +13,10 @@
     </div>
   </div>
 
+
 <!-- Headers tableau -->
 <!-- Organization - Emission module - Contributors - Add a contributor -->
+
   <div class="container mb-2">
     <div class="row">
       <div class="col-3">
@@ -24,50 +26,114 @@
       </div>
       <div class="col-3">
         <div class="tab-header">
-          <h3 class="text-center">Emission module</h3>
+          <h3 class="text-center">Emission type</h3>
         </div>
       </div>
-      <div class="col-6">
+      <div class="col-3">
         <div class="tab-header">
-          <h3 class="text-center">Contributors</h3>
+          <h3 class="text-center">Team</h3>
         </div>
       </div>
-<!--       <div class="col-2">
-        <div class="tab-header">
-          <h3>Add a contributor</h3>
-        </div>
-      </div>-->
-    </div>
-  </div>
 
 <!-- Contenu du tableau avec bouton d'ajout de contributeur-->
+
 <div class="container">
   <div class="row">
-    <% @report.report_scopes.each do |report_scope|  %>
-      <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
-        <div class="col-3 flex-cell cell-white-background">
-          <div class="bg-white">
-            <p class="text-center"><%= report_scope_orga.orga.name %></p>
-          </div>
-        </div>
-        <div class="col-3 flex-cell cell-white-background">
-          <p class="text-center"><%= report_scope.emission_module.name %></p>
-        </div>
-        <div class="col-6 flex-cell cell-justify-left cell-white-background">
-          <div class="mt-2 mb-2">
-          <ul>
-            <% report_scope_orga.report_scope_orga_users.each do |report_scope_orga_user| %>
-              <p = class="m-0"><%= report_scope_orga_user.user.email %></p>
-            <% end %>
-            <div class="mt-2">
-                <%= link_to "Add a contributor",
-                      new_report_scope_orga_report_scope_orga_user_path(report_scope_orga.id),
-                      class:"btn btn-success" %>
+    <div class="col-9">
+      <% @report.report_scopes.each do |report_scope|  %>
+        <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
+          <div class="row">
+            <!-- Nom de l'organisation -->
+            <div class="col-4 flex-cell cell-white-background">
+              <div class="bg-white">
+                <p class="text-center"><%= report_scope_orga.orga.name %></p>
+              </div>
             </div>
+            <!-- Nom des emissions -->
+            <div class="col-4 flex-cell cell-white-background">
+              <p class="text-center"><%= report_scope.emission_module.name %></p>
+            </div>
+            <!-- Avatar des contributeurs et bouton "+" -->
+            <div class="col-4 flex-cell cell-justify-left cell-white-background">
+              <div class="mt-2 mb-2">
+                <ul class= "m-0">
+                  <% report_scope_orga.report_scope_orga_users.each do |report_scope_orga_user| %>
+                    <% if report_scope_orga_user.user.photo.attached?  %>
+                      <%= cl_image_tag report_scope_orga_user.user.photo.key, :crop=>"fill", class:"avatar ml-3", style:"width:50px; height:50px"%>
+                    <% else %>
+                      <%= image_tag "http://www.tafecafe.com/wp-content/uploads/2015/09/default_avatar.png", class:"avatar ml-3", style:"width:50px; height:50px"%>
+                    <% end %>
+                  <% end %>
+                  <%= link_to "",
+                            url_for(scope: report_scope_orga),
+                            id: "addEmail",
+                            class:"fas fa-plus-circle fa-1x" %>
+                </ul>
+              </div>
+            </div>
+            <!-- Panneaux d'ajout de user -->
           </div>
-          </ul>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+
+    <!-- Modale pour ajout des contributeurs -->
+    <div class="col-3">
+      <% if params[:scope].present? %>
+        <!-- Definition modale -->
+        <div id="addEmail">
+          <div class="tab-header">
+            <h3 class="text-center">Add a contributor</h3>
+          </div>
+
+          <!-- Simple form barre de recherche-->
+            <%= form_tag url_for(scope: params[:scope]), method: :get do %>
+              <div class="input-group mb-3">
+                <%= text_field_tag :query, params[:query], class:"form-control "%>
+                <%= hidden_field_tag :scope, params[:scope]%>
+              <div class="input-group-append">
+                <%= submit_tag "🔎", class:"fas fa-search" %>
+              </div>
+            <% end %>
+
+          <!-- Display resultats de la recherche -->
+          <% if params[:scope].present? %>
+              <div class="cardsemail">
+                <% @results.each do |result| %>
+                  <div class="card-email m-2">
+                    <div class="email-card-body">
+                      <div class="avatar-name">
+                        <% if result.photo.attached?  %>
+                          <%= cl_image_tag result.photo.key, :crop=>"fill", class:"avatar ml-3", style:"width:50px; height:50px"%>
+                        <% else %>
+                          <%= image_tag "http://www.tafecafe.com/wp-content/uploads/2015/09/default_avatar.png", class:"avatar ml-3", style:"width:50px; height:50px"%>
+                        <% end %>
+                        <div class="avatar-name">
+                          <h5 class="card-title"><%= result.first_name %> <%= result.last_name %></h5>
+                        </div>
+                      </div>
+                      <p class="card-text margin-card-email smaller-text">
+                        <%= result.email %>
+                        </p>
+                      <p class="card-text margin-card-email smaller-text">
+                        <%= result.organization_position %> - <%= result.job_position %>
+                      </p>
+                      <p class="card-text margin-card-email smaller-text">
+                        <%= result.company&.name %>
+                      </p>
+                      <!-- Bouton Add -->
+                      <%= link_to "Add",
+                                  report_scope_orga_report_scope_orga_users_path(params[:scope], report_scope_orga_user: { user_id: result.id }),
+                                  method: :post,
+                                  class: "btn btn-secondary btn-sm" %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+          <% end %>
+        </div>
+
+      <% end %>
+    </div>
   </div>
 </div>

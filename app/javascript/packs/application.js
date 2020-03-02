@@ -17,13 +17,19 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+import "bootstrap";
 import { initAjaxScroll, preserveTab } from '../plugins/ajax_scroll';
+import { stackedBar } from '../plugins/bar_chart';
 initAjaxScroll();
 
 document.addEventListener('turbolinks:load', function () {
   preserveTab();
 
 }, false)
+
+if (document.getElementById('mybarChart')) {
+
+}
 
 // const button = document.getElementById('data-orga');
 // button.addEventListener('click', (event) => {
@@ -37,13 +43,9 @@ document.addEventListener('turbolinks:load', function () {
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
-import "bootstrap";
 
 // import { barChart } from '../plugins/bar_chart';
 // barChart();
-
-import { stackedBar } from '../plugins/bar_chart';
-stackedBar();
 
 
 // import * as d3 from "d3";
