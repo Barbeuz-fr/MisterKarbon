@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :show_project_create_nav
+  before_action :sidebar_show
 
   def show_project_create_nav
     @project_create_1_nav = false
@@ -8,4 +9,7 @@ class ApplicationController < ActionController::Base
     @project_create_3_nav = false
   end
 
+  def sidebar_show
+    @sidebar_show = false
+  end
 end

@@ -21,6 +21,7 @@ th     { background: white; }
 .card-title {
   margin: 0px;
   text-align: left;
+  font-size: 14px;
 }
 
 .card-title h5 {
@@ -76,4 +77,8 @@ th     { background: white; }
 
 .form-group {
   margin: 0px;
+}
+
+.create-report-scope {
+  z-index: 12;
 }
