@@ -89,7 +89,7 @@
     </div>
 
     <!-- Modale pour ajout des contributeurs -->
-    <div class="col-3">
+    <div class="col-3 mt-2">
       <% if params[:scope].present? %>
         <!-- Definition modale -->
         <div id="addEmail">
@@ -99,19 +99,18 @@
                 <%= text_field_tag :query, params[:query], class:"form-control "%>
                 <%= hidden_field_tag :scope, params[:scope]%>
               <div class="input-group-append">
-                <%= submit_tag "🔎", class:"fas fa-search" %>
+                <%= submit_tag "🔎" %>
               </div>
             <% end %>
 
           <!-- Display resultats de la recherche -->
           <% if params[:scope].present? %>
-              <div class="cardsemail">
+              <div class="cards-email">
                 <% @results.each do |result| %>
                   <div class="card-email m-2">
                     <div class="email-card-body">
                       <div class="d-flex flex-row">
                         <div class="align-self-center">
-
                         <% if result.photo.attached?  %>
                           <%= cl_image_tag result.photo.key, :crop=>"fill", class:"avatar", style:"width:50px; height:50px"%>
                         <% else %>

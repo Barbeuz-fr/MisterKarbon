@@ -21,6 +21,7 @@ class ReportsController < ApplicationController
   end
 
   def show
+
     @report = Report.find(params[:id])
 
     # Identification s'il y a des reports avec le status "To send"
