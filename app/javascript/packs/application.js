@@ -44,9 +44,9 @@ if (document.getElementById('mybarChart')) {
 
 import { stackedBar } from '../plugins/bar_chart';
 import { pieChartProgress } from '../plugins/pie_chart';
-// import { selectedTeam} from '../plugins/dropdown_dashboard';
-import { updateDropdownValue } from '../plugins/dropdown_dashboard';
+import '../plugins/dropdown_dashboard';
+// import { updateDropdownValue } from '../plugins/dropdown_dashboard';
 stackedBar();
 pieChartProgress();
 // selectedteam();
-updateDropdownValue();
+// updateDropdownValue();
