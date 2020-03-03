@@ -7,7 +7,7 @@
 
 <div class="container">
   <div class="d-flex justify-content-between">
-    <%= link_to "Previous", report_report_scopes_path(params[:report_id]), class:"btn btn-secondary mt-3" %>
+    <%= link_to "Previous", report_report_scopes_path(params[:report_id]), class:"btn btn-outline-secondary mt-3" %>
     <%= link_to "Next", report_report_scope_orga_users_path(params[:report_id]), class:"btn btn-primary mt-3" %>
   </div>
 </div>
@@ -29,11 +29,11 @@
 
 <div class="container mt-3">
   <div class="row">
-    <div class="col-8">
-      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-        <% @orgas.each do |orga| %>
-          <li class="nav-item mb-3 col-6">
-            <a class="flash-module flash-module-unselected" id="pills-<%= orga.id %>-tab" data-toggle="pill" href="#pills-<%= orga.id %>" role="tab" aria-controls="pills-<%= orga.id %>" aria-selected="false"><%= orga.name %></a>
+    <div class="col-4">
+      <ul>
+        <% @report.report_scopes.each do |report_scope| %>
+          <li>
+            <%= report_scope %>
           </li>
         <% end %>
       </ul>
@@ -47,7 +47,7 @@
               <button type="button" class="btn btn-primary col-12" data-toggle="modal" data-target="#staticBackdrop<%= orga.name.gsub(" ", "") %>">
                 Add a module
               </button>
-              <%= render 'shared/modal-report-scope-orga', orga: orga %>
+              <%#= render 'shared/modal-report-scope-orga', orga: orga %>
             </div>
           <% end %>
         <% end %>
@@ -71,7 +71,7 @@
                 Add a module
               </button>
             </p>
-            <%= render 'shared/modal-report-scope-orga', orga: orga %>
+            <%#= render 'shared/modal-report-scope-orga', orga: orga %>
           </div>
         <% end %>
       </div>
