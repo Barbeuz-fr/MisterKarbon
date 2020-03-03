@@ -1,0 +1,6 @@
+
+.reports-index-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  grid-gap: 16px;
+}
