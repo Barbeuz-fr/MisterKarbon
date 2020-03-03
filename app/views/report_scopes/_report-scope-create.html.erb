@@ -5,7 +5,7 @@
 <%# link_to '#',  "data-toggle" => "modal", "data-target" => "#exampleModalCenter" do %>
   <div id="<%= module_scope.id %>" class="row flash-module flash-module-unselected">
     <h7 class="col-9 card-title"><%= module_scope.name %></h7>
-    <div class="col-2 align-self-center create-report-scope">
+    <div class="col-2 align-self-center create-report-scope mr-3">
       <%= simple_form_for [report, report_scope], remote: true do |f| %>
         <%= f.input :emission_module_id, input_html: { value: module_scope.id }, as: :hidden %>
         <%= hidden_field_tag :tab_name, 'scope1-tab' %>

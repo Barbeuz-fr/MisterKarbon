@@ -11,11 +11,20 @@
   </head>
 
   <body>
+    <%= render 'shared/navbar' %>
+
     <%= render 'shared/flashes' %>
-    <div class="content-wrapper siderender">
-       <%= render 'shared/sidebar' if @sidebar_show %>
+    <%= render 'shared/project-create-1' if @project_create_1_nav %>
+    <%= render 'shared/project-create-2' if @project_create_2_nav %>
+    <%= render 'shared/project-create-3' if @project_create_3_nav %>
+
+
+    <div class="content-wrapper">
        <%= yield %>
     </div>
 
+
+
+    <%= render 'shared/footer' %>
   </body>
 </html>
