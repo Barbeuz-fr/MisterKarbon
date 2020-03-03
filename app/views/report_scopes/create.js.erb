@@ -3,9 +3,12 @@ function refreshCard(innerHTML) {
   card.outerHTML = innerHTML;
 }
 
-// function addCard(innerHTML) {
-// // trouver la liste des cartes
-// // inserer la carte du report scope cree
-// }
+function addCard(innerHTML) {
+// trouver la liste des cartes
+const shoppingCart = document.querySelector(".selected-modules");
+// inserer la carte du report scope cree
+shoppingCart.outerHTML = innerHTML;
+}
 
 refreshCard('<%= j render "report-scope-destroy", module_scope: @report_scope.emission_module %>')
+addCard('<%= j render "report-scope-add-to-cart" %>')

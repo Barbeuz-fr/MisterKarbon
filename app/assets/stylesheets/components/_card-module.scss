@@ -1,21 +1,62 @@
-.title-module-selection {
-  padding-right: 55px;
+.form-modules-content {
+  display: flex;
+  flex: 1;
 }
 
-.tableFixHead          { overflow-y: auto; height: 500px; }
-.tableFixHead thead th { position: sticky; top: 0; }
+.full-size-click {
+  height: 136px;
+  width:200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: unset;
+  padding: 0px 1em;
+  color: white;
+}
 
-/* Just common table stuff. Really. */
-table  { border-collapse: collapse; width: 100%; }
-th, td { padding: 8px 16px; }
-th     { background: white; }
+.selected-modules-container h5 {
+  font-size: 16px;
+  padding: 8px 16px;
+  font-weight: 400;
+}
+
+.btn-next {
+  margin-top: 5px;
+  width: 100%;
+}
+
+.list-modules-container {
+  height: 71vh;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.tab-content {
+  overflow-y: scroll;
+}
+
+.report-scope-form-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 36px;
+}
+
+.form-modules {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
 
 .selected-modules {
-  background-color: white;
+  padding: 8px;
+  height: 65vh;
   width: 300px;
-  padding: 10px;
-  min-height: 150px;
-  border-radius: 4px;
+  overflow: hidden;
+  overflow-y: scroll;
+  background-color: white;
+  border-top: 1px solid #dee2e6;
+  margin-top: -2px;
 }
 
 .card-title {
@@ -26,11 +67,12 @@ th     { background: white; }
 
 .card-title h5 {
   margin: 0px;
+  padding: 8px;
+  font-size: 16px;
 }
 
 .flash-module {
-  padding: 15px;
-  min-height: 77px;
+  min-height: 136px;
   padding-right: 1px;
   display: flex;
   justify-content: space-between;
@@ -42,27 +84,37 @@ th     { background: white; }
 }
 
 .flash-module-mini {
-  min-height: 77px;
   align-items: center;
+  min-height: 58px;
   justify-content: space-between;
-  padding: 15px;
+  margin: 0px;
+  margin-bottom: 16px;
   box-shadow: 0 0 8px rgba(0,0,0,0.2);
   border-radius: 4px;
-  margin-right: 4px;
-  margin-left: 4px;
   background-color: #3DCF8D;
   color: white;
+  display: flex;
 }
 
 .flash-module-mini p {
-  padding: 0px;
+  padding: 10px;
   margin: 0px;
   font-size: 13px;
 }
 
+.flash-module-mini-info-minus {
+  padding-right: 10px;
+}
+
+.flash-module-mini-info {
+  padding: 0px;
+  margin: 0px;
+  font-size: 14px;
+}
+
 .flash-modules {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .flash-module-selected {
@@ -82,3 +134,8 @@ th     { background: white; }
 .create-report-scope {
   z-index: 12;
 }
+
+// #98 {
+//     background: url(https://images.pexels.com/photos/1054391/pexels-photo-1054391.jpeg?cs=srgb&dl=top-view-photo-of-ocean-waves-1054391.jpg&fm=jpg);
+//     background-size: contain;
+// }
