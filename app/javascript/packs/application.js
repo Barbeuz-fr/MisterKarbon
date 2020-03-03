@@ -37,18 +37,14 @@ if (document.getElementById('mybarChart')) {
 // });
 
 
-
-
 // ----------------------------------------------------
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
 
 import { stackedBar } from '../plugins/bar_chart';
+import { clickChart } from '../plugins/bar_chart';
 import { pieChartProgress } from '../plugins/pie_chart';
 stackedBar();
 pieChartProgress();
-
-// import * as d3 from "d3";
-// import { test } from "../plugins/marimekko";
-// test();
+clickChart();
