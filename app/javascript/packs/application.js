@@ -19,7 +19,7 @@ require("channels")
 
 import "bootstrap";
 import { initAjaxScroll, preserveTab } from '../plugins/ajax_scroll';
-import { stackedBar } from '../plugins/bar_chart';
+// import { stackedBar } from '../plugins/bar_chart';
 initAjaxScroll();
 
 document.addEventListener('turbolinks:load', function () {
@@ -37,19 +37,16 @@ if (document.getElementById('mybarChart')) {
 // });
 
 
-
-
 // ----------------------------------------------------
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
 
-// import { stackedBar } from '../plugins/bar_chart';
-stackedBar();
-
+import { stackedBar } from '../plugins/bar_chart';
 import { pieChartProgress } from '../plugins/pie_chart';
-
-
-// import * as d3 from "d3";
-// import { test } from "../plugins/marimekko";
-// test();
+// import { selectedTeam} from '../plugins/dropdown_dashboard';
+import { updateDropdownValue } from '../plugins/dropdown_dashboard';
+stackedBar();
+pieChartProgress();
+// selectedteam();
+updateDropdownValue();

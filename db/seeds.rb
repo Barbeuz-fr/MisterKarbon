@@ -536,7 +536,7 @@ require "open-uri"
   report1_scope1_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope1.id,
     orga_id: manufacturing.id,
-    status: "On-going work"
+    status: "On-going"
     )
   report1_scope1_orga.save
 
@@ -556,7 +556,7 @@ require "open-uri"
   report1_scope3_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope3.id,
     orga_id: manufacturing.id,
-    status: "On-going work"
+    status: "On-going"
     )
   report1_scope3_orga.save
 
@@ -604,7 +604,7 @@ require "open-uri"
   report_2_scope1_orga = ReportScopeOrga.new(
     report_scope_id:report_2_scope1.id,
     orga_id: finance.id,
-    status: "Invite"
+    status: "To start"
     )
   report_2_scope1_orga.save
 
@@ -613,7 +613,7 @@ require "open-uri"
   report_2_scope2_orga = ReportScopeOrga.new(
     report_scope_id:report_2_scope2.id,
     orga_id: finance.id,
-    status: "Invited, not yet started"
+    status: "To start"
     )
   report_2_scope2_orga.save
 
@@ -622,7 +622,7 @@ require "open-uri"
   report_2_scope3_orga = ReportScopeOrga.new(
     report_scope_id:report_2_scope1.id,
     orga_id: hr.id,
-    status: "On-going work"
+    status: "On-going"
     )
   report_2_scope3_orga.save
 
@@ -631,7 +631,7 @@ require "open-uri"
   report_2_scope4_orga = ReportScopeOrga.new(
     report_scope_id:report_2_scope2.id,
     orga_id: hr.id,
-    status: "On-going work"
+    status: "On-going"
     )
   report_2_scope4_orga.save
 
@@ -651,21 +651,21 @@ require "open-uri"
   report_3_scope1_orga = ReportScopeOrga.new(
     report_scope_id:report_3_scope1.id,
     orga_id: rd.id,
-    status: "Invite"
+    status: "To start"
     )
   report_3_scope1_orga.save
 
   report_3_scope2_orga = ReportScopeOrga.new(
     report_scope_id:report_3_scope2.id,
     orga_id: rd.id,
-    status: "Invite"
+    status: "To start"
     )
   report_3_scope2_orga.save
 
   report_3_scope3_orga = ReportScopeOrga.new(
     report_scope_id:report_3_scope3.id,
     orga_id: rd.id,
-    status: "Invite"
+    status: "To start"
     )
   report_3_scope3_orga.save
 
