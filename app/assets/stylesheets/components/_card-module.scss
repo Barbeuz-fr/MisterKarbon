@@ -2,6 +2,15 @@
   padding-right: 55px;
 }
 
+:hover.flash-module {
+  background-color: $success;
+  color: $primary
+}
+
+.flash-module.active {
+  background-color: $success;
+}
+
 .tableFixHead          { overflow-y: auto; height: 500px; }
 .tableFixHead thead th { position: sticky; top: 0; }
 

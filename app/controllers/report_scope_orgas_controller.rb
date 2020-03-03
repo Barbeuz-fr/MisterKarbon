@@ -7,6 +7,12 @@ class ReportScopeOrgasController < ApplicationController
     @project_create_2_nav = true
   end
 
+  def show
+    @report_scope_orga = ReportScopeOrga.find(params[:id])
+    @report_scope_orga.destroy
+    redirect_to  new_report_report_scope_orga_path
+  end
+
   def send_report
     # Recuperation des params
     @report_scope_orga = ReportScopeOrga.find(params[:report_scope_orga_id])
@@ -41,6 +47,7 @@ class ReportScopeOrgasController < ApplicationController
   def destroy
     @report_scope_orga = ReportScopeOrga.find(params[:id])
     @report_scope_orga.destroy
+
     redirect_to  new_report_report_scope_orga_path
   end
 

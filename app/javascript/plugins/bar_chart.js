@@ -83,16 +83,18 @@ var stackedbackgroundColors = [
                 ];
 
 // boucle sur les n modules (longueur de l'array principal)
-var barchart_data_length = barchart_data.length;
-for (var i = 0; i < barchart_data_length; i++) {
-  // Definition du hash à ajouter
-  var new_hash = {
-    label: "WIP",
-    data: barchart_data[i],
-    backgroundColor: stackedbackgroundColors[i],
-  } ;
-  datasets_for_barchart.push(new_hash)
-};
+if (barchart_data) {
+  var barchart_data_length = barchart_data.length;
+  for (var i = 0; i < barchart_data_length; i++) {
+    // Definition du hash à ajouter
+    var new_hash = {
+      label: "WIP",
+      data: barchart_data[i],
+      backgroundColor: stackedbackgroundColors[i],
+    } ;
+    datasets_for_barchart.push(new_hash)
+  };
+}
 // console.log(datasets_for_barchart);
 
 // Rendu du graphique
