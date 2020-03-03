@@ -14,9 +14,9 @@ var pieChartProgress = new Chart(ctx3, {
         data: piechart_data
     }],
     labels: [
-        'To invite',
-        'invited, not started',
+        'To start',
         'On-going work',
+        'Almost there',
         'Pending validation',
         'Done'
     ],

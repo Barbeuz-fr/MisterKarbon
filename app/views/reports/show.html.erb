@@ -1,15 +1,243 @@
-<div class="container">
-  <nav class="nav nav-pills nav-fill">
-    <a class="nav-item nav-link active" href="#">Progress</a>
-    <a class="nav-item nav-link" href="/reports/<%= @report.id %>/results">Result</a>
-  </nav>
-</div>
-
-
 <!-- Titre report -->
 <div class="container mt-3 mb-2">
-  <h5>Your report : <%= @report.name %> - <%= @report.year %></h5>
+  <h3>Your report : <%= @report.name %> - <%= @report.year %></h3>
 </div>
+
+<div class="container">
+  <div class="row">
+      <!--
+      ----------------------------------------------------------
+      PIE BAR CHART (PROGRESS)
+       ----------------------------------------------------------
+       -->
+    <div class="col-4">
+      <div class="container">
+        <h5>Progress</h5>
+        <div class="d-flex align-items-center">
+          <%= content_tag 'canvas', '',
+                      id: 'progressPieChart',
+                      width: '200', height: '200',
+                      data: {progress: @progress_data } %>
+        </div>
+      </div>
+    </div>
+    <!--
+    ----------------------------------------------------------
+    STACKED BAR CHART (EMISSIONS)
+     ----------------------------------------------------------
+     -->
+    <div class="col-8">
+      <div class="container">
+        <h5>Emissions</h5>
+        <p><em>kgCO2e</em> </p>
+        <!-- Déclaration données : orga et emissions -->
+        <div class="d-flex align-items-center">
+          <%= content_tag :div, '',
+                          id: 'bar_chart_data',
+                          data: {emissions: @y_axis_organizations,
+                                orga: @label_orga} %>
+          <%= content_tag 'canvas', '',
+                          id: 'mybarChart',
+                          width: '600', height: '400',
+                          data: {titles: @x_axis_modules} %>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <!--
+    ----------------------------------------------------------
+    CURRENT SCOPE
+     ----------------------------------------------------------
+    -->
+    <div class="col-4">
+      <h5>Scope</h5>
+      <!-- Table -->
+      <div class="container">
+        <!-- Headers -->
+        <div class="row">
+          <div class="col-6">
+            <p>Emissions</p>
+          </div>
+          <div class="col-6">
+            <p>Organization</p>
+          </div>
+        </div>
+        <!-- Content -->
+        <div class="row">
+          <div class="col-6">
+            <p>dummy</p>
+          </div>
+          <div class="col-6">
+            <p>dummy</p>
+          </div>
+        </div>
+      </div>
+      <p>Add</p>
+    </div>
+
+    <!--
+    ----------------------------------------------------------
+    DETAILS DATA (table)
+     ----------------------------------------------------------
+    -->
+    <div class="col-8">
+      <div>
+          <h5>Emissions - Orga</h5>
+      </div>
+      <div class="d-flex">
+        <div>
+          <p>Team</p>
+        </div>
+        <div>
+          <p>Project status</p>
+        </div>
+        <div>
+          <p>Social icons</p>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="container">
+        <!-- headers -->
+        <div class="row">
+          <div class="col-3">
+            <p>Data request</p>
+          </div>
+          <div class="col-3">
+            <p>Team input</p>
+          </div>
+          <div class="col-2">
+            <p>Emissions</p>
+          </div>
+          <div class="col-2">
+            <p>Comments</p>
+          </div>
+          <div class="col-2">
+            <p>Attachments</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content with loop -->
+      <div class="row">
+        <div class="col-3">
+          <p>dummy</p>
+        </div>
+        <div class="col-3">
+          <p>dummy</p>
+        </div>
+        <div class="col-2">
+          <p>dummy</p>
+        </div>
+        <div class="col-2">
+          <p>dummy</p>
+        </div>
+        <div class="col-2">
+          <p>dummy</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--
+----------------------------------------------------------
+DATA TABLE
+ ----------------------------------------------------------
+-->
+
+<!-- TO DO - mettre ongletes -->
+<!-- <br><br>
+<%= @y_axis_organizations %>
+<br><br>
+<%= @x_axis_modules %>
+<br><br>
+ -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-2 tab-header text-white">
+      <p class="text-center">Module - Organization</p>
+    </div>
+    <div class="col-4 tab-header text-white">
+      <div class="tab-header text-white">
+        <p class="text-center">Question</p>
+      </div>
+    </div>
+    <div class="col-2 tab-header text-white">
+      <div class="tab-header text-white">
+        <p class="text-center">Emission factor value</p>
+      </div>
+    </div>
+    <div class="col-2 tab-header text-white">
+      <div class="tab-header text-white">
+        <p class="text-center">Answer</p>
+      </div>
+    </div>
+    <div class="col-2 text-white">
+      <div class="tab-header text-white">
+        <p class="text-center">Calculation of total emissions</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <% @output_array.each do |item| %>
+      <% if item[:calculation] == true %>
+        <div class="col-2">
+          <p><%= item[:emission_module_name] %> - <%= item[:orga_scope_name] %></p>
+        </div>
+        <div class="col-4">
+          <!-- Question number -->
+          <p><%= item[:question] %></p>
+        </div>
+        <div class="col-2">
+          <!-- Question emission factor name and value -->
+          <p><%= item[:ademe_factor] %> <%= item[:ademe_factor_unit] %></p>
+        </div>
+        <div class="col-2">
+          <!-- Answer value -->
+          <p><%= item[:answer] %> <%= item[:answer_unit] %> </p>
+        </div>
+        <div class="col-2">
+          <!-- Output (emission factur x answer value) -->
+          <p><%= item[:emission_answer_calculation].truncate %>kgCO2e</p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<!--
+----------------------------------------------------------
+SIMPLE BAR CHART
+ ----------------------------------------------------------
+-->
+
+<!-- <div class="container">
+  <p>Test 1</p>
+  <div>
+    <%= content_tag 'canvas', '', id: 'myChart', width: '1000', height: '600',
+        data: {titles: @labels,
+              values: @emissions_bar_chart} %>
+  </div>
+</div>
+ -->
+
+
+<div class="container">
+  <h5>Ajout de tab avec les resultats </h5>
+  <p>Tab par type d'orga</p>
+  <p>avec les infos de chaque module : question & réponse</p>
+</div>
+
+
 
 <!-- Message si tous les reports sont envoyés -->
 
