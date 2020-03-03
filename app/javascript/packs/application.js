@@ -19,7 +19,7 @@ require("channels")
 
 import "bootstrap";
 import { initAjaxScroll, preserveTab } from '../plugins/ajax_scroll';
-import { stackedBar } from '../plugins/bar_chart';
+// import { stackedBar } from '../plugins/bar_chart';
 initAjaxScroll();
 
 document.addEventListener('turbolinks:load', function () {
@@ -44,11 +44,10 @@ if (document.getElementById('mybarChart')) {
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
 
-// import { stackedBar } from '../plugins/bar_chart';
-stackedBar();
-
+import { stackedBar } from '../plugins/bar_chart';
 import { pieChartProgress } from '../plugins/pie_chart';
-
+stackedBar();
+pieChartProgress();
 
 // import * as d3 from "d3";
 // import { test } from "../plugins/marimekko";

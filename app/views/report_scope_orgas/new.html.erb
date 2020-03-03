@@ -5,6 +5,18 @@
   <%# end %>
 </div> -->
 
+<div class="container mt-2">
+  <nav class="nav nav-pills nav-fill">
+    <a class="nav-item nav-link">☁︎  Emissions</a>
+    <div class="arrow-right-not-selected"></div>
+    <a class="nav-item nav-link active"><i class="fas fa-sitemap"></i> Organization</a>
+    <div class="arrow-right-selected"></div>
+    <a class="nav-item nav-link"><i class="fas fa-user-plus"></i> Team</a>
+    <div class="arrow-right-not-selected"></div>
+  </nav>
+</div>
+
+
 <div class="container">
   <div class="d-flex justify-content-between">
     <%= link_to "Previous", report_report_scopes_path(params[:report_id]), class:"btn btn-secondary mt-3" %>
