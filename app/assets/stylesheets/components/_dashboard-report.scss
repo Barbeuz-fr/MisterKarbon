@@ -7,19 +7,17 @@
 
 .dashboard-card-1 {
   background-color: white;
-  padding: 8px 8px;
   border-radius: 10px;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
-  width: 22vw;
+  width: 25vw;
   margin: 4vh 1vh 4vh 1vh;
 }
 
 .dashboard-card-2 {
   background-color: white;
-  padding: 8px 8px;
   border-radius: 10px;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
-  width: 55vw;
+  width: 50vw;
   margin: 4vh 1vh 4vh 1vh;
 }
 
@@ -29,4 +27,14 @@
 
 .small-text-dashboard {
   font-size: 12px;
+}
+
+.top-box {
+  background-color:#242542;
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+  padding: 6px 8px 1px 8px;
+  margin-bottom: 0.5em;
 }

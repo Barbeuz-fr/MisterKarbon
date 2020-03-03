@@ -65,43 +65,28 @@ const stackedBar = () => {
      }
   });
 
-      const el = document.getElementById('mybarChart');
-    if(el){
-      el.addEventListener('click', (e) => {
-        console.log('rrrrr')
-        console.log(myStackedBar.data);
-        const chartData = myStackedBar.getBarsAtEvent(e);
-      });
-    };
+    //   const el = document.getElementById('mybarChart');
+    // if(el){
+    //   el.addEventListener('click', (e) => {
+    //     console.log('rrrrr')
+    //     console.log(myStackedBar.data);
+    //     const chartData = myStackedBar.getBarsAtEvent(e);
+    //   });
+    // };
 };
-
-// var clickedBar = $("#bar_chart_data").click(function(e) {
-//      var activeBars = myStackedBar.getBarsAtEvent(e);
-//     console.log(activeBars[0]);
-//   });
-
 
 // Fonction pour récupérer les data au click
 // getBarsAtEvent
 
-  const clickChart = () => {
-    const el = document.getElementById('mybarChart');
-    if(el){
-      el.addEventListener('click', (e) => {
-        console.log($("mybarChart"));
-        const chartData = $("mybarChart").getBarsAtEvent(e);
-      });
-    };
-    // console.log(el);
-  }
-
-  // const clickChart = () =>  {
-  //   $("#mybarChart").click(function(e) {
-  //    var activeBars = $("#mybarChart").getBarsAtEvent(e);
-  //    console.log(activeBars);
-  //   });
+  // const clickChart = () => {
+  //   const el = document.getElementById('mybarChart');
+  //   if(el){
+  //     el.addEventListener('click', (e) => {
+  //       console.log($("mybarChart"));
+  //       const chartData = $("mybarChart").getBarsAtEvent(e);
+  //     });
+  //   };
   // }
-
 
 // function handleClick(evt);
 // {
@@ -109,7 +94,7 @@ const stackedBar = () => {
 // };
 
 // export { clickedElement };
-export { clickChart };
+// export { clickChart };
 // export { handleClick }
 
 export { stackedBar };

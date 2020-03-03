@@ -30,7 +30,7 @@ var pieChartProgress = new Chart(ctx3, {
   },
     options: {
       legend: {
-        position: 'bottom',
+        position: 'right',
       }
     }
 });
