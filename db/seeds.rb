@@ -358,9 +358,6 @@ require "open-uri"
   dechets = EmissionModule.create!(name: "Waste", scope: 1)
 
 
-  p "scope 2"
-  electricite = EmissionModule.create!(name: "Electricity", scope: 2)
-  reseaux_chaleur_froid = EmissionModule.create!(name: "Heating & cooling networks", scope: 2)
 
   p "scope 3"
   transport_marchandise_routier = EmissionModule.create!(name: "Road freight", scope: 3)
@@ -385,6 +382,10 @@ require "open-uri"
   voirie = EmissionModule.create!(name: "Road & public infrastructure construction", scope: 3)
   eau = EmissionModule.create!(name: "Water treatment", scope: 3)
   dechets = EmissionModule.create!(name: "Waste management", scope: 3)
+
+  p "scope 2"
+  electricite = EmissionModule.create!(name: "Electricity", scope: 2)
+  reseaux_chaleur_froid = EmissionModule.create!(name: "Heating & cooling networks", scope: 2)
 
   list_of_emission_modules = [comb_fossiles,
     changement_affectation_sols,
@@ -527,6 +528,7 @@ require "open-uri"
   # report1_scope2 => achat_produit_agri
   # report1_scope3 => electricite
 
+  # Manufacturing
   # report1_scope1 => comb fossiles
   report1_scope1_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope1.id,
@@ -536,7 +538,7 @@ require "open-uri"
   report1_scope1_orga.save
 
   # ----------------------------------------------
-
+  # Manufacturing
   # report1_scope2 => achat_produit_agri
   report1_scope2_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope2.id,
@@ -546,7 +548,7 @@ require "open-uri"
   report1_scope2_orga.save
 
   # ----------------------------------------------
-
+  # Manufacturing
   # report1_scope3 => electricite
   report1_scope3_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope3.id,
@@ -556,7 +558,7 @@ require "open-uri"
   report1_scope3_orga.save
 
   # ----------------------------------------------
-
+  # Product Dev
   # report1_scope2 => achat_produit_agri
   report1_scope4_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope2.id,
@@ -566,7 +568,7 @@ require "open-uri"
   report1_scope4_orga.save
 
   # ----------------------------------------------
-
+  # Product Dev
   # report1_scope3 => electricite
   report1_scope5_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope3.id,
@@ -953,7 +955,7 @@ require "open-uri"
 
   # achat_produit_agri - answers
 
-  # achats pour le manufacturing only
+  # achats pour manufacturing
 
     answer_comb_fossiles_1_manuf = Answer.create!(
         calculation: true,
@@ -968,6 +970,22 @@ require "open-uri"
         report_scope_orga_id: report1_scope2_orga.id,
         unit: "kg",
         content: 30000)
+
+    # achats pour product development
+
+    answer_comb_fossiles_1_manuf = Answer.create!(
+        calculation: true,
+        question_id: question_achat_produit_agri_1.id,
+        report_scope_orga_id: report1_scope4_orga.id,
+        unit: "kg",
+        content: 5000)
+
+    answer_achat_produit_agri_2_manuf = Answer.create!(
+        calculation: true,
+        question_id: question_achat_produit_agri_2.id,
+        report_scope_orga_id: report1_scope4_orga.id,
+        unit: "kg",
+        content: 3000)
 
 # ==============================================================================
 # TESTORGA

@@ -139,13 +139,10 @@ class ReportsController < ApplicationController
       @x_axis_modules << words
     end
 
-    # 2/ Creation d'un array avec autant d'array vide que de modules
-    @y_axis_organizations = []
-    @x_axis_modules.count.times do
-      @y_axis_organizations << []
-    end
 
-    # 3/ Création d'un array pour stocker le nom des orga parcourues (en légende)
+
+
+    # 2/ Création d'un array pour stocker le nom des orga parcourues (en légende)
     @label_orga = []
     @report_scopes_array.each do |report_scope|
       report_scope.report_scope_orgas.each do |report_scope_orga|
@@ -156,6 +153,12 @@ class ReportsController < ApplicationController
       end
     end
 
+    # 3/ Creation d'un array avec autant d'array vide que d'orga
+    @y_axis_organizations = []
+    @label_orga.count.times do
+      @y_axis_organizations << []
+    end
+
     # 4/ Itérer sur les valeurs pour les stocker dans @y_axis_organizations et @y-labels
     @report_scopes_array.each_with_index do |report_scope, index_module|
       report_scope.report_scope_orgas.each_with_index do |report_scope_orga, index_orga|
@@ -163,11 +166,12 @@ class ReportsController < ApplicationController
         total_answer = 0
         report_scope_orga.answers.each do |answer|
           if answer.calculation == true
-            total_answer += answer.content.to_f
+            calc = answer.content.to_f * answer.question.ademe_emission_factor.emission_value.to_f
+            total_answer += calc
           end
         # on push le total dans l'array @y_axis_organizations
         end
-      @y_axis_organizations[index_orga] << total_answer
+        @y_axis_organizations[index_orga].append(total_answer)
       # @label_orga << report_scope_orga.orga.name
       end
     end

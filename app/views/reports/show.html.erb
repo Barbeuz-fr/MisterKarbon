@@ -7,24 +7,6 @@
   <div>
     <!--
     ----------------------------------------------------------
-    PIE BAR CHART (PROGRESS)
-     ----------------------------------------------------------
-    -->
-    <div class="dashboard-card-1">
-      <div class="top-box mb-3">
-        <h5><i class="fas fa-sort-amount-up"></i> Progress</h5>
-      </div>
-      <div>
-        <div class="align-items-center">
-          <%= content_tag 'canvas', '',
-                      id: 'progressPieChart',
-                      width: '150', height: '150',
-                      data: {progress: @progress_data } %>
-        </div>
-      </div>
-    </div>
-    <!--
-    ----------------------------------------------------------
     CURRENT SCOPE
      ----------------------------------------------------------
     -->
@@ -75,6 +57,24 @@
       </div>
       <div class="text-center">
         <p class="btn btn-secondary btn-sm">Add a team</p>
+      </div>
+    </div>
+    <!--
+    ----------------------------------------------------------
+    PIE BAR CHART (PROGRESS)
+     ----------------------------------------------------------
+    -->
+    <div class="dashboard-card-1">
+      <div class="top-box mb-3">
+        <h5><i class="fas fa-sort-amount-up"></i> Progress</h5>
+      </div>
+      <div>
+        <div class="align-items-center">
+          <%= content_tag 'canvas', '',
+                      id: 'progressPieChart',
+                      width: '150', height: '150',
+                      data: {progress: @progress_data } %>
+        </div>
       </div>
     </div>
   </div>
@@ -199,6 +199,32 @@
             <p class="small-text-dashboard"><i class="far fa-file-pdf"> <i class="far fa-file-excel"></i></i></p>
           </div>
 
+        <% end %>
+      </div>
+
+      <!-- TO DELETE -->
+      <div class="row pl-3 pr-3">
+        <% @output_array.each do |item| %>
+          <!-- Module -->
+          <div class="col-2">
+            <p class="small-text-dashboard"><%= item[:emission_module_name] %></p>
+          </div>
+          <!-- Orga -->
+          <div class="col-2">
+            <p class="small-text-dashboard"><%= item[:orga_scope_name] %></p>
+          </div>
+          <!-- Question -->
+          <div class="col-4">
+            <p class="small-text-dashboard"><%= item[:question] %></p>
+          </div>
+          <!-- Team input -->
+          <div class="col-2">
+            <p class="small-text-dashboard"><%= item[:answer].truncate(0)%> <%= item[:answer_unit] %></p>
+          </div>
+          <!-- Emissions calculated -->
+          <div class="col-2">
+            <p class="small-text-dashboard"><%= item[:emission_answer_calculation].truncate(0)%> kgCO2e</p>
+          </div>
         <% end %>
       </div>
     </div>
