@@ -3,6 +3,17 @@
   flex: 1;
 }
 
+.full-size-click {
+  height: 136px;
+  width:200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: unset;
+  padding: 0px 1em;
+  color: white;
+}
+
 .selected-modules-container h5 {
   font-size: 16px;
   padding: 8px 16px;
@@ -15,7 +26,7 @@
 }
 
 .list-modules-container {
-  height: 65vh;
+  height: 71vh;
   overflow: hidden;
   overflow-y: scroll;
 }
@@ -61,7 +72,6 @@
 }
 
 .flash-module {
-  padding: 15px;
   min-height: 136px;
   padding-right: 1px;
   display: flex;
@@ -124,3 +134,8 @@
 .create-report-scope {
   z-index: 12;
 }
+
+// #98 {
+//     background: url(https://images.pexels.com/photos/1054391/pexels-photo-1054391.jpeg?cs=srgb&dl=top-view-photo-of-ocean-waves-1054391.jpg&fm=jpg);
+//     background-size: contain;
+// }
