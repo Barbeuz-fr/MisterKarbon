@@ -1,40 +1,24 @@
-
 <div id="wrapper">
-
     <div id="sidebar-wrapper">
-      <ul class="sidebar-nav">
-        <%= link_to "Create new report",
-          "#",
-          class: "btn btn-primary btn-lg mt-3 ml-3",
-          "data-toggle" => "modal",
-          "data-target" => "#exampleModalCenter"%>
+  <%= image_tag "jc_le_cdb.png", class: "avatar-large", alt: "avatar-large" %>
+      <ul class="sidebar-nav mt-5">
           <li class="sidebar-brand">
-              <a href="#"> My reports</a>
+              <%= link_to '🗂 My reports', reports_path %>
           </li>
           <li>
-             <% @reports.each do |report| %>
-              <h2><%= link_to report.name, report_path(report) %></h2>
+           <% @reports.each do |report| %>
+              <%= link_to report_path(report.id) do %>
+                <%= image_tag "report-icon.png", class: "report-icon" %>
+                <%= report.name %>
               <% end %>
+            <% end %>
           </li>
           <li>
-              <a href="#">Choose a module</a>
-          </li>
-          <li>
-              <a href="#">Contributors</a>
-          </li>
-          <li>
-              <a href="#">Organization</a>
-          </li>
-          <li>
-              <a href="#">Team</a>
-          </li>
-          <li>
-              <a href="#">Dashboard</a>
-          </li>
-          <li>
-              <a href="#">Log out</a>
+            <%= link_to root_path do %>
+              <%= image_tag "log-out.png", class: "logout-icon"%>
+              Log Out
+            <% end %>
           </li>
       </ul>
     </div>
 </div>
-

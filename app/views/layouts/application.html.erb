@@ -12,10 +12,13 @@
 
   <body>
     <%= render 'shared/flashes' %>
-    <div class="content-wrapper siderender">
-       <%= render 'shared/sidebar' if @sidebar_show %>
+  <% if params[:action] == 'home' %>
+    <div class="content-wrapper">
        <%= yield %>
     </div>
+      <% else %>
 
+
+    <%= render 'shared/footer' if params[:action] == 'home' %>
   </body>
 </html>

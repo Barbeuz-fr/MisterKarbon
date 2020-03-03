@@ -1,213 +1,201 @@
-<div class="container">
-  <nav class="nav nav-pills nav-fill">
-    <a class="nav-item nav-link active" href="#">Progress</a>
-    <a class="nav-item nav-link" href="/reports/<%= @report.id %>/results">Result</a>
-  </nav>
-</div>
-
-
 <!-- Titre report -->
-<div class="container mt-3 mb-2">
-  <h5>Your report : <%= @report.name %> - <%= @report.year %></h5>
+<div class="container mt-3 mb">
+  <h3><%= @report.name %> - <%= @report.year %></h3>
 </div>
 
-<!-- Message si tous les reports sont envoyés -->
-
-<% if @counter_reports_to_send == 0 %>
-  <div class="container">
-    <p>All your data requests have been sent</p>
-  </div>
-<% else %>
-
-  <!-- Table title -->
-  <div class="container mt-4">
-    <h4>Pending data requests</h4>
-  </div>
-
-
-  <!-- Header tableau "pending data request"-->
-  <div class="container mt-3 mb-2">
-    <div class="row">
-      <div class="col-2">
-        <div class="tab-header">
-          <h3 class="text-center">Organization</h3>
-        </div>
+<div class="d-flex">
+  <div>
+    <!--
+    ----------------------------------------------------------
+    PIE BAR CHART (PROGRESS)
+     ----------------------------------------------------------
+    -->
+    <div class="dashboard-card-1">
+      <div class="top-box mb-3">
+        <h5><i class="fas fa-sort-amount-up"></i> Progress</h5>
       </div>
-      <div class="col-2">
-        <div class="tab-header">
-          <h3 class="text-center">Emission module</h3>
-        </div>
-      </div>
-      <div class="col-5">
-        <div class="tab-header">
-          <h3 class="text-center">Contributors</h3>
-        </div>
-      </div>
-      <div class="col-3">
-        <div class="tab-header">
-          <h3 class="text-center">Status</h3>
-        </div>
+      <div class="align-items-center">
+        <%= content_tag 'canvas', '',
+                    id: 'progressPieChart',
+                    width: '150', height: '150',
+                    data: {progress: @progress_data } %>
       </div>
     </div>
-  </div>
+    <!--
+    ----------------------------------------------------------
+    CURRENT SCOPE
+     ----------------------------------------------------------
+    -->
+    <div class="dashboard-card-1">
+      <div class="top-box">
+        <h5><i class="fas fa-users"></i>  Scope</h5>
+      </div>
+      <!-- Table -->
+      <div class="container">
+        <!-- Headers -->
+        <div class="row">
+          <div class="col-6">
+            <p><strong>Emissions</strong> </p>
+          </div>
+          <div class="col-6">
+            <p><strong>Organization</strong></p>
+          </div>
+        </div>
+        <!-- Content -->
 
-  <!-- Affichage d'un tableau avec tous les modules x orga x email -->
-  <div class="container">
-    <div class="row">
-      <% @report.report_scopes.each do |report_scope|  %>
-        <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
-          <% if report_scope_orga.status == "To send" %>
-            <div class="col-2 flex-cell cell-white-background">
-              <p class="text-center"><%= report_scope_orga.orga.name %></p>
-            </div>
-            <div class="col-2 flex-cell cell-white-background">
-              <p class="text-center"><%= report_scope.emission_module.name %></p>
-            </div>
-            <div class="col-5 flex-cell cell-white-background">
-            <ul class="m-0 p-0">
-            <% report_scope_orga.report_scope_orga_users.each do |report_scope_orga_user| %>
-              <p><%= report_scope_orga_user.user.email  %></p>
-            <% end %>
-            </ul>
-            </div>
-            <div class="col-3 flex-cell">
-                <p>
-                  <%= link_to "#{report_scope_orga.status}",
-                        report_scope_orga_send_report_path(report_scope_orga),
-                        class:"btn btn-success" %>
+        <% @report.report_scopes.each do |report_scope| %>
+          <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
+            <div class="row">
+              <!-- Emissions module -->
+              <div class="col-6">
+                <% if report_scope.emission_module.photo.attached?  %>
+                  <p  class="small-text-dashboard">
+                    <%= cl_image_tag report_scope.emission_module.photo.key, :crop=>"fill", class:"avatar", style:"width:20; height:20"%>
+                    <%= report_scope.emission_module.name %>
+                  </p>
+                <% else %>
+                  <p  class="small-text-dashboard">
+                    <%= image_tag "https://cdn2.iconfinder.com/data/icons/vape-1/48/a-18-512.png", class:"avatar", style:"width:20px; height:20px"%>
+                    <%= report_scope.emission_module.name %>
+                  </p>
+                <% end %>
+              </div>
+              <!-- Orga -->
+              <div class="col-6">
+                <p  class="small-text-dashboard">
+                  <%= cl_image_tag report_scope_orga.orga.photo.key, :crop=>"fill", class:"avatar", style:"width:20px; height:20px"%>
+                  <%= report_scope_orga.orga.name %>
                 </p>
+              </div>
             </div>
           <% end %>
         <% end %>
-      <% end %>
-    </div>
-  </div>
-
-
-<!-- Ajout d'un bouton "send all" -->
-<div class="container">
-
-  <div class="row">
-    <div class="col-9"></div>
-    <div class="flex-cell col-3">
-      <button type="button" class="btn btn-success btn-lg">Send all</button>
-  </div>
-</div>
-
-<% end %>
-
-<!-- Title -->
-
-<div class="container">
-  <div class="mt-4 mb-2">
-    <h4>Your progress</h4>
-  </div>
-</div>
-
-<!-- KPI progress -->
-<div class="container">
-
-  <div class="wrapper">
-    <div class="flex-cell lightblue-bg">
-      <div>
-        <p>To send </p>
       </div>
-      <div class="bg-white p-1 rounded">
-        <p><%= @status_to_send %> / <%= @status_total %></p>
-      </div>
-    </div>
-    <div class="flex-cell lightblue-bg">
-      <div>
-        <p>Sent, not <br>yet started</p>
-      </div>
-      <div class="bg-white p-1 rounded">
-      <p><%= @status_sent %> / <%= @status_total %></p>
-      </div>
-    </div>
-    <div class="flex-cell lightblue-bg">
-      <div>
-        <p>On-going</p>
-      </div>
-      <div class="bg-white p-1 rounded">
-        <p><%= @status_ongoing %> / <%= @status_total %></p>
-      </div>
-    </div>
-    <div class="flex-cell lightblue-bg">
-      <div>
-        <p>Pending <br> validation</p>
-      </div>
-      <div class="bg-white p-1 rounded">
-        <p><%= @status_pending_validation %> / <%= @status_total %></p>
-      </div>
-    </div>
-    <div class="flex-cell lightblue-bg">
-      <div>
-        <p>Done!</p>
-      </div>
-      <div class="bg-white p-1 rounded">
-        <p><%= @status_done %> / <%= @status_total %></p>
+      <div class="text-center">
+        <p class="btn btn-secondary btn-sm">Add a team</p>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Structure tableau -->
-<div class="container mt-3 mb-2">
-  <div class="row">
-    <div class="col-2">
-      <div class="tab-header">
-        <h3 class="text-center">Organization</h3>
+  <!--
+  ----------------------------------------------------------
+  STACKED BAR CHART (EMISSIONS)
+   ----------------------------------------------------------
+   -->
+  <div>
+    <div class="dashboard-card-2">
+      <div class="top-box">
+        <h5>☁︎  Emissions</h5>
+      </div>
+      <p><em>kgCO2e</em> </p>
+      <div class="d-flex align-items-center">
+        <%= content_tag :div, '',
+                        id: 'bar_chart_data',
+                        data: {emissions: @y_axis_organizations,
+                              orga: @label_orga} %>
+        <%= content_tag 'canvas', '',
+                        id: 'mybarChart',
+                        width: '600', height: '300',
+                        data: {titles: @x_axis_modules} %>
       </div>
     </div>
-    <div class="col-2">
-      <div class="tab-header">
-        <h3 class="text-center">Emission module</h3>
+    <!--
+    ----------------------------------------------------------
+    DETAILS DATA (table)
+     ----------------------------------------------------------
+    -->
+    <div class="dashboard-card-2">
+      <div class="top-box">
+          <h5><i class="fas fa-database"></i> Details</h5>
       </div>
-    </div>
-    <div class="col-4">
-      <div class="tab-header">
-        <h3 class="text-center">Contributors</h3>
-      </div>
-    </div>
-    <div class="col-2">
-      <div class="tab-header">
-        <h3 class="text-center">Status</h3>
-      </div>
-    </div>
-    <div class="col-2">
-      <div class="tab-header">
-        <h3 class="text-center">Team discussion</h3>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Contenu tableau -->
-
-<div class="container">
-  <div class="row">
-    <% @report.report_scopes.each do |report_scope|  %>
-      <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
-        <div class="col-2 flex-cell cell-white-background">
-          <p class="text-center small-text"><%= report_scope_orga.orga.name %></p>
-        </div>
-        <div class="col-2 flex-cell cell-white-background">
-          <p class="text-center small-text"><%= report_scope.emission_module.name %></p>
-        </div>
-        <div class="col-4 flex-cell cell-white-background">
-          <ul class="m-0 p-0">
-            <% report_scope_orga.report_scope_orga_users.each do |report_scope_orga_user| %>
-              <p class="text-left small-text"><%= report_scope_orga_user.user.email  %></p>
+      <div class="pl-3">
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Dropdown
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <% @report.report_scopes.each do |report_scope| %>
+              <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
+                <li>
+                  <a data-value="">
+                    <%= report_scope.emission_module.name %> - <%= report_scope_orga.orga.name %>
+                  </a>
+                </li>
+              <% end %>
             <% end %>
           </ul>
         </div>
-        <div class="col-2 flex-cell">
-            <p class="text-center small-text"><%= report_scope_orga.status %></p>
+      </div>
+      <div class="d-flex justify-content-between p-3">
+        <div>
+          <p>Team</p>
+          <%= simple_form_for @report do |f| %>
+            <% @report.report_scopes.each do |report_scope| %>
+              <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
+              <% end %>
+            <% end %>
+          <% end %>
+
         </div>
-        <div class="col-2 flex-cell">
-          <p class="text-center"><i class="far fa-envelope"></i></p>
+        <div>
+          <p>Status</p>
         </div>
-      <% end %>
-    <% end %>
+        <div>
+          <p><i class="far fa-envelope fa-2x"></i> <i class="far fa-comment-dots fa-2x"></i> <i class="fab fa-skype fa-2x"></i></p>
+        </div>
+      </div>
+
+            <!-- Table -->
+      <div class="container">
+        <!-- headers -->
+        <div class="row">
+          <div class="col-4">
+            <p><strong>Data request</strong> </p>
+          </div>
+          <div class="col-2">
+            <p><strong>Team input</strong></p>
+          </div>
+          <div class="col-2">
+            <p><strong>Emissions</strong></p>
+          </div>
+          <div class="col-2">
+            <p><strong>Comments</strong></p>
+          </div>
+          <div class="col-2">
+            <p><strong>Attachments</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content with loop -->
+      <div class="row pl-3 pr-3">
+        <% @output_array.each do |item| %>
+          <!-- Question -->
+          <div class="col-4">
+            <p class="small-text-dashboard"><%= item[:question] %></p>
+          </div>
+          <!-- Team input -->
+          <div class="col-2">
+            <p class="small-text-dashboard"><%= item[:answer].truncate(0)%> <%= item[:answer_unit] %></p>
+          </div>
+          <!-- Emissions calculated -->
+          <div class="col-2">
+            <p class="small-text-dashboard"><%= item[:emission_answer_calculation].truncate(0)%> kgCO2e</p>
+          </div>
+          <!-- Comments -->
+          <div class="col-2">
+            <!-- TO DO - boucle if sur comment avec "n.a." -->
+            <p class="small-text-dashboard"><em>N.a.</em></p>
+          </div>
+          <!-- Attachment -->
+          <div class="col-2">
+            <!-- TO DO - boucle if avec ".n.A" -->
+            <p class="small-text-dashboard"><i class="far fa-file-pdf"> <i class="far fa-file-excel"></i></i></p>
+          </div>
+
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

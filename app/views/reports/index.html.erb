@@ -1,80 +1,53 @@
-<!--   <h3 id="title-reports"> Your carbon footprint reports</h3>
+<div class="reports-index-grid">
   <%= link_to "Create new report",
-              "#",
-              class: "btn btn-success btn-lg",
-              "data-toggle" => "modal",
-              "data-target" => "#exampleModalCenter"%>
+        "data-toggle" => "modal",
+        "data-target" => "#exampleModalCenter" do %>
+    <div class="card-add">
+      <div class="plus-icon">
+        <%= image_tag "action-report.png", alt: "create new report", class: 'add-action-report'%>
+      </div>
+    </div>
+  <% end %>
+
   <% @reports.each do |report| %>
-    <%= link_to report_path(report) do %>
-      <div class="card-product">
-        <% if report.photo.attached? %>
-          <%= cl_image_tag report.photo.key, height: 100, width: 120, crop: :fill %>
-        <% else %>
-          <%= image_tag "clouds-default-img.png", alt: "default-report-img", height: 100, width: 200 %>
-        <% end %>
-        <div class="card-product-infos">
-          <div>
-            <h2><%= report.name %></h2>
-            <h3><%= report.year %></h3>
-          </div>
-          <% report.report_scopes.each do |report_scope| %>
-            <div class= "info-scope">
-              <p>☁︎ <%= report_scope.emission_module.name %></p>
-              <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
-                <p>🏭 <%= report_scope_orga.orga.name %></p>
-              <% end  %>
-            </div>
-          <% end %>
-          <div>
-            <%= button_to "🗑", report_path(report), method: :delete, data: {confirm: "Are you sure?"}, class: 'delete-button'%>
-          </div>
+    <div class="report-card">
+      <div class="report-card-top" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%=report_photo(report)%>)">
+        <div>
+          <h2><%= report.name %></h2>
+          <h3><%= report.year %></h3>
         </div>
       </div>
-    <% end %>
-  <% end %>
-</div> -->
-
-<!-- nouvelles cards -->
-<%# link_to "Create new report",
-            "#",
-            class: "btn btn-primary btn-lg mt-3 ml-3",
-            "data-toggle" => "modal",
-            "data-target" => "#exampleModalCenter"%>
-<div class="container">
-  <div class="row">
-    <% @reports.each do |report| %>
-      <%= link_to report_path(report), class: "col-6 mb-3" do %>
-        <div class="card" style="height: 100%;">
-          <% if report.photo.attached? %>
-            <%= cl_image_tag report.photo.key, crop: :fill, class: 'img-report-card' %>
-          <% else %>
-            <%= image_tag "clouds-default-img.png", alt: "default-report-img", class: 'img-report-card'%>
-          <% end %>
-          <div class="card-body">
-            <div class="d-flex justify-content-between">
-              <div class="d-flex">
-                <h2><%= report.name %></h2><span> - </span>
-                <h3><%= report.year %></h3>
-              </div>
-              <div>
-                <!-- changer l action delete en see details  en dessous  garder delete pour le moment pour les tests -->
-                <%= button_to "📝", report, method: :delete, data: {confirm: "Are you sure?"}, class: 'delete-button'%>
-              </div>
-            </div>
-            <div class="card-text">
-              <% report.report_scopes.each do |report_scope| %>
-                <p>☁︎ <%= report_scope.emission_module.name %></p>
-                  <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
-                    <p>🏭 <%= report_scope_orga.orga.name %></p>
-                  <% end  %>
-              <% end %>
-            </div>
-          </div>
+      <div class="report-card-grid">
+        <div class="report-card-orga">
+          <ul>
+            <h5>Organization</h5>
+            <% report.report_scopes.each do |report_scope| %>
+              <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
+                <li><%= report_scope_orga.orga.name %></li>
+              <% end  %>
+            <% end %>
+          </ul>
         </div>
-      <% end %>
-    <% end %>
-  </div>
+        <div class="report-card-module">
+          <ul>
+            <h5>Modules</h5>
+            <% report.report_scopes.each do |report_scope| %>
+              <li><%= report_scope.emission_module.name %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="report-card-contrib">
+          <div class="avatar-contribs"></div>
+          <h5>Contributors</h5>
+          <%= link_to image_tag("loupe-icon.png"), report_path(report), class: "loupe-icon"%>
+        </div>
+      </div>
+      <%#= link_to "", report_path(report), class: "report-card-link"%>
+    </div>
+  <% end %>
+
 </div>
+
 
 <!-- Modal Creation de report  -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -88,13 +61,13 @@
       </div>
       <div class="modal-body">
         <%= simple_form_for (@report) do |f| %>
-            <%= f.input :name, label_html: {class: "label_new"} %>
-            <%= f.input :year, as: :date,  discard_day: true, discard_month: true,  label_html: {class: "label_new"} %>
-        <div class="modal-footer">
-          <%= f.submit "Create your report", class: "btn btn-primary" %>
-        <% end %>
-        </div>
+            <%= f.input :name, placeholder: "Name" %>
+            <%= f.input :year, placeholder: "Year", as: :date,  discard_day: true, discard_month: true %>
       </div>
+      <div class="modal-footer">
+        <%= f.submit "Create your report", class: "btn btn-primary btn-lg" %>
+      </div>
+        <% end %>
     </div>
   </div>
 </div>
