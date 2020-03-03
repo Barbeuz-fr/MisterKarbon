@@ -25,12 +25,13 @@ class ReportsController < ApplicationController
   end
 
   def show
-
     # Declaration des instances principales
     @reports = Report.all
     @report = Report.find(params[:id])
     @report_scopes_array = @report.report_scopes
 
+    # affichage side bar
+    @sidebar_show = true
 
     # Identification s'il y a des reports avec le status "To send"
     @counter_reports_to_send = 0
@@ -42,13 +43,9 @@ class ReportsController < ApplicationController
       end
     end
 
-
-    # affichage side bar
-    @sidebar_show = true
-
-# ------------------------------------------------------------------
-    # PIE CHART
-# ------------------------------------------------------------------
+  # ------------------------------------------------------------------
+      # PIE CHART
+  # ------------------------------------------------------------------
 
     # Calcul des KPIs d'avancement
     @status_to_send = 0
@@ -74,8 +71,12 @@ class ReportsController < ApplicationController
     end
 
     # Count total status
-    @status_total = @status_to_send + @status_to_start + @status_ongoing + @status_almost + @status_pending_validation + @status_done
-
+    @status_total = @status_to_send
+                    + @status_to_start
+                    + @status_ongoing
+                    + @status_almost
+                    + @status_pending_validation
+                    + @status_done
 
     # Calcul de l'array d'avancement
     @progress_data = [0, 0, 0, 0, 0, 0, 0]
@@ -99,7 +100,7 @@ class ReportsController < ApplicationController
       end
     end
 
-      # Output_array: array avec les hash de chaque emission par question
+    # Output_array: array avec les hash de chaque emission par question
     @output_array = []
     @output_numbers = []
 
@@ -126,16 +127,6 @@ class ReportsController < ApplicationController
       end
     end
 
-    # Definition des variables avec les données pour barchart simple
-    # @labels = []
-    # @emissions_bar_chart = []
-    # @output_array.each do |item|
-    #   @emissions_bar_chart << item[:emission_answer_calculation]
-    #   @labels << "#{item[:emission_module_name]} - #{item[:orga_scope_name]} - #{item[:answer_number]}"
-    # end
-
-
-
     # ------------------------------------------------------------------
     # STACKED BAR CHART
     # ------------------------------------------------------------------
@@ -144,7 +135,8 @@ class ReportsController < ApplicationController
     # 1/ Axe X : emission modules
     @x_axis_modules = []
     @report_scopes_array.each do |report_scope|
-      @x_axis_modules << report_scope.emission_module.name
+      words = report_scope.emission_module.name.split(/\W+/)
+      @x_axis_modules << words
     end
 
     # 2/ Creation d'un array avec autant d'array vide que de modules
@@ -155,9 +147,16 @@ class ReportsController < ApplicationController
 
     # 3/ Création d'un array pour stocker le nom des orga parcourues (en légende)
     @label_orga = []
+    @report_scopes_array.each do |report_scope|
+      report_scope.report_scope_orgas.each do |report_scope_orga|
+        if @label_orga.include?(report_scope_orga.orga.name)
+        else
+          @label_orga << report_scope_orga.orga.name
+        end
+      end
+    end
 
-    # TO DO - DONNEES A CORRIGER
-    # 4/ Itérer sur les valeurs pour les stocker dans @y_axis_organizations
+    # 4/ Itérer sur les valeurs pour les stocker dans @y_axis_organizations et @y-labels
     @report_scopes_array.each_with_index do |report_scope, index_module|
       report_scope.report_scope_orgas.each_with_index do |report_scope_orga, index_orga|
         # total answer = total pour un module X orga
@@ -169,7 +168,7 @@ class ReportsController < ApplicationController
         # on push le total dans l'array @y_axis_organizations
         end
       @y_axis_organizations[index_orga] << total_answer
-      @label_orga << report_scope_orga.orga.name
+      # @label_orga << report_scope_orga.orga.name
       end
     end
   end

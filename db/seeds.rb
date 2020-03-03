@@ -368,16 +368,12 @@ require "open-uri"
   transport_marchandise_aerien = EmissionModule.create!(name: "Air freight", scope: 3)
   transport_marchandise_maritime = EmissionModule.create!(name: "Sea freight", scope: 3)
   transport_marchandise_fluvial = EmissionModule.create!(name: "River freight", scope: 3)
-
   transport_personne_routier = EmissionModule.create!(name: "Road transport", scope: 3)
   transport_personne_ferroviaire = EmissionModule.create!(name: "Rail passenger transport", scope: 3)
   transport_personne_aerien = EmissionModule.create!(name: "Air traffic", scope: 3)
   # transport_personne_maritime = EmissionModule.create!(name: "Transport maritime de personnes", scope: 3)
   transport_personne_fluvial = EmissionModule.create!(name: "River transport", scope: 3)
-
   achat_produit_agri = EmissionModule.create!(name: "Purchasing - Agricultural products", scope: 3)
-  peas = EmissionModule.create!(name: "Purchasing - Agricultural products - Peas", scope: 3)
-
   achat_bois_papier_carton = EmissionModule.create!(name: "Purchasing - wood, pulp & paper", scope: 3)
   achat_mineraux = EmissionModule.create!(name: "Purchasing - Minerals & metals", scope: 3)
   achat_machines = EmissionModule.create!(name: "Purchasing - Machines & equipment", scope: 3)
@@ -411,7 +407,6 @@ require "open-uri"
     transport_personne_aerien,
     transport_personne_fluvial,
     achat_produit_agri,
-    peas,
     achat_bois_papier_carton,
     achat_mineraux,
     achat_machines,
@@ -965,14 +960,14 @@ require "open-uri"
         question_id: question_achat_produit_agri_1.id,
         report_scope_orga_id: report1_scope2_orga.id,
         unit: "kg",
-        content: 500000)
+        content: 50000)
 
     answer_achat_produit_agri_2_manuf = Answer.create!(
         calculation: true,
         question_id: question_achat_produit_agri_2.id,
         report_scope_orga_id: report1_scope2_orga.id,
         unit: "kg",
-        content: 300000)
+        content: 30000)
 
 # ==============================================================================
 # TESTORGA
