@@ -5,6 +5,18 @@
   <%# end %>
 </div> -->
 
+<div class="container mt-2">
+  <nav class="nav nav-pills nav-fill">
+    <a class="nav-item nav-link">☁︎  Emissions</a>
+    <div class="arrow-right-not-selected"></div>
+    <a class="nav-item nav-link active"><i class="fas fa-sitemap"></i> Organization</a>
+    <div class="arrow-right-selected"></div>
+    <a class="nav-item nav-link"><i class="fas fa-user-plus"></i> Team</a>
+    <div class="arrow-right-not-selected"></div>
+  </nav>
+</div>
+
+
 <div class="container">
   <div class="d-flex justify-content-between">
     <%= link_to "Previous", report_report_scopes_path(params[:report_id]), class:"btn btn-secondary mt-3" %>
@@ -14,56 +26,74 @@
 
 
 <div class="container mt-3">
-  <h4>Modules selected by business unit</h4>
-  <h5>Project: <%= @report.name %> - <%= @report.year %> </h5>
+  <div class="row">
+    <div class="col-8">
+      <h4>Modules selected by business unit</h4>
+      <h5>Project: <%= @report.name %> - <%= @report.year %> </h5>
+    </div>
+    <div class="col-4 text-center">
+      <h4>Your Selected Modules</h4>
+    </div>
+  </div>
 </div>
 
 
-<!-- </div> -->
 
-  <div class="container">
-    <div class="mx-5">
-      <div class="row">
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-8">
+      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <% @orgas.each do |orga| %>
+          <li class="nav-item mb-3 col-6">
+            <a class="nav-link" id="pills-<%= orga.id %>-tab" data-toggle="pill" href="#pills-<%= orga.id %>" role="tab" aria-controls="pills-<%= orga.id %>" aria-selected="false"><%= orga.name %></a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="col-4">
+      <div class="tab-content" id="pills-tabContent">
         <% @orgas.each do |orga| %>
           <% unless @report_scope_orgas.find_by(orga_id: orga.id).present? %>
-            <div class="col-4">
-              <ul class="list-group m-3">
-                <li class="list-group-item active"><%= orga.name %></li>
-                <li class="list-group-item">
-                  <button type="button" class="btn" data-toggle="modal" data-target="#staticBackdrop<%= orga.name.gsub(" ", "") %>">
-                      Add a module
-                  </button>
-                </li>
-              </ul>
+            <div class="tab-pane fade" id="pills-<%= orga.id %>" role="tabpanel" aria-labelledby="pills-<%= orga.id %>-tab">
+              <p>
+                <button type="button" class="btn" data-toggle="modal" data-target="#staticBackdrop<%= orga.name.gsub(" ", "") %>">
+                  Add a module
+                </button>
+              </p>
+              <%= render 'shared/modal-report-scope-orga', orga: orga %>
             </div>
-          <% else %>
-            <% @report_scope_orgas.where(orga_id: orga.id).group_by(&:orga).each do |orga, array| %>
-              <div class="col-4">
-                <ul class="list-group m-3">
-                  <li class="list-group-item active"><%= orga.name %></li>
-                  <% array.each do |r| %>
-                    <li class="list-group-item"><%= r.report_scope.emission_module.name %>
-                    <%= link_to "🗑",
-                     report_report_scope_orga_path(@report.id, r.id),
-                    method: :delete,
-                    data: { confirm: "Are you sure?" } %>
-                  </li>
-                  <% end %>
-                  <li class="list-group-item">
-                    <button type="button" class="btn" data-toggle="modal" data-target="#staticBackdrop<%= orga.name.gsub(
-                  " ", "") %>">
-                        Add a module
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            <% end %>
           <% end %>
+        <% end %>
+
+
+        <% @report_scope_orgas.group_by(&:orga).each do |orga, array| %>
+          <div class="tab-pane fade" id="pills-<%= orga.id %>" role="tabpanel" aria-labelledby="pills-<%= orga.id %>-tab">
+            <% array.each do |r| %>
+              <p><%= r.report_scope.emission_module.name %>
+               <%= link_to "🗑",
+                report_report_scope_orga_path(@report.id, r.id),
+                method: :delete,
+                data: { confirm: "Are you sure?" } %>
+              </p>
+            <% end %>
+            <p>
+              <button type="button" class="btn" data-toggle="modal" data-target="#staticBackdrop<%= orga.name.gsub(" ", "") %>">
+                Add a module
+              </button>
+            </p>
             <%= render 'shared/modal-report-scope-orga', orga: orga %>
+          </div>
         <% end %>
       </div>
     </div>
+
   </div>
+</div>
+
+
+
+
 
 
 

@@ -1,5 +1,5 @@
 class TestorgasController < ApplicationController
   def index
-    @testorga = Testorga.all
+    @testorgas = Testorga.all
   end
 end

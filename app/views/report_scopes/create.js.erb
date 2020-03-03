@@ -1,0 +1,11 @@
+function refreshCard(innerHTML) {
+  const card = document.getElementById("<%= @report_scope.emission_module.id %>");
+  card.outerHTML = innerHTML;
+}
+
+// function addCard(innerHTML) {
+// // trouver la liste des cartes
+// // inserer la carte du report scope cree
+// }
+
+refreshCard('<%= j render "report-scope-destroy", module_scope: @report_scope.emission_module %>')
