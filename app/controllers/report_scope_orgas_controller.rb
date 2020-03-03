@@ -39,13 +39,23 @@ class ReportScopeOrgasController < ApplicationController
     # affichage sous-navbar
     @project_create_2_nav = true
 
+    # Fonction de recherche
+    PgSearch.multisearch_options = {
+      using: { tsearch: { prefix: true } }
+    }
+    if (params[:query].present?)
+      @results = Orga.search_orga(params[:query])
+    else
+      @results=[]
+    end
+
   end
 
   def create
-    report_scope_ids = report_scope_orga_params[:report_scope_id].reject{ |id| id == "" }
+    orga_ids = report_scope_orga_params[:orga_id].reject{ |id| id == "" }
     # iterer sur report scope ids
-    report_scope_ids.each do |report_scope_id|
-      ReportScopeOrga.create(orga_id: report_scope_orga_params[:orga_id], report_scope_id: report_scope_id)
+    orga_ids.each do |orga_id|
+      ReportScopeOrga.create(orga_id: orga_id, report_scope_id: report_scope_orga_params[:report_scope_id])
     end
 
     redirect_to new_report_report_scope_orga_path
@@ -61,6 +71,6 @@ class ReportScopeOrgasController < ApplicationController
   private
 
   def report_scope_orga_params
-    params.require(:report_scope_orga).permit(:orga_id, report_scope_id: [])
+    params.require(:report_scope_orga).permit(:report_scope_id, orga_id: [])
   end
 end

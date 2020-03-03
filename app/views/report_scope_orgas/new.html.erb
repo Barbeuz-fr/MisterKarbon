@@ -15,70 +15,85 @@
 
 <div class="container mt-3">
   <div class="row">
-    <div class="col-8">
+    <div class="col-6">
       <h4>Modules selected by business unit</h4>
       <h5>Project: <%= @report.name %> - <%= @report.year %> </h5>
     </div>
-    <div class="col-4 text-center">
-      <h4>Your Selected Modules</h4>
-    </div>
   </div>
 </div>
 
-
-
-<div class="container mt-3">
+<!-- Headers tableau -->
+<div class="container mb-2">
   <div class="row">
-    <div class="col-4">
-      <ul>
-        <% @report.report_scopes.each do |report_scope| %>
-          <li>
-            <%= report_scope %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-
-    <div class="col-4 bg-white rounded">
-      <div class="tab-content pt-3" id="pills-tabContent">
-        <% @orgas.each do |orga| %>
-          <% unless @report_scope_orgas.find_by(orga_id: orga.id).present? %>
-            <div class="tab-pane fade" id="pills-<%= orga.id %>" role="tabpanel" aria-labelledby="pills-<%= orga.id %>-tab">
-              <button type="button" class="btn btn-primary col-12" data-toggle="modal" data-target="#staticBackdrop<%= orga.name.gsub(" ", "") %>">
-                Add a module
-              </button>
-              <%#= render 'shared/modal-report-scope-orga', orga: orga %>
-            </div>
-          <% end %>
-        <% end %>
-
-
-        <% @report_scope_orgas.group_by(&:orga).each do |orga, array| %>
-          <div class="tab-pane fade" id="pills-<%= orga.id %>" role="tabpanel" aria-labelledby="pills-<%= orga.id %>-tab">
-            <% array.each do |r| %>
-              <div class="row">
-                <div class="col-10">
-                  <p class="text-left"><%= r.report_scope.emission_module.name %> </p>
-                </div>
-                <div class="col-2">
-                 <%#= link_to "🗑", report_scope_orga_path(r.id), method: :delete, data: { confirm: "Are you sure?" } %>
-                 <%= link_to "🗑", report_report_scope_orga_path(@report.id, r.id), method: :delete, data: { confirm: "Are you sure?" }, remote: true %>
-                </div>
-              </div>
-            <% end %>
-            <p>
-              <button type="button" class="btn btn-primary col-12" data-toggle="modal" data-target="#staticBackdrop<%= orga.name.gsub(" ", "") %>">
-                Add a module
-              </button>
-            </p>
-            <%#= render 'shared/modal-report-scope-orga', orga: orga %>
-          </div>
-        <% end %>
+    <div class="col-3">
+      <div class="tab-header">
+        <h3 class="text-center">Emission type</h3>
       </div>
     </div>
-
+    <div class="col-4 px-0">
+      <div class="tab-header">
+        <h3 class="text-center">Organization</h3>
+      </div>
+    </div>
+    <div class="col-5">
+      <% if params[:report_scope].present? %>
+        <!-- Definition modale -->
+        <div id="addEmail">
+          <div class="tab-header">
+            <h3 class="text-center">Add a contributor</h3>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-7">
+      <% @report.report_scopes.each do |report_scope| %>
+        <div class="row mb-3">
+          <div class="col-5 px-0 flex-cell cell-justify-left">
+            <div class="d-flex flex-row">
+              <% if report_scope.emission_module.photo.attached?  %>
+                <%= cl_image_tag report_scope.emission_module.photo.key, :crop=>"fill", class:"avatar ml-3", style:"width:30px; height:30px"%>
+              <% else %>
+                <%= image_tag "https://cdn2.iconfinder.com/data/icons/vape-1/48/a-18-512.png", class:"avatar ml-3", style:"width:30px; height:30px"%>
+              <% end %>
+              <p class="pl-2"><%= report_scope %></p>
+            </div>
+          </div>
+          <div class="col-7 px-3">
+            <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
+              <button class="rounded-pill">
+                <ul class="list-inline m-0">
+                  <li class="list-inline-item">
+                    <%= cl_image_tag report_scope_orga.orga.photo.key, :crop=>"fill", class:"avatar ml-3", style:"width:30px; height:30px"%>
+                  </li>
+                  <li class="list-inline-item m-0">
+                    <p class= "px-2 m-0"><%= report_scope_orga.orga.name %></p>
+                  </li>
+                </ul>
+              </button>
+            <% end %>
+            <%= link_to "",
+            url_for(report_scope: report_scope),
+            id: "addOrga",
+            class:"fas fa-plus-circle fa-1x" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+      <%#= raise %>
+      <%= render 'shared/research_orga_report_scope' %>
+  </div>
+
+</div>
+
+
+
 
 
 
