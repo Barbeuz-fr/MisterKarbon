@@ -35,7 +35,7 @@
 </div> -->
 
 <!-- nouvelles cards -->
-<%= link_to "Create new report",
+<%# link_to "Create new report",
             "#",
             class: "btn btn-primary btn-lg mt-3 ml-3",
             "data-toggle" => "modal",
@@ -57,7 +57,8 @@
                 <h3><%= report.year %></h3>
               </div>
               <div>
-                <%= button_to "🗑", report, method: :delete, data: {confirm: "Are you sure?"}, class: 'delete-button'%>
+                <!-- changer l action delete en see details  en dessous  garder delete pour le moment pour les tests -->
+                <%= button_to "📝", report, method: :delete, data: {confirm: "Are you sure?"}, class: 'delete-button'%>
               </div>
             </div>
             <div class="card-text">
@@ -88,9 +89,8 @@
       <div class="modal-body">
         <%= simple_form_for (@report) do |f| %>
             <%= f.input :name, label_html: {class: "label_new"} %>
-            <%= f.input :year, label_html: {class: "label_new"} %>
+            <%= f.input :year, as: :date,  discard_day: true, discard_month: true,  label_html: {class: "label_new"} %>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <%= f.submit "Create your report", class: "btn btn-primary" %>
         <% end %>
         </div>

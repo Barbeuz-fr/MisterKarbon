@@ -13,8 +13,10 @@ const initAjaxScroll = () => {
     if (window.scrollPosition && (this.location.href == window.lastHref)) {
       // Scroll to our previous position
       window.scrollTo(window.scrollPosition.x, window.scrollPosition.y)
+        console.log(Date.now())
     }
   }, false)
+
 }
 
 const preserveTab = () => {

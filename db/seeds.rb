@@ -33,12 +33,27 @@ require "open-uri"
   report_2_file = URI.open('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1302&q=80')
   report_3_file = URI.open('https://images.unsplash.com/photo-1524684009724-bee13ad8305f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=716&q=80')
 
+
+# ==============================================================================
+# IMAGES AVATAR
+# ==============================================================================
+
+  avatar_1_file = URI.open('https://www.aquinum.fr/images/comprofiler/632_5bf032441a375.jpg')
+  avatar_2_file = URI.open('https://3wpie932p5cn1pgjba40gtkbm83-wpengine.netdna-ssl.com/wp-content/uploads/2018/10/Julien-Lachance.jpg')
+  avatar_3_file = URI.open('http://www.agenceartistique.com/DATA/PHOTO/359_grande.jpg')
+
+
+# ==============================================================================
+# IMAGES ORGA
+# ==============================================================================
+
 # --------------------------------------------------------------------------------------
 # IMPORTATION CSV ADEME
 # ==============================================================================
 
-  # p "starting csv import ADEME"
-  # require 'csv'
+
+  p "starting csv import ADEME"
+  require 'csv'
 
   # count = 0
   # csv_text = File.read(Rails.root.join('lib', 'seeds', 'csv_for_seed.csv'))
@@ -96,34 +111,58 @@ require "open-uri"
 
   supply_chain = Orga.new(name: "Supply Chain")
   supply_chain.company = company
+  supply_chain.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'supply-chain.png')),
+    filename: 'supply-chain.png', content_type: 'image/png')
   supply_chain.save
 
   manufacturing = Orga.new(name: "Manufacturing")
   manufacturing.company = company
+  manufacturing.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'manufacturing.png')),
+    filename: 'manufacturing.png', content_type: 'image/png')
   manufacturing.save
 
   rd = Orga.new(name: "R&D")
   rd.company = company
+  rd.photo.attach(
+  io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'rd.png')),
+  filename: 'rd.png', content_type: 'image/png')
   rd.save
 
   product_development = Orga.new(name: "Product Development")
   product_development.company = company
+  product_development.photo.attach(
+  io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'product-dev.png')),
+  filename: 'product-dev.png', content_type: 'image/png')
   product_development.save
 
   marketing = Orga.new(name: "Marketing")
   marketing.company = company
+  marketing.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'marketing.png')),
+    filename: 'marketing.png', content_type: 'image/png')
   marketing.save
 
   sales = Orga.new(name: "Sales")
   sales.company = company
+  sales.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'sales.png')),
+    filename: 'sales.png', content_type: 'image/png')
   sales.save
 
   finance = Orga.new(name: "Finance")
   finance.company = company
+  finance.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'finance.png')),
+    filename: 'finance.png', content_type: 'image/png')
   finance.save
 
   hr = Orga.new(name: "HR")
   hr.company = company
+  hr.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'hr.png')),
+    filename: 'hr.png', content_type: 'image/png')
   hr.save
 
 # ==============================================================================
@@ -135,98 +174,110 @@ require "open-uri"
 
   manager = User.new(
     first_name: "JC",
-    email: "test@gmail.com",
+    email: "jean-charles.bertrand@gmail.com",
     password: 123456,
+    organization_position: "CSR EMEA",
+    job_position: "CSR manager",
     last_name: "Bertrand",
-    company_id: company.id
+    company_id: company.id,
     )
+  manager.photo.attach(io: avatar_1_file, filename: 'avatar_1.jpg', content_type: 'image/jpg')
   manager.save
   p manager
   p manager.first_name
 
-  # p "Generation des users pour les orgas"
 
-  #   10.times do
-  #       first_name = Faker::Name.first_name,
-  #       last_name = Faker::Name.last_name,
-  #       user = User.new(
-  #       first_name: first_name,
-  #       last_name: last_name,
-  #       email: "#{first_name}.#{last_name}@gmail.com",
-  #       # email: "#{first_name}.#{last_name}@gmail.com",
-  #       # pour job position et organisation position, peut etre mettre un array.sample
-  #       #sur ce qui nous interesse
-  #       company_id: company.id,
-  #       job_position: Faker::Job.title,
-  #       organization_position: ["Marketing", "Manufacturing", "Suppy Chain", "HR", "Finance", "Product Development"].sample,
-  #       password: "qwerty123",
+  p "Generation des users pour les orgas"
 
-  #       )
-  #       p user
-  #       user.save!
-  #   end
+  orga_pour_faker = ["Marketing", "Manufacturing", "Suppy Chain", "HR", "Finance", "Product Development"]
+  orga_pour_faker.each do |orga|
+    10.times do
+        first_name = Faker::Name.first_name
+        last_name = Faker::Name.last_name
+        user = User.new(
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name,
+        email: "#{first_name}.#{last_name}@breadandco.com",
+        # pour job position et organisation position, peut etre mettre un array.sample
+        #sur ce qui nous interesse
+        job_position: Faker::Job.title,
+        organization_position: orga,
+        password: "qwerty123",
+        company_id: company.id
+        )
+        user.save!
+    end
+  end
 
   company_employee_1 = User.new(
     first_name: "Germain",
     last_name: "Dubreuil",
-    email: "germain.dubreuil@strawberry.com",
+    email: "germain.dubreuil@breadandco.com",
     password: "123456",
-    company_id: company.id
+    company_id: company.id,
     )
+  company_employee_1.photo.attach(io: avatar_2_file, filename: 'avatar_1.jpg', content_type: 'image/jpg')
   company_employee_1.save
 
   company_employee_2 = User.new(
     first_name: "Antoine",
     last_name: "Fraveaux",
-    email: "Antoine.Fraveaux@strawberry.com",
+    email: "Antoine.Fraveaux@breadandco.com",
     password: "123456",
-    company_id: company.id
+    company_id: company.id,
     )
+  company_employee_2.photo.attach(io: avatar_3_file, filename: 'avatar_1.jpg', content_type: 'image/jpg')
   company_employee_2.save
 
   company_employee_3 = User.new(
     first_name: "Jeremy",
     last_name: "Kerviel",
-    email: "Jeremy.Kerviel@strawberry.com",
+    email: "Jeremy.Kerviel@breadandco.com",
     password: "123456",
-    company_id: company.id
+    company_id: company.id,
     )
-  company_employee_3.save
-
-  company_employee_3 = User.new(
-    first_name: "Jason",
-    last_name: "Bourne",
-    email: "Jason.Bourne@strawberry.com",
-    password: "123456",
-    company_id: company.id
-    )
+  # company_employee_3.photo.attach(io: avatar_1_file, filename: 'avatar_1.jpg', content_type: 'image/jpg')
   company_employee_3.save
 
   company_employee_4 = User.new(
     first_name: "Greta",
     last_name: "Garbo",
-    email: "Greta.Garbo@strawberry.com",
+    email: "Greta.Garbo@breadandco.com",
     password: "123456",
-    company_id: company.id
+    company_id: company.id,
     )
+  # company_employee_4.photo.attach(io: avatar_1_file, filename: 'avatar_1.jpg', content_type: 'image/jpg')
   company_employee_4.save
 
   company_employee_5 = User.new(
     first_name: "Jason",
     last_name: "Statham",
-    email: "Jason.Statham@strawberry.com",
+    email: "Jason.Statham@breadandco.com",
     password: "123456",
-    company_id: company.id
+    company_id: company.id,
     )
+  # company_employee_5.photo.attach(io: avatar_1_file, filename: 'avatar_1.jpg', content_type: 'image/jpg')
+
   company_employee_5.save
+
+  company_employee_10 = User.new(
+    first_name: "Jason",
+    last_name: "Bourne",
+    email: "Jason.Bourne@breadandco.com",
+    password: "123456",
+    company_id: company.id,
+    )
+  # company_employee_10.photo.attach(io: avatar_1_file, filename: 'avatar_1.jpg', content_type: 'image/jpg')
+  company_employee_10.save
 
   employee_logistique = User.new(
     first_name: "Gérard",
     last_name: "Transport",
     email: "gerard.transport@logistik.com",
     password: "123456",
-    company_id: supplier_logistique.id
+    company_id: supplier_logistique.id,
     )
+  # employee_logistique.photo.attach(io: avatar_1_file, filename: 'avatar_1.jpg', content_type: 'image/jpg')
   employee_logistique.save
 
   employee_mineraux = User.new(
@@ -234,8 +285,9 @@ require "open-uri"
     last_name: "Macadam",
     email: "antoine.macadam@Minerals.com",
     password: "123456",
-    company_id: supplier_mineraux.id
+    company_id: supplier_mineraux.id,
     )
+  # employee_mineraux.photo.attach(io: avatar_1_file, filename: 'avatar_1.jpg', content_type: 'image/jpg')
   employee_mineraux.save
 
   employee_IT = User.new(
@@ -243,8 +295,9 @@ require "open-uri"
     last_name: "Haiti",
     email: "jean-michel.haiti@ITandco.com",
     password: "123456",
-    company_id: supplier_IT.id
+    company_id: supplier_IT.id,
     )
+  # employee_IT.photo.attach(io: avatar_1_file, filename: 'avatar_1.jpg', content_type: 'image/jpg')
   employee_IT.save
 
   puts 'User done'
@@ -483,7 +536,7 @@ require "open-uri"
   report1_scope1_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope1.id,
     orga_id: manufacturing.id,
-    status: "On-going"
+    status: "On-going work"
     )
   report1_scope1_orga.save
 
@@ -503,7 +556,7 @@ require "open-uri"
   report1_scope3_orga = ReportScopeOrga.new(
     report_scope_id:report1_scope3.id,
     orga_id: manufacturing.id,
-    status: "On-going"
+    status: "On-going work"
     )
   report1_scope3_orga.save
 
@@ -551,7 +604,7 @@ require "open-uri"
   report_2_scope1_orga = ReportScopeOrga.new(
     report_scope_id:report_2_scope1.id,
     orga_id: finance.id,
-    status: "To send"
+    status: "Invite"
     )
   report_2_scope1_orga.save
 
@@ -560,7 +613,7 @@ require "open-uri"
   report_2_scope2_orga = ReportScopeOrga.new(
     report_scope_id:report_2_scope2.id,
     orga_id: finance.id,
-    status: "Sent, not yet started"
+    status: "Invited, not yet started"
     )
   report_2_scope2_orga.save
 
@@ -569,7 +622,7 @@ require "open-uri"
   report_2_scope3_orga = ReportScopeOrga.new(
     report_scope_id:report_2_scope1.id,
     orga_id: hr.id,
-    status: "On-going"
+    status: "On-going work"
     )
   report_2_scope3_orga.save
 
@@ -578,7 +631,7 @@ require "open-uri"
   report_2_scope4_orga = ReportScopeOrga.new(
     report_scope_id:report_2_scope2.id,
     orga_id: hr.id,
-    status: "On-going"
+    status: "On-going work"
     )
   report_2_scope4_orga.save
 
@@ -598,21 +651,21 @@ require "open-uri"
   report_3_scope1_orga = ReportScopeOrga.new(
     report_scope_id:report_3_scope1.id,
     orga_id: rd.id,
-    status: "To send"
+    status: "Invite"
     )
   report_3_scope1_orga.save
 
   report_3_scope2_orga = ReportScopeOrga.new(
     report_scope_id:report_3_scope2.id,
     orga_id: rd.id,
-    status: "To send"
+    status: "Invite"
     )
   report_3_scope2_orga.save
 
   report_3_scope3_orga = ReportScopeOrga.new(
     report_scope_id:report_3_scope3.id,
     orga_id: rd.id,
-    status: "To send"
+    status: "Invite"
     )
   report_3_scope3_orga.save
 

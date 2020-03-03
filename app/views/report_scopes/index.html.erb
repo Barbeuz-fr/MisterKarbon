@@ -33,34 +33,9 @@
           <div class="flash-modules">
             <% @module_scopes.where(scope: 1).each do |module_scope1| %>
               <% if ReportScope.new(emission_module_id: module_scope1.id, report_id: params[:report_id]).valid? %>
-                <div class="row flash-module flash-module-unselected">
-                  <h7 class="col-9 card-title"><%= module_scope1.name %></h7>
-                  <div class="col-2 align-self-center">
-                    <%= simple_form_for [@report, @report_scope], remote: true do |f| %>
-                      <%= f.input :emission_module_id, input_html: { value: module_scope1.id }, as: :hidden %>
-                      <%= f.input :report_id, input_html: { value: params[:report_id] }, as: :hidden %>
-                      <%= hidden_field_tag :tab_name, 'scope1-tab' %>
-                      <%= f.submit "➕", class: "bg-transparent border-0" %>
-                    <% end %>
-                  </div>
-                  <!-- Laurent edit - modale avec preview du contenu -->
-                  <div>
-                    <%= link_to "Preview",
-                      "#",
-                      class: "btn btn-primary btn",
-                      "data-toggle" => "modal",
-                      "data-target" => "#exampleModalCenter"%>
-                  </div>
-                </div>
+                <%= render "report-scope-create", module_scope: module_scope1, report: @report, report_scope: @report_scope%>
               <% else %>
-                <div class="row flash-module flash-module-selected">
-                  <h7 class="col-9 card-title"><%= module_scope1.name %></h7>
-                  <div class="col-2 align-self-center">
-                    <%= link_to "🗑",
-                    report_scope_path(@report.report_scopes.find_by(emission_module_id: module_scope1.id)),
-                    method: :delete, remote: true %>
-                  </div>
-                </div>
+                 <%= render "report-scope-destroy", module_scope: module_scope1 %>
               <% end %>
             <% end %>
           </div>
@@ -71,34 +46,9 @@
           <div class="flash-modules">
             <% @module_scopes.where(scope: 2).each do |module_scope2| %>
               <% if ReportScope.new(emission_module_id: module_scope2.id, report_id: params[:report_id]).valid? %>
-                <div class="row flash-module flash-module-unselected">
-                  <h7 class="col-9 card-title"><%= module_scope2.name %></h7>
-                  <div class="col-2 align-self-center">
-                    <%= simple_form_for [@report, @report_scope], remote: true do |f| %>
-                      <%= f.input :emission_module_id, input_html: { value: module_scope2.id }, as: :hidden %>
-                      <%= f.input :report_id, input_html: { value: params[:report_id] }, as: :hidden %>
-                      <%= hidden_field_tag :tab_name, 'scope2-tab' %>
-                      <%= f.submit "➕", class: "bg-transparent border-0" %>
-                    <% end %>
-                  </div>
-                  <!-- Laurent edit - modale avec preview du contenu -->
-                  <div>
-                    <%= link_to "Preview",
-                      "#",
-                      class: "btn btn-primary btn",
-                      "data-toggle" => "modal",
-                      "data-target" => "#exampleModalCenter"%>
-                  </div>
-                </div>
+                <%= render "report-scope-create", module_scope: module_scope2, report: @report, report_scope: @report_scope %>
               <% else %>
-                <div class="row flash-module flash-module-selected">
-                  <h7 class="col-9 card-title"><%= module_scope2.name %></h7>
-                  <div class="col-2 align-self-center">
-                    <%= link_to "🗑",
-                    report_scope_path(@report.report_scopes.find_by(emission_module_id: module_scope2.id)),
-                    method: :delete, remote: true %>
-                  </div>
-                </div>
+               <%= render "report-scope-destroy", module_scope: module_scope2 %>
               <% end %>
             <% end %>
           </div>
@@ -109,35 +59,9 @@
           <div class="flash-modules">
             <% @module_scopes.where(scope: 3).each do |module_scope3| %>
               <% if ReportScope.new(emission_module_id: module_scope3.id, report_id: params[:report_id]).valid? %>
-                <div class="row flash-module flash-module-unselected">
-                  <h7 class="col-9 card-title"><%= module_scope3.name %></h7>
-                  <div class="col-2 align-self-center">
-                    <%= simple_form_for [@report, @report_scope], remote: true do |f| %>
-                      <%= f.input :emission_module_id, input_html: { value: module_scope3.id }, as: :hidden %>
-                      <%= f.input :report_id, input_html: { value: params[:report_id] }, as: :hidden %>
-                      <%= hidden_field_tag :tab_name, 'scope3-tab' %>
-                      <%= f.submit "➕", class: "bg-transparent border-0" %>
-                    <% end %>
-                  </div>
-                  <!-- Laurent edit - modale avec preview du contenu -->
-                  <div>
-                    <%= link_to "Preview",
-                      "#",
-                      class: "btn btn-primary btn",
-                      "data-toggle" => "modal",
-                      "data-target" => "#exampleModalCenter"%>
-                  </div>
-                </div>
+                <%= render "report-scope-create", module_scope: module_scope3, report: @report, report_scope: @report_scope %>
               <% else %>
-                <div class="row flash-module flash-module-selected">
-                  <h7 class="col-9 card-title"><%= module_scope3.name %></h7>
-                  <div class="col-2 align-self-center">
-                    <%= hidden_field_tag :tab_name, 'scope3-tab' %>
-                    <%= link_to "🗑",
-                    report_scope_path(@report.report_scopes.find_by(emission_module_id: module_scope3.id)),
-                    method: :delete, remote: true %>
-                  </div>
-                </div>
+                <%= render "report-scope-destroy", module_scope: module_scope3 %>
               <% end %>
             <% end %>
           </div>
@@ -153,7 +77,7 @@
                 <div class="row flash-module-mini">
                   <p class="col-9 card-title"><%= module_scope.name %></p>
                   <div class="col-2 align-self-center">
-                    <%= link_to "🗑",
+                    <%= link_to "➖",
                     report_scope_path(@report.report_scopes.find_by(emission_module_id: module_scope.id)),
                     method: :delete, remote: true %>
                   </div>
@@ -197,4 +121,5 @@
     </div>
   </div>
 </div>
+
 
