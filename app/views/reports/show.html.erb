@@ -30,16 +30,24 @@
         <!-- Headers -->
         <div class="row mt-3">
           <div class="col-3">
-            <p><strong>Emissions</strong> </p>
+            <div class="tab-headerV2 mr-3 radius-right">
+              <h3 class="text-center"><strong>Emissions</strong> </h3 class="text-center">
+            </div>
           </div>
           <div class="col-3">
-            <p><strong>Organization</strong></p>
+            <div class="tab-headerV2 mr-3 radius-right">
+              <h3 class="text-center"><strong>Organization</strong> </h3 class="text-center">
+            </div>
           </div>
           <div class="col-3">
-            <p><strong>Team</strong></p>
+            <div class="tab-headerV2 mr-3 radius-right">
+              <h3 class="text-center"><strong>Team</strong> </h3 class="text-center">
+            </div>
           </div>
           <div class="col-3">
-            <p><strong>Status</strong></p>
+            <div class="tab-headerV2 mr-3 radius-right">
+              <h3 class="text-center"><strong>Status</strong> </h3 class="text-center">
+            </div>
           </div>
         </div>
       </div>
@@ -49,17 +57,17 @@
       <div class="container">
         <% @report.report_scopes.each do |report_scope| %>
           <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
-            <div class="row">
+            <div class="row border-bottom">
 
               <!-- Emissions  -->
               <div class="col-3">
                 <% if report_scope.emission_module.photo.attached?  %>
-                  <p  class="small-text-dashboard">
+                  <p  class="">
                     <%= cl_image_tag report_scope.emission_module.photo.key, :crop=>"fill", class:"avatar", style:"width:20; height:20"%>
                     <%= report_scope.emission_module.name %>
                   </p>
                 <% else %>
-                  <p  class="small-text-dashboard">
+                  <p  class="">
                     <%= image_tag "https://cdn2.iconfinder.com/data/icons/vape-1/48/a-18-512.png", class:"avatar", style:"width:20px; height:20px"%>
                     <%= report_scope.emission_module.name %>
                   </p>
@@ -69,13 +77,13 @@
               <!-- Orga -->
               <div class="col-3">
                   <% if report_scope_orga.orga.photo.attached?  %>
-                    <p  class="small-text-dashboard">
-                      <%= cl_image_tag report_scope_orga.orga.photo.key, :crop=>"fill", class:"avatar", style:"width:20px; height:20px"%>
+                    <p  class="">
+                      <%= cl_image_tag report_scope_orga.orga.photo.key, :crop=>"fill", class:"avatar", style:"width:40px; height:40px"%>
                       <%= report_scope_orga.orga.name %>
                     </p>
                   <% else %>
-                    <p  class="small-text-dashboard">
-                      <%= image_tag "https://cdn2.iconfinder.com/data/icons/vape-1/48/a-18-512.png", class:"avatar", style:"width:20px; height:20px"%>
+                    <p  class="">
+                      <%= image_tag "https://cdn2.iconfinder.com/data/icons/vape-1/48/a-18-512.png", class:"avatar", style:"width:40px; height:40px"%>
                       <%= report_scope_orga.orga.name %>
                     </p>
                 <% end %>
@@ -83,12 +91,28 @@
 
               <!-- Team -->
               <div class="col-3">
-                <p>test</p>
+                <% report_scope_orga.report_scope_orga_users.each do |report_scope_orga_user| %>
+                  <% if report_scope_orga_user.user.photo.attached? %>
+                    <%= cl_image_tag report_scope_orga_user.user.photo.key, :crop=>"fill", class:"avatar", style:"width:40px; height:40px"%>
+                  <% else %>
+                  <% end %>
+                <% end %>
+                <!-- Add button -->
+                <a class="fas fa-plus-circle fa-2x align-bottom mb-1 text-success"></a>
               </div>
-
               <!-- Status -->
               <div class="col-3">
-                <p>test</p>
+                <% if report_scope_orga.status == "To send" %>
+                  <span class="badge badge-secondary"><%= report_scope_orga.status %></span>
+                <% elsif report_scope_orga.status == "On-going"%>
+                  <span class="badge badge-info"><%= report_scope_orga.status %></span>
+                <% elsif report_scope_orga.status == "Pending validation" %>
+                  <span class="badge badge-success"><%= report_scope_orga.status %></span>
+                <% elsif report_scope_orga.status == "Done" %>
+                  <span class="badge badge-primary"><%= report_scope_orga.status %></span>
+                <% else %>
+                  <span class="badge badge-dark"><%= report_scope_orga.status %></span>
+                <% end %>
               </div>
             </div>
           <% end %>
@@ -102,7 +126,7 @@
      ----------------------------------------------------------
     -->
 
-    <div class="tab-pane fade show active" id="scope2" role="tabpanel" aria-labelledby="scope2-tab">
+    <div class="tab-pane fade show" id="scope2" role="tabpanel" aria-labelledby="scope2-tab">
       <p>Reported emissions</p>
       <div class="dashboard-card-2">
         <div class="top-box">
@@ -130,7 +154,7 @@
     DETAILED DATA
      ----------------------------------------------------------
     -->
-    <div class="tab-pane fade show active" id="scope3" role="tabpanel" aria-labelledby="scope3-tab">
+    <div class="tab-pane fade show" id="scope3" role="tabpanel" aria-labelledby="scope3-tab" data-query="<%= @selected_orga %>">
       <div class="dashboard-card-2">
         <div class="top-box">
             <h5><i class="fas fa-database"></i> Detailed data</h5>
