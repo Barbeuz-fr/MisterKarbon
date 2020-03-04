@@ -18,32 +18,25 @@
           <!-- Display resultats de la recherche -->
           <% if params[:query].present? %>
             <%= simple_form_for [@report, @report_scope_orga] do |f| %>
-               <div class="row">
+              <div class="scroller-50vh">
                 <%= f.input :report_scope_id,
                 input_html: { value: params[:report_scope] }, as: :hidden%>
-              </div>
-              <div class="row">
                 <%= f.association :orga, collection: @results, as: :check_boxes,
-                input_html: {class: "btn-lg btn-block btn-success text-white" } %>
-              </div>
+                label: 'Choose your Buniness Unit' %>
                 <!-- Inject categories here -->
-              <div class="row">
-                <%= f.submit "Save", class: "btn-lg btn-block btn-success text-white"  %>
               </div>
+              <%= f.submit "Add", class: "btn btn-success w-100 py-3"  %>
             <% end %>
           <% else %>
             <%= simple_form_for [@report, @report_scope_orga] do |f| %>
-               <div class="row">
+              <div class="scroller-30vh">
                 <%= f.input :report_scope_id,
                 input_html: { value: params[:report_scope] }, as: :hidden%>
-              </div>
-              <div class="row">
-                <%= f.association :orga, as: :check_boxes, label: 'Choose your Buniness Unit' %>
-              </div>
+                <%= f.association :orga, as: :check_boxes,
+                label: 'Choose your Buniness Unit' %>
                 <!-- Inject categories here -->
-              <div class="row">
-                <%= f.submit "Save", class: "btn-lg btn-block btn-success text-white"  %>
               </div>
+              <%= f.submit "Add", class: "btn btn-success w-100 py-3"  %>
             <% end %>
           <% end %>
         </div>
