@@ -3,10 +3,13 @@
 
   <%# link_to '#',  "data-toggle" => "modal", "data-target" => "#exampleModalCenter" do %>
     <div id="<%= module_scope.id %>" class="flash-module flash-module-unselected">
-        <%= simple_form_for [report, report_scope], remote: true do |f| %>
-          <%= f.input :emission_module_id, input_html: { value: module_scope.id }, as: :hidden %>
-          <%= hidden_field_tag :tab_name, 'scope1-tab' %>
-          <%= f.submit "#{module_scope.name}", class: "bg-transparent border-0 full-size-click text-center" %>
-        <% end %>
+      <%= simple_form_for [report, report_scope], remote: true do |f| %>
+        <%= f.input :emission_module_id, input_html: { value: module_scope.id }, as: :hidden %>
+        <%= hidden_field_tag :tab_name, 'scope1-tab' %>
+        <%= f.submit "#{module_scope.name}", class: "bg-transparent border-0 full-size-click text-center" %>
+      <% end %>
     </div>
     <%# end %>
+
+<!-- SI ON VEUT METTRE UNE PHOTO DERIERE CHAQUE EMISSION TYPE -->
+<!-- <div id="<%#= module_scope.id %>" class="flash-module flash-module-unselected" style="background-image: url('<%#= module_scope.photo_url %>')"> -->
