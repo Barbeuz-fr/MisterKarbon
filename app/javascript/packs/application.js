@@ -19,11 +19,18 @@ require("channels")
 
 import "bootstrap";
 import { initAjaxScroll, preserveTab } from '../plugins/ajax_scroll';
+import { stackedBar } from '../plugins/bar_chart';
+import { pieChartProgress } from '../plugins/pie_chart';
+import '../plugins/dropdown_dashboard';
+import { dropdownSelected } from '../plugins/dropdown_dashboard';
 // import { stackedBar } from '../plugins/bar_chart';
 initAjaxScroll();
 
 document.addEventListener('turbolinks:load', function () {
   preserveTab();
+  dropdownSelected();
+  stackedBar();
+  pieChartProgress();
 
 }, false)
 
@@ -42,9 +49,6 @@ if (document.getElementById('mybarChart')) {
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
 
-import { stackedBar } from '../plugins/bar_chart';
-import { pieChartProgress } from '../plugins/pie_chart';
-import '../plugins/dropdown_dashboard';
 // import { updateDropdownValue } from '../plugins/dropdown_dashboard';
 if (document.getElementById('mybarChart')) {
   stackedBar();
@@ -52,5 +56,3 @@ if (document.getElementById('mybarChart')) {
 if ( document.getElementById('progressPieChart')) {
   pieChartProgress();
 }
-// selectedteam();
-// updateDropdownValue();

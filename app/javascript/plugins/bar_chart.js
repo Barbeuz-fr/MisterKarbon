@@ -11,13 +11,15 @@ const stackedBar = () => {
   // Array vide qui sera ajouté à la key 'dataset' au script stackedBar
   var datasets_for_barchart = [];
 
+
   // Recupération des données dans le controlleur
   var barchart_data = $("#bar_chart_data").data('emissions');
   var label_orga = $("#bar_chart_data").data('orga');
+  var ylabel = $("#bar_chart_data").data('ylabel');
 
   // Definition des couleurs
   var stackedbackgroundColors = [
-                  '#22aa99',
+                  '#3366cc',
                   '#994499',
                   '#b82e2e',
                   '#66aa00',
@@ -36,7 +38,7 @@ const stackedBar = () => {
   for (var i = 0; i < barchart_data_length; i++) {
     // Definition du hash à ajouter
     var new_hash = {
-      label: "WIP",
+      label: ylabel[i],
       data: barchart_data[i],
       backgroundColor: stackedbackgroundColors[i],
     } ;
@@ -64,6 +66,7 @@ const stackedBar = () => {
         }
      }
   });
+  console.log(myStackedBar);
 
     //   const el = document.getElementById('mybarChart');
     // if(el){
@@ -93,8 +96,5 @@ const stackedBar = () => {
 //   var activeElement = stackedBar.getElementAtEvent(evt);
 // };
 
-// export { clickedElement };
-// export { clickChart };
-// export { handleClick }
 
 export { stackedBar };
