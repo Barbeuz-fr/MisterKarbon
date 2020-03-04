@@ -33,6 +33,13 @@ require "open-uri"
   report_2_file = URI.open('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1302&q=80')
   report_3_file = URI.open('https://images.unsplash.com/photo-1524684009724-bee13ad8305f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=716&q=80')
 
+# ==============================================================================
+# IMAGES EMISSION MODULES
+# ==============================================================================
+
+  p "save images report"
+  emission_1_forest = 'https://www.pexels.com/photo/green-pine-trees-1179229/'
+
 
 # ==============================================================================
 # IMAGES AVATAR
@@ -419,15 +426,15 @@ require "open-uri"
   p "create emission_modules"
 
   p "scope 1"
-  comb_fossiles = EmissionModule.create!(name: "Fossil fuels", scope: 1)
+  comb_fossiles = EmissionModule.create!(name: "Fossil fuels", scope: 1, photo_url: emission_1_forest)
   # comb_organiques = EmissionModule.create!(name: "Combustibles organiques", scope: 1 )
-  changement_affectation_sols = EmissionModule.create!(name: "Change in land use", scope: 1)
-  deforestation = EmissionModule.create!(name: "Deforestation & reforestation", scope: 1)
-  refrigeration = EmissionModule.create!(name: "Refrigeration", scope: 1)
-  clim = EmissionModule.create!(name: "Air conditioning", scope: 1)
-  agriculture = EmissionModule.create!(name: "Agriculture", scope: 1)
-  process_industriels = EmissionModule.create!(name: "Industrial processes", scope: 1)
-  dechets = EmissionModule.create!(name: "Waste", scope: 1)
+  changement_affectation_sols = EmissionModule.create!(name: "Change in land use", scope: 1, photo: emission_1_forest)
+  deforestation = EmissionModule.create!(name: "Deforestation & reforestation", scope: 1, photo: emission_1_forest)
+  refrigeration = EmissionModule.create!(name: "Refrigeration", scope: 1, photo: emission_1_forest)
+  clim = EmissionModule.create!(name: "Air conditioning", scope: 1, photo: emission_1_forest)
+  agriculture = EmissionModule.create!(name: "Agriculture", scope: 1, photo: emission_1_forest)
+  process_industriels = EmissionModule.create!(name: "Industrial processes", scope: 1, photo: emission_1_forest)
+  dechets = EmissionModule.create!(name: "Waste", scope: 1, photo: emission_1_forest)
 
 
 

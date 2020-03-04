@@ -1,0 +1,7 @@
+<div id="next-step">
+  <% if @report.report_scopes.empty? %>
+    <p></p>
+  <% else %>
+    <%= link_to "Next", new_report_report_scope_orga_path(@report), class:"btn btn-primary btn-next" %>
+  <% end %>
+</div>

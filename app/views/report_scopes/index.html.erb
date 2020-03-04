@@ -14,8 +14,7 @@
 
   <div class="form-modules">
     <div class="form-modules-intro">
-      <h4 class="">Please select your emission modules</h4>
-      <h6 class="">Project: <%= @report.name %> - <%= @report.year %> </h6>
+      <h4 class="">Please select your emission types</h4>
     </div>
     <div class="form-modules-content">
       <div class="form-list-modules">
@@ -78,7 +77,7 @@
       <div class="selected-modules-container">
         <h5 class="text-center title-module-selection">Your selected modules</h5>
         <%= render "report-scope-add-to-cart" %>
-        <%= link_to "Next", new_report_report_scope_orga_path(@report), class:"btn btn-primary btn-next" %>
+        <%= render "report-scope-next-step" %>
       </div>
     </div>
   </div>
