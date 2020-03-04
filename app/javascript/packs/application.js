@@ -24,6 +24,8 @@ import { pieChartProgress } from '../plugins/pie_chart';
 import '../plugins/dropdown_dashboard';
 import { dropdownSelected } from '../plugins/dropdown_dashboard';
 import { initSubmit } from '../plugins/submit';
+import { activeQueryDashboard} from '../plugins/tab-dashboard';
+// import { initSubmit } from '../plugins/submit';
 // import { stackedBar } from '../plugins/bar_chart';
 initAjaxScroll();
 
@@ -31,8 +33,10 @@ document.addEventListener('turbolinks:load', function () {
   initSubmit();
   preserveTab();
   dropdownSelected();
+  activeQueryDashboard();
   stackedBar();
-  pieChartProgress();
+  // pieChartProgress();
+  // initSubmit();
 
 }, false)
 
