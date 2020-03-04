@@ -127,6 +127,11 @@ class ReportsController < ApplicationController
       end
     end
 
+    # Tableau filtré
+
+    if params[:query]
+
+    end
     # ------------------------------------------------------------------
     # STACKED BAR CHART
     # ------------------------------------------------------------------

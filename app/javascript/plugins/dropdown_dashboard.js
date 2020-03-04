@@ -27,20 +27,25 @@
 
 
 // Fonction qui ajuste le contenu de la dropdown
+const dropdownSelected = () => {
   $(".dropdown-menu li a").click(function(){
     $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
     const selectedValue = $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
     const selectedValueText = selectedValue[0].innerText;
     console.log(selectedValueText);
+    return selectedValueText;
     // $.ajax({
     //     url : "/details",
     //     type : "post",
     // //     data : { data_value: JSON.stringify(selectedValueText) }
     // });
   })
+};
 
 // Fonction qui stocke la valeur du bouton
 
 
 // export { selectedTeam };
 // export { updateDropdownValue };
+
+export { dropdownSelected}

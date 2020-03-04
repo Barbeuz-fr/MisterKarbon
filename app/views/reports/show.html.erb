@@ -123,25 +123,24 @@
             <% @report.report_scopes.each do |report_scope| %>
               <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
                 <li>
-                  <a data-value="">
-                    <%= report_scope.emission_module.name %> - <%= report_scope_orga.orga.name %>
+                  <a data-module="<%= report_scope.emission_module.name %>" data-orga="<%= report_scope_orga.orga.name %>">
+                    <%= report_scope.emission_module.name %> | <%= report_scope_orga.orga.name %>
                   </a>
                 </li>
               <% end %>
             <% end %>
           </ul>
+
+          <%= form_tag report_path(@report), method: :get do %>
+            <%= select_tag :query, options_for_select(@report.report_scopes.collect{ |u| [u.emission_module.name, u.id] }) %>
+            <%= submit_tag "Search", class: "btn btn-primary" %>
+          <% end %>
+
         </div>
       </div>
       <div class="d-flex justify-content-between p-3">
         <div>
           <p>Team</p>
-          <%= simple_form_for @report do |f| %>
-            <% @report.report_scopes.each do |report_scope| %>
-              <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
-              <% end %>
-            <% end %>
-          <% end %>
-
         </div>
         <div>
           <p>Status</p>
