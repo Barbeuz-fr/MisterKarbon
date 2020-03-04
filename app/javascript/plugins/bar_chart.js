@@ -54,15 +54,25 @@ const stackedBar = () => {
      options: {
         responsive: false,
         legend: {
-           position: 'right' // place legend on the right side of chart
+          position: 'right',
+          labels: {
+            boxWidth: 50,
+            fontSize: 25,
+          },
         },
         scales: {
            xAxes: [{
+              ticks: {
+                    fontSize: 30
+                },
               stacked: true // this should be set to make the bars stacked
            }],
            yAxes: [{
+              ticks: {
+                    fontSize: 25
+                },
               stacked: true // this also..
-           }]
+           }],
         }
      }
   });
