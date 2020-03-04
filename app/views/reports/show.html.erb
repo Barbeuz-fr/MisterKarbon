@@ -1,37 +1,58 @@
 <!-- Titre report -->
-<div class="container mt-3 mb">
+<div class="container mt-3 mb-3">
   <h3>Your report: <%= @report.name %></h3>
 </div>
 
-<div class="d-flex">
-  <div>
+
+<!-- NAV TABS -->
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="scope1-tab" data-toggle="tab" href="#scope1" role="tab" aria-controls="scope1" aria-selected="true"><i class="fas fa-sort-amount-up"></i> Progress</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="scope2-tab" data-toggle="tab" href="#scope2" role="tab" aria-controls="scope2" aria-selected="false">☁︎  Reported emissions</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="scope3-tab" data-toggle="tab" href="#scope3" role="tab" aria-controls="scope3" aria-selected="false"><i class="fas fa-database"></i> Detailed data</a>
+  </li>
+</ul>
+
+<div class="list-modules-container">
+  <div class="tab-content" id="myTabContent">
     <!--
     ----------------------------------------------------------
-    CURRENT SCOPE
+    PROGRESS
      ----------------------------------------------------------
     -->
-    <div class="dashboard-card-1">
-      <div class="top-box">
-        <h5><i class="fas fa-users"></i>  Scope</h5>
-      </div>
-      <!-- Table -->
+     <div class="tab-pane fade show active" id="scope1" role="tabpanel" aria-labelledby="scope1-tab">
       <div class="container">
+
         <!-- Headers -->
-        <div class="row">
-          <div class="col-6">
+        <div class="row mt-3">
+          <div class="col-3">
             <p><strong>Emissions</strong> </p>
           </div>
-          <div class="col-6">
+          <div class="col-3">
             <p><strong>Organization</strong></p>
           </div>
+          <div class="col-3">
+            <p><strong>Team</strong></p>
+          </div>
+          <div class="col-3">
+            <p><strong>Status</strong></p>
+          </div>
         </div>
-        <!-- Content -->
+      </div>
 
+
+        <!-- Content -->
+      <div class="container">
         <% @report.report_scopes.each do |report_scope| %>
           <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
             <div class="row">
-              <!-- Emissions module -->
-              <div class="col-6">
+
+              <!-- Emissions  -->
+              <div class="col-3">
                 <% if report_scope.emission_module.photo.attached?  %>
                   <p  class="small-text-dashboard">
                     <%= cl_image_tag report_scope.emission_module.photo.key, :crop=>"fill", class:"avatar", style:"width:20; height:20"%>
@@ -44,8 +65,9 @@
                   </p>
                 <% end %>
               </div>
+
               <!-- Orga -->
-              <div class="col-6">
+              <div class="col-3">
                   <% if report_scope_orga.orga.photo.attached?  %>
                     <p  class="small-text-dashboard">
                       <%= cl_image_tag report_scope_orga.orga.photo.key, :crop=>"fill", class:"avatar", style:"width:20px; height:20px"%>
@@ -58,146 +80,159 @@
                     </p>
                 <% end %>
               </div>
+
+              <!-- Team -->
+              <div class="col-3">
+                <p>test</p>
+              </div>
+
+              <!-- Status -->
+              <div class="col-3">
+                <p>test</p>
+              </div>
             </div>
           <% end %>
         <% end %>
       </div>
-      <div class="text-center">
-        <p class="btn btn-secondary btn-sm">Add a team</p>
-      </div>
     </div>
+
     <!--
     ----------------------------------------------------------
-    PIE BAR CHART (PROGRESS)
+    BAR CHART
      ----------------------------------------------------------
     -->
-    <div class="dashboard-card-1">
-      <div class="top-box mb-3">
-        <h5><i class="fas fa-sort-amount-up"></i> Progress</h5>
-      </div>
-      <div>
-        <div class="align-items-center">
+
+    <div class="tab-pane fade show active" id="scope2" role="tabpanel" aria-labelledby="scope2-tab">
+      <p>Reported emissions</p>
+      <div class="dashboard-card-2">
+        <div class="top-box">
+          <h5>☁︎  Emissions</h5>
+        </div>
+        <div class="pl-3">
+        <p><em>kgCO2e</em> </p>
+        </div>
+        <div class="d-flex align-items-center pl-3 pb-3">
+          <%= content_tag :div, '',
+                          id: 'bar_chart_data',
+                          data: {emissions: @y_axis_organizations,
+                                # orga: @label_orga,
+                                ylabel: @label_orga} %>
           <%= content_tag 'canvas', '',
-                      id: 'progressPieChart',
-                      width: '150', height: '150',
-                      data: {progress: @progress_data } %>
+                          id: 'mybarChart',
+                          width: '600', height: '300',
+                          data: {titles: @x_axis_modules} %>
         </div>
       </div>
     </div>
-  </div>
 
-  <!--
-  ----------------------------------------------------------
-  STACKED BAR CHART (EMISSIONS)
-   ----------------------------------------------------------
-   -->
-  <div>
-    <div class="dashboard-card-2">
-      <div class="top-box">
-        <h5>☁︎  Emissions</h5>
-      </div>
-      <div class="pl-3">
-      <p><em>kgCO2e</em> </p>
-      </div>
-      <div class="d-flex align-items-center pl-3 pb-3">
-        <%= content_tag :div, '',
-                        id: 'bar_chart_data',
-                        data: {emissions: @y_axis_organizations,
-                              # orga: @label_orga,
-                              ylabel: @label_orga} %>
-        <%= content_tag 'canvas', '',
-                        id: 'mybarChart',
-                        width: '600', height: '300',
-                        data: {titles: @x_axis_modules} %>
-      </div>
-    </div>
     <!--
     ----------------------------------------------------------
-    DETAILS DATA (table)
+    DETAILED DATA
      ----------------------------------------------------------
     -->
-    <div class="dashboard-card-2">
-      <div class="top-box">
-          <h5><i class="fas fa-database"></i> Detailed data</h5>
-      </div>
-      <div class="pl-3">
-        <%= form_tag report_path(@report), method: :get do %>
-          <%= select_tag :query, options_for_select(@report_scope_orgas_array.collect{ |u| [u.orga.name, u.id] }) %>
-          <%= submit_tag "Search", class: "btn btn-primary" %>
-        <% end %>
-      </div>
-      <div class="container">
-        <% if @selected_orga.nil? == true %>
-          <% else %>
-            <p>Details for <%= @selected_orga.orga.name %> | <%= @selected_module.emission_module.name %> </p>
-        <% end %>
-      </div>
-      <div class="d-flex justify-content-between p-3">
-        <div>
-          <p>Team</p>
+    <div class="tab-pane fade show active" id="scope3" role="tabpanel" aria-labelledby="scope3-tab">
+      <div class="dashboard-card-2">
+        <div class="top-box">
+            <h5><i class="fas fa-database"></i> Detailed data</h5>
         </div>
-        <div>
-          <p>Status</p>
-        </div>
-        <div>
-          <p><i class="far fa-envelope fa-2x"></i> <i class="far fa-comment-dots fa-2x"></i> <i class="fab fa-skype fa-2x"></i></p>
-        </div>
-      </div>
-
-            <!-- Table -->
-      <div class="container">
-        <!-- headers -->
-        <div class="row">
-          <div class="col-4">
-            <p><strong>Data request</strong> </p>
-          </div>
-          <div class="col-2">
-            <p><strong>Team input</strong></p>
-          </div>
-          <div class="col-2">
-            <p><strong>Emissions</strong></p>
-          </div>
-          <div class="col-2">
-            <p><strong>Comments</strong></p>
-          </div>
-          <div class="col-2">
-            <p><strong>Attachments</strong></p>
-          </div>
-        </div>
-      </div>
-
-      <% if @selected_orga.nil? == true %>
-      <% else %>
-        <div class="row pl-3 pr-3">
-          <!-- Content with loop -->
-          <% @output_array.each do |item| %>
-            <% if  (@selected_orga.orga.name == item[:orga_scope_name]) && (@selected_module.emission_module.name == item[:emission_module_name])%>
-              <!-- Question -->
-              <div class="col-4">
-                <p class="small-text-dashboard"><%= item[:question] %></p>
-              </div>
-              <!-- Team input -->
-              <div class="col-2">
-                <p class="small-text-dashboard"><%= item[:answer].truncate(0)%> <%= item[:answer_unit] %></p>
-              </div>
-              <!-- Emissions calculated -->
-              <div class="col-2">
-                <p class="small-text-dashboard"><%= item[:emission_answer_calculation].truncate(0)%> kgCO2e</p>
-              </div>
-              <!-- Comments -->
-              <div class="col-2">
-                <!-- TO DO - boucle if sur comment avec "n.a." -->
-                <p class="small-text-dashboard"><em>N.a.</em></p>
-              </div>
-              <!-- Attachment -->
-              <div class="col-2">
-                <!-- TO DO - boucle if avec ".n.A" -->
-                <p class="small-text-dashboard"><i class="far fa-file-pdf"> <i class="far fa-file-excel"></i></i></p>
-              </div>
-            <% end %>
+        <div class="pl-3">
+          <%= form_tag report_path(@report), method: :get do %>
+            <%= select_tag :query, options_for_select(@report_scope_orgas_array.collect{ |u| [u.orga.name, u.id] }) %>
+            <%= submit_tag "Search", class: "btn btn-primary" %>
           <% end %>
         </div>
-      <% end %>
+        <div class="container">
+          <% if @selected_orga.nil? == true %>
+            <% else %>
+              <p>Details for <%= @selected_orga.orga.name %> | <%= @selected_module.emission_module.name %> </p>
+              <div>
+                <p>Team</p>
+                <% @selected_orga.report_scope_orga_users.each do |user| %>
+                  <p><%= @selected_orga  %></p>
+                <% end %>
+              </div>
+          <% end %>
+        </div>
+        <div class="d-flex justify-content-between p-3">
+          <div>
+            <p>Status</p>
+          </div>
+          <div>
+            <p><i class="far fa-envelope fa-2x"></i> <i class="far fa-comment-dots fa-2x"></i> <i class="fab fa-skype fa-2x"></i></p>
+          </div>
+        </div>
+
+              <!-- Table -->
+
+        <% if @selected_orga.nil? == true %>
+        <% else %>
+        <div class="container">
+          <!-- headers -->
+          <div class="row">
+            <div class="col-4">
+              <p><strong>Data request</strong> </p>
+            </div>
+            <div class="col-2">
+              <p><strong>Team input</strong></p>
+            </div>
+            <div class="col-2">
+              <p><strong>Emissions</strong></p>
+            </div>
+            <div class="col-2">
+              <p><strong>Comments</strong></p>
+            </div>
+            <div class="col-2">
+              <p><strong>Attachments</strong></p>
+            </div>
+          </div>
+        </div>
+          <div class="row pl-3 pr-3">
+            <!-- Content with loop -->
+            <% @output_array.each do |item| %>
+              <% if  (@selected_orga.orga.name == item[:orga_scope_name]) && (@selected_module.emission_module.name == item[:emission_module_name])%>
+                <!-- Question -->
+                <div class="col-4">
+                  <p class="small-text-dashboard"><%= item[:question] %></p>
+                </div>
+                <!-- Team input -->
+                <div class="col-2">
+                  <p class="small-text-dashboard"><%= item[:answer].truncate(0)%> <%= item[:answer_unit] %></p>
+                </div>
+                <!-- Emissions calculated -->
+                <div class="col-2">
+                  <p class="small-text-dashboard"><%= item[:emission_answer_calculation].truncate(0)%> kgCO2e</p>
+                </div>
+                <!-- Comments -->
+                <div class="col-2">
+                  <!-- TO DO - boucle if sur comment avec "n.a." -->
+                  <p class="small-text-dashboard"><em>N.a.</em></p>
+                </div>
+                <!-- Attachment -->
+                <div class="col-2">
+                  <!-- TO DO - boucle if avec ".n.A" -->
+                  <p class="small-text-dashboard"><i class="far fa-file-pdf"> <i class="far fa-file-excel"></i></i></p>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
+
+  <!-- End tabs -->
   </div>
 </div>
+
+<!-- ------------------------------------------------------- -->
+<!-- ------------------------------------------------------- -->
+<!-- ------------------------------------------------------- -->
+<!-- ------------------------------------------------------- -->
+<!-- ------------------------------------------------------- -->
+<!-- ------------------------------------------------------- -->
+<!-- OLD VERSION ------------------------------------------ -->
+<!-- ------------------------------------------------------- -->
+<!-- ------------------------------------------------------- -->
+<!-- ------------------------------------------------------- -->
+<!-- ------------------------------------------------------- -->
+<!-- ------------------------------------------------------- -->
+<!-- ------------------------------------------------------- -->
