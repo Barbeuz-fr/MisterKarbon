@@ -4,7 +4,6 @@
 
 import Chart from 'chart.js';
 
-
 // Rendu du graphique
 const stackedBar = () => {
   var ctx2 = document.getElementById('mybarChart');
@@ -44,7 +43,7 @@ const stackedBar = () => {
     datasets_for_barchart.push(new_hash)
   };
 
-  new Chart(ctx2, {
+  var myStackedBar = new Chart(ctx2, {
      type: 'bar',
      data: {
         labels: $("#mybarChart").data('titles'), // responsible for how many bars are gonna show on the chart
@@ -64,8 +63,38 @@ const stackedBar = () => {
            }]
         }
      }
-  })
+  });
+
+    //   const el = document.getElementById('mybarChart');
+    // if(el){
+    //   el.addEventListener('click', (e) => {
+    //     console.log('rrrrr')
+    //     console.log(myStackedBar.data);
+    //     const chartData = myStackedBar.getBarsAtEvent(e);
+    //   });
+    // };
 };
 
+// Fonction pour récupérer les data au click
+// getBarsAtEvent
+
+  // const clickChart = () => {
+  //   const el = document.getElementById('mybarChart');
+  //   if(el){
+  //     el.addEventListener('click', (e) => {
+  //       console.log($("mybarChart"));
+  //       const chartData = $("mybarChart").getBarsAtEvent(e);
+  //     });
+  //   };
+  // }
+
+// function handleClick(evt);
+// {
+//   var activeElement = stackedBar.getElementAtEvent(evt);
+// };
+
+// export { clickedElement };
+// export { clickChart };
+// export { handleClick }
 
 export { stackedBar };

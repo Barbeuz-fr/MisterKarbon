@@ -2,8 +2,12 @@ function refreshCard(innerHTML) {
   const card = document.getElementById("<%= @report_scope.emission_module.id %>");
   card.outerHTML = innerHTML;
 }
-function deleteCard(innerHTML) {
-// trouver la carte correspondante ds la div selected module
-// la supprimer .outerHTML = ''
+
+function addCard(innerHTML) {
+// trouver la liste des cartes
+const shoppingCart = document.querySelector(".selected-modules");
+// inserer la carte du report scope cree
+shoppingCart.outerHTML = innerHTML;
 }
 refreshCard('<%= j render "report-scope-create", module_scope: @report_scope.emission_module, report: @report, report_scope: ReportScope.new %>')
+addCard('<%= j render "report-scope-add-to-cart" %>')

@@ -16,6 +16,7 @@ class ReportScopesController < ApplicationController
   end
 
   def create
+    @module_scopes = EmissionModule.all
     @report_scope = ReportScope.new(report_scope_params)
     @report = Report.find(params[:report_id])
     @report_scope.report = @report
@@ -27,11 +28,10 @@ class ReportScopesController < ApplicationController
   end
 
   def destroy
-
-
+    @module_scopes = EmissionModule.all
     @report_scope = ReportScope.find(params[:id])
-    @report_scope.destroy
     @report = @report_scope.report
+    @report_scope.destroy
     respond_to do |format|
       format.html { redirect_to report_report_scopes_path(@report_scope.report_id) }
       format.js

@@ -1,0 +1,68 @@
+.report-card {
+  background-color: white;
+  border-radius: 4px;
+  position: relative;
+  .report-card-link {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+.report-card:hover {
+  cursor: pointer;
+}
+
+
+.report-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.report-card-contrib {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .loupe-icon {
+    text-align: right;
+  }
+}
+
+
+.report-card-top{
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.report-card-top h2 {
+  font-size: 24px;
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-weight: bold;
+}
+
+.report-card-top h3{
+  font-size: 16px;
+  font-weight: normal;
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-weight: bold;
+  text-align: center;
+}
+
+.report-card-orga li {
+  list-style-type: none;
+}
+
+.report-card-module li {
+  list-style-type: none;
+}
