@@ -43,12 +43,12 @@
         <div class="row ml-0">
           <div class="col-5 px-0">
             <div class="tab-headerV2 radius-left">
-              <h3 class="text-center">EMISSION TYPE</h3>
+              <h3 class="text-center">☁︎ EMISSION TYPE</h3>
             </div>
           </div>
           <div class="col-7 px-0">
             <div class="tab-headerV2 mr-3 radius-right">
-              <h3 class="text-center">ORGANIZATION</h3>
+              <h3 class="text-center"><i class="fas fa-sitemap"></i> ORGANIZATION</h3>
             </div>
           </div>
         </div>
@@ -59,7 +59,7 @@
         <% else %>
           <div class="row border-bottom">
         <% end %>
-          <div class="col-5 p-0 flex-cell cell-justify-left">
+          <div class="col-5 flex-cell cell-justify-left">
             <div class="d-flex flex-row">
               <% if report_scope.emission_module.photo.attached?  %>
                 <%= cl_image_tag report_scope.emission_module.photo.key, :crop=>"fill", class:"avatar ml-3", style:"width:30px; height:30px"%>
