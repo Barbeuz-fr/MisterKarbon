@@ -5,7 +5,7 @@
   <%# end %>
 </div> -->
 
-<div class="container mt-2">
+<div class="px-2">
   <nav class="nav nav-pills nav-fill">
     <a class="nav-item nav-link">☁︎  Emissions</a>
     <div class="arrow-right-not-selected"></div>
@@ -17,19 +17,10 @@
 </div>
 
 
-<div class="container">
-  <div class="d-flex justify-content-between">
-    <%= link_to "Previous", report_report_scopes_path(params[:report_id]), class:"btn btn-outline-secondary mt-3" %>
-    <%= link_to "Next", report_report_scope_orga_users_path(params[:report_id]), class:"btn btn-primary mt-3" %>
-  </div>
-</div>
-
-
-<div class="container mt-3">
-  <div class="row">
+<div class="px-2">
+  <div class="row pt-4 pb-2">
     <div class="col-6">
       <h4>Modules selected by business unit</h4>
-      <h5>Project: <%= @report.name %> - <%= @report.year %> </h5>
     </div>
   </div>
 </div>
@@ -38,7 +29,7 @@
 
 <div class="px-2">
   <div class="row">
-    <div class="col-7 px-0">
+    <div class="col-7">
       <div class="bg-white rounded shadow">
         <div class="row ml-0">
           <div class="col-5 px-0">
@@ -92,7 +83,7 @@
             <%= link_to "",
             url_for(report_scope: report_scope),
             id: "addOrga",
-            class:"fas fa-plus-circle fa-3x align-bottom mb-1 text-success" %>
+            class:"fas fa-plus-circle fa-2x align-bottom mt-2 mb-2 text-success"%>
           </div>
         </div>
         <% end %>

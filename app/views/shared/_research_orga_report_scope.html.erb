@@ -2,7 +2,7 @@
 
   <div class="col-5">
     <% if params[:report_scope].present? %>
-      <div class="bg-white rounded shadow pb-3">
+      <div class="bg-white rounded shadow">
     <% end %>
       <% if params[:report_scope].present? %>
       <!-- Definition modale -->
@@ -16,13 +16,13 @@
       <!-- Definition modale -->
       <div id="addOrga">
         <!-- Simple form barre de recherche-->
-        <div class="mx-2">
+        <div class="mx-2 mt-2">
           <%= form_tag url_for(report_scope: params[:report_scope]), method: :get do %>
             <div class="input-group mb-3">
               <%= text_field_tag :query, params[:query], class:"form-control", autofocus: true%>
               <%= hidden_field_tag :report_scope, params[:report_scope]%>
-            <div class="input-group-append">
-              <%= submit_tag "🔎", id:"loupe" %>
+            <div class="input-group mb-3">
+              <%#= submit_tag "", id:"loupe" %>
             </div>
           <% end %>
         </div>
@@ -37,7 +37,7 @@
               label: 'Choose your Buniness Unit' %>
               <!-- Inject categories here -->
             </div>
-            <%= f.submit "Add", class: "btn btn-success w-100 py-2 mt-2"  %>
+            <%#= f.submit "Add", class: "btn btn-success w-100 py-2 mt-2"  %>
           <% end %>
         <% else %>
           <%= simple_form_for [@report, @report_scope_orga] do |f| %>
@@ -48,11 +48,15 @@
               label: 'Choose your Buniness Unit' %>
               <!-- Inject categories here -->
             </div>
-            <%= f.submit "Add", class: "btn btn-success w-100 py-2 mt-2"  %>
+            <%#= f.submit "Add", class: "btn btn-success w-100 py-2 mt-2"  %>
           <% end %>
         <% end %>
       </div>
       <% end %>
     </div>
   </div>
+  <% if params[:report_scope].present? %>
+    <%= link_to "Next", report_report_scope_orga_users_path(params[:report_id]), class:"btn btn-success w-100 py-2 mt-2" %>
+  <% end %>
 </div>
+

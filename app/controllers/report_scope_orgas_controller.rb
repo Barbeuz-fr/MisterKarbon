@@ -57,8 +57,8 @@ class ReportScopeOrgasController < ApplicationController
     orga_ids.each do |orga_id|
       ReportScopeOrga.create(orga_id: orga_id, report_scope_id: report_scope_orga_params[:report_scope_id])
     end
-
-    redirect_to new_report_report_scope_orga_path
+    report_scope = params[:report_scope_orga][:report_scope_id]
+    redirect_to new_report_report_scope_orga_path(report_scope: report_scope)
   end
 
   def destroy
