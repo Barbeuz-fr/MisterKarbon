@@ -29,6 +29,12 @@ class ReportsController < ApplicationController
     @reports = Report.all
     @report = Report.find(params[:id])
     @report_scopes_array = @report.report_scopes
+    @report_scope_orgas_array = []
+    @report.report_scopes.each do |report_scope|
+      report_scope.report_scope_orgas.each do |report_scope_orga|
+        @report_scope_orgas_array << report_scope_orga
+      end
+    end
 
     # affichage side bar
     @sidebar_show = true
@@ -128,10 +134,13 @@ class ReportsController < ApplicationController
     end
 
     # Tableau filtré
-
-    if params[:query]
-
+    if params[:query].present?
+      @selected_orga = ReportScopeOrga.find(params[:query])
+      @selected_module = @selected_orga.report_scope
+    else
+    #   @filtered_output = @output_array
     end
+
     # ------------------------------------------------------------------
     # STACKED BAR CHART
     # ------------------------------------------------------------------
@@ -143,9 +152,6 @@ class ReportsController < ApplicationController
       words = report_scope.emission_module.name.split(/\W+/)
       @x_axis_modules << words
     end
-
-
-
 
     # 2/ Création d'un array pour stocker le nom des orga parcourues (en légende)
     @label_orga = []

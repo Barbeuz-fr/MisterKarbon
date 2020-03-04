@@ -96,8 +96,5 @@ const stackedBar = () => {
 //   var activeElement = stackedBar.getElementAtEvent(evt);
 // };
 
-// export { clickedElement };
-// export { clickChart };
-// export { handleClick }
 
 export { stackedBar };
