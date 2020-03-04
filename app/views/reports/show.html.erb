@@ -126,24 +126,22 @@
     -->
 
     <div class="tab-pane fade show" id="scope2" role="tabpanel" aria-labelledby="scope2-tab">
-      <p>Reported emissions</p>
-      <div class="dashboard-card-2">
-        <div class="top-box">
-          <h5>☁︎  Emissions</h5>
-        </div>
-        <div class="pl-3">
-        <p><em>kgCO2e</em> </p>
-        </div>
-        <div class="d-flex align-items-center pl-3 pb-3">
-          <%= content_tag :div, '',
-                          id: 'bar_chart_data',
-                          data: {emissions: @y_axis_organizations,
-                                # orga: @label_orga,
-                                ylabel: @label_orga} %>
-          <%= content_tag 'canvas', '',
-                          id: 'mybarChart',
-                          width: '600', height: '300',
-                          data: {titles: @x_axis_modules} %>
+      <div class="container barchart-card mt-3">
+        <div class="bg-white rounded shadow">
+          <div class="pl-3 align-items-left">
+            <p><em>Unit: kgCO2 equivalent</em></p>
+          </div>
+          <div class="d-flex align-items-center pl-3 pb-3">
+            <%= content_tag :div, '',
+                            id: 'bar_chart_data',
+                            data: {emissions: @y_axis_organizations,
+                                  # orga: @label_orga,
+                                  ylabel: @label_orga} %>
+            <%= content_tag 'canvas', '',
+                            id: 'mybarChart',
+                            width: '600', height: '400',
+                            data: {titles: @x_axis_modules} %>
+          </div>
         </div>
       </div>
     </div>
