@@ -118,7 +118,7 @@
     -->
     <div class="dashboard-card-2">
       <div class="top-box">
-          <h5><i class="fas fa-database"></i> Details</h5>
+          <h5><i class="fas fa-database"></i> Detailed data</h5>
       </div>
       <div class="pl-3">
         <%= form_tag report_path(@report), method: :get do %>
@@ -127,7 +127,10 @@
         <% end %>
       </div>
       <div class="container">
-        <p>Details for <%= @selected_orga.orga.name %> | <%= @selected_module.emission_module.name %> </p>
+        <% if @selected_orga.nil? == true %>
+          <% else %>
+            <p>Details for <%= @selected_orga.orga.name %> | <%= @selected_module.emission_module.name %> </p>
+        <% end %>
       </div>
       <div class="d-flex justify-content-between p-3">
         <div>
