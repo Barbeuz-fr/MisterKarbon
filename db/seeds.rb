@@ -42,11 +42,6 @@ require "open-uri"
   avatar_2_file = URI.open('https://3wpie932p5cn1pgjba40gtkbm83-wpengine.netdna-ssl.com/wp-content/uploads/2018/10/Julien-Lachance.jpg')
   avatar_3_file = URI.open('http://www.agenceartistique.com/DATA/PHOTO/359_grande.jpg')
 
-
-# ==============================================================================
-# IMAGES ORGA
-# ==============================================================================
-
 # --------------------------------------------------------------------------------------
 # IMPORTATION CSV ADEME
 # ==============================================================================
