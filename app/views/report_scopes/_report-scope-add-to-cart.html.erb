@@ -7,11 +7,10 @@
           </div>
 
           <% report_scope = @report.report_scopes.find_by(emission_module_id: module_scope.id) %>
-          <% if report_scope %>
+
             <%= link_to "➖",
             report_scope_path(report_scope, report_id: params[:report_id]),
             method: :delete, class:"flash-module-mini-info-minus", remote: true %>
-          <% end %>
 
         </div>
     <% end %>
