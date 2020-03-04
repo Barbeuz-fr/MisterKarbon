@@ -26,41 +26,39 @@
     -->
      <div class="tab-pane fade show active" id="scope1" role="tabpanel" aria-labelledby="scope1-tab">
       <div class="container">
-
         <!-- Headers -->
         <div class="row mt-3">
-          <div class="col-3">
-            <div class="tab-headerV2 mr-3 radius-right">
-              <h3 class="text-center"><strong>Emissions</strong> </h3 class="text-center">
+          <div class="col-3 pr-0 mr-0">
+            <div class="tab-headerV2 radius-right">
+              <h3 class="text-center">☁︎   EMISSIONS </h3>
             </div>
           </div>
-          <div class="col-3">
-            <div class="tab-headerV2 mr-3 radius-right">
-              <h3 class="text-center"><strong>Organization</strong> </h3 class="text-center">
+          <div class="col-3 pl-0 pr-0 mr-0">
+            <div class="tab-headerV2 radius-right">
+              <h3 class="text-center"><i class="fas fa-sitemap"></i> ORGANIZATION</h3>
             </div>
           </div>
-          <div class="col-3">
-            <div class="tab-headerV2 mr-3 radius-right">
-              <h3 class="text-center"><strong>Team</strong> </h3 class="text-center">
+          <div class="col-3 pl-0 pr-0 mr-0">
+            <div class="tab-headerV2 radius-right justify-content-center">
+              <h3 class="text-center"><i class="fas fa-user-plus"></i> TEAM</h3>
             </div>
           </div>
-          <div class="col-3">
-            <div class="tab-headerV2 mr-3 radius-right">
-              <h3 class="text-center"><strong>Status</strong> </h3 class="text-center">
+          <div class="col-3 pl-0 mr-0">
+            <div class="tab-headerV2 radius-right justify-content-center">
+              <h3 class="text-center"> STATUS</h3>
             </div>
           </div>
         </div>
       </div>
 
-
-        <!-- Content -->
+      <!-- Content -->
       <div class="container">
         <% @report.report_scopes.each do |report_scope| %>
           <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
+          <div class="bg-white rounded shadow">
             <div class="row border-bottom">
-
               <!-- Emissions  -->
-              <div class="col-3">
+              <div class="col-3 pl-4 flex-cell cell-justify-left">
                 <% if report_scope.emission_module.photo.attached?  %>
                   <p  class="">
                     <%= cl_image_tag report_scope.emission_module.photo.key, :crop=>"fill", class:"avatar", style:"width:20; height:20"%>
@@ -75,7 +73,7 @@
               </div>
 
               <!-- Orga -->
-              <div class="col-3">
+              <div class="col-3 flex-cell cell-justify-left">
                   <% if report_scope_orga.orga.photo.attached?  %>
                     <p  class="">
                       <%= cl_image_tag report_scope_orga.orga.photo.key, :crop=>"fill", class:"avatar", style:"width:40px; height:40px"%>
@@ -90,7 +88,7 @@
               </div>
 
               <!-- Team -->
-              <div class="col-3">
+              <div class="col-3 flex-cell">
                 <% report_scope_orga.report_scope_orga_users.each do |report_scope_orga_user| %>
                   <% if report_scope_orga_user.user.photo.attached? %>
                     <%= cl_image_tag report_scope_orga_user.user.photo.key, :crop=>"fill", class:"avatar", style:"width:40px; height:40px"%>
@@ -98,10 +96,10 @@
                   <% end %>
                 <% end %>
                 <!-- Add button -->
-                <a class="fas fa-plus-circle fa-2x align-bottom mb-1 text-success"></a>
+                <a class="fas fa-plus-circle fa-2x align-bottom m-2 text-success"></a>
               </div>
               <!-- Status -->
-              <div class="col-3">
+              <div class="col-3 flex-cell">
                 <% if report_scope_orga.status == "To send" %>
                   <span class="badge badge-secondary"><%= report_scope_orga.status %></span>
                 <% elsif report_scope_orga.status == "On-going"%>
@@ -115,6 +113,7 @@
                 <% end %>
               </div>
             </div>
+          </div>
           <% end %>
         <% end %>
       </div>
