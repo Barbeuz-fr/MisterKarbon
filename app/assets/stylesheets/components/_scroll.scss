@@ -1,0 +1,15 @@
+.scroller-100vh {
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+  scrollbar-color: green;
+  scrollbar-width: thin;
+}
+
+.scroller-50vh {
+  width: 100%;
+  height: 30vh;
+  overflow-y: scroll;
+  scrollbar-color: green;
+  scrollbar-width: thin;
+}

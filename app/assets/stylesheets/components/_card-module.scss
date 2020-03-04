@@ -3,6 +3,9 @@
   flex: 1;
 }
 
+.tableFixHead          { overflow-y: auto; height: 500px; }
+.tableFixHead thead th { position: sticky; top: 0; }
+
 .full-size-click {
   height: 136px;
   width:200px;
@@ -24,7 +27,6 @@
   margin-top: 5px;
   width: 100%;
 }
-
 .list-modules-container {
   height: 71vh;
   overflow: hidden;
@@ -125,6 +127,15 @@
 .flash-module-unselected {
   background-color: #6B7C93;
   color: white;
+}
+
+:hover.flash-module {
+  background-color: $success;
+  color: $primary
+}
+
+.flash-module.active {
+  background-color: $success;
 }
 
 .form-group {

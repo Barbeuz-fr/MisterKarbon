@@ -5,15 +5,12 @@
     <%= favicon_link_tag 'green.png' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
-
   <body>
     <%= render 'shared/flashes' %>
     <%= render 'shared/sidebar' if @sidebar_show %>
-
     <% if params[:action] == 'home' %>
       <div class="content-wrapper">
        <%= yield %>
@@ -23,7 +20,6 @@
        <%= yield %>
       </div>
     <% end %>
-
     <%= render 'shared/footer' if params[:action] == 'home' %>
   </body>
 </html>

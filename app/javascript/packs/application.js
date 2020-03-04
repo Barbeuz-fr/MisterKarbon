@@ -49,5 +49,10 @@ if (document.getElementById('mybarChart')) {
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
 
-
-// updateDropdownValue();
+// import { updateDropdownValue } from '../plugins/dropdown_dashboard';
+if (document.getElementById('mybarChart')) {
+  stackedBar();
+}
+if ( document.getElementById('progressPieChart')) {
+  pieChartProgress();
+}
