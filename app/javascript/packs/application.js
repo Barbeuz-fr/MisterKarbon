@@ -42,7 +42,6 @@ if (document.getElementById('mybarChart')) {
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
 
-
 import { stackedBar } from '../plugins/bar_chart';
 import { pieChartProgress } from '../plugins/pie_chart';
 import '../plugins/dropdown_dashboard';

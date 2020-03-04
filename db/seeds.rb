@@ -52,8 +52,8 @@ require "open-uri"
 # ==============================================================================
 
 
-  p "starting csv import ADEME"
-  require 'csv'
+  # p "starting csv import ADEME"
+  # require 'csv'
 
   # count = 0
   # csv_text = File.read(Rails.root.join('lib', 'seeds', 'csv_for_seed.csv'))
