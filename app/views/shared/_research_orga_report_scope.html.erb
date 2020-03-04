@@ -1,44 +1,56 @@
-      <!-- Modale pour ajout des contributeurs -->
-    <div class="col-5 mt-2">
-      <% if params[:report_scope].present? %>
-        <!-- Definition modale -->
-        <div id="addOrga">
-          <!-- Simple form barre de recherche-->
-          <div>
-            <%= form_tag url_for(report_scope: params[:report_scope]), method: :get do %>
-              <div class="input-group mb-3">
-                <%= text_field_tag :query, params[:query], class:"form-control", autofocus: true%>
-                <%= hidden_field_tag :report_scope, params[:report_scope]%>
-              <div class="input-group-append">
-                <%= submit_tag "🔎", id:"loupe" %>
-              </div>
-            <% end %>
-          </div>
+  <!-- Modale pour ajout des contributeurs -->
 
-          <!-- Display resultats de la recherche -->
-          <% if params[:query].present? %>
-            <%= simple_form_for [@report, @report_scope_orga] do |f| %>
-              <div class="scroller-50vh">
-                <%= f.input :report_scope_id,
-                input_html: { value: params[:report_scope] }, as: :hidden%>
-                <%= f.association :orga, collection: @results, as: :check_boxes,
-                label: 'Choose your Buniness Unit' %>
-                <!-- Inject categories here -->
-              </div>
-              <%= f.submit "Add", class: "btn btn-success w-100 py-3"  %>
-            <% end %>
-          <% else %>
-            <%= simple_form_for [@report, @report_scope_orga] do |f| %>
-              <div class="scroller-30vh">
-                <%= f.input :report_scope_id,
-                input_html: { value: params[:report_scope] }, as: :hidden%>
-                <%= f.association :orga, as: :check_boxes,
-                label: 'Choose your Buniness Unit' %>
-                <!-- Inject categories here -->
-              </div>
-              <%= f.submit "Add", class: "btn btn-success w-100 py-3"  %>
-            <% end %>
+  <div class="col-5">
+    <div class="bg-white rounded shadow pb-3">
+      <% if params[:report_scope].present? %>
+      <!-- Definition modale -->
+      <div id="addEmail">
+        <div class="tab-headerV2 pl-2">
+          <h3 class="text-center">Add a contributor for <%= ReportScope.find(params[:report_scope]) %></h3>
+        </div>
+      </div>
+      <% end %>
+      <% if params[:report_scope].present? %>
+      <!-- Definition modale -->
+      <div id="addOrga">
+        <!-- Simple form barre de recherche-->
+        <div class="mx-2">
+          <%= form_tag url_for(report_scope: params[:report_scope]), method: :get do %>
+            <div class="input-group mb-3">
+              <%= text_field_tag :query, params[:query], class:"form-control", autofocus: true%>
+              <%= hidden_field_tag :report_scope, params[:report_scope]%>
+            <div class="input-group-append">
+              <%= submit_tag "🔎", id:"loupe" %>
+            </div>
           <% end %>
         </div>
+
+        <!-- Display resultats de la recherche -->
+        <% if params[:query].present? %>
+          <%= simple_form_for [@report, @report_scope_orga] do |f| %>
+            <div class="scroller-50vh">
+              <%= f.input :report_scope_id,
+              input_html: { value: params[:report_scope] }, as: :hidden%>
+              <%= f.association :orga, collection: @results, as: :check_boxes,
+              label: 'Choose your Buniness Unit' %>
+              <!-- Inject categories here -->
+            </div>
+            <%= f.submit "Add", class: "btn btn-success w-100 py-2 mt-2"  %>
+          <% end %>
+        <% else %>
+          <%= simple_form_for [@report, @report_scope_orga] do |f| %>
+            <div class="scroller-30vh">
+              <%= f.input :report_scope_id,
+              input_html: { value: params[:report_scope] }, as: :hidden%>
+              <%= f.association :orga, as: :check_boxes,
+              label: 'Choose your Buniness Unit' %>
+              <!-- Inject categories here -->
+            </div>
+            <%= f.submit "Add", class: "btn btn-success w-100 py-2 mt-2"  %>
+          <% end %>
+        <% end %>
+      </div>
       <% end %>
     </div>
+  </div>
+</div>
