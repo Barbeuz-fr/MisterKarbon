@@ -22,40 +22,25 @@
   </div>
 </div>
 
-<!-- Headers tableau -->
-<div class="container mb-2">
-
-</div>
 
 
-
-<div class="container">
-  <!-- <div class="row"> -->
-
-  <!-- </div> -->
+<div class="px-2">
   <div class="row">
-    <div class="col-3 px-0">
-      <div class="tab-headerV2">
-        <h3 class="text-center">Emission type</h3>
-      </div>
-    </div>
-    <div class="col-4 px-0">
-      <div class="tab-headerV2">
-        <h3 class="text-center">Organization</h3>
-      </div>
-    </div>
-    <div class="col-5">
-      <% if params[:report_scope].present? %>
-        <!-- Definition modale -->
-        <div id="addEmail">
-          <div class="tab-headerV2">
-            <h3 class="text-center">Add a contributor for <%= ReportScope.find(params[:report_scope]) %></h3>
+    <div class="col-7 px-0">
+      <div class="bg-white rounded shadow">
+        <div class="row ml-0">
+          <div class="col-5 px-0">
+            <div class="tab-headerV2 radius-left">
+              <h3 class="text-center">EMISSION TYPE</h3>
+            </div>
+          </div>
+          <div class="col-7 px-0">
+            <div class="tab-headerV2 mr-3 radius-right">
+              <h3 class="text-center">ORGANIZATION</h3>
+            </div>
           </div>
         </div>
-      <% end %>
-    </div>
-    <div class="col-7">
-      <div class="scroller-100vh">
+        <div class="scroller-100vh">
         <% @report.report_scopes.each do |report_scope| %>
         <% if params[:report_scope].to_i == report_scope.id %>
           <div class="row border-bottom transparent">
@@ -67,17 +52,18 @@
               <% if report_scope.emission_module.photo.attached?  %>
                 <%= cl_image_tag report_scope.emission_module.photo.key, :crop=>"fill", class:"avatar ml-3", style:"width:30px; height:30px"%>
               <% else %>
-                <%= image_tag "https://cdn2.iconfinder.com/data/icons/vape-1/48/a-18-512.png", class:"avatar ml-3", style:"width:30px; height:30px"%>
+                <%= image_tag "https://cdn2.iconfinder.com/data/icons/vape-1/48/a-18-512.png", class:"avatar ml-5", style:"width:30px; height:30px"%>
               <% end %>
               <p class="pl-2"><%= report_scope %></p>
             </div>
           </div>
-          <div class="col-7">
+          <div class="col-7 pl-5">
             <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
-              <button class="rounded-pill btn btn-outline-primary my-1">
+              <button class="rounded-pill bg-purple btn my-1">
+                <!-- btn-outline-primary -->
                 <ul class="list-inline m-0">
                   <li class="list-inline-item">
-                    <%= cl_image_tag report_scope_orga.orga.photo.key, :crop=>"fill", class:"avatar ml-3", style:"width:30px; height:30px"%>
+                    <%= cl_image_tag report_scope_orga.orga.photo.key, :crop=>"fill", class:"avatar ml-4", style:"width:30px; height:30px"%>
                   </li>
                   <li class="list-inline-item m-0">
                     <p class= "px-2 m-0"><%= report_scope_orga.orga.name %></p>
@@ -86,8 +72,7 @@
                     <%= link_to "",
                     report_report_scope_orga_path(@report.id, report_scope_orga.id),
                     class:"fas fa-times pr-1 text-white",
-                    method: :delete,
-                    data: { confirm: "Are you sure?" }%>
+                    method: :delete%>
                   </li>
                 </ul>
               </button>
@@ -99,9 +84,10 @@
           </div>
         </div>
         <% end %>
+        </div>
       </div>
     </div>
-      <%= render 'shared/research_orga_report_scope' %>
+    <%= render 'shared/research_orga_report_scope' %>
   </div>
 
 </div>
