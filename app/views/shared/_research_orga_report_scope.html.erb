@@ -1,12 +1,14 @@
   <!-- Modale pour ajout des contributeurs -->
 
   <div class="col-5">
-    <div class="bg-white rounded shadow pb-3">
+    <% if params[:report_scope].present? %>
+      <div class="bg-white rounded shadow pb-3">
+    <% end %>
       <% if params[:report_scope].present? %>
       <!-- Definition modale -->
       <div id="addEmail">
         <div class="tab-headerV2 pl-2">
-          <h3 class="text-center">Add a contributor for <%= ReportScope.find(params[:report_scope]) %></h3>
+          <h3 class="text-center"><i class="fas fa-user-plus"></i> Add Business Unit for <%= ReportScope.find(params[:report_scope]) %></h3>
         </div>
       </div>
       <% end %>
