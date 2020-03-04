@@ -17,7 +17,7 @@ require "open-uri"
   Orga.destroy_all
   Answer.destroy_all
   Question.destroy_all
-  AdemeEmissionFactor.destroy_all
+  # AdemeEmissionFactor.destroy_all
   ReportScope.destroy_all
   Report.destroy_all
   User.destroy_all
@@ -47,33 +47,32 @@ require "open-uri"
 # ==============================================================================
 
 
-  p "starting csv import ADEME"
   require 'csv'
+  # p "starting csv import ADEME"
+  # count = 0
+  # csv_text = File.read(Rails.root.join('lib', 'seeds', 'csv_for_seed.csv'))
+  # csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+  # csv.each do |row|
+  #   count += 1
+  #   t = AdemeEmissionFactor.new()
+  #   t.count = count
+  #   p row['Code de la catégorie']
+  #   t.name = row['Code de la catégorie']
+  #   t.emission_value = row['Somme de Total poste non décomposé2']
+  #   p t.emission_value
+  #   t.unit = row['Unité anglais']
+  #   t.id_ademe = row["Identifiant de l'élément"]
+  #   t.nom_base = row['Nom base français']
+  #   t.save
+  # end
 
-  count = 0
-  csv_text = File.read(Rails.root.join('lib', 'seeds', 'csv_for_seed.csv'))
-  csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-  csv.each do |row|
-    count += 1
-    t = AdemeEmissionFactor.new()
-    t.count = count
-    p row['Code de la catégorie']
-    t.name = row['Code de la catégorie']
-    t.emission_value = row['Somme de Total poste non décomposé2']
-    p t.emission_value
-    t.unit = row['Unité anglais']
-    t.id_ademe = row["Identifiant de l'élément"]
-    t.nom_base = row['Nom base français']
-    t.save
-  end
+  # p "import done"
 
-  p "import done"
+  # p "last line ADEME emission factor"
+  # p AdemeEmissionFactor.last
 
-  p "last line ADEME emission factor"
-  p AdemeEmissionFactor.last
-
-  p "count ADEME line"
-  AdemeEmissionFactor.count
+  # p "count ADEME line"
+  # AdemeEmissionFactor.count
 
 # ==============================================================================
 # COMPANY
@@ -110,6 +109,20 @@ require "open-uri"
     io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'supply-chain.png')),
     filename: 'supply-chain.png', content_type: 'image/png')
   supply_chain.save
+
+  supply_chain_europe = Orga.new(name: "Supply Chain - Europe")
+  supply_chain_europe.company = company
+  supply_chain_europe.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'supply-chain.png')),
+    filename: 'supply-chain.png', content_type: 'image/png')
+  supply_chain_europe.save
+
+  supply_chain_usa = Orga.new(name: "Supply Chain - USA")
+  supply_chain_usa.company = company
+  supply_chain_usa.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'supply-chain.png')),
+    filename: 'supply-chain.png', content_type: 'image/png')
+  supply_chain_usa.save
 
   manufacturing = Orga.new(name: "Manufacturing")
   manufacturing.company = company
@@ -169,7 +182,7 @@ require "open-uri"
 
   manager = User.new(
     first_name: "JC",
-    email: "jean-charles.bertrand@gmail.com",
+    email: "jc.bertrand@gmail.com",
     password: 123456,
     organization_position: "CSR EMEA",
     job_position: "CSR manager",
@@ -178,20 +191,64 @@ require "open-uri"
     )
   manager.photo.attach(io: avatar_1_file, filename: 'avatar_1.jpg', content_type: 'image/jpg')
   manager.save
-  p manager
-  p manager.first_name
 
+
+  employee_logistique_1 = User.new(
+    first_name: "Céline",
+    last_name: "Dubois",
+    email: "celine.dubois@breadandco.com",
+    password: "123456",
+    organization_position: "Purchasing manager",
+    job_position: "Global purchasing",
+    company_id: company.id,
+    )
+    employee_logistique_1.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'avatars', 'supplier_manager_1.jpeg')),
+    filename: 'supplier_manager_1.jpeg', content_type: 'image/jpeg')
+  employee_logistique_1.save
+
+
+  p "Creation user pour Norbert transport"
+  supplier_logistique_1 = User.new(
+    first_name: "Will",
+    last_name: "Truck",
+    email: "will.truck@norbert-usa.com",
+    password: "123456",
+    organization_position: "Sales EMEA",
+    job_position: "Account manager",
+    company_id: supplier_logistique.id,
+    )
+    supplier_logistique_1.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'avatars', 'supplier_avatar_1.png')),
+    filename: 'supplier_avatar_1.png', content_type: 'image/png')
+  supplier_logistique_1.save
+
+  supplier_logistique_2 = User.new(
+    first_name: "Antoine",
+    last_name: "Chariot",
+    email: "antoine.chariot@norbert-europe.com",
+    password: 123456,
+    organization_position: "Sales EMEA",
+    job_position: "Account manager",
+    company_id: supplier_logistique.id,
+    )
+    supplier_logistique_2.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'avatars', 'supplier_avatar_2.jpg')),
+    filename: 'supplier_avatar_2.jpg', content_type: 'image/png')
+  supplier_logistique_2.save
 
   p "Generation des users pour les orgas"
 
-  orga_pour_faker = ["Marketing", "Manufacturing", "Suppy Chain", "HR", "Finance", "Product Development"]
+
+
+  orga_pour_faker = ["Marketing", "Manufacturing", "Supply Chain", "HR", "Finance", "Product Development"]
   orga_pour_faker.each do |orga|
     10.times do
         first_name = Faker::Name.first_name
         last_name = Faker::Name.last_name
         user = User.new(
-        first_name: Faker::Name.first_name,
-        last_name: Faker::Name.last_name,
+        first_name: first_name,
+        last_name: last_name,
         email: "#{first_name}.#{last_name}@breadandco.com",
         # pour job position et organisation position, peut etre mettre un array.sample
         #sur ce qui nous interesse
@@ -264,16 +321,6 @@ require "open-uri"
     )
   # company_employee_10.photo.attach(io: avatar_1_file, filename: 'avatar_1.jpg', content_type: 'image/jpg')
   company_employee_10.save
-
-  employee_logistique = User.new(
-    first_name: "Gérard",
-    last_name: "Transport",
-    email: "gerard.transport@logistik.com",
-    password: "123456",
-    company_id: supplier_logistique.id,
-    )
-  # employee_logistique.photo.attach(io: avatar_1_file, filename: 'avatar_1.jpg', content_type: 'image/jpg')
-  employee_logistique.save
 
   employee_mineraux = User.new(
     first_name: "Antoine",
