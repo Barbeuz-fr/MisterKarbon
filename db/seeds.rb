@@ -103,6 +103,85 @@ require "open-uri"
 
   p "create orga"
 
+
+  finance = Orga.new(name: "Finance")
+  finance.company = company
+  finance.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'finance.png')),
+    filename: 'finance.png', content_type: 'image/png')
+  finance.save
+
+  manufacturing = Orga.new(name: "Manufacturing")
+  manufacturing.company = company
+  manufacturing.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'manufacturing.png')),
+    filename: 'manufacturing.png', content_type: 'image/png')
+  manufacturing.save
+
+  marketing = Orga.new(name: "Marketing")
+  marketing.company = company
+  marketing.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'marketing.png')),
+    filename: 'marketing.png', content_type: 'image/png')
+  marketing.save
+
+  marketing_europe = Orga.new(name: "Marketing - Europe")
+  marketing_europe.company = company
+  marketing_europe.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'marketing.png')),
+    filename: 'marketing.png', content_type: 'image/png')
+  marketing_europe.save
+
+  marketing_usa = Orga.new(name: "Marketing - USA")
+  marketing_usa.company = company
+  marketing_usa.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'marketing.png')),
+    filename: 'marketing.png', content_type: 'image/png')
+  marketing_usa.save
+
+
+  product_development = Orga.new(name: "Product Development")
+  product_development.company = company
+  product_development.photo.attach(
+  io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'product-dev.png')),
+  filename: 'product-dev.png', content_type: 'image/png')
+  product_development.save
+
+  hr = Orga.new(name: "HR")
+  hr.company = company
+  hr.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'hr.png')),
+    filename: 'hr.png', content_type: 'image/png')
+  hr.save
+
+  rd = Orga.new(name: "R&D")
+  rd.company = company
+  rd.photo.attach(
+  io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'rd.png')),
+  filename: 'rd.png', content_type: 'image/png')
+  rd.save
+
+  sales = Orga.new(name: "Sales")
+  sales.company = company
+  sales.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'sales.png')),
+    filename: 'sales.png', content_type: 'image/png')
+  sales.save
+
+  sales_europe = Orga.new(name: "Sales - Europe")
+  sales_europe.company = company
+  sales_europe.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'sales.png')),
+    filename: 'sales.png', content_type: 'image/png')
+  sales_europe.save
+
+  sales_usa = Orga.new(name: "Sales - USA")
+  sales_usa.company = company
+  sales_usa.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'sales.png')),
+    filename: 'sales.png', content_type: 'image/png')
+  sales_usa.save
+
   supply_chain = Orga.new(name: "Supply Chain")
   supply_chain.company = company
   supply_chain.photo.attach(
@@ -123,55 +202,6 @@ require "open-uri"
     io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'supply-chain.png')),
     filename: 'supply-chain.png', content_type: 'image/png')
   supply_chain_usa.save
-
-  manufacturing = Orga.new(name: "Manufacturing")
-  manufacturing.company = company
-  manufacturing.photo.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'manufacturing.png')),
-    filename: 'manufacturing.png', content_type: 'image/png')
-  manufacturing.save
-
-  rd = Orga.new(name: "R&D")
-  rd.company = company
-  rd.photo.attach(
-  io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'rd.png')),
-  filename: 'rd.png', content_type: 'image/png')
-  rd.save
-
-  product_development = Orga.new(name: "Product Development")
-  product_development.company = company
-  product_development.photo.attach(
-  io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'product-dev.png')),
-  filename: 'product-dev.png', content_type: 'image/png')
-  product_development.save
-
-  marketing = Orga.new(name: "Marketing")
-  marketing.company = company
-  marketing.photo.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'marketing.png')),
-    filename: 'marketing.png', content_type: 'image/png')
-  marketing.save
-
-  sales = Orga.new(name: "Sales")
-  sales.company = company
-  sales.photo.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'sales.png')),
-    filename: 'sales.png', content_type: 'image/png')
-  sales.save
-
-  finance = Orga.new(name: "Finance")
-  finance.company = company
-  finance.photo.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'finance.png')),
-    filename: 'finance.png', content_type: 'image/png')
-  finance.save
-
-  hr = Orga.new(name: "HR")
-  hr.company = company
-  hr.photo.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'hr.png')),
-    filename: 'hr.png', content_type: 'image/png')
-  hr.save
 
 # ==============================================================================
 # USERS
