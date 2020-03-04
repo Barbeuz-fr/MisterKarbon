@@ -2,6 +2,7 @@
   background-color: white;
   border-radius: 4px;
   position: relative;
+  overflow: hidden;
   .report-card-link {
     position: absolute;
     top: 0;
@@ -18,13 +19,29 @@
 
 .report-card-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 33%);
+  ul {
+    padding-left: 0;
+    margin-bottom: 0px;
+  }
+  ul > li {
+    font-size: 14px;
+    display: flex;
+  }
+  h5 {
+    font-size: .8em;
+    text-transform: uppercase;
+    color: $green;
+  }
+}
+
+.report-card-grid ul > li img {
+  margin-right: 5px;
+
+  object-fit: cover;
 }
 
 .report-card-contrib {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   .loupe-icon {
     text-align: right;
   }
@@ -33,7 +50,7 @@
 
 .report-card-top{
   width: 100%;
-  height: 200px;
+  height: 180px;
   background-size: cover;
   background-position: center;
   display: flex;
