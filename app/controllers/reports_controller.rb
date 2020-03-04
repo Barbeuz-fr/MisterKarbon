@@ -30,11 +30,15 @@ class ReportsController < ApplicationController
     @report = Report.find(params[:id])
     @report_scopes_array = @report.report_scopes
     @report_scope_orgas_array = []
+
+    # Array pour filtrage
+    # TO DO - MODIFIER ARRAY POUR MEILLEUR AFFICHAGE
     @report.report_scopes.each do |report_scope|
       report_scope.report_scope_orgas.each do |report_scope_orga|
         @report_scope_orgas_array << report_scope_orga
       end
     end
+
 
     # affichage side bar
     @sidebar_show = true
@@ -62,7 +66,7 @@ class ReportsController < ApplicationController
     @status_done = 0
     @report.report_scopes.each do |report_scope|
       report_scope.report_scope_orgas.each do |report_scope_orga|
-        if report_scope_orga.status == "To start"
+        if report_scope_orga.status == "Invited"
           @status_to_start += 1
         elsif report_scope_orga.status == "On-going"
           @status_ongoing += 1
@@ -88,7 +92,7 @@ class ReportsController < ApplicationController
     @progress_data = [0, 0, 0, 0, 0, 0, 0]
     @report.report_scopes.each do | report_scope |
       report_scope.report_scope_orgas.each do |report_scope_orga|
-        if report_scope_orga.status == "Invite"
+        if report_scope_orga.status == "Invited"
           @progress_data[0] += 1
         elsif report_scope_orga.status == "To start"
           @progress_data[1] += 1
