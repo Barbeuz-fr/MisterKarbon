@@ -963,28 +963,28 @@ require "open-uri"
         question_id: question_comb_fossiles_1.id,
         report_scope_orga_id: report1_scope1_orga.id,
         unit: "cubic meters",
-        content: 10000)
+        content: 1000)
 
     answer_comb_fossiles_2_manuf = Answer.create!(
         calculation: true,
         question_id: question_comb_fossiles_2.id,
         report_scope_orga_id: report1_scope1_orga.id,
         unit: "liters",
-        content: 20000)
+        content: 2000)
 
     answer_comb_fossiles_3_manuf = Answer.create!(
         calculation: true,
         question_id: question_comb_fossiles_3.id,
         report_scope_orga_id: report1_scope1_orga.id,
         unit: "liters",
-        content: 10000)
+        content: 1000)
 
     answer_comb_fossiles_4_manuf = Answer.create!(
         calculation: true,
         question_id: question_comb_fossiles_4.id,
         report_scope_orga_id: report1_scope1_orga.id,
         unit: "liters",
-        content: 20000)
+        content: 2000)
 
     answer_comb_fossiles_5_manuf = Answer.create!(
         calculation: true,
