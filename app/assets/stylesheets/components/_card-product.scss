@@ -83,15 +83,6 @@ a:hover {
   }
 }
 
-.btn .btn-primary .btn-lg {
-  margin-top: 30px;
-  }
-
-
-#exampleModalCenter label{
-  display:none;
-}
-
 .plus-icon{
   text-align: center;
   margin-top: 35px;}
@@ -105,13 +96,30 @@ a:hover {
   width: 30px;
 }
 
+/////////////////// modal/////////////////////////
+
+#exampleModalCenter label{
+  display:none;
+}
+
 .modal-content{
   // background-image: url(https://images.pexels.com/photos/416322/pexels-photo-416322.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
   // background-size: cover;
   // object-fit: cover;
+  border-radius: 20px;
+  height: 400px;
 }
 
 
+.btn .btn-primary .btn-lg {
+  margin-top: 30px;
+  }
+
+  .low-margin {
+    margin-top: 60px;
+  }
+
+/////////////// avatar icons /////////////////////
 .avatar-contribs-box {
   display: flex;
   div:not(:first-child) {
