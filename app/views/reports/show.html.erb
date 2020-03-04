@@ -126,6 +126,9 @@
           <%= submit_tag "Search", class: "btn btn-primary" %>
         <% end %>
       </div>
+      <div class="container">
+        <p>Details for <%= @selected_orga.orga.name %> | <%= @selected_module.emission_module.name %> </p>
+      </div>
       <div class="d-flex justify-content-between p-3">
         <div>
           <p>Team</p>
@@ -165,28 +168,30 @@
         <div class="row pl-3 pr-3">
           <!-- Content with loop -->
           <% @output_array.each do |item| %>
-            <!-- Question -->
-            <div class="col-4">
-              <p class="small-text-dashboard"><%= item[:question] %></p>
-            </div>
-            <!-- Team input -->
-            <div class="col-2">
-              <p class="small-text-dashboard"><%= item[:answer].truncate(0)%> <%= item[:answer_unit] %></p>
-            </div>
-            <!-- Emissions calculated -->
-            <div class="col-2">
-              <p class="small-text-dashboard"><%= item[:emission_answer_calculation].truncate(0)%> kgCO2e</p>
-            </div>
-            <!-- Comments -->
-            <div class="col-2">
-              <!-- TO DO - boucle if sur comment avec "n.a." -->
-              <p class="small-text-dashboard"><em>N.a.</em></p>
-            </div>
-            <!-- Attachment -->
-            <div class="col-2">
-              <!-- TO DO - boucle if avec ".n.A" -->
-              <p class="small-text-dashboard"><i class="far fa-file-pdf"> <i class="far fa-file-excel"></i></i></p>
-            </div>
+            <% if  (@selected_orga.orga.name == item[:orga_scope_name]) && (@selected_module.emission_module.name == item[:emission_module_name])%>
+              <!-- Question -->
+              <div class="col-4">
+                <p class="small-text-dashboard"><%= item[:question] %></p>
+              </div>
+              <!-- Team input -->
+              <div class="col-2">
+                <p class="small-text-dashboard"><%= item[:answer].truncate(0)%> <%= item[:answer_unit] %></p>
+              </div>
+              <!-- Emissions calculated -->
+              <div class="col-2">
+                <p class="small-text-dashboard"><%= item[:emission_answer_calculation].truncate(0)%> kgCO2e</p>
+              </div>
+              <!-- Comments -->
+              <div class="col-2">
+                <!-- TO DO - boucle if sur comment avec "n.a." -->
+                <p class="small-text-dashboard"><em>N.a.</em></p>
+              </div>
+              <!-- Attachment -->
+              <div class="col-2">
+                <!-- TO DO - boucle if avec ".n.A" -->
+                <p class="small-text-dashboard"><i class="far fa-file-pdf"> <i class="far fa-file-excel"></i></i></p>
+              </div>
+            <% end %>
           <% end %>
         </div>
       <% end %>
