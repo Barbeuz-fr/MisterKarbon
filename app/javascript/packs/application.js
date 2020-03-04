@@ -47,7 +47,11 @@ import { stackedBar } from '../plugins/bar_chart';
 import { pieChartProgress } from '../plugins/pie_chart';
 import '../plugins/dropdown_dashboard';
 // import { updateDropdownValue } from '../plugins/dropdown_dashboard';
-stackedBar();
-pieChartProgress();
+if (document.getElementById('mybarChart')) {
+  stackedBar();
+}
+if ( document.getElementById('progressPieChart')) {
+  pieChartProgress();
+}
 // selectedteam();
 // updateDropdownValue();
