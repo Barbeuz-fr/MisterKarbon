@@ -10,7 +10,7 @@
   <% end %>
 
   <% @reports.each do |report| %>
-    <%= link_to report_path(report.id) do %>
+    <%= link_to report_path(report) do %>
       <div class="report-card">
         <div class="report-card-top" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%=report_photo(report)%>)">
           <div>
@@ -61,10 +61,17 @@
                   <%= image_tag "http://www.tafecafe.com/wp-content/uploads/2015/09/default_avatar.png", class:"avatar", style:"width:40px; height:40px;left:-#{index * 20}px"%>
                 <% end %>
               <% end %>
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 43a0ddd432df6f3152857aa0d40f565eca319b0b
             </div>
             <%#= link_to image_tag("loupe-icon.png"), report_path(report), class: "loupe-icon"%>
           </div>
         </div>
+        <%#= link_to "", report_path(report), class: "report-card-link"%>
       </div>
     <% end %>
   <% end %>
