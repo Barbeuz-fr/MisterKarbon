@@ -34,15 +34,15 @@ document.addEventListener('turbolinks:load', function () {
   preserveTab();
   dropdownSelected();
   activeQueryDashboard();
-  stackedBar();
+  // stackedBar();
   // pieChartProgress();
   // initSubmit();
 
 }, false)
 
-if (document.getElementById('mybarChart')) {
+// if (document.getElementById('mybarChart')) {
 
-}
+// }
 
 // const button = document.getElementById('data-orga');
 // button.addEventListener('click', (event) => {
@@ -59,6 +59,6 @@ if (document.getElementById('mybarChart')) {
 if (document.getElementById('mybarChart')) {
   stackedBar();
 }
-if ( document.getElementById('progressPieChart')) {
-  pieChartProgress();
-}
+// if ( document.getElementById('progressPieChart')) {
+//   pieChartProgress();
+// }

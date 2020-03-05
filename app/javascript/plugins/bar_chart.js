@@ -57,19 +57,19 @@ const stackedBar = () => {
           position: 'right',
           labels: {
             boxWidth: 50,
-            fontSize: 25,
+            fontSize: 16,
           },
         },
         scales: {
            xAxes: [{
               ticks: {
-                    fontSize: 30
+                    fontSize: 16
                 },
               stacked: true // this should be set to make the bars stacked
            }],
            yAxes: [{
               ticks: {
-                    fontSize: 25
+                    fontSize: 16
                 },
               stacked: true // this also..
            }],
