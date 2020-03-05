@@ -270,6 +270,9 @@ require "open-uri"
     password: "123456",
     organization_position: "Sales EMEA",
     job_position: "Account manager",
+    supplier_logistique_1.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'avatars', 'avatar_supplier_logistique.jpeg')),
+    filename: 'supplier_manager_1.jpeg', content_type: 'image/jpeg')
     company_id: supplier_logistique.id,
     )
     supplier_logistique_1.photo.attach(
@@ -299,66 +302,66 @@ require "open-uri"
       open("https://robohash.org/sitsequiquia.png?size=300x300&set=set1")
   end
 
-  i = 0
-  orga_pour_faker = ["Marketing", "Manufacturing", "Supply Chain", "HR", "Finance", "Product Development"]
-  orga_pour_faker.each do |orga|
-    2.times do
-        i += 1
-        first_name = Faker::Name.first_name
-        last_name = Faker::Name.last_name
-        user = User.new(
-        first_name: first_name,
-        last_name: last_name,
-        email: "#{first_name}.#{last_name}@breadandco.com",
-        # pour job position et organisation position, peut etre mettre un array.sample
-        #sur ce qui nous interesse
-        job_position: Faker::Job.title,
-        organization_position: orga,
-        password: "qwerty123",
-        company_id: company.id
-        )
-        user.photo.attach({
-           io: image_fetcher,
-           filename: "#{i}_faker_image.jpg"
-        })
-        user.save!
-    end
-  end
+  # i = 0
+  # orga_pour_faker = ["Marketing", "Manufacturing", "Supply Chain", "HR", "Finance", "Product Development"]
+  # orga_pour_faker.each do |orga|
+  #   2.times do
+  #       i += 1
+  #       first_name = Faker::Name.first_name
+  #       last_name = Faker::Name.last_name
+  #       user = User.new(
+  #       first_name: first_name,
+  #       last_name: last_name,
+  #       email: "#{first_name}.#{last_name}@breadandco.com",
+  #       # pour job position et organisation position, peut etre mettre un array.sample
+  #       #sur ce qui nous interesse
+  #       job_position: Faker::Job.title,
+  #       organization_position: orga,
+  #       password: "qwerty123",
+  #       company_id: company.id
+  #       )
+  #       user.photo.attach({
+  #          io: image_fetcher,
+  #          filename: "#{i}_faker_image.jpg"
+  #       })
+  #       user.save!
+  #   end
+  # end
 
   company_employee_1 = User.new(
     first_name: "Germain",
     last_name: "Dubreuil",
     email: "germain.dubreuil@breadandco.com",
-    job_position: "",
-    organization_position: "",
+    job_position: "Manager",
+    organization_position: "Manufacturing",
     password: "123456",
     company_id: company.id,
     )
-  company_employee_1.photo.attach(io: avatar_2_file, filename: 'avatar_1.jpg', content_type: 'image/jpg')
   company_employee_1.save
 
   company_employee_2 = User.new(
     first_name: "Antoine",
     last_name: "Fraveaux",
     email: "Antoine.Fraveaux@breadandco.com",
-    job_position: "",
+    job_position: "Manager",
     organization_position: "",
     password: "123456",
     company_id: company.id,
     )
-  company_employee_2.photo.attach(io: avatar_3_file, filename: 'avatar_1.jpg', content_type: 'image/jpg')
   company_employee_2.save
 
   company_employee_3 = User.new(
     first_name: "Jeremy",
     last_name: "Kerviel",
     email: "Jeremy.Kerviel@breadandco.com",
-    job_position: "",
+    job_position: "Manager",
     organization_position: "",
     password: "123456",
     company_id: company.id,
     )
-  # company_employee_3.photo.attach(io: avatar_1_file, filename: 'avatar_1.jpg', content_type: 'image/jpg')
+    company_employee_3.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'avatars', 'avatar_jeremy.png')),
+    filename: 'supplier_avatar_1.png', content_type: 'image/png')
   company_employee_3.save
 
   company_employee_4 = User.new(
@@ -366,20 +369,28 @@ require "open-uri"
     last_name: "Garbo",
     email: "Greta.Garbo@breadandco.com",
     password: "123456",
+    job_position: "Manager",
+    organization_position: "",
     company_id: company.id,
     )
-  # company_employee_4.photo.attach(io: avatar_1_file, filename: 'avatar_1.jpg', content_type: 'image/jpg')
+    company_employee_4.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'avatars', 'avatar_greta.png')),
+    filename: 'supplier_avatar_1.png', content_type: 'image/png')
   company_employee_4.save
 
   company_employee_5 = User.new(
     first_name: "Jason",
     last_name: "Statham",
     email: "Jason.Statham@breadandco.com",
-    job_position: "",
+    job_position: "Manager",
     organization_position: "",
     password: "123456",
     company_id: company.id,
     )
+  company_employee_5.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'avatars', 'avatar-jason-statham.png')),
+    filename: 'supplier_avatar_1.png', content_type: 'image/png')
+
   # company_employee_5.photo.attach(io: avatar_1_file, filename: 'avatar_1.jpg', content_type: 'image/jpg')
 
   company_employee_5.save
@@ -388,6 +399,8 @@ require "open-uri"
     first_name: "Jason",
     last_name: "Bourne",
     email: "Jason.Bourne@breadandco.com",
+    job_position: "Manager",
+    organization_position: "",
     password: "123456",
     company_id: company.id,
     )
@@ -398,7 +411,7 @@ require "open-uri"
     first_name: "Antoine",
     last_name: "Macadam",
     email: "antoine.macadam@Minerals.com",
-    job_position: "",
+    job_position: "Manager",
     organization_position: "",
     password: "123456",
     company_id: supplier_mineraux.id,
@@ -410,7 +423,7 @@ require "open-uri"
     first_name: "Jean-Michel",
     last_name: "Haiti",
     email: "jean-michel.haiti@ITandco.com",
-    job_position: "",
+    job_position: "Manager",
     organization_position: "",
     password: "123456",
     company_id: supplier_IT.id,
