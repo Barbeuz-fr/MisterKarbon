@@ -2,7 +2,6 @@ import Chart from 'chart.js';
 
 // For a pie chart
 
-
 var ctx3 = document.getElementById('progressPieChart');
 
   var piechart_data = $("#progressPieChart").data('progress');

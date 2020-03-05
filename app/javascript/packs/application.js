@@ -23,6 +23,7 @@ import { stackedBar } from '../plugins/bar_chart';
 import { pieChartProgress } from '../plugins/pie_chart';
 import '../plugins/dropdown_dashboard';
 import { dropdownSelected } from '../plugins/dropdown_dashboard';
+import { initToolTip } from '../components/init_tooltip';
 import { initSubmit } from '../plugins/submit';
 import { activeQueryDashboard} from '../plugins/tab-dashboard';
 // import { initSubmit } from '../plugins/submit';
@@ -30,14 +31,13 @@ import { activeQueryDashboard} from '../plugins/tab-dashboard';
 initAjaxScroll();
 
 document.addEventListener('turbolinks:load', function () {
+  initToolTip();
   initSubmit();
   preserveTab();
   dropdownSelected();
   activeQueryDashboard();
   stackedBar();
   // pieChartProgress();
-  // initSubmit();
-
 }, false)
 
 if (document.getElementById('mybarChart')) {
