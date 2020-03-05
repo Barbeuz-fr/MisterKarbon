@@ -55,7 +55,7 @@
               <% if report_scope.emission_module.photo.attached?  %>
                 <%= cl_image_tag report_scope.emission_module.photo.key, :crop=>"fill", class:"avatar ml-3", style:"width:30px; height:30px"%>
               <% else %>
-                <%= image_tag "", class:"avatar ml-5 fas fa-cloud"%>
+                <%= image_tag "https://cdn2.iconfinder.com/data/icons/vape-1/48/a-18-512.png", class:"avatar ml-5", style:"width:30px; height:30px"%>
               <% end %>
               <p class="pl-2"><%= report_scope %></p>
             </div>

@@ -10,6 +10,14 @@
   </nav>
 </div>
 
+<!-- Boutons de navigation -->
+<div class="container">
+  <div class="d-flex justify-content-between">
+    <p></p>
+    <%= link_to "Start your project!", report_path(@report.id), class:"btn btn-primary mt-3" %>
+  </div>
+</div>
+
 <!-- Titre -->
 <div class="container">
   <div class="row  mt-3 mb-3">
@@ -17,8 +25,6 @@
       <h4>Please select your team</h4>
     </div>
   </div>
-
-
 
 <!-- Contenu du tableau avec bouton d'ajout de contributeur-->
 <div class="container">
@@ -163,10 +169,3 @@
   </div>
 </div>
 
-<!-- Boutons de navigation -->
-<div class="container">
-  <div class="d-flex justify-content-between">
-    <p></p>
-    <%= link_to "Start your project!", report_path(@report.id), class:"btn btn-primary mt-3" %>
-  </div>
-</div>

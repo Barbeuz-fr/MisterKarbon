@@ -1,4 +1,4 @@
-<div class="reports-index-grid">
+<div class="reports-index-grid mr-3">
   <%= link_to "Create new report",
         "data-toggle" => "modal",
         "data-target" => "#generate-report" do %>
@@ -14,7 +14,7 @@
       <div class="report-card">
         <div class="report-card-top" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%=report_photo(report)%>)">
           <div class="report-status completed">
-            completed
+            on-going
           </div>
           <div class="report-card-infos">
             <h2><%= report.name %></h2>
@@ -93,14 +93,14 @@
         <%= image_tag "croix.svg", data: {dismiss:"modal"}, class: "close-modal" %>
       </div>
       <div class="modal-body">
-        <h5 class="modal-title" id="generate-reportTitle">Let's generate a new report</h5>
+        <h5 class="modal-title" id="generate-reportTitle">Let's create a new report</h5>
         <%= image_tag "modal-background", class: "bg-modal" %>
         <%= simple_form_for (@report) do |f| %>
             <%= f.input :name, label: false, placeholder: " Choose a Name", class:"form-modal"  %>
             <%= f.input :year,label: false, placeholder: " Choose a Year", as: :date,  discard_day: true, discard_month: true, class:"form-modal" %>
       </div>
       <div class="modal-footer">
-        <%= f.button :submit, value: "Generate", class:"btn-generate", data: {disable_with: "Generating report form"}%>
+        <%= f.button :submit, value: "Create", class:"btn-generate", data: {disable_with: "Creating your new report"}%>
       </div>
         <% end %>
     </div>
