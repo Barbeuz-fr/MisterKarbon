@@ -2,7 +2,7 @@
 .tooltip-inner {
   background-color: white;
   border-radius: 10px;
-  opacity: 0.85;
+  font-size: 15px;
 }
 
 .tooltip-inner ul {
@@ -12,10 +12,14 @@
   text-align: left;
   background-color: white;
   color: black;
+  text-indent: -29px;
+  margin-left: 29px;
+  line-height: 0.8;
+  font-size: 12px;
 }
 
 .report-tooltip {
-background-color: white;
+  background-color: white;
 
 }
 
@@ -23,4 +27,9 @@ background-color: white;
   display: none;
   background-color: white;
   color: black;
+  text-indent: -21px;
+}
+
+.tooltip-inner li {
+  margin-bottom: 3px;
 }

@@ -10,6 +10,5 @@ module MetaTagsHelper
   def meta_image
     meta_image = (content_for?(:meta_image) ? content_for(:meta_image) : DEFAULT_META["meta_image"])
     # little twist to make it work equally with an asset or a url
-
   end
 end
