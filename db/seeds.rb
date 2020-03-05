@@ -256,7 +256,7 @@ require "open-uri"
     job_position: "Global purchasing",
     company_id: company.id,
     )
-    employee_purchasing_1.photo.attach(
+  employee_purchasing_1.photo.attach(
     io: File.open(Rails.root.join('app', 'assets', 'images', 'avatars', 'supplier_manager_1.jpeg')),
     filename: 'supplier_manager_1.jpeg', content_type: 'image/jpeg')
   employee_purchasing_1.save
@@ -272,7 +272,7 @@ require "open-uri"
     job_position: "Account manager",
     company_id: supplier_logistique.id,
     )
-    supplier_logistique_1.photo.attach(
+   supplier_logistique_1.photo.attach(
     io: File.open(Rails.root.join('app', 'assets', 'images', 'avatars', 'supplier_avatar_1.png')),
     filename: 'supplier_avatar_1.png', content_type: 'image/png')
   supplier_logistique_1.save
@@ -286,44 +286,10 @@ require "open-uri"
     job_position: "Account manager",
     company_id: supplier_logistique.id,
     )
-    supplier_logistique_2.photo.attach(
+  supplier_logistique_2.photo.attach(
     io: File.open(Rails.root.join('app', 'assets', 'images', 'avatars', 'supplier_avatar_2.jpg')),
     filename: 'supplier_avatar_2.jpg', content_type: 'image/png')
   supplier_logistique_2.save
-
-  p "Generation des users pour les orgas"
-
-  # def image_fetcher
-  #     open(Faker::Avatar.image)
-  #     rescue
-  #     open("https://robohash.org/sitsequiquia.png?size=300x300&set=set1")
-  # end
-
-  # i = 0
-  # orga_pour_faker = ["Marketing", "Manufacturing", "Supply Chain", "HR", "Finance", "Product Development"]
-  # orga_pour_faker.each do |orga|
-  #   2.times do
-  #       i += 1
-  #       first_name = Faker::Name.first_name
-  #       last_name = Faker::Name.last_name
-  #       user = User.new(
-  #       first_name: first_name,
-  #       last_name: last_name,
-  #       email: "#{first_name}.#{last_name}@yogourt.com",
-  #       # pour job position et organisation position, peut etre mettre un array.sample
-  #       #sur ce qui nous interesse
-  #       job_position: Faker::Job.title,
-  #       organization_position: orga,
-  #       password: "qwerty123",
-  #       company_id: company.id
-  #       )
-  #       user.photo.attach({
-  #          io: image_fetcher,
-  #          filename: "#{i}_faker_image.jpg"
-  #       })
-  #       user.save!
-  #   end
-  # end
 
   company_employee_1 = User.new(
     first_name: "Germain",
@@ -334,6 +300,9 @@ require "open-uri"
     password: "123456",
     company_id: company.id,
     )
+  company_employee_1.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'avatars', 'avatar_germain.png')),
+    filename: 'avatar_germain.png', content_type: 'image/png')
   company_employee_1.save
 
   company_employee_2 = User.new(
@@ -345,6 +314,9 @@ require "open-uri"
     password: "123456",
     company_id: company.id,
     )
+  company_employee_2.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'avatars', 'avatar_barbara.png')),
+    filename: 'avatar_barbara.png', content_type: 'image/png')
   company_employee_2.save
 
   company_employee_3 = User.new(
@@ -915,7 +887,7 @@ require "open-uri"
   # scope 6 ----------------------------------------------
 
   report1_scope6_orga_user1 = ReportScopeOrgaUser.new(
-    user_id: company_employee_1.id,
+    user_id: company_employee_10.id,
     report_scope_orga_id: report1_scope6_orga.id
     )
   report1_scope6_orga_user1.save
