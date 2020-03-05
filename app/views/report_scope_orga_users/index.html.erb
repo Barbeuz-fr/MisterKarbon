@@ -1,4 +1,4 @@
-<!-- Chevrons d'avancement (à supprimer?) -->
+<!-- Chevrons d'avancement -->
 <div class="container mt-2">
   <nav class="nav nav-pills nav-fill">
     <a class="nav-item nav-link">☁︎  Emissions</a>
@@ -10,20 +10,11 @@
   </nav>
 </div>
 
-<!-- Boutons de navigation -->
-<div class="container">
-  <div class="d-flex justify-content-between">
-    <%= link_to "Previous", new_report_report_scope_orga_path(@report), class:"btn btn-secondary mt-3" %>
-    <%= link_to "Start your project!", report_path(@report.id), class:"btn btn-primary mt-3" %>
-  </div>
-</div>
-
 <!-- Titre -->
 <div class="container">
   <div class="row  mt-3 mb-3">
     <div class="col-8 ml-3">
-      <h4>Add contributors to your project</h4>
-      <h5>Project: <%= @report.name %> - <%= @report.year %> </h5>
+      <h4>Please select your team</h4>
     </div>
   </div>
 
@@ -91,7 +82,7 @@
                   <%= link_to "",
                             url_for(scope: report_scope_orga),
                             id: "addEmail",
-                            class:"fas fa-plus-circle fa-3x align-bottom mb-1 text-success" %>
+                            class:"fas fa-plus-circle fa-2x align-bottom mb-1 text-success" %>
                 </ul>
               </div>
             </div>
@@ -169,5 +160,13 @@
 
       <% end %>
     </div>
+  </div>
+</div>
+
+<!-- Boutons de navigation -->
+<div class="container">
+  <div class="d-flex justify-content-between">
+    <p></p>
+    <%= link_to "Start your project!", report_path(@report.id), class:"btn btn-primary mt-3" %>
   </div>
 </div>
