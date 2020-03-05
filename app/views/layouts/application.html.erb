@@ -20,7 +20,7 @@
   <body>
     <%= render 'shared/flashes' %>
     <%= render 'shared/sidebar' if @sidebar_show %>
-    <% if params[:action] == 'home' %>
+    <% if params[:action] == 'home' || params[:action] == 'new' %>
       <div class="content-wrapper">
        <%= yield %>
       </div>
