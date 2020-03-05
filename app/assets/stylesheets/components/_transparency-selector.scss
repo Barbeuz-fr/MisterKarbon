@@ -1,3 +1,9 @@
-.transparent > div {
-  background: #E0E8FA;
+.transparent{
+  opacity: 1;
+  background-color: #F6F9FC;
+}
+
+.transparent-weak {
+  opacity: 0.95;
+
 }
