@@ -13,14 +13,23 @@
     <%= link_to report_path(report) do %>
       <div class="report-card">
         <div class="report-card-top" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%=report_photo(report)%>)">
-          <div>
+          <div class="report-status completed">
+            completed
+          </div>
+          <div class="report-card-infos">
             <h2><%= report.name %></h2>
-            <h3><%= report.year %></h3>
+            <h3>- <%= report.year %> -</h3>
           </div>
         </div>
         <div class="report-card-grid">
-          <div class="report-card-grid-col report-card-orga">
-            <h5>Organization</h5>
+          <div class="report-card-grid-col report-card-orga report-tooltip">
+
+            <h5 data-toggle="tooltip"
+                data-html="true"
+                title="">
+              <span><%= report.report_scope_orgas.length %></span><br>
+              Organization
+            </h5>
             <ul>
               <% report.report_scopes.each do |report_scope| %>
                 <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
@@ -36,8 +45,13 @@
               <% end %>
             </ul>
           </div>
-          <div class="report-card-grid-col report-card-module">
-            <h5>Modules</h5>
+          <div class="report-card-grid-col report-card-module report-tooltip">
+            <h5 data-toggle="tooltip"
+                data-html="true"
+                title="">
+              <span><%= report.report_scopes.length %></span><br>
+              Modules
+            </h5>
             <ul>
               <% report.report_scopes.each do |report_scope| %>
                 <li>
@@ -52,21 +66,15 @@
             </ul>
           </div>
           <div class="report-card-grid-col report-card-contrib">
-            <h5>Contributors</h5>
             <div class="avatar-contribs-box">
+            <h5>Contributors</h5>
               <% report.report_scope_orga_users.each_with_index do |user, index|%>
                 <% if user.photo.attached?  %>
-                  <%= cl_image_tag user.photo.key, :crop=>"fill", class:"avatar", style:"width:40px; height:40px;left:-#{index * 20}px"%>
+                  <%= cl_image_tag user.photo.key, :crop=>"fill", class:"avatar", style:"left:-#{index * 20}px"%>
                 <% else %>
-                  <%= image_tag "http://www.tafecafe.com/wp-content/uploads/2015/09/default_avatar.png", class:"avatar", style:"width:40px; height:40px;left:-#{index * 20}px"%>
+                  <%= image_tag "http://www.tafecafe.com/wp-content/uploads/2015/09/default_avatar.png", class:"avatar", style:"left:-#{index * 20}px"%>
                 <% end %>
               <% end %>
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 43a0ddd432df6f3152857aa0d40f565eca319b0b
             </div>
             <%#= link_to image_tag("loupe-icon.png"), report_path(report), class: "loupe-icon"%>
           </div>
@@ -83,18 +91,18 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Add new report</h5>
+        <h5 class="modal-title" id="exampleModalCenterTitle">Let's generate a new report</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <%= simple_form_for (@report) do |f| %>
-            <%= f.input :name, placeholder: "Name", class:"low-margin" %>
-            <%= f.input :year, placeholder: "Year", as: :date,  discard_day: true, discard_month: true %>
+            <%= f.input :name, placeholder: " Choose a Name", class:"low-margin" %>
+            <%= f.input :year, placeholder: " Choose a Year", as: :date,  discard_day: true, discard_month: true %>
       </div>
       <div class="modal-footer">
-        <%= f.submit "Create your report", class: "btn btn-primary btn-lg" %>
+        <%= f.submit "Generate", class: "btn btn-primary btn-lg" %>
       </div>
         <% end %>
     </div>

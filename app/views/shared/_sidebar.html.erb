@@ -9,7 +9,7 @@
           <li>
            <% @reports.each do |report| %>
               <%= link_to report_path(report.id) do %>
-                <%= image_tag "report-icon.png", class: "report-icon" %>
+              <!--<#%= image_tag "report-icon.png", class: "report-icon" %> -->
                 <%= report.name %>
               <% end %>
             <% end %>

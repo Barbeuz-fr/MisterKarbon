@@ -23,15 +23,16 @@ import { stackedBar } from '../plugins/bar_chart';
 import { pieChartProgress } from '../plugins/pie_chart';
 import '../plugins/dropdown_dashboard';
 import { dropdownSelected } from '../plugins/dropdown_dashboard';
+import { initToolTip } from '../components/init_tooltip';
 // import { stackedBar } from '../plugins/bar_chart';
 initAjaxScroll();
 
 document.addEventListener('turbolinks:load', function () {
+  initToolTip();
   preserveTab();
   dropdownSelected();
   stackedBar();
-  pieChartProgress();
-
+  // pieChartProgress();
 }, false)
 
 if (document.getElementById('mybarChart')) {

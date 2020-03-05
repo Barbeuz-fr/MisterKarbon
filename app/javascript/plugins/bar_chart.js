@@ -34,67 +34,70 @@ const stackedBar = () => {
                   ];
 
   // boucle sur les n modules (longueur de l'array principal)
-  var barchart_data_length = barchart_data.length;
-  for (var i = 0; i < barchart_data_length; i++) {
-    // Definition du hash à ajouter
-    var new_hash = {
-      label: ylabel[i],
-      data: barchart_data[i],
-      backgroundColor: stackedbackgroundColors[i],
-    } ;
-    datasets_for_barchart.push(new_hash)
+  if (barchart_data) {
+
+    var barchart_data_length = barchart_data.length;
+    for (var i = 0; i < barchart_data_length; i++) {
+      // Definition du hash à ajouter
+      var new_hash = {
+        label: ylabel[i],
+        data: barchart_data[i],
+        backgroundColor: stackedbackgroundColors[i],
+      } ;
+      datasets_for_barchart.push(new_hash)
+    };
+
+    var myStackedBar = new Chart(ctx2, {
+       type: 'bar',
+       data: {
+          labels: $("#mybarChart").data('titles'), // responsible for how many bars are gonna show on the chart
+          datasets: datasets_for_barchart
+       },
+       options: {
+          responsive: false,
+          legend: {
+             position: 'right' // place legend on the right side of chart
+          },
+          scales: {
+             xAxes: [{
+                stacked: true // this should be set to make the bars stacked
+             }],
+             yAxes: [{
+                stacked: true // this also..
+             }]
+          }
+       }
+    });
+    console.log(myStackedBar);
+
+      //   const el = document.getElementById('mybarChart');
+      // if(el){
+      //   el.addEventListener('click', (e) => {
+      //     console.log('rrrrr')
+      //     console.log(myStackedBar.data);
+      //     const chartData = myStackedBar.getBarsAtEvent(e);
+      //   });
+      // };
   };
 
-  var myStackedBar = new Chart(ctx2, {
-     type: 'bar',
-     data: {
-        labels: $("#mybarChart").data('titles'), // responsible for how many bars are gonna show on the chart
-        datasets: datasets_for_barchart
-     },
-     options: {
-        responsive: false,
-        legend: {
-           position: 'right' // place legend on the right side of chart
-        },
-        scales: {
-           xAxes: [{
-              stacked: true // this should be set to make the bars stacked
-           }],
-           yAxes: [{
-              stacked: true // this also..
-           }]
-        }
-     }
-  });
-  console.log(myStackedBar);
+  // Fonction pour récupérer les data au click
+  // getBarsAtEvent
 
+    // const clickChart = () => {
     //   const el = document.getElementById('mybarChart');
-    // if(el){
-    //   el.addEventListener('click', (e) => {
-    //     console.log('rrrrr')
-    //     console.log(myStackedBar.data);
-    //     const chartData = myStackedBar.getBarsAtEvent(e);
-    //   });
-    // };
-};
+    //   if(el){
+    //     el.addEventListener('click', (e) => {
+    //       console.log($("mybarChart"));
+    //       const chartData = $("mybarChart").getBarsAtEvent(e);
+    //     });
+    //   };
+    // }
 
-// Fonction pour récupérer les data au click
-// getBarsAtEvent
-
-  // const clickChart = () => {
-  //   const el = document.getElementById('mybarChart');
-  //   if(el){
-  //     el.addEventListener('click', (e) => {
-  //       console.log($("mybarChart"));
-  //       const chartData = $("mybarChart").getBarsAtEvent(e);
-  //     });
-  //   };
-  // }
-
-// function handleClick(evt);
-// {
-//   var activeElement = stackedBar.getElementAtEvent(evt);
-// };
+  // function handleClick(evt);
+  // {
+  //   var activeElement = stackedBar.getElementAtEvent(evt);
+  // };
+}
 
 
 export { stackedBar };
