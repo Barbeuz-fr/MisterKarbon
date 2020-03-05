@@ -56,7 +56,7 @@
               <% report.report_scopes.each do |report_scope| %>
                 <li>
                   <% if report_scope.emission_module.photo.attached?  %>
-                    <%= cl_image_tag report_scope.emission_module.photo.key, :crop=>"fill", class:"avatar-orgas", style:"width:20px; height:20px"%>
+                    <%= cl_image_tag report_scope.emission_module.photo.key.first(5), :crop=>"fill", class:"avatar-orgas", style:"width:20px; height:20px"%>
                   <% else %>
                     <%= image_tag "https://cdn2.iconfinder.com/data/icons/vape-1/48/a-18-512.png", class:"avatar-orgas", style:"width:20px; height:20px"%>
                   <% end %>
