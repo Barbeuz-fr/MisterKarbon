@@ -16,7 +16,7 @@
     <a class="nav-link" id="detailed-data-tab" data-toggle="tab" href="#detailed-data" role="tab" aria-controls="detailed-data" aria-selected="false"><i class="fas fa-database"></i> Detailed data</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="dashboard-settings-tab" data-toggle="tab" href="#dashboard-settings" role="tab" aria-controls="dashboard-settings" aria-selected="false">Settings</a>
+    <a class="nav-link" id="dashboard-settings-tab" data-toggle="tab" href="#dashboard-settings" role="tab" aria-controls="dashboard-settings" aria-selected="false">⚙︎ Settings</a>
   </li>
 </ul>
 
@@ -27,7 +27,7 @@
     PROGRESS
      ----------------------------------------------------------
     -->
-     <div class="tab-pane fade show active" id="progress" role="tabpanel" aria-labelledby="progress-tab">
+    <div class="tab-pane fade show active" id="progress" role="tabpanel" aria-labelledby="progress-tab">
       <div class="container">
         <!-- Headers -->
         <div class="row mt-3">
@@ -78,12 +78,12 @@
               <!-- Orga -->
               <div class="col-3 flex-cell cell-justify-left">
                   <% if report_scope_orga.orga.photo.attached?  %>
-                    <p  class="">
+                    <p  class="text-left">
                       <%= cl_image_tag report_scope_orga.orga.photo.key, :crop=>"fill", class:"avatar", style:"width:40px; height:40px"%>
                       <%= report_scope_orga.orga.name %>
                     </p>
                   <% else %>
-                    <p  class="">
+                    <p  class="text-left">
                       <%= image_tag "https://cdn2.iconfinder.com/data/icons/vape-1/48/a-18-512.png", class:"avatar", style:"width:40px; height:40px"%>
                       <%= report_scope_orga.orga.name %>
                     </p>
@@ -105,16 +105,28 @@
               <!-- Status -->
               <div class="col-3 flex-cell">
                 <% if report_scope_orga.status == "Invited" %>
-                  <span class="badge badge-secondary"><%= report_scope_orga.status %></span>
+                  <div class="status-align-center">
+                    <div class="status-center">
+                      <p class="report_status status-invited"><%= report_scope_orga.status %></p>
+                    </div>
+                  </div>
                 <% elsif report_scope_orga.status == "On-going"%>
-                  <span class="badge badge-info"><%= report_scope_orga.status %></span>
+                  <div class="status-center">
+                    <p class="report_status status-ongoing"><%= report_scope_orga.status %></p>
+                  </div>
                 <% elsif report_scope_orga.status == "Pending validation" %>
-                  <span class="badge badge-success"><%= report_scope_orga.status %></span>
+                  <div class="status-center">
+                    <p class="report_status status-pending-validation"><%= report_scope_orga.status %></p>
+                  </div>
                 <% elsif report_scope_orga.status == "Done" %>
-                  <span class="badge badge-primary"><%= report_scope_orga.status %></span>
+                  <div class="status-center">
+                    <p class="report_status status_done"><%= report_scope_orga.status %></p>
+                  </div>
                 <% else %>
-                  <span class="badge badge-dark"><%= report_scope_orga.status %></span>
-                <% end %>
+                  <div class="status-center">
+                    <p class="report_status status_na"><%= report_scope_orga.status %></p>
+                  </div>
+               <% end %>
               </div>
             </div>
           </div>
@@ -156,67 +168,119 @@
     DETAILED DATA
      ----------------------------------------------------------
     -->
+
+    <!-- Dropdown select -->
     <div class="tab-pane fade show" id="detailed-data" role="tabpanel" aria-labelledby="detailed-data-tab" data-query="<%= @selected_orga %>">
-      <div class="dashboard-card-2">
-        <p>Please select the emission type and organization </p>
-        <div class="pl-3">
-          <%= form_tag report_path(@report), method: :get do %>
-            <%= select_tag :query, options_for_select(@report_scope_orgas_array.collect{ |u| [u.orga.name, u.id] }) %>
-            <%= submit_tag "Search", class: "btn btn-primary" %>
-          <% end %>
+      <div class="container">
+        <div class="row">
+          <div class="col-5 flex-cell cell-justify-left">
+            <p>Please select the emission type and organization: </p>
+          </div>
+          <div class="col-7 flex-cell cell-justify-left">
+            <%= form_tag report_path(@report), method: :get do %>
+              <%= select_tag :query, options_for_select(@report_scope_orgas_array.collect{ |u| [u[:orga], u[:id]] }) %>
+              <%= submit_tag "Search", class: "btn btn-primary" %>
+            <% end %>
+          </div>
         </div>
+
+        <!-- Div pour les détails des informations -->
         <div class="container">
-          <% if @selected_orga.nil? == true %>
-            <% else %>
-              <p>Details for <%= @selected_orga.orga.name %> | <%= @selected_module.emission_module.name %> </p>
+
+          <!-- Team avatars -->
+          <% if @selected_orga.nil? == false %>
+            <div class="d-flex justify-content-between p-3">
               <div>
-                <p>Team</p>
-                <% @selected_orga.report_scope_orga_users.each do |user| %>
-                  <p><%= @selected_orga.orga.name  %></p>
+                <p class="mb-1">Team</p>
+                <% @selected_orga.report_scope_orga_users.each do |report_scope_orga_user| %>
+                  <% if report_scope_orga_user.user.photo.attached? %>
+                    <%= cl_image_tag report_scope_orga_user.user.photo.key, :crop=>"fill", class:"avatar", style:"width:40px; height:40px"%>
+                  <% else %>
+                    <%= image_tag "http://www.tafecafe.com/wp-content/uploads/2015/09/default_avatar.png", class:"avatar ml-3", style:"width:40px; height:40px"%>
+                  <% end %>
+                <% end %>
+                <a class="fas fa-plus-circle fa-2x align-bottom m-2 text-success"></a>
+              </div>
+
+              <!-- Status -->
+              <div>
+                <p class="mb-1">Status</p>
+                <% if @selected_orga.status == "Invited" %>
+                  <div class="status-align-center">
+                    <p class="report_status status-invited"><%= @selected_orga.status %></p>
+                  </div>
+                <% elsif @selected_orga.status == "On-going"%>
+                  <div class="status-align-center">
+                    <p class="report_status status-ongoing"><%= @selected_orga.status %></p>
+                  </div>
+                <% elsif @selected_orga.status == "Pending validation" %>
+                  <div class="status-align-center">
+                    <p class="report_status status-pending-validation"><%= @selected_orga.status %></p>
+                  </div>
+                <% elsif @selected_orga.status == "Done" %>
+                  <div class="status-align-center">
+                    <p class="report_status status_done"><%= @selected_orga.status %></p>
+                  </div>
+                <% else %>
+                  <div class="status-align-center">
+                    <p class="report_status status_na"><%= @selected_orga.status %></p>
+                  </div>
                 <% end %>
               </div>
-              <div class="d-flex justify-content-between p-3">
-                <div>
-                  <p>Status</p>
-                </div>
-                <div>
-                  <p><i class="far fa-envelope fa-2x"></i> <i class="far fa-comment-dots fa-2x"></i> <i class="fab fa-skype fa-2x"></i></p>
-                </div>
+
+              <!-- Social icons -->
+              <div>
+                <p class="mb-1">Discuss with team</p>
+                <p><i class="far fa-envelope fa-2x"></i> <i class="far fa-comment-dots fa-2x"></i> <i class="fab fa-skype fa-2x"></i></p>
               </div>
+            </div>
+          <% else %>
           <% end %>
         </div>
 
-              <!-- Table -->
 
+        <!-- Filtered able -->
         <% if @selected_orga.nil? == true %>
         <% else %>
         <div class="container">
-          <!-- headers -->
-          <div class="row">
-            <div class="col-4">
-              <p><strong>Data request</strong> </p>
+
+          <!-- Table headers -->
+          <div class="row mt-3">
+            <div class="col-4 pl-0 pr-0 mr-0">
+              <div class="tab-headerV2 radius-right pt-3">
+                <p class="text-center">DATA REQUEST</p>
+              </div>
             </div>
-            <div class="col-2">
-              <p><strong>Team input</strong></p>
+            <div class="col-2 pl-0 pr-0 mr-0">
+              <div class="tab-headerV2 radius-right pt-3">
+                <p class="text-center">TEAM INPUT</p>
+              </div>
             </div>
-            <div class="col-2">
-              <p><strong>Emissions</strong></p>
+            <div class="col-2 pl-0 pr-0 mr-0">
+              <div class="tab-headerV2 radius-right pt-3">
+                <p class="text-center">EMISSIONS</p>
+              </div>
             </div>
-            <div class="col-2">
-              <p><strong>Comments</strong></p>
+            <div class="col-2 pl-0 pr-0 mr-0">
+              <div class="tab-headerV2 radius-right pt-3">
+                <p class="text-center">COMMENTS</p>
+              </div>
             </div>
-            <div class="col-2">
-              <p><strong>Attachments</strong></p>
+            <div class="col-2 pl-0 pr-0 mr-0">
+              <div class="tab-headerV2 radius-right pt-3">
+                <p class="text-center">ATTACHMENTS</p>
+              </div>
             </div>
           </div>
         </div>
-          <div class="row pl-3 pr-3">
+        <div class="bg-white rounded shadow">
+          <div class="row pl-3 pr-3 border-bottom">
             <!-- Content with loop -->
             <% @output_array.each do |item| %>
               <% if  (@selected_orga.orga.name == item[:orga_scope_name]) && (@selected_module.emission_module.name == item[:emission_module_name])%>
                 <!-- Question -->
                 <div class="col-4">
-                  <p class="small-text-dashboard"><%= item[:question] %></p>
+                  <p class="small-text-dashboard text-left"><%= item[:question] %></p>
                 </div>
                 <!-- Team input -->
                 <div class="col-2">
@@ -238,34 +302,22 @@
                 </div>
               <% end %>
             <% end %>
-          </div>
-        <% end %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
 
     <!-- SETTINGS -->
-   <div class="tab-pane fade show" id="dashboard-settings" role="tabpanel" aria-labelledby="dashboard-settings-tab">
-    <div class="container mt-3">
-      <%= link_to "Delete report",root_path %>
-    </div>
-   </div>
-
-
+    <div class="tab-pane fade show" id="dashboard-settings" role="tabpanel" aria-labelledby="dashboard-settings-tab">
+      <div class="container mt-3">
+        <%= link_to "Delete report",
+            report_path(@report),
+            method: :delete,
+            data: { confirm: "Are you sure?" }  %>
+      </div>
+     </div>
 
   <!-- End tabs -->
   </div>
 </div>
-
-<!-- ------------------------------------------------------- -->
-<!-- ------------------------------------------------------- -->
-<!-- ------------------------------------------------------- -->
-<!-- ------------------------------------------------------- -->
-<!-- ------------------------------------------------------- -->
-<!-- ------------------------------------------------------- -->
-<!-- OLD VERSION ------------------------------------------ -->
-<!-- ------------------------------------------------------- -->
-<!-- ------------------------------------------------------- -->
-<!-- ------------------------------------------------------- -->
-<!-- ------------------------------------------------------- -->
-<!-- ------------------------------------------------------- -->
-<!-- ------------------------------------------------------- -->

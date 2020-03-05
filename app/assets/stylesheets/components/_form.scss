@@ -43,7 +43,9 @@
   label:hover {
     color: $primary;
     border-radius: $border-radius;
-    background-color: #FFCCA4;
+    background-color: #F6F9FC;
+    opacity: 1;
+    cursor: pointer;
   }
   input {
     display: none;
@@ -55,7 +57,7 @@
       color: $primary;
       width: 100%;
       // border-radius: $border-radius;
-      background-color: #FFCCA4;
+      background-color: $primary;
     }
   }
 }

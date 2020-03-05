@@ -1,0 +1,41 @@
+.status-center {
+  display: table;
+}
+
+.report_status {
+  font-size: 12px;
+  border-radius: 10px;
+  height: 40px;
+  width: 80px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+  display: table-cell;
+  vertical-align: middle;
+};
+
+.status-invited {
+  background-color: lightgrey;
+  color: black;
+}
+
+.status-ongoing {
+  background-color: #4B88A2;
+  color: white;
+}
+
+
+.status-pending-validation {
+  background-color: #5688C7;
+  color: white;
+}
+
+.status_done {
+  background-color: #53A548 ;
+  // 06A77D;
+  color: white;
+}
+
+
+.status_na {
+  background-color: grey;
+  color: black;
+}

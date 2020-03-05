@@ -6,9 +6,9 @@
   scrollbar-width: thin;
 }
 
-.scroller-50vh {
+.scroller-70vh {
   width: 100%;
-  height: 30vh;
+  height: calc(80vh - 2.6rem);
   overflow-y: scroll;
   scrollbar-color: green;
   scrollbar-width: thin;
