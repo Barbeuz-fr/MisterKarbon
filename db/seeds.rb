@@ -270,9 +270,6 @@ require "open-uri"
     password: "123456",
     organization_position: "Sales EMEA",
     job_position: "Account manager",
-    supplier_logistique_1.photo.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'avatars', 'avatar_supplier_logistique.jpeg')),
-    filename: 'supplier_manager_1.jpeg', content_type: 'image/jpeg')
     company_id: supplier_logistique.id,
     )
     supplier_logistique_1.photo.attach(
@@ -296,11 +293,11 @@ require "open-uri"
 
   p "Generation des users pour les orgas"
 
-  def image_fetcher
-      open(Faker::Avatar.image)
-      rescue
-      open("https://robohash.org/sitsequiquia.png?size=300x300&set=set1")
-  end
+  # def image_fetcher
+  #     open(Faker::Avatar.image)
+  #     rescue
+  #     open("https://robohash.org/sitsequiquia.png?size=300x300&set=set1")
+  # end
 
   # i = 0
   # orga_pour_faker = ["Marketing", "Manufacturing", "Supply Chain", "HR", "Finance", "Product Development"]
@@ -360,8 +357,8 @@ require "open-uri"
     company_id: company.id,
     )
     company_employee_3.photo.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'avatars', 'avatar_jeremy.png')),
-    filename: 'supplier_avatar_1.png', content_type: 'image/png')
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'avatars', 'avatar_jeremy.jpg')),
+    filename: 'avatar_jeremy.jpg', content_type: 'image/jpg')
   company_employee_3.save
 
   company_employee_4 = User.new(
@@ -374,8 +371,8 @@ require "open-uri"
     company_id: company.id,
     )
     company_employee_4.photo.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'avatars', 'avatar_greta.png')),
-    filename: 'supplier_avatar_1.png', content_type: 'image/png')
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'avatars', 'avatar_greta.jpg')),
+    filename: 'avatar_greta.jpg', content_type: 'image/jpg')
   company_employee_4.save
 
   company_employee_5 = User.new(
@@ -388,8 +385,8 @@ require "open-uri"
     company_id: company.id,
     )
   company_employee_5.photo.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'avatars', 'avatar-jason-statham.png')),
-    filename: 'supplier_avatar_1.png', content_type: 'image/png')
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'avatars', 'avatar-jason-statham.jpg')),
+    filename: 'avatar-jason-statham.jpg', content_type: 'image/jpg')
 
   # company_employee_5.photo.attach(io: avatar_1_file, filename: 'avatar_1.jpg', content_type: 'image/jpg')
 
