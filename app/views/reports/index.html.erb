@@ -69,7 +69,7 @@
             <div class="avatar-contribs-box">
               <% report.report_scope_orga_users.each_with_index do |user, index|%>
                 <% if user.photo.attached?  %>
-                  <%= cl_image_tag user.photo.key, :crop=>"fill", class:"avatar", style:"left:-#{index * 20}px"%>
+                  <%= cl_image_tag user.photo.key.first(5), :crop=>"fill", class:"avatar", style:"left:-#{index * 20}px"%>
                 <% else %>
                   <%= image_tag "http://www.tafecafe.com/wp-content/uploads/2015/09/default_avatar.png", class:"avatar", style:"left:-#{index * 20}px"%>
                 <% end %>
