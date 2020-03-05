@@ -11,7 +11,6 @@ const stackedBar = () => {
   // Array vide qui sera ajouté à la key 'dataset' au script stackedBar
   var datasets_for_barchart = [];
 
-
   // Recupération des données dans le controlleur
   var barchart_data = $("#bar_chart_data").data('emissions');
   var label_orga = $("#bar_chart_data").data('orga');
@@ -46,58 +45,92 @@ const stackedBar = () => {
       } ;
       datasets_for_barchart.push(new_hash)
     };
-
-    var myStackedBar = new Chart(ctx2, {
-       type: 'bar',
-       data: {
-          labels: $("#mybarChart").data('titles'), // responsible for how many bars are gonna show on the chart
-          datasets: datasets_for_barchart
-       },
-       options: {
-          responsive: false,
-          legend: {
-             position: 'right' // place legend on the right side of chart
+    
+  var myStackedBar = new Chart(ctx2, {
+     type: 'bar',
+     data: {
+        labels: $("#mybarChart").data('titles'), // responsible for how many bars are gonna show on the chart
+        datasets: datasets_for_barchart
+     },
+     options: {
+        responsive: false,
+        legend: {
+          position: 'right',
+          labels: {
+            boxWidth: 50,
+            fontSize: 25,
           },
-          scales: {
-             xAxes: [{
-                stacked: true // this should be set to make the bars stacked
-             }],
-             yAxes: [{
-                stacked: true // this also..
-             }]
-          }
-       }
-    });
-    console.log(myStackedBar);
+        },
+        scales: {
+           xAxes: [{
+              ticks: {
+                    fontSize: 30
+                },
+              stacked: true // this should be set to make the bars stacked
+           }],
+           yAxes: [{
+              ticks: {
+                    fontSize: 25
+                },
+              stacked: true // this also..
+           }],
+        }
+     }
+  });
+  console.log(myStackedBar);
 
-      //   const el = document.getElementById('mybarChart');
-      // if(el){
-      //   el.addEventListener('click', (e) => {
-      //     console.log('rrrrr')
-      //     console.log(myStackedBar.data);
-      //     const chartData = myStackedBar.getBarsAtEvent(e);
-      //   });
-      // };
-  };
 
-  // Fonction pour récupérer les data au click
-  // getBarsAtEvent
+//     var myStackedBar = new Chart(ctx2, {
+//        type: 'bar',
+//        data: {
+//           labels: $("#mybarChart").data('titles'), // responsible for how many bars are gonna show on the chart
+//           datasets: datasets_for_barchart
+//        },
+//        options: {
+//           responsive: false,
+//           legend: {
+//              position: 'right' // place legend on the right side of chart
+//           },
+//           scales: {
+//              xAxes: [{
+//                 stacked: true // this should be set to make the bars stacked
+//              }],
+//              yAxes: [{
+//                 stacked: true // this also..
+//              }]
+//           }
+//        }
+//     });
+//     console.log(myStackedBar);
 
-    // const clickChart = () => {
-    //   const el = document.getElementById('mybarChart');
-    //   if(el){
-    //     el.addEventListener('click', (e) => {
-    //       console.log($("mybarChart"));
-    //       const chartData = $("mybarChart").getBarsAtEvent(e);
-    //     });
-    //   };
-    // }
+//       //   const el = document.getElementById('mybarChart');
+//       // if(el){
+//       //   el.addEventListener('click', (e) => {
+//       //     console.log('rrrrr')
+//       //     console.log(myStackedBar.data);
+//       //     const chartData = myStackedBar.getBarsAtEvent(e);
+//       //   });
+//       // };
+//   };
 
-  // function handleClick(evt);
-  // {
-  //   var activeElement = stackedBar.getElementAtEvent(evt);
-  // };
-}
+//   // Fonction pour récupérer les data au click
+//   // getBarsAtEvent
+
+//     // const clickChart = () => {
+//     //   const el = document.getElementById('mybarChart');
+//     //   if(el){
+//     //     el.addEventListener('click', (e) => {
+//     //       console.log($("mybarChart"));
+//     //       const chartData = $("mybarChart").getBarsAtEvent(e);
+//     //     });
+//     //   };
+//     // }
+
+//   // function handleClick(evt);
+//   // {
+//   //   var activeElement = stackedBar.getElementAtEvent(evt);
+//   // };
+// }
 
 
 export { stackedBar };

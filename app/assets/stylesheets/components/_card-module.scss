@@ -3,6 +3,11 @@
   flex: 1;
 }
 
+.form-modules-intro {
+  padding-top: 16px;
+  padding-bottom: 8px;
+}
+
 .tableFixHead          { overflow-y: auto; height: 500px; }
 .tableFixHead thead th { position: sticky; top: 0; }
 
@@ -92,8 +97,8 @@
   margin: 0px;
   margin-bottom: 16px;
   box-shadow: 0 0 8px rgba(0,0,0,0.2);
-  border-radius: 4px;
-  background-color: #3DCF8D;
+  border-radius: $border-radius;
+  background-color: $success;
   color: white;
   display: flex;
 }
@@ -120,7 +125,7 @@
 }
 
 .flash-module-selected {
-  background-color: #3DCF8D;
+  background-color: $success;
   color: white;
 }
 

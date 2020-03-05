@@ -53,7 +53,7 @@ class ReportScopeOrgaUsersController < ApplicationController
     # Creation des instances
     @report_scope_orga_user = ReportScopeOrgaUser.new(report_scope_orga_user_params)
     @report_scope_orga = ReportScopeOrga.find(params[:report_scope_orga_id])
-    @report_scope_orga.status = "To send"
+    @report_scope_orga.status = "Invited"
     @report_scope_orga_user.report_scope_orga = @report_scope_orga
 
     # Sauvegarde
