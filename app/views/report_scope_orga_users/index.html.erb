@@ -28,49 +28,41 @@
   </div>
 
 
-<!-- Headers tableau -->
-  <div class="container mb-2">
-    <div class="row">
-      <div class="col-3">
-        <div class="tab-header">
-          <h3 class="text-center">Organization</h3>
-        </div>
-      </div>
-      <div class="col-3">
-        <div class="tab-header">
-          <h3 class="text-center">Emission type</h3>
-        </div>
-      </div>
-      <div class="col-3">
-        <div class="tab-header">
-          <h3 class="text-center">Team</h3>
-        </div>
-      </div>
-      <div class="col-3">
-        <% if params[:scope].present? %>
-          <!-- Definition modale -->
-          <div id="addEmail">
-            <div class="tab-header">
-              <h3 class="text-center">Add a contributor</h3>
-            </div>
-          </div>
-        <% end %>
-      </div>
-
 
 <!-- Contenu du tableau avec bouton d'ajout de contributeur-->
 <div class="container">
   <div class="row">
     <div class="col-9">
-      <% @report.report_scopes.each do |report_scope|  %>
+      <div class="bg-white rounded shadow">
+        <div class="row ml-0">
+        <div class="col-4 px-0">
+          <div class="tab-headerV2 radius-left">
+            <h3 class="text-center"><i class="fas fa-sitemap"></i>Organization</h3>
+          </div>
+        </div>
+
+
+        <div class="col-4 px-0">
+          <div class="tab-headerV2">
+            <h3 class="text-center">☁︎ Emission type</h3>
+          </div>
+        </div>
+
+        <div class="col-4 px-0">
+          <div class="tab-headerV2 mr-3 radius-right">
+            <h3 class="text-center"><i class="fas fa-user-plus"></i>Team</h3>
+          </div>
+        </div>
+        </div>
+        <% @report.report_scopes.each do |report_scope|  %>
         <% report_scope.report_scope_orgas.each do |report_scope_orga| %>
           <% if params[:scope].to_i == report_scope_orga.id %>
-            <div class="row transparent">
+            <div class="row m-0 border-bottom transparent">
           <% else %>
-            <div class="row">
+            <div class="row m-0 border-bottom">
           <% end %>
             <!-- Nom de l'organisation -->
-            <div class="col-4 flex-cell cell-justify-left">
+            <div class="col-4 p-0 flex-cell cell-justify-left">
               <div class="d-flex flex-row">
                   <%= cl_image_tag report_scope_orga.orga.photo.key, :crop=>"fill", class:"avatar ml-3", style:"width:30px; height:30px"%>
                   <p class= "pl-2"><%= report_scope_orga.orga.name %></p>
@@ -99,18 +91,27 @@
                   <%= link_to "",
                             url_for(scope: report_scope_orga),
                             id: "addEmail",
-                            class:"fas fa-plus-circle fa-1x" %>
+                            class:"fas fa-plus-circle fa-3x align-bottom mb-1 text-success" %>
                 </ul>
               </div>
             </div>
             <!-- Panneaux d'ajout de user -->
           </div>
         <% end %>
-      <% end %>
+        <% end %>
+      </div>
     </div>
 
     <!-- Modale pour ajout des contributeurs -->
-    <div class="col-3 mt-2">
+    <div class="col-3">
+      <% if params[:scope].present? %>
+        <!-- Definition modale -->
+        <div id="addEmail">
+          <div class="tab-headerV2 rounded">
+            <h3 class="text-center">Add a contributor</h3>
+          </div>
+        </div>
+      <% end %>
       <% if params[:scope].present? %>
         <!-- Definition modale -->
         <div id="addEmail">
