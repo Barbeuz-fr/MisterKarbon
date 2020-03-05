@@ -148,16 +148,18 @@
             <p class="text-left m-0"><em>Greenhouse gases: CO2, CH4, NH2</em></p>
             <p class="text-left m-0"><em>Unit: kgCO2 equivalent</em></p>
           </div>
-          <div class="d-flex pl-3 pb-5 pb-5">
-            <%= content_tag :div, '',
-                            id: 'bar_chart_data',
-                            data: {emissions: @y_axis_organizations,
-                                  # orga: @label_orga,
-                                  ylabel: @label_orga} %>
-            <%= content_tag 'canvas', '',
-                            id: 'mybarChart',
-                            width: '600', height: '400',
-                            data: {titles: @x_axis_modules} %>
+          <div style="text-align:center">
+            <div class="d-flex pl-3 pb-5 pb-5">
+              <%= content_tag :div, '',
+                              id: 'bar_chart_data',
+                              data: {emissions: @y_axis_organizations,
+                                    # orga: @label_orga,
+                                    ylabel: @label_orga} %>
+              <%= content_tag 'canvas', '',
+                              id: 'mybarChart',
+                              width: '900', height: '400',
+                              data: {titles: @x_axis_modules} %>
+          </div>
           </div>
         </div>
       </div>
