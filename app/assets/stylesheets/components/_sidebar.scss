@@ -17,10 +17,10 @@
 
 #wrapper {
     padding-left: 0;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
+    // -webkit-transition: all 0.5s ease;
+    // -moz-transition: all 0.5s ease;
+    // -o-transition: all 0.5s ease;
+    // transition: all 0.5s ease;
 }
 
 #wrapper.toggled {
@@ -34,22 +34,6 @@
     left: 0;
     height: 100vh;
     background: white;
-    transition: all 0.5s ease;
-
-  .menu-bottom{
-      flex-grow: 1;
-      display: flex;
-      align-items: flex-end;
-      padding-left: 1em;
-    }
-    .menu-top {
-      text-align: center;
-      margin-top:2em;
-    }
-    .menu-top .menu-top-option {
-      text-align: left;
-      padding-left: 1em;
-    }
     box-shadow: 0 0 30px rgba(0,0,0,0.2);
 }
 
@@ -95,7 +79,7 @@
 
 .sidebar-nav li a:hover {
     text-decoration: none;
-    color: green;
+    color: orange;
     background: rgba(255,255,255,0.2);
 }
 
