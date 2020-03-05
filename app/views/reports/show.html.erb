@@ -93,6 +93,7 @@
                   <% if report_scope_orga_user.user.photo.attached? %>
                     <%= cl_image_tag report_scope_orga_user.user.photo.key, :crop=>"fill", class:"avatar", style:"width:40px; height:40px"%>
                   <% else %>
+                    <%= image_tag "http://www.tafecafe.com/wp-content/uploads/2015/09/default_avatar.png", class:"avatar ml-3", style:"width:40px; height:40px"%>
                   <% end %>
                 <% end %>
                 <!-- Add button -->
@@ -100,7 +101,7 @@
               </div>
               <!-- Status -->
               <div class="col-3 flex-cell">
-                <% if report_scope_orga.status == "To send" %>
+                <% if report_scope_orga.status == "Invited" %>
                   <span class="badge badge-secondary"><%= report_scope_orga.status %></span>
                 <% elsif report_scope_orga.status == "On-going"%>
                   <span class="badge badge-info"><%= report_scope_orga.status %></span>
@@ -128,10 +129,11 @@
     <div class="tab-pane fade show" id="scope2" role="tabpanel" aria-labelledby="scope2-tab">
       <div class="container barchart-card mt-3">
         <div class="bg-white rounded shadow">
-          <div class="pl-3 align-items-left">
-            <p><em>Unit: kgCO2 equivalent</em></p>
+          <div class="pt-3 pl-3 mb-2">
+            <p class="text-left m-0"><em>Greenhouse gases: CO2, CH4, NH2</em></p>
+            <p class="text-left m-0"><em>Unit: kgCO2 equivalent</em></p>
           </div>
-          <div class="d-flex align-items-center pl-3 pb-3">
+          <div class="d-flex pl-3 pb-5 pb-5">
             <%= content_tag :div, '',
                             id: 'bar_chart_data',
                             data: {emissions: @y_axis_organizations,
@@ -153,9 +155,7 @@
     -->
     <div class="tab-pane fade show" id="scope3" role="tabpanel" aria-labelledby="scope3-tab" data-query="<%= @selected_orga %>">
       <div class="dashboard-card-2">
-        <div class="top-box">
-            <h5><i class="fas fa-database"></i> Detailed data</h5>
-        </div>
+        <p>Please select the emission type and organization </p>
         <div class="pl-3">
           <%= form_tag report_path(@report), method: :get do %>
             <%= select_tag :query, options_for_select(@report_scope_orgas_array.collect{ |u| [u.orga.name, u.id] }) %>
@@ -169,18 +169,18 @@
               <div>
                 <p>Team</p>
                 <% @selected_orga.report_scope_orga_users.each do |user| %>
-                  <p><%= @selected_orga  %></p>
+                  <p><%= @selected_orga.orga.name  %></p>
                 <% end %>
               </div>
+              <div class="d-flex justify-content-between p-3">
+                <div>
+                  <p>Status</p>
+                </div>
+                <div>
+                  <p><i class="far fa-envelope fa-2x"></i> <i class="far fa-comment-dots fa-2x"></i> <i class="fab fa-skype fa-2x"></i></p>
+                </div>
+              </div>
           <% end %>
-        </div>
-        <div class="d-flex justify-content-between p-3">
-          <div>
-            <p>Status</p>
-          </div>
-          <div>
-            <p><i class="far fa-envelope fa-2x"></i> <i class="far fa-comment-dots fa-2x"></i> <i class="fab fa-skype fa-2x"></i></p>
-          </div>
         </div>
 
               <!-- Table -->
