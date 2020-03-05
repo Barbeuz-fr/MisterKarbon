@@ -20,29 +20,25 @@ require("channels")
 import "bootstrap";
 import { initAjaxScroll, preserveTab } from '../plugins/ajax_scroll';
 import { stackedBar } from '../plugins/bar_chart';
-import { pieChartProgress } from '../plugins/pie_chart';
-import '../plugins/dropdown_dashboard';
-import { dropdownSelected } from '../plugins/dropdown_dashboard';
 import { initToolTip } from '../components/init_tooltip';
+import '../plugins/dropdown_dashboard';
 import { initSubmit } from '../plugins/submit';
+import { dropdownSelected } from '../plugins/dropdown_dashboard';
 import { activeQueryDashboard} from '../plugins/tab-dashboard';
-// import { initSubmit } from '../plugins/submit';
-// import { stackedBar } from '../plugins/bar_chart';
+
 initAjaxScroll();
 
 document.addEventListener('turbolinks:load', function () {
+  if (document.getElementById('mybarChart')) {
+    stackedBar();
+  }
   initToolTip();
   initSubmit();
   preserveTab();
   dropdownSelected();
   activeQueryDashboard();
-  stackedBar();
-  // pieChartProgress();
 }, false)
 
-if (document.getElementById('mybarChart')) {
-
-}
 
 // const button = document.getElementById('data-orga');
 // button.addEventListener('click', (event) => {
@@ -56,9 +52,6 @@ if (document.getElementById('mybarChart')) {
 // ----------------------------------------------------
 
 // import { updateDropdownValue } from '../plugins/dropdown_dashboard';
-if (document.getElementById('mybarChart')) {
-  stackedBar();
-}
-if ( document.getElementById('progressPieChart')) {
-  pieChartProgress();
-}
+// if ( document.getElementById('progressPieChart')) {
+//   pieChartProgress();
+// }
