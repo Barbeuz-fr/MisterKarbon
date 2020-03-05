@@ -55,7 +55,7 @@ const stackedBar = () => {
      options: {
         responsive: false,
         legend: {
-          position: 'bottom',
+          position: 'right',
           labels: {
             boxWidth: 70,
             fontSize: 16,

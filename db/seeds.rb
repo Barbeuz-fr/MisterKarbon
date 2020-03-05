@@ -414,7 +414,7 @@ require "open-uri"
   p "create reports"
 
   report_1 = Report.new(
-    name: "Bread Production",
+    name: "Yogourt Production",
     year: 2019,
     company_id: company.id,
     user_id: manager.id)
