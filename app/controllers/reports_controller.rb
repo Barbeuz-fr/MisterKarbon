@@ -35,7 +35,11 @@ class ReportsController < ApplicationController
     @report_scope_orgas_array = []
     @report.report_scopes.each do |report_scope|
       report_scope.report_scope_orgas.each do |report_scope_orga|
-        @report_scope_orgas_array << report_scope_orga
+        dropdown_details = {
+          orga: "#{report_scope_orga.orga.name} - #{report_scope.emission_module.name}",
+          id: report_scope_orga.id
+        }
+        @report_scope_orgas_array << dropdown_details
       end
     end
 

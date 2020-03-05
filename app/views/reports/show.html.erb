@@ -168,20 +168,27 @@
     DETAILED DATA
      ----------------------------------------------------------
     -->
+
+    <!-- Dropdown select -->
     <div class="tab-pane fade show" id="detailed-data" role="tabpanel" aria-labelledby="detailed-data-tab" data-query="<%= @selected_orga %>">
-      <div class="dashboard-card-2">
-        <p>Please select the emission type and organization </p>
-        <div class="pl-3">
-          <%= form_tag report_path(@report), method: :get do %>
-            <%= select_tag :query, options_for_select(@report_scope_orgas_array.collect{ |u| [u.orga.name, u.id] }) %>
-            <%= submit_tag "Search", class: "btn btn-primary" %>
-          <% end %>
+      <div class="container">
+        <div class="row">
+          <div class="col-5 flex-cell cell-justify-left">
+            <p>Please select the emission type and organization: </p>
+          </div>
+          <div class="col-7 flex-cell cell-justify-left">
+            <%= form_tag report_path(@report), method: :get do %>
+              <%= select_tag :query, options_for_select(@report_scope_orgas_array.collect{ |u| [u[:orga], u[:id]] }) %>
+              <%= submit_tag "Search", class: "btn btn-primary" %>
+            <% end %>
+          </div>
         </div>
+
+        <!-- Div pour les détails des informations -->
         <div class="container">
 
           <!-- Team avatars -->
           <% if @selected_orga.nil? == false %>
-            <p>Details for <%= @selected_orga.orga.name %> | <%= @selected_module.emission_module.name %> </p>
             <div class="d-flex justify-content-between p-3">
               <div>
                 <p class="mb-1">Team</p>
@@ -192,7 +199,6 @@
                     <%= image_tag "http://www.tafecafe.com/wp-content/uploads/2015/09/default_avatar.png", class:"avatar ml-3", style:"width:40px; height:40px"%>
                   <% end %>
                 <% end %>
-                <!-- Add button -->
                 <a class="fas fa-plus-circle fa-2x align-bottom m-2 text-success"></a>
               </div>
 
@@ -232,36 +238,49 @@
           <% end %>
         </div>
 
-        <!-- Table -->
+
+        <!-- Filtered able -->
         <% if @selected_orga.nil? == true %>
         <% else %>
         <div class="container">
-          <!-- headers -->
-          <div class="row">
-            <div class="col-4">
-              <p><strong>Data request</strong> </p>
+
+          <!-- Table headers -->
+          <div class="row mt-3">
+            <div class="col-4 pl-0 pr-0 mr-0">
+              <div class="tab-headerV2 radius-right pt-3">
+                <p class="text-center">DATA REQUEST</p>
+              </div>
             </div>
-            <div class="col-2">
-              <p><strong>Team input</strong></p>
+            <div class="col-2 pl-0 pr-0 mr-0">
+              <div class="tab-headerV2 radius-right pt-3">
+                <p class="text-center">TEAM INPUT</p>
+              </div>
             </div>
-            <div class="col-2">
-              <p><strong>Emissions</strong></p>
+            <div class="col-2 pl-0 pr-0 mr-0">
+              <div class="tab-headerV2 radius-right pt-3">
+                <p class="text-center">EMISSIONS</p>
+              </div>
             </div>
-            <div class="col-2">
-              <p><strong>Comments</strong></p>
+            <div class="col-2 pl-0 pr-0 mr-0">
+              <div class="tab-headerV2 radius-right pt-3">
+                <p class="text-center">COMMENTS</p>
+              </div>
             </div>
-            <div class="col-2">
-              <p><strong>Attachments</strong></p>
+            <div class="col-2 pl-0 pr-0 mr-0">
+              <div class="tab-headerV2 radius-right pt-3">
+                <p class="text-center">ATTACHMENTS</p>
+              </div>
             </div>
           </div>
         </div>
-          <div class="row pl-3 pr-3">
+        <div class="bg-white rounded shadow">
+          <div class="row pl-3 pr-3 border-bottom">
             <!-- Content with loop -->
             <% @output_array.each do |item| %>
               <% if  (@selected_orga.orga.name == item[:orga_scope_name]) && (@selected_module.emission_module.name == item[:emission_module_name])%>
                 <!-- Question -->
                 <div class="col-4">
-                  <p class="small-text-dashboard"><%= item[:question] %></p>
+                  <p class="small-text-dashboard text-left"><%= item[:question] %></p>
                 </div>
                 <!-- Team input -->
                 <div class="col-2">
@@ -283,8 +302,9 @@
                 </div>
               <% end %>
             <% end %>
-          </div>
-        <% end %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
 
