@@ -7,7 +7,6 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-// require("Chart.min")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -39,19 +38,8 @@ document.addEventListener('turbolinks:load', function () {
   activeQueryDashboard();
 }, false)
 
-
-// const button = document.getElementById('data-orga');
-// button.addEventListener('click', (event) => {
-//   console.log(event);
-// });
-
-
 // ----------------------------------------------------
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
 
-// import { updateDropdownValue } from '../plugins/dropdown_dashboard';
-// if ( document.getElementById('progressPieChart')) {
-//   pieChartProgress();
-// }
