@@ -118,19 +118,19 @@ require "open-uri"
     filename: 'finance.png', content_type: 'image/png')
   finance.save
 
-  manufacturing = Orga.new(name: "Manufacturing")
+  manufacturing = Orga.new(name: "Manufacturing Europe")
   manufacturing.company = company
   manufacturing.photo.attach(
     io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'manufacturing.png')),
     filename: 'manufacturing.png', content_type: 'image/png')
   manufacturing.save
 
-  manufacturing_europe = Orga.new(name: "Manufacturing Europe")
-  manufacturing_europe.company = company
-  manufacturing_europe.photo.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'manufacturing.png')),
-    filename: 'manufacturing.png', content_type: 'image/png')
-  manufacturing_europe.save
+  # manufacturing_europe = Orga.new(name: "Manufacturing Europe")
+  # manufacturing_europe.company = company
+  # manufacturing_europe.photo.attach(
+  #   io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'manufacturing.png')),
+  #   filename: 'manufacturing.png', content_type: 'image/png')
+  # manufacturing_europe.save
 
   manufacturing_usa = Orga.new(name: "Manufacturing USA")
   manufacturing_usa.company = company
@@ -298,11 +298,11 @@ require "open-uri"
     job_position: "Manager",
     organization_position: "Manufacturing",
     password: "123456",
-    company_id: company.id,
+    company_id: company.id
     )
   company_employee_1.photo.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'avatars', 'avatar_germain.png')),
-    filename: 'avatar_germain.png', content_type: 'image/png')
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'avatars', 'avatar_germain.jpg')),
+    filename: 'avatar_germain.jpg', content_type: 'image/jpg')
   company_employee_1.save
 
   company_employee_2 = User.new(
@@ -695,15 +695,15 @@ require "open-uri"
     )
   report1_scope5_orga.save
 
- # ----------------------------------------------
-  # Manufacturing - Europe
-  # report1_scope2 => achat_produit_agri
-  report1_scope6_orga = ReportScopeOrga.new(
-    report_scope_id:report1_scope2.id,
-    orga_id: manufacturing_europe.id,
-    status: "Done"
-    )
-  report1_scope6_orga.save
+ # # ----------------------------------------------
+ #  # Manufacturing - Europe
+ #  # report1_scope2 => achat_produit_agri
+ #  report1_scope6_orga = ReportScopeOrga.new(
+ #    report_scope_id:report1_scope2.id,
+ #    orga_id: manufacturing_europe.id,
+ #    status: "Done"
+ #    )
+ #  report1_scope6_orga.save
 
  # ----------------------------------------------
   # Manufacturing - USA
@@ -731,7 +731,7 @@ require "open-uri"
     report1_scope3_orga,
     report1_scope4_orga,
     report1_scope5_orga,
-    report1_scope6_orga,
+    # report1_scope6_orga,
     report1_scope7_orga,
     report1_scope8_orga,
    ]
@@ -886,18 +886,18 @@ require "open-uri"
 
   # scope 6 ----------------------------------------------
 
-  report1_scope6_orga_user1 = ReportScopeOrgaUser.new(
-    user_id: company_employee_10.id,
-    report_scope_orga_id: report1_scope6_orga.id
-    )
-  report1_scope6_orga_user1.save
+  # report1_scope6_orga_user1 = ReportScopeOrgaUser.new(
+  #   user_id: company_employee_10.id,
+  #   report_scope_orga_id: report1_scope6_orga.id
+  #   )
+  # report1_scope6_orga_user1.save
 
 
-  report1_scope6_orga_user2 = ReportScopeOrgaUser.new(
-    user_id: employee_mineraux.id,
-    report_scope_orga_id: report1_scope6_orga.id
-    )
-  report1_scope6_orga_user2.save
+  # report1_scope6_orga_user2 = ReportScopeOrgaUser.new(
+  #   user_id: employee_mineraux.id,
+  #   report_scope_orga_id: report1_scope6_orga.id
+  #   )
+  # report1_scope6_orga_user2.save
 
   # scope 7 ----------------------------------------------
 
