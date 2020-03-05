@@ -25,3 +25,10 @@
 .arrow-left-background {
 
 }
+
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    color: #E3E8EE;
+    background-color: #31315C;
+    border-color: #dee2e6 #dee2e6 #E3E8EE;
+}
