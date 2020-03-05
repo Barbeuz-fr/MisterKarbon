@@ -9,7 +9,6 @@ class ReportsController < ApplicationController
 
   end
 
-
   def create
     @report = Report.new(report_params)
     @report.user_id = User.last.id
@@ -33,12 +32,12 @@ class ReportsController < ApplicationController
 
     # Array pour filtrage
     # TO DO - MODIFIER ARRAY POUR MEILLEUR AFFICHAGE
+    @report_scope_orgas_array = []
     @report.report_scopes.each do |report_scope|
       report_scope.report_scope_orgas.each do |report_scope_orga|
         @report_scope_orgas_array << report_scope_orga
       end
     end
-
 
     # affichage side bar
     @sidebar_show = true
