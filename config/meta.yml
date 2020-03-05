@@ -1,5 +1,5 @@
 meta_product_name: "KarbonChain"
 meta_title: "KarbonChain - The carbon accounting platform for your company"
 meta_description: "KarbonChain helps your company track and analyse the carbon footprint of all its activities, with ease"
-meta_image: "../assets/images/sky-clouds-building-industry-39553.jpg" # should exist in `app/assets/images/`
+meta_image: "sky-clouds-building-industry-39553.jpg" # should exist in `app/assets/images/`
 # twitter_account: "@product_twitter_account"   # required for Twitter Cards
