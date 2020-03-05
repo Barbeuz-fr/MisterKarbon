@@ -18,9 +18,9 @@ const stackedBar = () => {
 
   // Definition des couleurs
   var stackedbackgroundColors = [
-                  '#3366cc',
+                  '#4B88A2',
+                  '#30305C',
                   '#994499',
-                  '#b82e2e',
                   '#66aa00',
                   '#3366cc',
                   '#3366cc',
@@ -55,7 +55,7 @@ const stackedBar = () => {
      options: {
         responsive: false,
         legend: {
-          position: 'right',
+          position: 'bottom',
           labels: {
             boxWidth: 70,
             fontSize: 16,
