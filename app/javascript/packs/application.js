@@ -7,7 +7,6 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-// require("Chart.min")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -20,45 +19,27 @@ require("channels")
 import "bootstrap";
 import { initAjaxScroll, preserveTab } from '../plugins/ajax_scroll';
 import { stackedBar } from '../plugins/bar_chart';
-import { pieChartProgress } from '../plugins/pie_chart';
+import { initToolTip } from '../components/init_tooltip';
 import '../plugins/dropdown_dashboard';
-import { dropdownSelected } from '../plugins/dropdown_dashboard';
 import { initSubmit } from '../plugins/submit';
+import { dropdownSelected } from '../plugins/dropdown_dashboard';
 import { activeQueryDashboard} from '../plugins/tab-dashboard';
-// import { initSubmit } from '../plugins/submit';
-// import { stackedBar } from '../plugins/bar_chart';
+
 initAjaxScroll();
 
 document.addEventListener('turbolinks:load', function () {
+  if (document.getElementById('mybarChart')) {
+    stackedBar();
+  }
+  initToolTip();
   initSubmit();
   preserveTab();
   dropdownSelected();
   activeQueryDashboard();
-  // stackedBar();
-  // pieChartProgress();
-  // initSubmit();
-
 }, false)
-
-// if (document.getElementById('mybarChart')) {
-
-// }
-
-// const button = document.getElementById('data-orga');
-// button.addEventListener('click', (event) => {
-//   console.log(event);
-// });
-
 
 // ----------------------------------------------------
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
 
-// import { updateDropdownValue } from '../plugins/dropdown_dashboard';
-if (document.getElementById('mybarChart')) {
-  stackedBar();
-}
-// if ( document.getElementById('progressPieChart')) {
-//   pieChartProgress();
-// }

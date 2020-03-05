@@ -1,6 +1,8 @@
+//////////////Report cards sur index///////////
+
 .report-card {
   background-color: white;
-  border-radius: 4px;
+  border-radius: 10px;
   position: relative;
   overflow: hidden;
   .report-card-link {
@@ -53,9 +55,22 @@
   height: 180px;
   background-size: cover;
   background-position: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  .report-card-infos {
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.report-card-top .report-status {
+    padding: 10px 20px;
+    display: inline-block;
+    color: white;
+    &.completed {
+      background-color: $green;
+    }
 }
 
 .report-card-top h2 {

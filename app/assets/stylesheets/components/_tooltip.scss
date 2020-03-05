@@ -1,0 +1,26 @@
+/////////////Tooltip in card///////////////
+.tooltip-inner {
+  background-color: white;
+  border-radius: 10px;
+  opacity: 0.85;
+}
+
+.tooltip-inner ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0px;
+  text-align: left;
+  background-color: white;
+  color: black;
+}
+
+.report-tooltip {
+background-color: white;
+
+}
+
+.report-tooltip ul {
+  display: none;
+  background-color: white;
+  color: black;
+}

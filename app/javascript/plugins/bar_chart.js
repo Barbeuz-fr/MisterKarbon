@@ -11,7 +11,6 @@ const stackedBar = () => {
   // Array vide qui sera ajouté à la key 'dataset' au script stackedBar
   var datasets_for_barchart = [];
 
-
   // Recupération des données dans le controlleur
   var barchart_data = $("#bar_chart_data").data('emissions');
   var label_orga = $("#bar_chart_data").data('orga');
@@ -34,17 +33,19 @@ const stackedBar = () => {
                   ];
 
   // boucle sur les n modules (longueur de l'array principal)
-  var barchart_data_length = barchart_data.length;
-  for (var i = 0; i < barchart_data_length; i++) {
-    // Definition du hash à ajouter
-    var new_hash = {
-      label: ylabel[i],
-      data: barchart_data[i],
-      backgroundColor: stackedbackgroundColors[i],
-    } ;
-    datasets_for_barchart.push(new_hash)
-  };
+  if (barchart_data) {
 
+    var barchart_data_length = barchart_data.length;
+    for (var i = 0; i < barchart_data_length; i++) {
+      // Definition du hash à ajouter
+      var new_hash = {
+        label: ylabel[i],
+        data: barchart_data[i],
+        backgroundColor: stackedbackgroundColors[i],
+      } ;
+      datasets_for_barchart.push(new_hash)
+    };
+  };
   var myStackedBar = new Chart(ctx2, {
      type: 'bar',
      data: {
@@ -56,7 +57,7 @@ const stackedBar = () => {
         legend: {
           position: 'right',
           labels: {
-            boxWidth: 50,
+            boxWidth: 70,
             fontSize: 16,
           },
         },
@@ -76,35 +77,6 @@ const stackedBar = () => {
         }
      }
   });
-  console.log(myStackedBar);
-
-    //   const el = document.getElementById('mybarChart');
-    // if(el){
-    //   el.addEventListener('click', (e) => {
-    //     console.log('rrrrr')
-    //     console.log(myStackedBar.data);
-    //     const chartData = myStackedBar.getBarsAtEvent(e);
-    //   });
-    // };
 };
-
-// Fonction pour récupérer les data au click
-// getBarsAtEvent
-
-  // const clickChart = () => {
-  //   const el = document.getElementById('mybarChart');
-  //   if(el){
-  //     el.addEventListener('click', (e) => {
-  //       console.log($("mybarChart"));
-  //       const chartData = $("mybarChart").getBarsAtEvent(e);
-  //     });
-  //   };
-  // }
-
-// function handleClick(evt);
-// {
-//   var activeElement = stackedBar.getElementAtEvent(evt);
-// };
-
 
 export { stackedBar };

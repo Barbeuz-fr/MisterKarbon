@@ -16,4 +16,5 @@ class Report < ApplicationRecord
     end
     users.flatten.map { |user| user  }
   end
+
 end
