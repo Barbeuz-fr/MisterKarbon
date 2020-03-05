@@ -31,9 +31,12 @@
     display: flex;
   }
   h5 {
-    font-size: .8em;
+    font-size: 12px;
     text-transform: uppercase;
-    color: $green;
+    color: $blue;
+  }
+  h5 span {
+    font-size: 22px;
   }
 }
 
@@ -69,7 +72,7 @@
     display: inline-block;
     color: white;
     &.completed {
-      background-color: $green;
+      background-color: $blue;
     }
 }
 

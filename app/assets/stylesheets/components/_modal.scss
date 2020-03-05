@@ -1,0 +1,35 @@
+#generate-report {
+  .modal-content {
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  .modal-footer {
+    background: $blue;
+    padding: 0;
+  }
+  .btn-generate {
+    width: 100%;
+    color: white;
+  }
+  .close-modal{
+    width: 20px;
+  }
+  .modal-header{
+    border-bottom: none;
+  }
+
+  .bg-modal {
+    margin-bottom: 30px;
+  }
+
+   .ml-1, .mx-1 {
+    border: none;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+
+  }
+  .form-control {
+    border: none;
+    padding: 0px;
+  }
+}

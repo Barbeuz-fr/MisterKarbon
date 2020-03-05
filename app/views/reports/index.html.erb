@@ -1,7 +1,7 @@
 <div class="reports-index-grid">
   <%= link_to "Create new report",
         "data-toggle" => "modal",
-        "data-target" => "#exampleModalCenter" do %>
+        "data-target" => "#generate-report" do %>
     <div class="card-add">
       <div class="plus-icon">
         <%= image_tag "action-report.png", alt: "create new report", class: 'add-action-report'%>
@@ -28,7 +28,7 @@
                 data-html="true"
                 title="">
               <span><%= report.report_scope_orgas.length %></span><br>
-              Organization
+              Organizations
             </h5>
             <ul>
               <% report.report_scopes.each do |report_scope| %>
@@ -50,7 +50,7 @@
                 data-html="true"
                 title="">
               <span><%= report.report_scopes.length %></span><br>
-              Modules
+              Emission types
             </h5>
             <ul>
               <% report.report_scopes.each do |report_scope| %>
@@ -67,7 +67,6 @@
           </div>
           <div class="report-card-grid-col report-card-contrib">
             <div class="avatar-contribs-box">
-            <h5>Contributors</h5>
               <% report.report_scope_orga_users.each_with_index do |user, index|%>
                 <% if user.photo.attached?  %>
                   <%= cl_image_tag user.photo.key, :crop=>"fill", class:"avatar", style:"left:-#{index * 20}px"%>
@@ -87,22 +86,21 @@
 
 
 <!-- Modal Creation de report  -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="generate-report" tabindex="-1" role="dialog" aria-labelledby="generate-reportTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Let's generate a new report</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <h5 class="modal-title" id="generate-reportTitle">Let's generate a new report</h5>
+        <%= image_tag "croix.svg", data: {dismiss:"modal"}, class: "close-modal" %>
       </div>
       <div class="modal-body">
+      <%= image_tag "modal-background", class: "bg-modal" %>
         <%= simple_form_for (@report) do |f| %>
-            <%= f.input :name, placeholder: " Choose a Name", class:"low-margin" %>
-            <%= f.input :year, placeholder: " Choose a Year", as: :date,  discard_day: true, discard_month: true %>
+            <%= f.input :name, label: false, placeholder: " Choose a Name", class:"form-modal"  %>
+            <%= f.input :year,label: false, placeholder: " Choose a Year", as: :date,  discard_day: true, discard_month: true, class:"form-modal" %>
       </div>
       <div class="modal-footer">
-        <%= f.submit "Generate", class: "btn btn-primary btn-lg" %>
+        <%= f.button :submit, value: "Generate", class:"btn-generate"%>
       </div>
         <% end %>
     </div>

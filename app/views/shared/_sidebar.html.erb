@@ -1,10 +1,9 @@
 <div id="wrapper">
     <div id="sidebar-wrapper">
   <%= image_tag "jc_le_cdb.png", class: "avatar-large", alt: "avatar-large" %>
-    <%= 'Hello' %>
       <ul class="sidebar-nav mt-5">
           <li class="sidebar-brand">
-              <%= link_to '🗂 My reports', reports_path %>
+              <%= link_to 'My reports', reports_path %>
           </li>
           <li>
            <% @reports.each do |report| %>
@@ -15,10 +14,10 @@
             <% end %>
           </li>
           <li>
-            <%= link_to "✆ Support","#" %>
+            <%= link_to "Support","#" %>
           </li>
           <li>
-            <%= link_to "⚙︎ Settings","#" %>
+            <%= link_to "Settings","#" %>
           </li>
           <li>
             <%= link_to root_path do %>
