@@ -4,6 +4,11 @@
   width: 60vw;
 }
 
+// Scrolling vertical
+
+.content-wrapper-dashboard {
+    min-height: calc(100vh - 70px - 100px);
+}
 
 
 //
