@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :sidebar_show
 
   def default_url_options
-    { host: ENV["DOMAIN"] || "localhost:3000" }
+    { host: "http://www.karbonchain.com/" || "localhost:3000" }
   end
 
   def show_project_create_nav
