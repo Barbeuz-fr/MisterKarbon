@@ -63,10 +63,10 @@ require "open-uri"
     count += 1
     t = AdemeEmissionFactor.new()
     t.count = count
-    p row['Code de la catégorie']
+    # p row['Code de la catégorie']
     t.name = row['Code de la catégorie']
     t.emission_value = row['Somme de Total poste non décomposé2']
-    p t.emission_value
+    # p t.emission_value
     t.unit = row['Unité anglais']
     t.id_ademe = row["Identifiant de l'élément"]
     t.nom_base = row['Nom base français']
@@ -75,11 +75,11 @@ require "open-uri"
 
   p "import done"
 
-  p "last line ADEME emission factor"
-  p AdemeEmissionFactor.last
+  # p "last line ADEME emission factor"
+  # p AdemeEmissionFactor.last
 
-  p "count ADEME line"
-  AdemeEmissionFactor.count
+  # p "count ADEME line"
+  # AdemeEmissionFactor.count
 
 # ==============================================================================
 # COMPANY
@@ -87,7 +87,7 @@ require "open-uri"
 
   p "create company"
 
-  company = Company.create!(name: "Bread & Co")
+  company = Company.create!(name: "My Yogourt Company")
 
   p company.name
 
@@ -250,7 +250,7 @@ require "open-uri"
   employee_purchasing_1 = User.new(
     first_name: "Céline",
     last_name: "Dubois",
-    email: "celine.dubois@breadandco.com",
+    email: "celine.dubois@yogourt.com",
     password: "123456",
     organization_position: "Purchasing manager",
     job_position: "Global purchasing",
@@ -309,7 +309,7 @@ require "open-uri"
   #       user = User.new(
   #       first_name: first_name,
   #       last_name: last_name,
-  #       email: "#{first_name}.#{last_name}@breadandco.com",
+  #       email: "#{first_name}.#{last_name}@yogourt.com",
   #       # pour job position et organisation position, peut etre mettre un array.sample
   #       #sur ce qui nous interesse
   #       job_position: Faker::Job.title,
@@ -328,7 +328,7 @@ require "open-uri"
   company_employee_1 = User.new(
     first_name: "Germain",
     last_name: "Dubreuil",
-    email: "germain.dubreuil@breadandco.com",
+    email: "germain.dubreuil@yogourt.com",
     job_position: "Manager",
     organization_position: "Manufacturing",
     password: "123456",
@@ -339,7 +339,7 @@ require "open-uri"
   company_employee_2 = User.new(
     first_name: "Barbara",
     last_name: "Fraveaux",
-    email: "Barbara.Fraveaux@breadandco.com",
+    email: "Barbara.Fraveaux@yogourt.com",
     job_position: "Manager",
     organization_position: "",
     password: "123456",
@@ -350,7 +350,7 @@ require "open-uri"
   company_employee_3 = User.new(
     first_name: "Jeremy",
     last_name: "Kerviel",
-    email: "Jeremy.Kerviel@breadandco.com",
+    email: "Jeremy.Kerviel@yogourt.com",
     job_position: "Manager",
     organization_position: "",
     password: "123456",
@@ -364,7 +364,7 @@ require "open-uri"
   company_employee_4 = User.new(
     first_name: "Greta",
     last_name: "Garbo",
-    email: "Greta.Garbo@breadandco.com",
+    email: "Greta.Garbo@yogourt.com",
     password: "123456",
     job_position: "Manager",
     organization_position: "",
@@ -378,7 +378,7 @@ require "open-uri"
   company_employee_5 = User.new(
     first_name: "Jason",
     last_name: "Statham",
-    email: "Jason.Statham@breadandco.com",
+    email: "Jason.Statham@yogourt.com",
     job_position: "Manager",
     organization_position: "",
     password: "123456",
@@ -392,7 +392,7 @@ require "open-uri"
   company_employee_10 = User.new(
     first_name: "Jason",
     last_name: "Bourne",
-    email: "Jason.Bourne@breadandco.com",
+    email: "Jason.Bourne@yogourt.com",
     job_position: "Manager",
     organization_position: "",
     password: "123456",
@@ -401,19 +401,20 @@ require "open-uri"
   company_employee_10.photo.attach(
     io: File.open(Rails.root.join('app', 'assets', 'images', 'avatars', 'avatar_jason_bourne.jpg')),
     filename: 'avatar_jason_bourne.jpg', content_type: 'image/jpg')
-
   company_employee_10.save
 
   employee_mineraux = User.new(
     first_name: "Antoine",
     last_name: "Macadam",
-    email: "antoine.macadam@Minerals.com",
+    email: "antoine.macadam@minerals.com",
     job_position: "Manager",
     organization_position: "",
     password: "123456",
     company_id: supplier_mineraux.id,
     )
-  # employee_mineraux.photo.attach(io: avatar_1_file, filename: 'avatar_1.jpg', content_type: 'image/jpg')
+  employee_mineraux.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'avatars', 'avatar_mineraux.jpeg')),
+    filename: 'avatar_mineraux.jpeg', content_type: 'image/jpeg')
   employee_mineraux.save
 
   employee_IT = User.new(
@@ -425,6 +426,9 @@ require "open-uri"
     password: "123456",
     company_id: supplier_IT.id,
     )
+  employee_IT.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'avatars', 'avatar_IT.jpg')),
+    filename: 'avatar_IT.jpg', content_type: 'image/jpg')
   # employee_IT.photo.attach(io: avatar_1_file, filename: 'avatar_1.jpg', content_type: 'image/jpg')
   employee_IT.save
 
@@ -749,50 +753,15 @@ require "open-uri"
     )
   report1_scope8_orga.save
 
-  # ----------------------------------------------
-  # Manufacturing - Europe
-  # report1_scope3 => electricite
-  report1_scope9_orga = ReportScopeOrga.new(
-    report_scope_id:report1_scope3.id,
-    orga_id: manufacturing_europe.id,
-    status: "Invited"
-    )
-  report1_scope9_orga.save
-
-  # ----------------------------------------------
-  # Manufacturing - Europe
-  # report1_scope4 => refrigeration
-  report1_scope10_orga = ReportScopeOrga.new(
-    report_scope_id:report1_scope4.id,
-    orga_id: manufacturing_europe.id,
-    status: "Invited"
-    )
-  report1_scope10_orga.save
-
-
-  # ----------------------------------------------
-  # Manufacturing - Europe
-  # report1_scope5 => process_industriel
-  report1_scope11_orga = ReportScopeOrga.new(
-    report_scope_id:report1_scope5.id,
-    orga_id: manufacturing_europe.id,
-    status: "Invited"
-    )
-  report1_scope11_orga.save
-
-
-    report_scope_array = [
-      report1_scope1_orga,
-      report1_scope2_orga,
-      report1_scope3_orga,
-      report1_scope4_orga,
-      report1_scope5_orga,
-      report1_scope6_orga,
-      report1_scope7_orga,
-      report1_scope8_orga,
-      report1_scope9_orga,
-      report1_scope10_orga,
-      report1_scope11_orga
+  report_scope_array = [
+    report1_scope1_orga,
+    report1_scope2_orga,
+    report1_scope3_orga,
+    report1_scope4_orga,
+    report1_scope5_orga,
+    report1_scope6_orga,
+    report1_scope7_orga,
+    report1_scope8_orga,
    ]
 
 # ==============================================================================
@@ -987,51 +956,6 @@ require "open-uri"
     report_scope_orga_id: report1_scope8_orga.id
     )
   report1_scope8_orga_user2.save
-
-  # scope 9 ----------------------------------------------
-
-  report1_scope9_orga_user1 = ReportScopeOrgaUser.new(
-    user_id: company_employee_1.id,
-    report_scope_orga_id: report1_scope9_orga.id
-    )
-  report1_scope9_orga_user1.save
-
-
-  report1_scope9_orga_user2 = ReportScopeOrgaUser.new(
-    user_id: employee_mineraux.id,
-    report_scope_orga_id: report1_scope9_orga.id
-    )
-  report1_scope9_orga_user2.save
-
-  # scope 10 ----------------------------------------------
-
-  report1_scope10_orga_user1 = ReportScopeOrgaUser.new(
-    user_id: company_employee_1.id,
-    report_scope_orga_id: report1_scope10_orga.id
-    )
-  report1_scope10_orga_user1.save
-
-
-  report1_scope10_orga_user2 = ReportScopeOrgaUser.new(
-    user_id: employee_mineraux.id,
-    report_scope_orga_id: report1_scope10_orga.id
-    )
-  report1_scope10_orga_user2.save
-
-  # scope 11 ----------------------------------------------
-
-  report1_scope11_orga_user1 = ReportScopeOrgaUser.new(
-    user_id: company_employee_1.id,
-    report_scope_orga_id: report1_scope11_orga.id
-    )
-  report1_scope11_orga_user1.save
-
-
-  report1_scope11_orga_user2 = ReportScopeOrgaUser.new(
-    user_id: employee_mineraux.id,
-    report_scope_orga_id: report1_scope11_orga.id
-    )
-  report1_scope11_orga_user2.save
 
 
 # ==============================================================================
