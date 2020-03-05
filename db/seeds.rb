@@ -17,7 +17,7 @@ require "open-uri"
   Orga.destroy_all
   Answer.destroy_all
   Question.destroy_all
-  # AdemeEmissionFactor.destroy_all
+  AdemeEmissionFactor.destroy_all
   ReportScope.destroy_all
   Report.destroy_all
   User.destroy_all
@@ -55,31 +55,31 @@ require "open-uri"
 
 
   require 'csv'
-  # p "starting csv import ADEME"
-  # count = 0
-  # csv_text = File.read(Rails.root.join('lib', 'seeds', 'csv_for_seed.csv'))
-  # csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-  # csv.each do |row|
-  #   count += 1
-  #   t = AdemeEmissionFactor.new()
-  #   t.count = count
-  #   p row['Code de la catégorie']
-  #   t.name = row['Code de la catégorie']
-  #   t.emission_value = row['Somme de Total poste non décomposé2']
-  #   p t.emission_value
-  #   t.unit = row['Unité anglais']
-  #   t.id_ademe = row["Identifiant de l'élément"]
-  #   t.nom_base = row['Nom base français']
-  #   t.save
-  # end
+  p "starting csv import ADEME"
+  count = 0
+  csv_text = File.read(Rails.root.join('lib', 'seeds', 'csv_for_seed.csv'))
+  csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+  csv.each do |row|
+    count += 1
+    t = AdemeEmissionFactor.new()
+    t.count = count
+    p row['Code de la catégorie']
+    t.name = row['Code de la catégorie']
+    t.emission_value = row['Somme de Total poste non décomposé2']
+    p t.emission_value
+    t.unit = row['Unité anglais']
+    t.id_ademe = row["Identifiant de l'élément"]
+    t.nom_base = row['Nom base français']
+    t.save
+  end
 
-  # p "import done"
+  p "import done"
 
-  # p "last line ADEME emission factor"
-  # p AdemeEmissionFactor.last
+  p "last line ADEME emission factor"
+  p AdemeEmissionFactor.last
 
-  # p "count ADEME line"
-  # AdemeEmissionFactor.count
+  p "count ADEME line"
+  AdemeEmissionFactor.count
 
 # ==============================================================================
 # COMPANY
@@ -337,9 +337,9 @@ require "open-uri"
   company_employee_1.save
 
   company_employee_2 = User.new(
-    first_name: "Antoine",
+    first_name: "Barbara",
     last_name: "Fraveaux",
-    email: "Antoine.Fraveaux@breadandco.com",
+    email: "Barbara.Fraveaux@breadandco.com",
     job_position: "Manager",
     organization_position: "",
     password: "123456",
@@ -387,9 +387,6 @@ require "open-uri"
   company_employee_5.photo.attach(
     io: File.open(Rails.root.join('app', 'assets', 'images', 'avatars', 'avatar-jason-statham.jpg')),
     filename: 'avatar-jason-statham.jpg', content_type: 'image/jpg')
-
-  # company_employee_5.photo.attach(io: avatar_1_file, filename: 'avatar_1.jpg', content_type: 'image/jpg')
-
   company_employee_5.save
 
   company_employee_10 = User.new(
@@ -401,7 +398,10 @@ require "open-uri"
     password: "123456",
     company_id: company.id,
     )
-  # company_employee_10.photo.attach(io: avatar_1_file, filename: 'avatar_1.jpg', content_type: 'image/jpg')
+  company_employee_10.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'avatars', 'avatar_jason_bourne.jpg')),
+    filename: 'avatar_jason_bourne.jpg', content_type: 'image/jpg')
+
   company_employee_10.save
 
   employee_mineraux = User.new(
