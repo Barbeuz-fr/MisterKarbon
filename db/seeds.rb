@@ -17,7 +17,7 @@ require "open-uri"
   Orga.destroy_all
   Answer.destroy_all
   Question.destroy_all
-  AdemeEmissionFactor.destroy_all
+  # AdemeEmissionFactor.destroy_all
   ReportScope.destroy_all
   Report.destroy_all
   User.destroy_all
@@ -33,6 +33,13 @@ require "open-uri"
   report_2_file = URI.open('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1302&q=80')
   report_3_file = URI.open('https://images.unsplash.com/photo-1524684009724-bee13ad8305f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=716&q=80')
 
+# ==============================================================================
+# IMAGES EMISSION MODULES
+# ==============================================================================
+
+  p "save images module"
+  emission_1_forest = URI.open('https://miro.medium.com/max/11796/1*IC7_pdLtDMqwoqLkTib4JQ.jpeg')
+
 
 # ==============================================================================
 # IMAGES AVATAR
@@ -47,33 +54,32 @@ require "open-uri"
 # ==============================================================================
 
 
-  p "starting csv import ADEME"
   require 'csv'
+  # p "starting csv import ADEME"
+  # count = 0
+  # csv_text = File.read(Rails.root.join('lib', 'seeds', 'csv_for_seed.csv'))
+  # csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+  # csv.each do |row|
+  #   count += 1
+  #   t = AdemeEmissionFactor.new()
+  #   t.count = count
+  #   p row['Code de la catégorie']
+  #   t.name = row['Code de la catégorie']
+  #   t.emission_value = row['Somme de Total poste non décomposé2']
+  #   p t.emission_value
+  #   t.unit = row['Unité anglais']
+  #   t.id_ademe = row["Identifiant de l'élément"]
+  #   t.nom_base = row['Nom base français']
+  #   t.save
+  # end
 
-  count = 0
-  csv_text = File.read(Rails.root.join('lib', 'seeds', 'csv_for_seed.csv'))
-  csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-  csv.each do |row|
-    count += 1
-    t = AdemeEmissionFactor.new()
-    t.count = count
-    p row['Code de la catégorie']
-    t.name = row['Code de la catégorie']
-    t.emission_value = row['Somme de Total poste non décomposé2']
-    p t.emission_value
-    t.unit = row['Unité anglais']
-    t.id_ademe = row["Identifiant de l'élément"]
-    t.nom_base = row['Nom base français']
-    t.save
-  end
+  # p "import done"
 
-  p "import done"
+  # p "last line ADEME emission factor"
+  # p AdemeEmissionFactor.last
 
-  p "last line ADEME emission factor"
-  p AdemeEmissionFactor.last
-
-  p "count ADEME line"
-  AdemeEmissionFactor.count
+  # p "count ADEME line"
+  # AdemeEmissionFactor.count
 
 # ==============================================================================
 # COMPANY
@@ -104,47 +110,6 @@ require "open-uri"
 
   p "create orga"
 
-  supply_chain = Orga.new(name: "Supply Chain")
-  supply_chain.company = company
-  supply_chain.photo.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'supply-chain.png')),
-    filename: 'supply-chain.png', content_type: 'image/png')
-  supply_chain.save
-
-  manufacturing = Orga.new(name: "Manufacturing")
-  manufacturing.company = company
-  manufacturing.photo.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'manufacturing.png')),
-    filename: 'manufacturing.png', content_type: 'image/png')
-  manufacturing.save
-
-  rd = Orga.new(name: "R&D")
-  rd.company = company
-  rd.photo.attach(
-  io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'rd.png')),
-  filename: 'rd.png', content_type: 'image/png')
-  rd.save
-
-  product_development = Orga.new(name: "Product Development")
-  product_development.company = company
-  product_development.photo.attach(
-  io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'product-dev.png')),
-  filename: 'product-dev.png', content_type: 'image/png')
-  product_development.save
-
-  marketing = Orga.new(name: "Marketing")
-  marketing.company = company
-  marketing.photo.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'marketing.png')),
-    filename: 'marketing.png', content_type: 'image/png')
-  marketing.save
-
-  sales = Orga.new(name: "Sales")
-  sales.company = company
-  sales.photo.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'sales.png')),
-    filename: 'sales.png', content_type: 'image/png')
-  sales.save
 
   finance = Orga.new(name: "Finance")
   finance.company = company
@@ -153,6 +118,57 @@ require "open-uri"
     filename: 'finance.png', content_type: 'image/png')
   finance.save
 
+  manufacturing = Orga.new(name: "Manufacturing")
+  manufacturing.company = company
+  manufacturing.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'manufacturing.png')),
+    filename: 'manufacturing.png', content_type: 'image/png')
+  manufacturing.save
+
+  manufacturing_europe = Orga.new(name: "Manufacturing Europe")
+  manufacturing_europe.company = company
+  manufacturing_europe.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'manufacturing.png')),
+    filename: 'manufacturing.png', content_type: 'image/png')
+  manufacturing_europe.save
+
+  manufacturing_usa = Orga.new(name: "Manufacturing USA")
+  manufacturing_usa.company = company
+  manufacturing_usa.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'manufacturing.png')),
+    filename: 'manufacturing.png', content_type: 'image/png')
+  manufacturing_usa.save
+
+
+  marketing = Orga.new(name: "Marketing")
+  marketing.company = company
+  marketing.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'marketing.png')),
+    filename: 'marketing.png', content_type: 'image/png')
+  marketing.save
+
+  marketing_europe = Orga.new(name: "Marketing - Europe")
+  marketing_europe.company = company
+  marketing_europe.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'marketing.png')),
+    filename: 'marketing.png', content_type: 'image/png')
+  marketing_europe.save
+
+  marketing_usa = Orga.new(name: "Marketing - USA")
+  marketing_usa.company = company
+  marketing_usa.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'marketing.png')),
+    filename: 'marketing.png', content_type: 'image/png')
+  marketing_usa.save
+
+
+  product_development = Orga.new(name: "Product Development")
+  product_development.company = company
+  product_development.photo.attach(
+  io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'product-dev.png')),
+  filename: 'product-dev.png', content_type: 'image/png')
+  product_development.save
+
   hr = Orga.new(name: "HR")
   hr.company = company
   hr.photo.attach(
@@ -160,38 +176,139 @@ require "open-uri"
     filename: 'hr.png', content_type: 'image/png')
   hr.save
 
+  rd = Orga.new(name: "R&D")
+  rd.company = company
+  rd.photo.attach(
+  io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'rd.png')),
+  filename: 'rd.png', content_type: 'image/png')
+  rd.save
+
+  sales = Orga.new(name: "Sales")
+  sales.company = company
+  sales.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'sales.png')),
+    filename: 'sales.png', content_type: 'image/png')
+  sales.save
+
+  sales_europe = Orga.new(name: "Sales - Europe")
+  sales_europe.company = company
+  sales_europe.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'sales.png')),
+    filename: 'sales.png', content_type: 'image/png')
+  sales_europe.save
+
+  sales_usa = Orga.new(name: "Sales - USA")
+  sales_usa.company = company
+  sales_usa.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'sales.png')),
+    filename: 'sales.png', content_type: 'image/png')
+  sales_usa.save
+
+  supply_chain = Orga.new(name: "Supply Chain")
+  supply_chain.company = company
+  supply_chain.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'supply-chain.png')),
+    filename: 'supply-chain.png', content_type: 'image/png')
+  supply_chain.save
+
+  supply_chain_europe = Orga.new(name: "Supply Chain - Europe")
+  supply_chain_europe.company = company
+  supply_chain_europe.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'supply-chain.png')),
+    filename: 'supply-chain.png', content_type: 'image/png')
+  supply_chain_europe.save
+
+  supply_chain_usa = Orga.new(name: "Supply Chain - USA")
+  supply_chain_usa.company = company
+  supply_chain_usa.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'organisation', 'supply-chain.png')),
+    filename: 'supply-chain.png', content_type: 'image/png')
+  supply_chain_usa.save
+
 # ==============================================================================
 # USERS
 # ==============================================================================
   p "Create users"
 
-  puts 'Creating 10 fake users...'
+  puts 'Creating  fake users...'
 
   manager = User.new(
-    first_name: "JC",
-    email: "jean-charles.bertrand@gmail.com",
+    first_name: "Laurent",
+    email: "laurent@gmail.com",
     password: 123456,
     organization_position: "CSR EMEA",
     job_position: "CSR manager",
-    last_name: "Bertrand",
+    last_name: "Demo",
     company_id: company.id,
     )
-  manager.photo.attach(io: avatar_1_file, filename: 'avatar_1.jpg', content_type: 'image/jpg')
+  manager.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'avatars', 'avatar_demo.jpg')),
+    filename: 'avatar_demo.jpg', content_type: 'image/jpg')
   manager.save
-  p manager
-  p manager.first_name
 
+
+  employee_purchasing_1 = User.new(
+    first_name: "Céline",
+    last_name: "Dubois",
+    email: "celine.dubois@breadandco.com",
+    password: "123456",
+    organization_position: "Purchasing manager",
+    job_position: "Global purchasing",
+    company_id: company.id,
+    )
+    employee_purchasing_1.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'avatars', 'supplier_manager_1.jpeg')),
+    filename: 'supplier_manager_1.jpeg', content_type: 'image/jpeg')
+  employee_purchasing_1.save
+
+
+  p "Creation user pour Norbert transport"
+  supplier_logistique_1 = User.new(
+    first_name: "Will",
+    last_name: "Truck",
+    email: "will.truck@norbert-usa.com",
+    password: "123456",
+    organization_position: "Sales EMEA",
+    job_position: "Account manager",
+    company_id: supplier_logistique.id,
+    )
+    supplier_logistique_1.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'avatars', 'supplier_avatar_1.png')),
+    filename: 'supplier_avatar_1.png', content_type: 'image/png')
+  supplier_logistique_1.save
+
+  supplier_logistique_2 = User.new(
+    first_name: "Antoine",
+    last_name: "Chariot",
+    email: "antoine.chariot@norbert-europe.com",
+    password: 123456,
+    organization_position: "Sales EMEA",
+    job_position: "Account manager",
+    company_id: supplier_logistique.id,
+    )
+    supplier_logistique_2.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'avatars', 'supplier_avatar_2.jpg')),
+    filename: 'supplier_avatar_2.jpg', content_type: 'image/png')
+  supplier_logistique_2.save
 
   p "Generation des users pour les orgas"
 
-  orga_pour_faker = ["Marketing", "Manufacturing", "Suppy Chain", "HR", "Finance", "Product Development"]
+  def image_fetcher
+      open(Faker::Avatar.image)
+      rescue
+      open("https://robohash.org/sitsequiquia.png?size=300x300&set=set1")
+  end
+
+  i = 0
+  orga_pour_faker = ["Marketing", "Manufacturing", "Supply Chain", "HR", "Finance", "Product Development"]
   orga_pour_faker.each do |orga|
-    10.times do
+    2.times do
+        i += 1
         first_name = Faker::Name.first_name
         last_name = Faker::Name.last_name
         user = User.new(
-        first_name: Faker::Name.first_name,
-        last_name: Faker::Name.last_name,
+        first_name: first_name,
+        last_name: last_name,
         email: "#{first_name}.#{last_name}@breadandco.com",
         # pour job position et organisation position, peut etre mettre un array.sample
         #sur ce qui nous interesse
@@ -200,6 +317,10 @@ require "open-uri"
         password: "qwerty123",
         company_id: company.id
         )
+        user.photo.attach({
+           io: image_fetcher,
+           filename: "#{i}_faker_image.jpg"
+        })
         user.save!
     end
   end
@@ -208,6 +329,8 @@ require "open-uri"
     first_name: "Germain",
     last_name: "Dubreuil",
     email: "germain.dubreuil@breadandco.com",
+    job_position: "",
+    organization_position: "",
     password: "123456",
     company_id: company.id,
     )
@@ -218,6 +341,8 @@ require "open-uri"
     first_name: "Antoine",
     last_name: "Fraveaux",
     email: "Antoine.Fraveaux@breadandco.com",
+    job_position: "",
+    organization_position: "",
     password: "123456",
     company_id: company.id,
     )
@@ -228,6 +353,8 @@ require "open-uri"
     first_name: "Jeremy",
     last_name: "Kerviel",
     email: "Jeremy.Kerviel@breadandco.com",
+    job_position: "",
+    organization_position: "",
     password: "123456",
     company_id: company.id,
     )
@@ -248,6 +375,8 @@ require "open-uri"
     first_name: "Jason",
     last_name: "Statham",
     email: "Jason.Statham@breadandco.com",
+    job_position: "",
+    organization_position: "",
     password: "123456",
     company_id: company.id,
     )
@@ -265,20 +394,12 @@ require "open-uri"
   # company_employee_10.photo.attach(io: avatar_1_file, filename: 'avatar_1.jpg', content_type: 'image/jpg')
   company_employee_10.save
 
-  employee_logistique = User.new(
-    first_name: "Gérard",
-    last_name: "Transport",
-    email: "gerard.transport@logistik.com",
-    password: "123456",
-    company_id: supplier_logistique.id,
-    )
-  # employee_logistique.photo.attach(io: avatar_1_file, filename: 'avatar_1.jpg', content_type: 'image/jpg')
-  employee_logistique.save
-
   employee_mineraux = User.new(
     first_name: "Antoine",
     last_name: "Macadam",
     email: "antoine.macadam@Minerals.com",
+    job_position: "",
+    organization_position: "",
     password: "123456",
     company_id: supplier_mineraux.id,
     )
@@ -289,6 +410,8 @@ require "open-uri"
     first_name: "Jean-Michel",
     last_name: "Haiti",
     email: "jean-michel.haiti@ITandco.com",
+    job_position: "",
+    organization_position: "",
     password: "123456",
     company_id: supplier_IT.id,
     )
@@ -313,8 +436,6 @@ require "open-uri"
   report_1.save!
   p report_1
 
-  p report_1.name
-
   report_2 = Report.new(
     name: "EMEA Support functions",
     year: 2019,
@@ -323,15 +444,14 @@ require "open-uri"
   report_2.photo.attach(io: report_2_file, filename: 'report_2.jpeg', content_type: 'image/jpeg')
   report_2.save!
 
-
-  p report_2.name
-
   report_3 = Report.new(
     name: "Global R&D",
     year: 2019,
     company_id: company.id,
     user_id: manager.id)
-  report_3.photo.attach(io: report_3_file, filename: 'report_3.jpg', content_type: 'image/jpeg')
+  report_3.photo.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'report_background_card', 'report_3.jpeg')),
+    filename: 'report_3.jpeg', content_type: 'image/jpeg')
   report_3.save!
 
 # ==============================================================================
@@ -351,7 +471,6 @@ require "open-uri"
   agriculture = EmissionModule.create!(name: "Agriculture", scope: 1)
   process_industriels = EmissionModule.create!(name: "Industrial processes", scope: 1)
   dechets = EmissionModule.create!(name: "Waste", scope: 1)
-
 
 
   p "scope 3"
@@ -466,6 +585,24 @@ require "open-uri"
   report1_scope3.emission_module_id = electricite.id
   report1_scope3.save
 
+  report1_scope4 = ReportScope.new(
+    deadline: DateTime.new(2020,6,1))
+  report1_scope4.report_id = report_1.id
+  report1_scope4.emission_module_id = refrigeration.id
+  report1_scope4.save
+
+  report1_scope4 = ReportScope.new(
+    deadline: DateTime.new(2020,6,1))
+  report1_scope4.report_id = report_1.id
+  report1_scope4.emission_module_id = refrigeration.id
+  report1_scope4.save
+
+  report1_scope5 = ReportScope.new(
+    deadline: DateTime.new(2020,6,1))
+  report1_scope5.report_id = report_1.id
+  report1_scope5.emission_module_id = process_industriels.id
+  report1_scope5.save
+
 # ==============================================================================
 # REPORT 2 SCOPES
 # ==============================================================================
@@ -572,14 +709,81 @@ require "open-uri"
     )
   report1_scope5_orga.save
 
+ # ----------------------------------------------
+  # Manufacturing - Europe
+  # report1_scope2 => achat_produit_agri
+  report1_scope6_orga = ReportScopeOrga.new(
+    report_scope_id:report1_scope2.id,
+    orga_id: manufacturing_europe.id,
+    status: "Done"
+    )
+  report1_scope6_orga.save
+
+ # ----------------------------------------------
+  # Manufacturing - USA
+  # report1_scope2 => achat_produit_agri
+  report1_scope7_orga = ReportScopeOrga.new(
+    report_scope_id:report1_scope2.id,
+    orga_id: manufacturing_usa.id,
+    status: "Invited"
+    )
+  report1_scope7_orga.save
+
+  # ----------------------------------------------
+  # Manufacturing - USA
+  # report1_scope3 => electricite
+  report1_scope8_orga = ReportScopeOrga.new(
+    report_scope_id:report1_scope3.id,
+    orga_id: manufacturing_usa.id,
+    status: "Invited"
+    )
+  report1_scope8_orga.save
+
+  # ----------------------------------------------
+  # Manufacturing - Europe
+  # report1_scope3 => electricite
+  report1_scope9_orga = ReportScopeOrga.new(
+    report_scope_id:report1_scope3.id,
+    orga_id: manufacturing_europe.id,
+    status: "Invited"
+    )
+  report1_scope9_orga.save
+
+  # ----------------------------------------------
+  # Manufacturing - Europe
+  # report1_scope4 => refrigeration
+  report1_scope10_orga = ReportScopeOrga.new(
+    report_scope_id:report1_scope4.id,
+    orga_id: manufacturing_europe.id,
+    status: "Invited"
+    )
+  report1_scope10_orga.save
+
+
+  # ----------------------------------------------
+  # Manufacturing - Europe
+  # report1_scope5 => process_industriel
+  report1_scope11_orga = ReportScopeOrga.new(
+    report_scope_id:report1_scope5.id,
+    orga_id: manufacturing_europe.id,
+    status: "Invited"
+    )
+  report1_scope11_orga.save
+
+
     report_scope_array = [
       report1_scope1_orga,
       report1_scope2_orga,
       report1_scope3_orga,
       report1_scope4_orga,
-      report1_scope5_orga
+      report1_scope5_orga,
+      report1_scope6_orga,
+      report1_scope7_orga,
+      report1_scope8_orga,
+      report1_scope9_orga,
+      report1_scope10_orga,
+      report1_scope11_orga
    ]
-
 
 # ==============================================================================
 # REPORT 2 SCOPE ORGAS
@@ -666,16 +870,17 @@ require "open-uri"
 # ==============================================================================
 
   p "Report scope orga users"
-  # Profils associes aux 5 périmètres (5 modules dans Manufacturing)
+  # Profils associes aux 9 périmètres (5 modules dans Manufacturing)
   # 2 users de 2 entreprises pour report1_scope1 : manufacturing - combustibles fossiles
 
-  report1_scope1_orga_user = ReportScopeOrgaUser.new(
+  # scope 1 ----------------------------------------------
+
+  report1_scope1_orga_user1 = ReportScopeOrgaUser.new(
     user_id: company_employee_1.id,
     report_scope_orga_id: report1_scope1_orga.id
     )
-  report1_scope1_orga_user.save
+  report1_scope1_orga_user1.save
 
-  # ----------------------------------------------
 
   report1_scope1_orga_user2 = ReportScopeOrgaUser.new(
     user_id: employee_mineraux.id,
@@ -683,72 +888,145 @@ require "open-uri"
     )
   report1_scope1_orga_user2.save
 
-  # ----------------------------------------------
+  # scope 2 ----------------------------------------------
 
-  report1_scope2_orga_user = ReportScopeOrgaUser.new(
+  report1_scope2_orga_user1 = ReportScopeOrgaUser.new(
     user_id: company_employee_2.id,
     report_scope_orga_id: report1_scope2_orga.id
     )
-  report1_scope2_orga_user.save
+  report1_scope2_orga_user1.save
 
-  # ----------------------------------------------
+  report1_scope2_orga_user2 = ReportScopeOrgaUser.new(
+    user_id: company_employee_1.id,
+    report_scope_orga_id: report1_scope1_orga.id
+    )
+  report1_scope2_orga_user2.save
 
-  report1_scope3_orga_user = ReportScopeOrgaUser.new(
+  # scope 3 ----------------------------------------------
+
+  report1_scope3_orga_user1 = ReportScopeOrgaUser.new(
     user_id: company_employee_3.id,
     report_scope_orga_id: report1_scope3_orga.id
     )
-  report1_scope3_orga_user.save
+  report1_scope3_orga_user1.save
 
-  # ----------------------------------------------
+  report1_scope3_orga_user2 = ReportScopeOrgaUser.new(
+    user_id: employee_IT.id,
+    report_scope_orga_id: report1_scope3_orga.id
+    )
+  report1_scope3_orga_user2.save
 
-  report1_scope4_orga_user = ReportScopeOrgaUser.new(
+
+  # scope 4 ----------------------------------------------
+
+  report1_scope4_orga_user1 = ReportScopeOrgaUser.new(
     user_id: company_employee_4.id,
     report_scope_orga_id: report1_scope4_orga.id
     )
-  report1_scope4_orga_user.save
+  report1_scope4_orga_user1.save
 
-  # ----------------------------------------------
+  # scope 5 ----------------------------------------------
 
-  report1_scope5_orga_user = ReportScopeOrgaUser.new(
+  report1_scope5_orga_user1 = ReportScopeOrgaUser.new(
     user_id: company_employee_5.id,
     report_scope_orga_id: report1_scope5_orga.id
     )
-  report1_scope5_orga_user.save
+  report1_scope5_orga_user1.save
+
+  # scope 6 ----------------------------------------------
+
+  report1_scope6_orga_user1 = ReportScopeOrgaUser.new(
+    user_id: company_employee_1.id,
+    report_scope_orga_id: report1_scope6_orga.id
+    )
+  report1_scope6_orga_user1.save
+
+
+  report1_scope6_orga_user2 = ReportScopeOrgaUser.new(
+    user_id: employee_mineraux.id,
+    report_scope_orga_id: report1_scope6_orga.id
+    )
+  report1_scope6_orga_user2.save
+
+  # scope 7 ----------------------------------------------
+
+  report1_scope7_orga_user1 = ReportScopeOrgaUser.new(
+    user_id: company_employee_1.id,
+    report_scope_orga_id: report1_scope7_orga.id
+    )
+  report1_scope7_orga_user1.save
+
+
+  report1_scope7_orga_user2 = ReportScopeOrgaUser.new(
+    user_id: employee_mineraux.id,
+    report_scope_orga_id: report1_scope7_orga.id
+    )
+  report1_scope7_orga_user2.save
+
+  # scope 8 ----------------------------------------------
+
+  report1_scope8_orga_user1 = ReportScopeOrgaUser.new(
+    user_id: company_employee_1.id,
+    report_scope_orga_id: report1_scope8_orga.id
+    )
+  report1_scope8_orga_user1.save
+
+
+  report1_scope8_orga_user2 = ReportScopeOrgaUser.new(
+    user_id: employee_mineraux.id,
+    report_scope_orga_id: report1_scope8_orga.id
+    )
+  report1_scope8_orga_user2.save
+
+  # scope 9 ----------------------------------------------
+
+  report1_scope9_orga_user1 = ReportScopeOrgaUser.new(
+    user_id: company_employee_1.id,
+    report_scope_orga_id: report1_scope9_orga.id
+    )
+  report1_scope9_orga_user1.save
+
+
+  report1_scope9_orga_user2 = ReportScopeOrgaUser.new(
+    user_id: employee_mineraux.id,
+    report_scope_orga_id: report1_scope9_orga.id
+    )
+  report1_scope9_orga_user2.save
+
+  # scope 10 ----------------------------------------------
+
+  report1_scope10_orga_user1 = ReportScopeOrgaUser.new(
+    user_id: company_employee_1.id,
+    report_scope_orga_id: report1_scope10_orga.id
+    )
+  report1_scope10_orga_user1.save
+
+
+  report1_scope10_orga_user2 = ReportScopeOrgaUser.new(
+    user_id: employee_mineraux.id,
+    report_scope_orga_id: report1_scope10_orga.id
+    )
+  report1_scope10_orga_user2.save
+
+  # scope 11 ----------------------------------------------
+
+  report1_scope11_orga_user1 = ReportScopeOrgaUser.new(
+    user_id: company_employee_1.id,
+    report_scope_orga_id: report1_scope11_orga.id
+    )
+  report1_scope11_orga_user1.save
+
+
+  report1_scope11_orga_user2 = ReportScopeOrgaUser.new(
+    user_id: employee_mineraux.id,
+    report_scope_orga_id: report1_scope11_orga.id
+    )
+  report1_scope11_orga_user2.save
+
 
 # ==============================================================================
 # QUESTIONS & ANSWER - Modules for graph only (dummy data)
 # ==============================================================================
-
-  # TO DO - variabiliser ademe_emission_factor_id
-
-  # p "creation des Q&A pour les modules utilisés dans l'exemple 'Manufacturing'"
-
-  # emission_modules_used_in_report1 = [process_industriels]
-
-  # p "array emission_modules_used_in_report1"
-  # p emission_modules_used_in_report1
-
-  # emission_modules_used_in_report1.each_with_index { |emission_module, i|
-  #   p "emission_module"
-  #   p emission_module.name
-
-  #   counter_question = 0
-  #   5.times do
-  #     counter_question += 1
-  #     question = Question.new(
-  #       calculation: true,
-  #       content: "Question number #{i}. To be detailed",
-  #       ademe_emission_factor_id: AdemeEmissionFactor.find{ |item| item.count == 1330 }.id,
-  #       emission_module_id: emission_module.id)
-  #     question.save
-  #     answer = Answer.new(
-  #       calculation: true,
-  #       question_id: question.id,
-  #       report_scope_orga_id: report_scope_array[i].id,
-  #       content: counter_question * 100)
-  #     answer.save
-  #   end
-  # }
 
 # ==============================================================================
 # QUESTIONS - Electricity
@@ -886,28 +1164,28 @@ require "open-uri"
         question_id: question_comb_fossiles_1.id,
         report_scope_orga_id: report1_scope1_orga.id,
         unit: "cubic meters",
-        content: 10000)
+        content: 1000)
 
     answer_comb_fossiles_2_manuf = Answer.create!(
         calculation: true,
         question_id: question_comb_fossiles_2.id,
         report_scope_orga_id: report1_scope1_orga.id,
         unit: "liters",
-        content: 20000)
+        content: 2000)
 
     answer_comb_fossiles_3_manuf = Answer.create!(
         calculation: true,
         question_id: question_comb_fossiles_3.id,
         report_scope_orga_id: report1_scope1_orga.id,
         unit: "liters",
-        content: 10000)
+        content: 1000)
 
     answer_comb_fossiles_4_manuf = Answer.create!(
         calculation: true,
         question_id: question_comb_fossiles_4.id,
         report_scope_orga_id: report1_scope1_orga.id,
         unit: "liters",
-        content: 20000)
+        content: 2000)
 
     answer_comb_fossiles_5_manuf = Answer.create!(
         calculation: true,
@@ -982,30 +1260,3 @@ require "open-uri"
         unit: "kg",
         content: 3000)
 
-# ==============================================================================
-# TESTORGA
-# ==============================================================================
-
-  my_company = Testorga.create!(
-    name: "Company")
-  amer = Testorga.create!(
-    name: "AMER",
-    parent_id: 0)
-  apac = Testorga.create!(
-    name: "APAC",
-    parent_id: 0)
-  emea = Testorga.create!(
-    name: "EMEA",
-    parent_id: 0)
-  manufacturing_amer = Testorga.create!(
-    name: "Manufacturing",
-    parent_id: 1
-    )
-  manufacturing_apac = Testorga.create!(
-    name: "Manufacturing",
-    parent_id: 2
-    )
-  manufacturing_emea = Testorga.create!(
-    name: "Manufacturing",
-    parent_id: 3
-    )

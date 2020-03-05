@@ -10,5 +10,11 @@ const shoppingCart = document.querySelector(".selected-modules");
 shoppingCart.outerHTML = innerHTML;
 }
 
+function addNext(innerHTML) {
+const nextButton = document.getElementById("next-step");
+nextButton.outerHTML = innerHTML;
+}
+
 refreshCard('<%= j render "report-scope-destroy", module_scope: @report_scope.emission_module %>')
 addCard('<%= j render "report-scope-add-to-cart" %>')
+addNext('<%= j render "report-scope-next-step" %>')

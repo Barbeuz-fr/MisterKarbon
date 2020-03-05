@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   before_action :show_project_create_nav
   before_action :sidebar_show
 
+  def default_url_options
+    { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
+
   def show_project_create_nav
     @project_create_1_nav = false
     @project_create_2_nav = false

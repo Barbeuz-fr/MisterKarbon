@@ -1,11 +1,11 @@
 class Report < ApplicationRecord
   belongs_to :user
   belongs_to :company
-  has_many :report_scopes
+  has_many :report_scopes, dependent: :destroy
   has_many :report_scope_orgas, through: :report_scopes
   has_many :orgas, through: :companies
   has_many :report_scope_orga_users, through: :users
-  has_one_attached :photo
+  has_one_attached :photo, dependent: :destroy
 
 
   def report_scope_orga_users
@@ -16,4 +16,5 @@ class Report < ApplicationRecord
     end
     users.flatten.map { |user| user  }
   end
+
 end

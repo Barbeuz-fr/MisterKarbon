@@ -1,21 +1,22 @@
 
-<div class="container mt-2">
-  <nav class="nav nav-pills nav-fill">
-    <a class="nav-item nav-link active">☁︎  Emissions</a>
-    <div class="arrow-right-selected"></div>
-    <a class="nav-item nav-link"><i class="fas fa-sitemap"></i> Organization</a>
-    <div class="arrow-right-not-selected"></div>
-    <a class="nav-item nav-link"><i class="fas fa-user-plus"></i> Team</a>
-    <div class="arrow-right-not-selected"></div>
-  </nav>
+<div class="container">
+  <div class="">
+    <nav class="nav nav-pills nav-fill">
+      <a class="nav-item nav-link active mt-2">☁︎  Emissions</a>
+      <div class="arrow-right-selected mt-2"></div>
+      <a class="nav-item nav-link mt-2"><i class="fas fa-sitemap"></i> Organization</a>
+      <div class="arrow-right-not-selected  mt-2"></div>
+      <a class="nav-item nav-link mt-2"><i class="fas fa-user-plus"></i> Team</a>
+      <div class="arrow-right-not-selected mt-2"></div>
+    </nav>
+  </div>
 </div>
 
 <div class="container">
 
   <div class="form-modules">
     <div class="form-modules-intro">
-      <h4 class="">Please select your emission modules</h4>
-      <h6 class="">Project: <%= @report.name %> - <%= @report.year %> </h6>
+      <h4 class="">Please select your emission types</h4>
     </div>
     <div class="form-modules-content">
       <div class="form-list-modules">
@@ -78,7 +79,7 @@
       <div class="selected-modules-container">
         <h5 class="text-center title-module-selection">Your selected modules</h5>
         <%= render "report-scope-add-to-cart" %>
-        <%= link_to "Next", new_report_report_scope_orga_path(@report), class:"btn btn-primary btn-next" %>
+        <%= render "report-scope-next-step" %>
       </div>
     </div>
   </div>

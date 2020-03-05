@@ -35,7 +35,8 @@
     height: 100vh;
     background: white;
     transition: all 0.5s ease;
-    .menu-bottom{
+
+  .menu-bottom{
       flex-grow: 1;
       display: flex;
       align-items: flex-end;
@@ -49,6 +50,7 @@
       text-align: left;
       padding-left: 1em;
     }
+    box-shadow: 0 0 30px rgba(0,0,0,0.2);
 }
 
 #wrapper.toggled #sidebar-wrapper {
