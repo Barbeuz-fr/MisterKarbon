@@ -32,8 +32,7 @@
               <%= simple_form_for [@report, @report_scope_orga] do |f| %>
                 <%= f.input :report_scope_id,
                 input_html: { value: params[:report_scope] }, as: :hidden%>
-                <%= f.association :orga, collection: @results, as: :check_boxes,
-                label: 'Choose your Business Unit', label_html:{class: "fas fa-truck"} %>
+                <%= f.association :orga, as: :check_boxes, collection: @results %>
                 <!-- Inject categories here -->
                 <%#= f.submit "Add", class: "btn btn-success w-100 py-2 mt-2"  %>
               <% end %>
@@ -42,7 +41,7 @@
                 <%= f.input :report_scope_id,
                 input_html: { value: params[:report_scope] }, as: :hidden%>
                 <%= f.association :orga, as: :check_boxes,
-                label: 'Choose your Business Unit', label_html:{class: "fas fa-truck"} %>
+                label: false %>
                 <!-- Inject categories here -->
               <%#= f.submit "Add", class: "btn btn-success w-100 py-2 mt-2"  %>
               <% end %>
