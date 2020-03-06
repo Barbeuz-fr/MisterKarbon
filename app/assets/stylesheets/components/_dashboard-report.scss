@@ -10,9 +10,36 @@
     min-height: calc(100vh - 70px - 100px);
 }
 
-//
-//
-//
+// Bouton Delete transparent
+
+.transparent-button a {
+  color: rgba(0,0,0,0)
+}
+
+
+.small-text-dashboard {
+  font-size: 12px;
+}
+
+.details-box-dashboard {
+  height: 9vh;
+  padding-left: 0.5rem;
+  padding-top: 0.3rem;
+  margin-top: 0rem;
+}
+
+//--------------------------------------------------------
+// OUT
+.top-box {
+  background-color:#242542;
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+  padding: 6px 8px 1px 8px;
+  margin-bottom: 0.5em;
+}
+
 .dashboard-layout {
   display: grid;
   grid-template-columns: 1fr 3fr;
@@ -37,18 +64,4 @@
 
 .dashboard-card-2 p {
   font-size: 12px;
-}
-
-.small-text-dashboard {
-  font-size: 12px;
-}
-
-.top-box {
-  background-color:#242542;
-  color: white;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
-  padding: 6px 8px 1px 8px;
-  margin-bottom: 0.5em;
 }

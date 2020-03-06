@@ -31,8 +31,8 @@ class ReportsController < ApplicationController
     @report_scope_orgas_array = []
 
     # Array pour filtrage
-    # TO DO - MODIFIER ARRAY POUR MEILLEUR AFFICHAGE
     @report_scope_orgas_array = []
+    @report_scope_orgas_array << { orga: "Please select an emission type and organization", id: 0 }
     @report.report_scopes.each do |report_scope|
       report_scope.report_scope_orgas.each do |report_scope_orga|
         dropdown_details = {
