@@ -175,10 +175,9 @@
     <div class="tab-pane fade show" id="detailed-data" role="tabpanel" aria-labelledby="detailed-data-tab" data-query="<%= @selected_orga %>">
       <div class="container">
         <div class="row">
-          <div class="col-5 flex-cell cell-justify-left">
-            <p>Please select the emission type and organization: </p>
+          <div class="col-0 flex-cell cell-justify-left">
           </div>
-          <div class="col-7 flex-cell cell-justify-left">
+          <div class="col-12 flex-cell cell-justify-left">
             <%= form_tag report_path(@report), method: :get do %>
               <%= select_tag :query, options_for_select(@report_scope_orgas_array.collect{ |u| [u[:orga], u[:id]] }) %>
               <%= submit_tag "Search", class: "btn btn-primary" %>
@@ -187,26 +186,33 @@
         </div>
 
         <!-- Div pour les détails des informations -->
-        <div class="container">
+        <div class="">
 
           <!-- Team avatars -->
           <% if @selected_orga.nil? == false %>
-            <div class="d-flex justify-content-between p-3">
-              <div>
-                <p class="mb-1">Team</p>
-                <% @selected_orga.report_scope_orga_users.each do |report_scope_orga_user| %>
-                  <% if report_scope_orga_user.user.photo.attached? %>
-                    <%= cl_image_tag report_scope_orga_user.user.photo.key, :crop=>"fill", class:"avatar", style:"width:40px; height:40px"%>
-                  <% else %>
-                    <%= image_tag "http://www.tafecafe.com/wp-content/uploads/2015/09/default_avatar.png", class:"avatar ml-3", style:"width:40px; height:40px"%>
+            <div class="d-flex">
+              <div class="mr-3">
+                <div class="tab-headerV2 radius-right">
+                  <p class="mb-1 text-center">TEAM</p>
+                </div>
+                <div class="bg-white rounded shadow details-box-dashboard">
+                  <% @selected_orga.report_scope_orga_users.each do |report_scope_orga_user| %>
+                    <% if report_scope_orga_user.user.photo.attached? %>
+                      <%= cl_image_tag report_scope_orga_user.user.photo.key, :crop=>"fill", class:"avatar", style:"width:40px; height:40px"%>
+                    <% else %>
+                      <%= image_tag "http://www.tafecafe.com/wp-content/uploads/2015/09/default_avatar.png", class:"avatar ml-3", style:"width:40px; height:40px"%>
+                    <% end %>
                   <% end %>
-                <% end %>
-                <a class="fas fa-plus-circle fa-2x align-bottom m-2 text-success"></a>
+                  <a class="fas fa-plus-circle fa-2x align-bottom m-2 text-success"></a>
+                </div>
               </div>
 
               <!-- Status -->
-              <div>
-                <p class="mb-1">Status</p>
+              <div class="mr-3">
+                <div class="tab-headerV2 radius-right">
+                  <p class="mb-1">STATUS</p>
+                </div>
+                <div class="bg-white rounded shadow details-box-dashboard pr-4 pl-4 pt-2">
                 <% if @selected_orga.status == "Invited" %>
                   <div class="status-align-center">
                     <p class="report_status status-invited"><%= @selected_orga.status %></p>
@@ -228,12 +234,17 @@
                     <p class="report_status status_na"><%= @selected_orga.status %></p>
                   </div>
                 <% end %>
+                </div>
               </div>
 
               <!-- Social icons -->
               <div>
-                <p class="mb-1">Discuss with team</p>
-                <p><i class="far fa-envelope fa-2x"></i> <i class="far fa-comment-dots fa-2x"></i> <i class="fab fa-skype fa-2x"></i></p>
+                <div class="tab-headerV2 radius-right">
+                  <p class="mb-1 pr-3">DISCUSS WITH TEAM</p>
+                </div>
+                <div class="bg-white rounded shadow details-box-dashboard">
+                  <p><i class="far fa-envelope fa-2x"></i> <i class="far fa-comment-dots fa-2x"></i> <i class="fab fa-skype fa-2x"></i></p>
+                </div>
               </div>
             </div>
           <% else %>
@@ -312,7 +323,7 @@
 
     <!-- SETTINGS -->
     <div class="tab-pane fade show" id="dashboard-settings" role="tabpanel" aria-labelledby="dashboard-settings-tab">
-      <div class="container mt-3">
+      <div class="container mt-3 transparent-button">
         <%= link_to "Delete report",
             report_path(@report),
             method: :delete,
