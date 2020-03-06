@@ -1,7 +1,7 @@
 // Bar chart tab
 
 .barchart-card {
-  width: 75vw;
+  width: 100%;
 }
 
 // Scrolling vertical
@@ -26,6 +26,10 @@
   padding-left: 0.5rem;
   padding-top: 0.3rem;
   margin-top: 0rem;
+}
+
+.height-header-filtered-table {
+  height: 9vh;
 }
 
 //--------------------------------------------------------
