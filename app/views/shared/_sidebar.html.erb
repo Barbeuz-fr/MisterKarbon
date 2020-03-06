@@ -6,15 +6,15 @@
           <%= "KarbonChain" %>
         </h5>
       <% end %>
-      <%= image_tag "avatar_demo.jpg", class: "avatar-large mb-3", alt: "avatar-large" %>
+      <%= image_tag "avatar_demo.jpg", class: "avatar-large mb-4", alt: "avatar-large" %>
       <div class="my-reports-collapse">
         <a class="pl-0" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-          <h4 class="menu-top-option ">
-            <%= image_tag "",class:"fas fa-folder text-primary mb-2" %>
+          <h5 class="menu-top-option">
+            <%= image_tag "",class:"fas fa-folder text-primary mb-2 pr-3 pl-3" %>
             <%= "My reports" %>
-          </h4>
+          </h5>
         </a>
-        <ul class="list-group text-left pl-3">
+        <ul class="list-group text-left pl-4 mb-3">
           <div class="collapse" id="collapseExample">
             <li class="list-group pl-3">
               <%= link_to "Create new report",
@@ -37,32 +37,32 @@
           </div>
         </ul>
       </div>
-      <h4 class="menu-top-option">
-        <%= image_tag "",class:"fas fa-building text-primary mb-2" %>
+      <h5 class="menu-top-option mb-4">
+        <%= image_tag "",class:"fas fa-building text-primary mb-2 pr-3 pl-3" %>
         <%= "My company" %>
-      </h4>
-      <h4 class="menu-top-option">
-        <%= image_tag "",class:"fas fa-envelope text-primary mb-1" %>
+      </h5>
+      <h5 class="menu-top-option mb-4">
+        <%= image_tag "",class:"fas fa-envelope text-primary mb-1 pr-3 pl-3" %>
         <%= "My messages" %>
-      </h4>
+      </h5>
     </div>
     <div class="menu-bottom mb-2">
       <ul class="list-group">
         <li class="list-group mt-3">
           <%= link_to reports_path do %>
-            <h5><i class="fas fa-life-ring text-primary"></i>
+            <h5><i class="fas fa-life-ring text-primary pr-3 pl-3"></i>
             <%= " Support" %></h5>
           <% end %>
         </li>
         <li class="list-group mt-3">
           <%= link_to reports_path do %>
-            <h5><i class="fas fa-cog text-primary"></i>
+            <h5><i class="fas fa-cog text-primary pr-3 pl-3"></i>
             <%= " Settings" %></h5>
           <% end %>
         </li>
         <li class="list-group mt-3">
           <%= link_to reports_path do %>
-            <h5><i class="fas fa-sign-out-alt"></i>
+            <h5><i class="fas fa-sign-out-alt pr-3 pl-3"></i>
             <%= " Log out"%></h5>
           <% end %>
         </li>
