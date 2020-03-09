@@ -1,0 +1,15 @@
+<div class="container">
+
+  <h5>Add a new emission type</h5>
+
+  <%= simple_form_for [ @emission_module ] do |f| %>
+    <%= f.input :name %>
+    <%= f.input :scope %>
+    <%= f.submit "Add the emission type", class: "btn btn-primary" %>
+  <% end %>
+
+  <!-- Simple form avec également questions -->
+
+  <p>Questions</p>
+
+</div>

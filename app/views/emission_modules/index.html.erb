@@ -1,0 +1,81 @@
+<!-- TO DO -->
+<!-- disposition et background image -->
+
+
+<div class="container">
+  <h5>Emission types</h5>
+
+  <!-- Add button-->
+  <%= link_to "Add an emission type", new_emission_module_path, class:"btn btn-secondary" %>
+
+  <!-- Scope 1 -->
+  <h6>Scope 1</h6>
+
+  <ul>
+    <% @emission_modules.each do |emission_module| %>
+      <% if emission_module.scope == "1" %>
+        <div class="">
+          <li>
+          <p>
+            <%= emission_module.name %> -
+            <%= link_to "Edit", edit_emission_module_path(emission_module), class:"btn btn-secondary" %>
+            - <%= link_to "Delete",
+            emission_module_path(emission_module),
+            method: :delete,
+            data: { confirm: "Are you sure?" },
+            class:"btn btn-warning" %>
+          </p>
+          </li>
+        </div>
+      <% end %>
+    <% end %>
+  </ul>
+
+  <!-- Scope 2 -->
+  <h6>Scope 2</h6>
+
+  <ul>
+
+  <% @emission_modules.each do |emission_module| %>
+    <% if emission_module.scope == "2" %>
+      <div class="">
+        <li>
+          <p>
+            <%= emission_module.name %> -
+            <%= link_to "Edit", edit_emission_module_path(emission_module), class:"btn btn-secondary" %>
+            - <%= link_to "Delete",
+            emission_module_path(emission_module),
+            method: :delete,
+            data: { confirm: "Are you sure?" },
+            class:"btn btn-warning" %>
+          </p>
+        </li>
+      </div>
+    <% end %>
+  <% end %>
+  </ul>
+
+  <!-- Scope 3 -->
+  <h6>Scope 3</h6>
+  <ul>
+    <% @emission_modules.each do |emission_module| %>
+      <% if emission_module.scope == "3" %>
+        <div class="">
+          <li>
+          <p>
+            <%= emission_module.name %> -
+            <%= link_to "Edit", edit_emission_module_path(emission_module), class:"btn btn-secondary" %>
+            - <%= link_to "Delete",
+            emission_module_path(emission_module),
+            method: :delete,
+            data: { confirm: "Are you sure?" },
+            class:"btn btn-warning" %>
+          </p>
+          </li>
+        </div>
+      <% end %>
+    <% end %>
+  </ul>
+
+</div>
+

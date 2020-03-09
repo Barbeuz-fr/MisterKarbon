@@ -16,6 +16,11 @@ Rails.application.routes.draw do
     get "results", to: "reports#result"
   end
 
+  # Creation et edit de l'organisation d'une company
+  resources :companies, only: [:show] do
+    resources :orgas
+  end
+
   resources :report_scopes, only: :destroy
 
   resources :report_scope_orgas, only: [] do
@@ -23,6 +28,11 @@ Rails.application.routes.draw do
     # Route pour definir un email
     resources :report_scope_orga_users, only: [:new, :create, :destroy]
   end
+
+  # Ajout ou edit d'un emission module
+  resources :emission_modules, only: [:index, :new, :create, :destroy, :edit, :update]
+
+
 
 # Test orga à plusieurs niveaux
   resources :testorgas, only: [:index]
