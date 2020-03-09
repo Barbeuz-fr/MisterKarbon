@@ -32,8 +32,8 @@ class EmissionModulesController < ApplicationController
 
   def destroy
     @emission_module = EmissionModule.find(params[:id])
-
-
+    @emission_module.destroy
+    redirect_to emission_modules_path
   end
 
   private

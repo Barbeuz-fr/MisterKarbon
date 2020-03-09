@@ -1,0 +1,8 @@
+<h5>Add your question</h5>
+
+  <%= simple_form_for [ @emission_module, @question ] do |f| %>
+    <%= f.input :content %>
+    <%= f.input :scope %>
+    <%= f.submit "Add the question", class: "btn btn-primary" %>
+  <% end %>
+

@@ -30,7 +30,9 @@ Rails.application.routes.draw do
   end
 
   # Ajout ou edit d'un emission module
-  resources :emission_modules, only: [:index, :new, :create, :destroy, :edit, :update]
+  resources :emission_modules, only: [:index, :new, :create, :destroy, :edit, :update] do
+    resources :questions, only: [:new, :create, :destroy, :edit, :update]
+  end
 
 
 
