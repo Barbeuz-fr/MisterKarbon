@@ -1,8 +1,7 @@
-<!-- Ajout fonction search dans la base ADEME -->
 
 <div class="container">
 
-  <h5>Add your question</h5>
+  <h5>Edit your question</h5>
 
   <%= simple_form_for [ @emission_module, @question ] do |f| %>
     <%= f.input :content %>
@@ -14,7 +13,7 @@
             :label => "Type" %>
 
     <%= hidden_field_tag :emission_module_id, @emission_module.id %>
-    <%= f.submit "Add the question", class: "btn btn-primary" %>
+    <%= f.submit "Edit the question", class: "btn btn-primary" %>
   <% end %>
 
 </div>

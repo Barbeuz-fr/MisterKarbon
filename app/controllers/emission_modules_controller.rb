@@ -7,6 +7,13 @@ class EmissionModulesController < ApplicationController
     @sidebar_show = true
   end
 
+  def show
+    @emission_module = EmissionModule.find(params[:id])
+
+    # affichage side bar
+    @sidebar_show = true
+  end
+
   def new
     @emission_module = EmissionModule.new
 
@@ -22,6 +29,9 @@ class EmissionModulesController < ApplicationController
 
   def edit
     @emission_module = EmissionModule.find(params[:id])
+
+    # affichage side bar
+    @sidebar_show = true
   end
 
   def update

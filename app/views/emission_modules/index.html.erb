@@ -17,8 +17,11 @@
         <div class="">
           <li>
           <p>
-            <%= emission_module.name %> -
-            <%= link_to "Edit", edit_emission_module_path(emission_module), class:"btn btn-secondary" %>
+            <%= link_to "#{emission_module.name}",
+                        emission_module_path(emission_module) %>
+            <%= link_to "Edit",
+                        edit_emission_module_path(emission_module),
+                        class:"btn btn-secondary" %>
             - <%= link_to "Delete",
             emission_module_path(emission_module),
             method: :delete,
@@ -41,8 +44,11 @@
       <div class="">
         <li>
           <p>
-            <%= emission_module.name %> -
-            <%= link_to "Edit", edit_emission_module_path(emission_module), class:"btn btn-secondary" %>
+            <%= link_to "#{emission_module.name}",
+                        emission_module_path(emission_module) %>
+            <%= link_to "Edit",
+                        edit_emission_module_path(emission_module),
+                        class:"btn btn-secondary" %>
             - <%= link_to "Delete",
             emission_module_path(emission_module),
             method: :delete,
@@ -63,9 +69,11 @@
         <div class="">
           <li>
           <p>
-            <%= emission_module.name %> -
-            <%= link_to "Edit", edit_emission_module_path(emission_module), class:"btn btn-secondary" %>
-            - <%= link_to "Delete",
+            <%= link_to "#{emission_module.name}",
+                        emission_module_path(emission_module) %>
+            <%= link_to "Edit",
+                        edit_emission_module_path(emission_module),
+                        class:"btn btn-secondary" %>            - <%= link_to "Delete",
             emission_module_path(emission_module),
             method: :delete,
             data: { confirm: "Are you sure?" },
