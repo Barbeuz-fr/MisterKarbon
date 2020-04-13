@@ -1,0 +1,33 @@
+<div class="container">
+
+  <h5><%= @emission_module.name %></h5>
+
+  <!-- Simple form avec également questions -->
+
+  <div class="row">
+    <div class="col-8">
+      <p>Question</p>
+    </div>
+    <div class="col-4">
+      <p>Emission factor</p>
+    </div>
+  </div>
+
+  <% @emission_module.questions.each do |question| %>
+    <div class="row">
+    <div class="col-8">
+      <p><%= question.ademe_emission_factor.name %></p>
+      <%= link_to "edit",
+          emission_module_question_path(@emission_module, question),
+          method: :patch %>
+    </div>
+    <div class="col-4">
+      <p><%= question.ademe_emission_factor.emission_value %> <%= question.ademe_emission_factor.unit %></p>
+    </div>
+  </div>
+  <% end %>
+
+  <%= link_to "Add a question",
+              new_emission_module_question_path(@emission_module),
+              class:"btn btn-secondary" %>
+</div>

@@ -1,0 +1,10 @@
+<div class="container">
+
+  <h4>Please indicate the name of the new business unit:</h4>
+
+  <%= simple_form_for [ @company, @orga ] do |f| %>
+    <%= f.input :name %>
+    <%= f.submit "Add the organization", class: "btn btn-primary" %>
+  <% end %>
+
+</div>

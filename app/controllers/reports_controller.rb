@@ -3,6 +3,7 @@ class ReportsController < ApplicationController
   def index
     @reports = Report.all
     @report = Report.new()
+    @user = current_user
 
     # affichage side bar
     @sidebar_show = true

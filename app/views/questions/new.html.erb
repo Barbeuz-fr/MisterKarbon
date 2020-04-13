@@ -1,0 +1,20 @@
+<!-- Ajout fonction search dans la base ADEME -->
+
+<div class="container">
+
+  <h5>Add your question</h5>
+
+  <%= simple_form_for [ @emission_module, @question ] do |f| %>
+    <%= f.input :content %>
+    <%= f.input :ademe_emission_factor_id %>
+    <%= f.input :calculation,
+            :as => :select,
+            :collection => [['Yes',true],['No',false]],
+            :include_blank => false,
+            :label => "Type" %>
+
+    <%= hidden_field_tag :emission_module_id, @emission_module.id %>
+    <%= f.submit "Add the question", class: "btn btn-primary" %>
+  <% end %>
+
+</div>

@@ -1,3 +1,6 @@
+<!-- Bonne pratique pour déclarer @user? -->
+<% @user = current_user %>
+
 <div id="wrapper">
   <div id="sidebar-wrapper">
     <div class="menu-top">
@@ -7,6 +10,8 @@
         </h5>
       <% end %>
       <%= image_tag "avatar_demo.jpg", class: "avatar-large mb-4", alt: "avatar-large" %>
+
+      <!-- Reports avec collapse -->
       <div class="my-reports-collapse">
         <a class="pl-0" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
           <h5 class="menu-top-option">
@@ -22,30 +27,42 @@
                       "data-target" => "#exampleModalCenter" do %>
                 <p class="text-success"><i class="fas fa-plus-circle text-success"></i>
                 <%= " New report" %></p>
-
-
               <% end %>
             </li>
-            <% @reports.each do |report| %>
-              <li class="list-group pl-3">
-                <%= link_to report_path(report.id)do %>
-                  <p><i class="fas fa-file text-primary"></i>
-                  <%= report.name %></p>
-                <% end %>
-              </li>
+            <% if @reports.nil? == false %>
+              <% @reports.each do |report| %>
+                <li class="list-group pl-3">
+                  <%= link_to report_path(report.id)do %>
+                    <p><i class="fas fa-file text-primary"></i>
+                    <%= report.name %></p>
+                  <% end %>
+                </li>
+              <% end %>
             <% end %>
           </div>
         </ul>
       </div>
+
+      <!-- My company -->
       <h5 class="menu-top-option mb-4">
         <%= image_tag "",class:"fas fa-building text-primary mb-2 pr-3 pl-3" %>
-        <%= "My company" %>
+        <%= link_to "My company", company_path(@user.company) %>
       </h5>
+
+      <!-- My messages -->
       <h5 class="menu-top-option mb-4">
         <%= image_tag "",class:"fas fa-envelope text-primary mb-1 pr-3 pl-3" %>
         <%= "My messages" %>
       </h5>
+
+      <!-- Emissions -->
+      <h5 class="menu-top-option mb-4">
+        <%= image_tag "",class:"fas fa-cloud text-primary mb-1 pr-3 pl-3" %>
+        <%= link_to "Emissions", emission_modules_path %>
+      </h5>
     </div>
+
+    <!-- Bottom links -->
     <div class="menu-bottom mb-2">
       <ul class="list-group">
         <li class="list-group mt-3">

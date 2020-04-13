@@ -1,0 +1,15 @@
+<h1>Edit your organization</h1>
+
+<!-- Bouton edit et supprimer sur chaque élément -->
+<ul>
+  <% @orgas.each do |orga| %>
+    <li>
+      <%= orga.name %>
+    </li>
+  <% end %>
+</ul>
+
+<!-- Bouton add -->
+<p> Add an organization</p>
+
+<%= link_to "Add an organization", new_company_orga_path(company) %>
