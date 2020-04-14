@@ -1,1 +1,36 @@
 // Specific CSS for your home-page
+
+.main-logo {
+  width: 40vh;
+}
+
+p {
+  color: #192880;
+  font-family: Viga;
+}
+
+h1 {
+  font-family: Viga;
+  font-size: 5vh;
+  color: #192880;
+}
+
+h3 {
+  font-family: Viga;
+  font-size: 3vh;
+  color: #192880;
+}
+
+h5 {
+  font-family: Viga;
+  color: #192880;
+}
+
+.landing-background-color {
+  background-color: #E3E8EE;
+}
+
+.center-box {
+  display: flex;
+  align-items: center;
+}

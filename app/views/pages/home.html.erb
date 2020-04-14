@@ -1,12 +1,168 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?cs=srgb&dl=architecture-buildings-business-city-325185.jpg&fm=jpg);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url(assets/landing-page/harbor-view.png);">
   <div class="container">
-    <h1>Karbon<strong>Chain</strong></h1>
-    <p>The carbon accounting platform for your company.</p>
-    <%= link_to "Start now", reports_path, class: "btn btn-light"%>
+    <div class="row">
+      <div class="col-4">
+        <%= image_tag 'landing-page/main-logo.png', class: "main-logo"  %>
+      </div>
+        <div class="col-8">
+        <h1>Accélérez votre transition <br> bas-carbone</h1>
+        <br>
+        <%= link_to "Démarrer", reports_path, class: "btn btn-light"%>
+        <%= link_to "Nous contacter", reports_path, class: "btn btn-light"%>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="container mt-3">
+<div class="container">
+  <div class="row">
+    <div class="col-12 landing-background-color mt-5 mb-5 pl-5 pr-5">
+      <div>
+        <h5>
+          KarbonChain est une <strong>plateforme dédiée</strong> au suivi des émissions de gaz à effet de serre de votre organisation.
+        </h5>
+        <br>
+        <h5>
+          Notre approche ouverte vous permet d’<strong>améliorer la mesure de vos émissions</strong> directes et indirectes
+        </h5>
+        <br>
+        <h5>
+          Collaborative et transparente, KarbonChain permet de <strong>responsabiliser chacun et diffuser l’engagement pour le climat</strong> dans votre organisation.
+        </h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Feature 1 -->
+<div class="bg-white">
+  <div class="container pt-5">
+    <div class="row">
+      <div class="col-3 center-box">
+        <h3>
+          Collecte des données décentralisée
+        </h3>
+      </div>
+      <div class="col-5 center-box">
+        <%= image_tag 'landing-page/feature-data-collection.png', class: "main-logo"  %>
+      </div>
+      <div class="col-4 center-box">
+        <div>
+          <p>
+            > Invitez vos collaborateurs et fournisseurs
+          </p>
+          <p>
+            > Collectez les données opérationnelles, y compris en amont et aval de vos activités
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Feature 2 -->
+<div class="bg-white">
+  <div class="container pt-5">
+    <div class="row">
+      <div class="col-4 center-box">
+        <div>
+          <p>
+            > Personalisez les facteurs d’émissions selon vos activités
+          </p>
+          <p>
+            > Partagez les meilleures pratiques de calculs d’émissions
+          </p>
+        </div>
+      </div>
+      <div class="col-5 center-box">
+        <%= image_tag 'landing-page/feature-calcul.png', class: "main-logo"  %>
+      </div>
+      <div class="col-3 center-box">
+        <h3>
+          Calcul des émissions
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Feature 3 -->
+<div class="bg-white">
+  <div class="container pt-5">
+    <div class="row">
+      <div class="col-3 center-box">
+        <h3>
+          Scénarios bas-carbone et plan d’actions
+        </h3>
+      </div>
+      <div class="col-5 center-box">
+        <%= image_tag 'landing-page/feature-scenario.png', class: "main-logo"  %>
+      </div>
+      <div class="col-4 center-box">
+        <p>
+          > Construisez et diffusez la trajectoire bas-carbone de votre organisation
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Feature 4 -->
+<div class="bg-white">
+  <div class="container pt-5">
+    <div class="row">
+      <div class="col-4 center-box">
+        <div>
+          <p>
+            > Suivez la progression de chaque action en faveur du climat
+          </p>
+          <p>
+            > Simplifiez l’analyse entre les exercices
+          </p>
+        </div>
+      </div>
+      <div class="col-5 center-box">
+        <%= image_tag 'landing-page/feature-suivi.png', class: "main-logo"  %>
+      </div>
+      <div class="col-3 center-box">
+        <h3>
+          Suivi et analyse d’impacts
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Feature 5 -->
+<div class="bg-white">
+  <div class="container pt-5">
+    <div class="row">
+      <div class="col-3 center-box">
+        <h3>
+          Reporting réglementaire et volontaire
+        </h3>
+      </div>
+      <div class="col-5 center-box">
+        <%= image_tag 'landing-page/feature-reporting.png', class: "main-logo"  %>
+      </div>
+      <div class="col-4 center-box">
+        <div>
+          <p>
+            > Reporting au format des principaux cadres réglementaires et volontaires
+          </p>
+          <p>
+            > Audit simplifié
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="container mt-3">
   <div class="row">
     <div class="col-3 flex-cell">
         <%= image_tag 'landing-features/integrated.png', class: "img-landing" %>
@@ -21,30 +177,26 @@
       <%= image_tag 'landing-features/corporate functions.png', class: "img-landing"  %>
     </div>
   </div>
-</div>
+</div> -->
 
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     <div class="col-3">
       <h4 class="text-center">All emissions</h4>
-      <!-- <p>Selon l'AIE, après une stabilisation des émissions mondiales en 2014, 2015 et 2016 grâce à des progrès dans le domaine de l'efficacité énergétique, les émissions sont ensuite reparties à la hausse, la concentration moyenne mondiale de CO2 dans l’atmosphère atteignant de nouveaux records en 2017 puis en 2018</p> -->
     </div>
     <div class="col-3">
       <h4 class="text-center">Supply chain visibility</h4>
-      <!-- <p>Le taux moyen de CO2 dans l'air a atteint 393 ppm en 2012 et 400 ppm en avril 2014 dans tout l'hémisphère nord, soit 0,04 % de la composition de l'atmosphère terrestre, avec quelques variations jour-nuit, saisonnières (pour partie anthropiques) et des pics de pollution localisés.</p> -->
     </div>
     <div class="col-3">
       <h4 class="text-center">Collaboration</h4>
-      <!-- <p>Une émission de dioxyde de carbone est un rejet de ce gaz dans l'atmosphère, quelle qu'en soit la source. Les émissions de dioxyde de carbone (CO2) dans l'atmosphère sont d'origines naturelle et anthropique1 (c'est-à-dire issues des activités humaines)</p> -->
     </div>
     <div class="col-3">
       <h4 class="text-center">All functions</h4>
-      <!-- <p>Une émission de dioxyde de carbone est un rejet de ce gaz dans l'atmosphère, quelle qu'en soit la source. Les émissions de dioxyde de carbone (CO2) dans l'atmosphère sont d'origines naturelle et anthropique1 (c'est-à-dire issues des activités humaines)</p> -->
     </div>
   </div>
-</div>
+</div> -->
 
-<div class="container mb-5">
+<!-- <div class="container mb-5">
   <div class="row">
     <div class="col-3">
       <p class="text-center">Covers the <strong>full footprint</strong>, with direct and indirect emissions</p>
@@ -57,29 +209,6 @@
     </div>
     <div class="col-3">
       <p class="text-center">Covers carbon footprint for <br><strong>all corporate functions</strong></p>
-    </div>
-  </div>
-</div>
-
-<!-- <div class="container">
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="card card-full-height">
-        <img src="https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="card card-full-height">
-        <img src="https://images.pexels.com/photos/273238/pexels-photo-273238.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        </div>
-      </div>
     </div>
   </div>
 </div> -->
