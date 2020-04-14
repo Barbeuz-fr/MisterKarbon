@@ -1,16 +1,36 @@
 // Specific CSS for your home-page
 
+// ----------------------------------------------------------------------------------
+//  Background colors
+// ----------------------------------------------------------------------------------
+
 .landing-main-blue {
-  background-color: #192880;
+  background-color: #1A2980;
 }
 
 .landing-main-blue-shade {
-  background-color: #192880;
+  background-color: #1A2980;
 }
 
 .landing-background-color {
   background-color: #E0F8F8;
 }
+
+// ----------------------------------------------------------------------------------
+//  Images & picto
+// ----------------------------------------------------------------------------------
+
+.picto-image {
+  width: 25%;
+}
+
+.main-logo {
+  width: 100%;
+}
+
+// ----------------------------------------------------------------------------------
+//  Containers, box & cards
+// ----------------------------------------------------------------------------------
 
 .center-box {
   display: flex;
@@ -24,38 +44,38 @@
 }
 
 .differentation-card {
+  height: 28vh;
   background-color: white;
   border-radius: 15px;
-  padding: 1vh;
+  padding: 1.5vh;
   margin-left: 0.5vh;
   margin-right: 0.5vh;
+  margin-bottom: 1vh;
   justify-text: center;
   text-align:center;
 }
 
-.picto-image {
-  width: 25%;
-}
-
-.main-logo {
-  width: 100%;
-}
-
 .home-button {
   display: inline-block;
-    font-weight: 400;
-    color: white;
-    text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
-    user-select: none;
-    border: 1px solid transparent;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: 4px;
-    // transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  margin-right: 15px;
+  margin-left: 15px;
+  font-weight: 400;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 4px;
+  // transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+
+// ----------------------------------------------------------------------------------
+//  Text classes
+// ----------------------------------------------------------------------------------
 
 .white-text {
   color: white;
@@ -66,15 +86,16 @@ a:hover {
 }
 
 p {
-  color: #192880;
+  color: #1A2980;
   font-family: 'Poppins';
   letter-spacing: 0.03rem;
+  line-height: 1.7rem;
 }
 
 h1 {
   font-family: Viga;
   font-size: 5vh;
-  color: #192880;
+  color: #1A2980;
   font-weight: 300;
 }
 
@@ -82,20 +103,21 @@ h3 {
   font-family: Viga;
   font-size: 3vh;
   font-weight: 300;
-  color: #192880;
-  letter-spacing: 0.03rem;
+  color: #1A2980;
+  letter-spacing: 0.04rem;
+  line-height: 2rem;
 }
 
 h5 {
   font-family: 'Poppins';
-  color: #192880;
-  letter-spacing: 0.03rem;
-  line-height: 2rem;
+  color: #1A2980;
+  letter-spacing: 0.05rem;
+  line-height: 2.3rem;
 }
 
 h6 {
   font-family: 'Poppins';
-  color: #192880;
+  color: #1A2980;
   letter-spacing: 0.03rem;
   line-height: 2rem;
 }
