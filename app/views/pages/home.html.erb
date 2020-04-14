@@ -4,14 +4,16 @@
 >
   <div class="container">
     <div class="row">
-      <div class="col-4">
+      <div class="col-4 center-box">
         <%= image_tag 'landing-page/main-logo.png', class: "main-logo"%>
       </div>
-        <div class="col-8">
+        <div class="col-8 pl-5">
         <h1>Accélérez votre transition <br> bas-carbone</h1>
         <br>
-        <%= link_to "Démarrer", reports_path, class: "home-button landing-main-blue white-text"%>
-        <%= link_to "Nous contacter", reports_path, class: "btn btn-light"%>
+        <div class="pt-1">
+          <%= link_to "Démarrer", reports_path, class: "home-button landing-main-blue white-text"%>
+          <%= link_to "Nous contacter", reports_path, class: "btn btn-light"%>
+        </div>
       </div>
     </div>
   </div>
@@ -170,7 +172,7 @@
 
 <div class="landing-main-blue pb-5">
   <div class="container">
-    <div class="p-3">
+    <div class="pl-3 pt-5 pb-3">
       <h3 class="text-white">Pourquoi KarbonChain?</h3>
     </div>
     <div class="row">
