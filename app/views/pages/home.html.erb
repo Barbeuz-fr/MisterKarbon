@@ -27,7 +27,7 @@
           </h5>
           <br>
           <h5>
-            Notre approche ouverte vous permet d’<strong>améliorer la mesure et d'accélérer laréduction de vos émissions</strong> directes et indirectes
+            Notre approche ouverte vous permet d’<strong>améliorer la mesure et d'accélérer la réduction de vos émissions</strong> directes et indirectes
           </h5>
           <br>
           <h5>
@@ -43,9 +43,7 @@
 <div class="bg-white">
   <div class="container pt-5">
     <div class="row">
-      <div class="col-3 center-box"
-            style="background-image:
-            url(landing-page/polygon-1.png)">
+      <div class="col-2 center-box">
         <h3>
           Collecte des données décentralisée
         </h3>
@@ -53,7 +51,7 @@
       <div class="col-5 center-box">
         <%= image_tag 'landing-page/feature-data-collection.png', class: "main-logo"  %>
       </div>
-      <div class="col-4 center-box">
+      <div class="col-5 center-box">
         <div>
           <p>
             Invitez vos collaborateurs, fournisseurs et clients
@@ -69,10 +67,10 @@
 
 
 <!-- Feature 2 -->
-<div class="bg-white">
-  <div class="container pt-5">
+<div class="bg-white pt-2">
+  <div class="container">
     <div class="row">
-      <div class="col-4 center-box">
+      <div class="col-5 center-box">
         <div>
           <p>
             Personnalisez les facteurs d’émissions selon vos activités
@@ -85,7 +83,7 @@
       <div class="col-5 center-box">
         <%= image_tag 'landing-page/feature-calcul.png', class: "main-logo"  %>
       </div>
-      <div class="col-3 center-box">
+      <div class="col-2 center-box">
         <h3>
           Calcul des émissions
         </h3>
@@ -96,10 +94,10 @@
 
 
 <!-- Feature 3 -->
-<div class="bg-white">
-  <div class="container pt-5">
+<div class="bg-white pt-2">
+  <div class="container">
     <div class="row">
-      <div class="col-3 center-box">
+      <div class="col-2 center-box">
         <h3>
           Scénarios bas-carbone et plan d’actions
         </h3>
@@ -107,7 +105,7 @@
       <div class="col-5 center-box">
         <%= image_tag 'landing-page/feature-scenario.png', class: "main-logo"  %>
       </div>
-      <div class="col-4 center-box">
+      <div class="col-5 center-box">
         <p>
           Construisez et diffusez la trajectoire bas-carbone de votre organisation
         </p>
@@ -117,10 +115,10 @@
 </div>
 
 <!-- Feature 4 -->
-<div class="bg-white">
-  <div class="container pt-5">
+<div class="bg-white pt-2">
+  <div class="container">
     <div class="row">
-      <div class="col-4 center-box">
+      <div class="col-5 center-box">
         <div>
           <p>
             Suivez la progression de chaque action en faveur du climat
@@ -133,7 +131,7 @@
       <div class="col-5 center-box">
         <%= image_tag 'landing-page/feature-suivi.png', class: "main-logo"  %>
       </div>
-      <div class="col-3 center-box">
+      <div class="col-2 center-box">
         <h3>
           Suivi et analyse d’impacts
         </h3>
@@ -143,10 +141,10 @@
 </div>
 
 <!-- Feature 5 -->
-<div class="bg-white pb-5">
-  <div class="container pt-5">
+<div class="bg-white  pt-2 pb-5">
+  <div class="container">
     <div class="row">
-      <div class="col-3 center-box">
+      <div class="col-2 center-box">
         <h3>
           Reporting réglementaire et volontaire
         </h3>
@@ -154,7 +152,7 @@
       <div class="col-5 center-box">
         <%= image_tag 'landing-page/feature-reporting.png', class: "main-logo"  %>
       </div>
-      <div class="col-4 center-box">
+      <div class="col-5 center-box">
         <div>
           <p>
             Reporting au format des principaux cadres réglementaires et volontaires
@@ -168,15 +166,63 @@
   </div>
 </div>
 
-<div class="bg-white pb-5">
+<!-- Section differentiateurs "Pourquoi KarbonChain?"-->
+
+<div class="landing-main-blue pb-5">
+  <div class="container">
+    <div class="p-3">
+      <h3 class="text-white">Pourquoi KarbonChain?</h3>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <div class="differentation-card">
+          <p>
+            Gagnez en contrôle
+          </p>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="differentation-card">
+          <p>
+            Gagnez en contrôle
+          </p>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="differentation-card">
+          <p>
+            Gagnez en contrôle
+          </p>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="differentation-card">
+          <p>
+            Gagnez en contrôle
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Boutons avec call to action -->
+<div class="bg-white pt-5 pb-5">
   <div class="container">
     <div class="row">
-      <div class="col-4">
+      <div class="col-12 pb-3">
+        <div class="text-center">
+        <h3>Intéressé?</h3>
+        </div>
       </div>
-      <div class="col-2">
-        <%= link_to "Démarrer", reports_path, class: "home-button landing-main-blue white-text"%>
+    </div>
+    <div class="row">
+      <div class="col-3">
       </div>
-      <div class="col-2">
+      <div class="col-6 text-center">
+        <%= link_to "Tester maintenant", reports_path, class: "home-button landing-main-blue white-text"%>
         <%= link_to "Nous contacter", reports_path, class: "btn btn-light"%>
       </div>
       <div class="col-3">

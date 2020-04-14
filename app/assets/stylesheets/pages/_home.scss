@@ -4,6 +4,10 @@
   background-color: #192880;
 }
 
+.landing-main-blue-shade {
+  background-color: #192880;
+}
+
 .landing-background-color {
   background-color: #E0F8F8;
 }
@@ -13,6 +17,13 @@
   align-items: center;
 }
 
+.differentation-card {
+  background-color: white;
+  border-radius: 15px;
+  padding: 1vh;
+  margin-left: 0.5vh;
+  margin-right: 0.5vh;
+}
 
 .main-logo {
   width: 100%;
@@ -64,9 +75,9 @@ h3 {
 }
 
 h5 {
-  font-family: Viga;
+  font-family: 'Poppins';
   color: #192880;
-  font-weight: 100;
   letter-spacing: 0.03rem;
+  line-height: 2rem;
 }
 
