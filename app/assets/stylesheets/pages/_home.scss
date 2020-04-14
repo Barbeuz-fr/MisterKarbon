@@ -17,12 +17,24 @@
   align-items: center;
 }
 
+.align-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .differentation-card {
   background-color: white;
   border-radius: 15px;
   padding: 1vh;
   margin-left: 0.5vh;
   margin-right: 0.5vh;
+  justify-text: center;
+  text-align:center;
+}
+
+.picto-image {
+  width: 25%;
 }
 
 .main-logo {
@@ -75,6 +87,13 @@ h3 {
 }
 
 h5 {
+  font-family: 'Poppins';
+  color: #192880;
+  letter-spacing: 0.03rem;
+  line-height: 2rem;
+}
+
+h6 {
   font-family: 'Poppins';
   color: #192880;
   letter-spacing: 0.03rem;
