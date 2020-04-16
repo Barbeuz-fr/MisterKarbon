@@ -21,7 +21,7 @@
 // ----------------------------------------------------------------------------------
 
 .picto-image {
-  width: 25%;
+  width: 80px;
 }
 
 .main-logo {
@@ -44,21 +44,22 @@
 }
 
 .differentation-card {
-  height: 28vh;
+  height: 320px;
   background-color: white;
   border-radius: 15px;
-  padding: 1.5vh;
+  padding: 2.5vh;
   margin-left: 0.5vh;
   margin-right: 0.5vh;
-  margin-bottom: 1vh;
+  margin-bottom: 4vh;
   justify-text: center;
   text-align:center;
 }
 
 .home-button {
+  background-color: #26D0CE;
   display: inline-block;
   margin-right: 15px;
-  margin-left: 15px;
+  //margin-left: 15px;
   font-weight: 400;
   color: white;
   text-align: center;
@@ -111,6 +112,7 @@ h3 {
 h5 {
   font-family: 'Poppins';
   color: #1A2980;
+  font-size: 20px;
   letter-spacing: 0.05rem;
   line-height: 2.3rem;
 }
@@ -120,5 +122,18 @@ h6 {
   color: #1A2980;
   letter-spacing: 0.03rem;
   line-height: 2rem;
+}
+
+
+@include media-breakpoint-up(md) {
+  h6 {
+    font-size: 25px;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  h6 {
+    font-size: 20px;
+  }
 }
 

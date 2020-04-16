@@ -1,17 +1,17 @@
 <div class="banner"
-     style="background-image: linear-gradient(rgba(255,255,255,0.2),rgba(255,255,255,0.4)),
+     style="background-image:linear-gradient(rgba(255,255,255,0.2),rgba(255,255,255,0)),
             url(https://res.cloudinary.com/dkybxjjy2/image/upload/v1586855718/KC-homepage-banner_dodnwh.png);"
 >
   <div class="container">
-    <div class="row">
-      <div class="col-4 center-box">
+    <div class="row justify-content-center">
+      <div class="col-sm-8 col-lg-4 my-5">
         <%= image_tag 'landing-page/main-logo.png', class: "main-logo"%>
       </div>
-        <div class="col-8 pl-5">
-        <h1>Accélérez votre transition <br> bas-carbone</h1>
+      <div class="col-sm-12 col-lg-6 offset-lg-1 pl-5 my-5">
+        <h1>Accélérez votre transition bas-carbone</h1>
         <br>
         <div class="pt-1">
-          <%= link_to "Démarrer", reports_path, class: "home-button landing-main-blue white-text"%>
+          <%= link_to "Démarrer", reports_path, class: "home-button"%>
           <%= link_to "Nous contacter", new_contact_path, class: "btn btn-light"%>
         </div>
       </div>
@@ -19,10 +19,10 @@
   </div>
 </div>
 
-<div class="landing-background-color">
+<div class="landing-background-color py-5">
   <div class="container">
     <div class="row">
-      <div class="col-12 landing-background-color mt-5 mb-5 pl-5 pr-5">
+      <div class="col-12 landing-background-color my-5 ">
         <div>
           <h5>
             KarbonChain est une <strong>plateforme dédiée</strong> au suivi des émissions de gaz à effet de serre de votre organisation.
@@ -42,8 +42,8 @@
 </div>
 
 <!-- Feature 1 -->
-<div class="bg-white">
-  <div class="container pt-5">
+<div class="bg-white py-3 pt-5">
+  <div class="container">
     <div class="row">
       <div class="col-2 center-box">
         <h3>
@@ -69,7 +69,7 @@
 
 
 <!-- Feature 2 -->
-<div class="bg-white pt-2">
+<div class="bg-white py-3">
   <div class="container">
     <div class="row">
       <div class="col-5 center-box">
@@ -96,7 +96,7 @@
 
 
 <!-- Feature 3 -->
-<div class="bg-white pt-2">
+<div class="bg-white py-3">
   <div class="container">
     <div class="row">
       <div class="col-2 center-box">
@@ -117,7 +117,7 @@
 </div>
 
 <!-- Feature 4 -->
-<div class="bg-white pt-2">
+<div class="bg-white py-3">
   <div class="container">
     <div class="row">
       <div class="col-5 center-box">
@@ -143,7 +143,7 @@
 </div>
 
 <!-- Feature 5 -->
-<div class="bg-white  pt-2 pb-5">
+<div class="bg-white py-3 pb-5">
   <div class="container">
     <div class="row">
       <div class="col-2 center-box">
@@ -170,13 +170,13 @@
 
 <!-- Section differentiateurs "Pourquoi KarbonChain?"-->
 
-<div class="landing-main-blue pb-5">
+<div class="landing-main-blue py-5">
   <div class="container">
-    <div class="pl-3 pt-5 pb-3">
-      <h3 class="text-white">Pourquoi KarbonChain?</h3>
+    <div class="row justify-content-center my-5">
+      <h2 class="text-white">Pourquoi KarbonChain ?</h2>
     </div>
-    <div class="row">
-      <div class="col-3">
+    <div class="row mt-4">
+      <div class="col-md-6 col-lg-3">
         <div class="differentation-card">
           <div class="align-box">
             <%= image_tag 'landing-page/icon-collaboration.png', class: "picto-image"  %>
@@ -186,7 +186,7 @@
           </h6>
         </div>
       </div>
-      <div class="col-3">
+      <div class="col-md-6 col-lg-3">
         <div class="differentation-card">
           <div class="align-box">
             <%= image_tag 'landing-page/icon-monitoring.png', class: "picto-image"  %>
@@ -196,7 +196,7 @@
           </h6>
         </div>
       </div>
-      <div class="col-3">
+      <div class="col-md-6 col-lg-3">
         <div class="differentation-card">
           <div class="align-box">
             <%= image_tag 'landing-page/icon-ecosystem.png', class: "picto-image"  %>
@@ -206,13 +206,13 @@
           </h6>
         </div>
       </div>
-      <div class="col-3">
+      <div class="col-md-6 col-lg-3">
         <div class="differentation-card">
           <div class="align-box">
             <%= image_tag 'landing-page/icon-standard.png', class: "picto-image"  %>
           </div>
           <h6 class="pt-3">
-            Appuyez vous sur les standards et méthodes reconnus
+            Appuyez-vous sur les standards et méthodes reconnus
           </h6>
         </div>
       </div>
@@ -221,23 +221,17 @@
 </div>
 
 <!-- Boutons avec call to action -->
-<div class="bg-white pt-4 pb-5">
+<div class="bg-white py-5">
   <div class="container">
-    <div class="row">
-      <div class="col-12 pb-3">
-        <div class="text-center">
-        <h3>Intéressé?</h3>
-        </div>
-      </div>
+    <div class="row justify-content-center my-5">
+      <h2>Intéressé.e ?</h2>
     </div>
-    <div class="row">
-      <div class="col-3">
+    <div class="row justify-content-center">
+      <div class="col-8 col-lg-3 text-center my-4">
+        <%= link_to "Tester maintenant", reports_path, class: "home-button landing-main-blue btn-block white-text"%>
       </div>
-      <div class="col-6 text-center">
-        <%= link_to "Tester maintenant", reports_path, class: "home-button landing-main-blue white-text"%>
-        <%= link_to "Nous contacter", new_contact_path, class: "btn btn-light"%>
-      </div>
-      <div class="col-3">
+      <div class="col-8 col-lg-3 text-center my-4">
+        <%= link_to "Nous contacter", reports_path, class: "btn btn-light btn-block"%>
       </div>
     </div>
   </div>
