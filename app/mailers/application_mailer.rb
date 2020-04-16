@@ -4,7 +4,7 @@ class ApplicationMailer < ActionMailer::Base
 
   def contact_message(contact)
     @contact = contact
-    mail( :to => "laurent.barbezieux@gmail.com", :subject => "You Have a Message From Your Website")
+    mail(:from => @contact.email, :to => "laurent.barbezieux@gmail.com", :subject => @contact.message)
   end
 
 end
