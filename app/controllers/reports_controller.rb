@@ -7,7 +7,6 @@ class ReportsController < ApplicationController
 
     # affichage side bar
     @sidebar_show = true
-
   end
 
   def create
