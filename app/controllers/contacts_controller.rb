@@ -10,8 +10,8 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
 
     if @contact.save
+      ApplicationMailer.contact_message(@contact).deliver_now
       redirect_to root_path, notice: "Message bien reçu!"
-      ApplicationMailer.contact_message(@contact).deliver
     else
     end
   end

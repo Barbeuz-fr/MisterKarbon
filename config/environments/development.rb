@@ -31,6 +31,13 @@ Rails.application.configure do
   #store images with cloudinary
   config.active_storage.service = :cloudinary
 
+  # CONFIG LAURENT EMAIL
+  # ---------------
+
+  config.action_mailer.delivery_method = :sendmail
+
+  # ----------
+
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
