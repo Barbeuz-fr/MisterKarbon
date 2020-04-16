@@ -12,7 +12,7 @@
         <br>
         <div class="pt-1">
           <%= link_to "Démarrer", reports_path, class: "home-button landing-main-blue white-text"%>
-          <%= link_to "Nous contacter", reports_path, class: "btn btn-light"%>
+          <%= link_to "Nous contacter", new_contact_path, class: "btn btn-light"%>
         </div>
       </div>
     </div>
@@ -220,8 +220,6 @@
   </div>
 </div>
 
-
-
 <!-- Boutons avec call to action -->
 <div class="bg-white pt-4 pb-5">
   <div class="container">
@@ -237,11 +235,10 @@
       </div>
       <div class="col-6 text-center">
         <%= link_to "Tester maintenant", reports_path, class: "home-button landing-main-blue white-text"%>
-        <%= link_to "Nous contacter", reports_path, class: "btn btn-light"%>
+        <%= link_to "Nous contacter", new_contact_path, class: "btn btn-light"%>
       </div>
       <div class="col-3">
       </div>
     </div>
   </div>
 </div>
-

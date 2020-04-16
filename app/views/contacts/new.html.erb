@@ -1,0 +1,50 @@
+<div class="banner-contact"
+     style="background-image: linear-gradient(rgba(255,255,255,0.7),rgba(255,255,255,0.8)),
+            url(https://res.cloudinary.com/dkybxjjy2/image/upload/v1586855718/KC-homepage-banner_dodnwh.png);">
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+      </div>
+      <div class="col-6">
+        <div class="pt-1">
+          <h5>Des questions? Envie d'une démo? <br>Dites-nous tout!</h5>
+          <%= form_for(@contact) do |f| %>
+          <!--   <% if @contact.errors.any? %>
+              <div id="error_explanation">
+                <h3><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
+                <ul>
+                <% @contact.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
+           -->
+            <div class="field">
+              <%= f.label :name %><br />
+              <%= f.text_field :name %>
+            </div>
+            <div class="field">
+              <%= f.label :email %><br />
+              <%= f.text_field :email %>
+            </div>
+            <div class="field">
+              <%= f.label :message %><br />
+              <%= f.text_area :message %>
+            </div>
+            <div class="actions">
+              <%= f.submit "Send"%>
+            </div>
+          <% end %>
+          <br>
+          <%= link_to "Retour à la page d'accueil", root_path, class: "btn btn-light"%>
+        </div>
+      </div>
+      <div class="col-3">
+      </div>
+    </div>
+  </div>
+</div>
+
+
