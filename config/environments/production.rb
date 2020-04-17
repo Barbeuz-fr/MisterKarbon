@@ -64,9 +64,8 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   # ------------------------------------------------------------------------
-  # CONFIG EMAIL (Check Laurent for details - TO UPDATE TO HIDE EMAIL DETAILS)
+  # CONFIG EMAIL (Check Laurent for details)
 
-  # config/environments/production.rb
 
   config.action_mailer.delivery_method = :smtp
   host = 'karbonchain.com' #replace with your own url
