@@ -32,9 +32,8 @@ Rails.application.configure do
   config.active_storage.service = :cloudinary
 
   # ------------------------------------------------------------------------
-  # CONFIG EMAIL (Check Laurent for details - user_name et password à passer en variables d'environnement)
-
-  # config/environments/production.rb
+  # CONFIG EMAIL (Check Laurent for details)
+  # variable d'environnement pour le code GMAIL - App password
 
   config.action_mailer.delivery_method = :smtp
   host = 'karbonchain.com' #replace with your own url
