@@ -45,7 +45,7 @@ Rails.application.configure do
     :port                 => 587,
     :user_name            => ENV["KARBONCHAIN_GMAIL_USERNAME"],
     :password             => ENV["KARBONCHAIN_GMAIL_PASSWORD"],
-    :authentication       => "login", #previous: plain
+    :authentication       => "plain", #alternative: login
     :enable_starttls_auto => true
   }
 

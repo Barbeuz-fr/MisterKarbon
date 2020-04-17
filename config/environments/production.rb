@@ -65,7 +65,7 @@ Rails.application.configure do
 
   # ------------------------------------------------------------------------
   # CONFIG EMAIL (Check Laurent for details)
-
+    # variable d'environnement pour le code GMAIL - App password
 
   config.action_mailer.delivery_method = :smtp
   host = 'karbonchain.com' #replace with your own url
@@ -77,7 +77,7 @@ Rails.application.configure do
     :port                 => 587,
     :user_name            => ENV["KARBONCHAIN_GMAIL_USERNAME"],
     :password             => ENV["KARBONCHAIN_GMAIL_PASSWORD"],
-    :authentication       => "plain",
+    :authentication       => "plain"
     :enable_starttls_auto => true
   }
 
