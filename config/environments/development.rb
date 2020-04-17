@@ -31,12 +31,26 @@ Rails.application.configure do
   #store images with cloudinary
   config.active_storage.service = :cloudinary
 
-  # CONFIG LAURENT EMAIL
-  # ---------------
+  # ------------------------------------------------------------------------
+  # CONFIG EMAIL (Check Laurent for details - user_name et password à passer en variables d'environnement)
 
-  config.action_mailer.delivery_method = :sendmail
+  # config/environments/production.rb
 
-  # ----------
+  config.action_mailer.delivery_method = :smtp
+  host = 'karbonchain.com' #replace with your own url
+  config.action_mailer.default_url_options = { host: host }
+
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => "karbonchain",
+    :password             => ENV["KARBONCHAIN_GMAIL_PASSWORD"],
+    :authentication       => "plain",
+    :enable_starttls_auto => true
+  }
+
+  # -----------------------------------------------------------------------
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
