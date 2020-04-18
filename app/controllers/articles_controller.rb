@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [ :show ]
 
   def index
     @articles = Article.all()
@@ -12,6 +13,7 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new()
+    render :layout => 'home'
   end
 
   def create
@@ -21,15 +23,21 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    @article = Article.find(params[:id])
+    render :layout => 'home'
   end
 
   def update
-  end
-
-  def delete
+    @article = Article.find(params[:id])
+    @article.update(article_params)
+    redirect_to root_path
   end
 
   def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+    # no need for app/views
+    redirect_to root_path
   end
 
   private
@@ -37,4 +45,5 @@ class ArticlesController < ApplicationController
   def article_params
     params.require(:article).permit(:title, :header, :text, :category, :author)
   end
+
 end
