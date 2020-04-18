@@ -29,23 +29,20 @@ gem 'cloudinary', '~> 1.12.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
-
+# Fonction search
 gem 'pg_search', '~> 2.3.0'
-
+# Gestion login
 gem 'devise'
-
+# autoprefixer
 gem 'autoprefixer-rails'
+# Font-awesome
 gem 'font-awesome-sass'
+# Simple form
 gem 'simple_form'
-
+# Faker pour seed
 gem 'faker'
-
 # charts
 gem 'chart-js-rails'
-
-# mail
-gem 'mail'
-
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'

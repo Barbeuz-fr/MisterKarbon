@@ -1,0 +1,14 @@
+<div class="container">
+
+  <h5>Modifier l'article</h5>
+
+  <%= simple_form_for [ @article ] do |f| %>
+    <%= f.input :title %>
+    <%= f.input :header %>
+    <%= f.input :text %>
+    <%= f.input :category %>
+    <%= f.input :author %>
+    <%= f.submit "Publier la mise à jour", class: "btn btn-primary" %>
+  <% end %>
+
+</div>
