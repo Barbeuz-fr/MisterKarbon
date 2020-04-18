@@ -1,0 +1,10 @@
+<div class="container">
+
+  <h1><%= @article.title %></h1>
+  <h5>Par <%= @article.author %></h5>
+  <h4><%= @article.header %></h4>
+  <p><%= @article.text %></p>
+
+  <h1><%= link_to "Retour à la liste des artices", articles_path, class:"btn btn-light"  %></h1>
+
+</div>

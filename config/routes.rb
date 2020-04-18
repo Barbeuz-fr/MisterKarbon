@@ -2,8 +2,13 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
+
+
   # Lien vers formulaire de contact par email
-  resources :contacts, only: [:index, :new, :create]
+  resources :contacts, only: [:new, :create]
+  # Alternative to "resources"
+  # get  "contacts/new", to: "contacts#new", as: :new_contact
+  # post "contacts/new", to: "contacts#create"
 
 
   # creation et destroy de report_scope lors de la creation d'un projet
@@ -38,7 +43,10 @@ Rails.application.routes.draw do
     resources :questions, only: [:new, :create, :destroy, :edit, :update]
   end
 
-# Test orga à plusieurs niveaux
+  # Test orga à plusieurs niveaux
   resources :testorgas, only: [:index]
+
+  # Routes pour les articles
+  resources :articles
 
 end

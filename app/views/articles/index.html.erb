@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Liste des articles</h1>
+  <% @articles.each do |article| %>
+    <h3><%= link_to article.title, article_path(article), class:""  %></h3>
+  <% end %>
+  <br>
+  <h1><%= link_to "Retour à la page d'accueil", root_path, class:"btn btn-light"  %></h1>
+</div>
