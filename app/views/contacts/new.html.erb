@@ -9,36 +9,25 @@
         <div class="pt-1">
           <h5>Des questions? Envie d'une démo? <br>Dites-nous tout!</h5>
           <%= form_for(@contact) do |f| %>
-          <!--   <% if @contact.errors.any? %>
-              <div id="error_explanation">
-                <h3><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
-
-                <ul>
-                <% @contact.errors.full_messages.each do |msg| %>
-                  <li><%= msg %></li>
-                <% end %>
-                </ul>
+            <div class="field mb-3 d-flex justify-content-between">
+              <%= f.text_field :name, placeholder: "Votre nom", style: 'width:35%;' %>
+              <%= f.text_field :email, placeholder: "Votre email", style: 'width:60%' %>
+            </div>
+            <div class="field mb-3">
+              <%= f.text_area :message, placeholder: "Votre message", style: 'width:100%; height: 20vh;'  %>
+            </div>
+            <div class="field mb-3">
+              <%= f.label "M'abonner à la newsletter" %>
+              <%= check_box_tag(:newsletter) %>
+            </div>
+            <div class="d-flex justify-content-between">
+              <%= link_to "Retour à la page d'accueil", root_path, class: "btn btn-light"%>
+              <div class="actions">
+                <%= f.submit "Envoyer", class: 'btn btn-primary'%>
               </div>
-            <% end %>
-           -->
-            <div class="field">
-              <%= f.label :Nom %><br />
-              <%= f.text_field :name %>
-            </div>
-            <div class="field">
-              <%= f.label :Email %><br />
-              <%= f.text_field :email %>
-            </div>
-            <div class="field">
-              <%= f.label :Message %><br />
-              <%= f.text_area :message %>
-            </div>
-            <div class="actions">
-              <%= f.submit "Envoyer"%>
             </div>
           <% end %>
           <br>
-          <%= link_to "Retour à la page d'accueil", root_path, class: "btn btn-light"%>
         </div>
       </div>
       <div class="col-3">
