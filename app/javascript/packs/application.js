@@ -25,6 +25,7 @@ import { initSubmit } from '../plugins/submit';
 import { dropdownSelected } from '../plugins/dropdown_dashboard';
 import { activeQueryDashboard} from '../plugins/tab-dashboard';
 
+
 initAjaxScroll();
 
 document.addEventListener('turbolinks:load', function () {

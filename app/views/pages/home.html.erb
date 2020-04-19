@@ -11,15 +11,15 @@
         <h1>Accélérez votre transition bas-carbone</h1>
         <br>
         <div class="pt-1">
-<!--           <%= link_to "Démarrer", reports_path, class: "home-button"%>
- -->          <%= link_to "Nous contacter", new_contact_path, class: "btn btn-light"%>
+          <%= link_to "En savoir plus", root_path(anchor: "main-content"), class: "home-button"%>
+          <%= link_to "Nous contacter", new_contact_path, class: "btn btn-light"%>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="landing-background-color py-5">
+<div class="landing-background-color py-5" id="main-content">
   <div class="container">
     <div class="row">
       <div class="col-12 landing-background-color my-5 ">
