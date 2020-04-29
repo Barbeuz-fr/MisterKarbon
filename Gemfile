@@ -43,6 +43,8 @@ gem 'simple_form'
 gem 'faker'
 # charts
 gem 'chart-js-rails'
+# WYSIWYG blog editor
+gem 'tinymce-rails'
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'

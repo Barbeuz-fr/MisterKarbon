@@ -1,14 +1,26 @@
+
 <div class="container">
 
   <h5>Ajoutez un article</h5>
 
   <%= simple_form_for [ @article ] do |f| %>
-    <%= f.input :title %>
+    <%= f.input :title, placeholder: "Titre", :class => "tinymce", :rows => 40, :cols => 120 %>
     <%= f.input :header %>
-    <%= f.input :text %>
+    <%= text_area_tag :text, "", :rows => 20, :cols => 120 %>
+    <script type="text/javascript">
+      tinyMCE.init({
+        selector: 'textarea.text'
+      });
+    </script>
     <%= f.input :category %>
     <%= f.input :author %>
     <%= f.submit "Publier l'article", class: "btn btn-primary" %>
+
+
   <% end %>
 
+
 </div>
+
+
+<%= tinymce %>
