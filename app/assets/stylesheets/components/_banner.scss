@@ -14,11 +14,11 @@
 
 .banner h1 {
   margin: 0;
-  color: #1A2980;
-  // text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  //font-size: 40px;
-  font-weight: 300;
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+  font-size: 2.2rem;
   letter-spacing: 0.06rem;
+  text-align: center;
 }
 
 .banner p {
@@ -26,4 +26,21 @@
   color: #1A2980;
   opacity: .7;
   // text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.banner .buttons {
+  text-align: center;
+}
+
+// Passage sur 2 colonnes, réalignement à gauche
+@media (min-width: 992px) {
+  .banner h1 {
+    text-align: left;
+    color: $kc-blue;
+    text-shadow: none;
+  }
+
+  .banner .buttons {
+    text-align: left;
+  }
 }

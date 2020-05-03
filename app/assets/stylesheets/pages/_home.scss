@@ -4,16 +4,28 @@
 //  Background colors
 // ----------------------------------------------------------------------------------
 
-.landing-main-blue {
-  background-color: #1A2980;
+.bg-kc-lightblue {
+  background-color: $kc-lightblue;
 }
 
-.landing-main-blue-shade {
-  background-color: #1A2980;
+.bg-kc-orange {
+  background-color: $kc-orange;
 }
 
-.landing-background-color {
-  background-color: #E0F8F8;
+.bg-kc-yellow {
+  background-color: $kc-yellow;
+}
+
+.bg-kc-pink {
+  background-color: $kc-pink;
+}
+
+.bg-kc-turquoise {
+  background-color: $kc-turquoise;
+}
+
+.bg-kc-blue {
+  background-color: $kc-blue;
 }
 
 // ----------------------------------------------------------------------------------
@@ -21,11 +33,17 @@
 // ----------------------------------------------------------------------------------
 
 .picto-image {
-  width: 80px;
+  width: 4rem;
 }
 
 .main-logo {
-  width: 100%;
+  width: 90%;
+}
+
+@media (min-width: 992px) {
+  .main-logo {
+    width: 100%;
+  }
 }
 
 // ----------------------------------------------------------------------------------
@@ -52,24 +70,38 @@ html{scroll-behavior:smooth};
 }
 
 .differentation-card {
-  height: 320px;
+  //height: 320px;
+  width: 90%;
   background-color: white;
   border-radius: 15px;
-  padding: 2.5vh;
-  margin-left: 0.5vh;
-  margin-right: 0.5vh;
-  margin-bottom: 4vh;
-  justify-text: center;
+  padding: 1rem;
+  margin: 1rem auto;
   text-align:center;
 }
 
-.btn-green {
-  background-color: #26D0CE;
+@media (min-width: 992px) {
+  .differentation-card {
+    height: 280px;
+    width: 100%;
+  }
+}
+
+// ----------------------------------------------------------------------------------
+//  Buttons
+// ----------------------------------------------------------------------------------
+
+.btn-turquoise {
+  background-color: $kc-turquoise;
   color: white;
 }
 
+.btn-lightblue {
+  background-color: $kc-lightblue;
+  color: $kc-blue;
+}
+
 .home-button {
-  background-color: #26D0CE;
+  background-color: $kc-turquoise;
   display: inline-block;
   margin-right: 15px;
   //margin-left: 15px;
@@ -91,62 +123,45 @@ html{scroll-behavior:smooth};
 //  Text classes
 // ----------------------------------------------------------------------------------
 
-.white-text {
-  color: white;
-}
-
 a:hover {
   color: lightgrey;
 }
 
+html {
+  font-size: 100%;
+}
+
+// Voir https://css-tricks.com/snippets/css/fluid-typography/
+html {
+  font-size: calc(14px + (20 - 14) * ((100vw - 300px) / (1600 - 300)));
+}
+
 p {
-  color: #1A2980;
+  color: $kc-blue;
   font-family: 'Poppins';
-  letter-spacing: 0.03rem;
   line-height: 1.7rem;
 }
 
-h1 {
+h1, h2, h3 {
   font-family: Viga;
-  font-size: 5vh;
-  color: #1A2980;
-  font-weight: 300;
+  color: $kc-blue;
 }
 
 h3 {
-  font-family: Viga;
-  font-size: 3vh;
-  font-weight: 300;
-  color: #1A2980;
   letter-spacing: 0.04rem;
   line-height: 2rem;
 }
 
 h5 {
   font-family: 'Poppins';
-  color: #1A2980;
-  font-size: 20px;
-  letter-spacing: 0.05rem;
+  color: $kc-orange;
+  letter-spacing: 0.02rem;
   line-height: 2.3rem;
 }
 
 h6 {
   font-family: 'Poppins';
-  color: #1A2980;
-  letter-spacing: 0.03rem;
-  line-height: 2rem;
+  color: $kc-blue;
+  letter-spacing: 0.02rem;
+  line-height: 1.5rem;
 }
-
-
-@include media-breakpoint-up(md) {
-  h6 {
-    font-size: 25px;
-  }
-}
-
-@include media-breakpoint-up(lg) {
-  h6 {
-    font-size: 20px;
-  }
-}
-
