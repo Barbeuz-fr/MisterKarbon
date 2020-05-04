@@ -1,15 +1,27 @@
 <div class="container">
-  <h1>Liste des articles</h1>
-  <% @articles.each do |article| %>
+  <h2>Ressources</h2>
+  <p>Tous les articles, références et sources pour vous guider dans votre reporting et votre stratégie bas-carbone.</p>
+
+
+  <div class="card-article">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+    <div class="card-article-infos">
+      <h2>Bilan carbone, déclaration extra-financière : quelle réglementation pour votre entreprise?</h2>
+      <p>Tout ce que vous avez toujours voulu savoir sur la réglementation BEGES et DPEF.</p>
+    </div>
+  </div>
+
+
+<!--   <% @articles.each do |article| %>
     <div>
       <h3><%= link_to article.title, article_path(article), class:""  %></h3>
       <p><%= link_to "Edit", edit_article_path(article) %></p>
       <p><%= link_to "Delete", article_path(article), method: :delete %></p>
     </div>
   <% end %>
-  <br>
+ -->  <br>
   <div>
-    <h1><%= link_to "Ajouter un article", new_article_path, class:"btn btn-primary"  %></h1>
-  </div>
+<!--     <h1><%= link_to "Ajouter un article", new_article_path, class:"btn btn-primary"  %></h1>
+ -->  </div>
   <h1><%= link_to "Retour à la page d'accueil", root_path, class:"btn btn-light"  %></h1>
 </div>
