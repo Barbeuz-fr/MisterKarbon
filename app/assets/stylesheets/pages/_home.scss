@@ -36,8 +36,19 @@
   width: 4rem;
 }
 
+.feature-logo {
+  width: 100%;
+}
+
 .main-logo {
   width: 90%;
+  padding-bottom: 20vh;
+}
+
+@media (orientation: landscape) and (max-width: 768px) {
+  .main-logo {
+    padding-bottom: 20%;
+  }
 }
 
 @media (min-width: 992px) {
@@ -79,10 +90,20 @@ html{scroll-behavior:smooth};
   text-align:center;
 }
 
+.feature-description {
+  text-align: center;
+}
+
 @media (min-width: 992px) {
   .differentation-card {
     height: 280px;
     width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .feature-description {
+  text-align: left;
   }
 }
 
@@ -154,7 +175,7 @@ h3 {
 
 h5 {
   font-family: 'Poppins';
-  color: $kc-orange;
+  color: $kc-blue;
   letter-spacing: 0.02rem;
   line-height: 2.3rem;
 }
@@ -164,4 +185,8 @@ h6 {
   color: $kc-blue;
   letter-spacing: 0.02rem;
   line-height: 1.5rem;
+}
+
+.text-kc-orange {
+  color: $kc-orange;
 }
