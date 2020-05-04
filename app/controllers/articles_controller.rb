@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :show, :reglementation_entreprise ]
+  skip_before_action :authenticate_user!, only: [ :show, :index, :reglementation_entreprise ]
 
   def index
     @articles = Article.all()

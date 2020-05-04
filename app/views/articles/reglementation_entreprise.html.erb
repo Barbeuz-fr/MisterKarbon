@@ -1,14 +1,16 @@
 <div class="bg-white">
-  <div class="container article">
+  <div class="container bg-white article">
+
+    <h1><%= link_to "Retour à la page d'accueil", root_path, class:"btn brn-small btn-light"  %></h1>
+
     <!-- Titre -->
     <h2>
-      Bilan carbone, déclaration extra-financière : quelle réglementation pour votre entreprise?
+      Bilan carbone, déclaration extra-financière : <br>quelle réglementation pour votre entreprise?
     </h2>
     <br>
 
 
     <!-- Chapeau -->
-
     <h4>
       BEGES, DPEF, OTI, scope 3… La réglementation pour le reporting des émissions de gaz à effet de serre peut paraître complexe. On vous aide à y voir plus clair!
     </h4>
@@ -16,19 +18,20 @@
 
     <!-- Debut article-->
     <h5><strong>
-      Bilan Carbone, BEGES,  DPEF: quelles différences?
+      Bilan carbone, BEGES,  DPEF: quelles différences?
     </strong></h5>
 
     <!-- Illustration -->
-    <div>
-      <%= image_tag 'articles/reglementation-entreprise/beges-dpef-meme.png', class: "illustration"%>
+    <div class="centered-image">
+      <%= image_tag 'articles/reglementation-entreprise/beges-dpef-meme2.png', class: "illustration"%>
       <p><small><i>Responsable RSE découvrant la réglementation française pour le reporting carbone</i></small></p>
     </div>
 
     <br>
 
     <p>
-      Au commencement était le <strong>BEGES</strong>, c’est à dire le <i>Bilan des Émissions de Gaz à Effet de Serre</i>, plus communément appelé <strong>bilan carbone</strong>. Cette réglementation pionnière créée en 2010 oblige les entreprises de plus de 500 salariés à faire un bilan de leurs émissions tous les 4 ans et les déclarer sur le site de l’ADEME.
+      Au commencement était le <strong>BEGES</strong>, c’est à dire le <i>Bilan des Émissions de Gaz à Effet de Serre</i>, plus communément appelé <strong>bilan carbone</strong>.
+      Cette réglementation pionnière créée en 2010 oblige les entreprises de plus de 500 salariés à faire un bilan de leurs émissions tous les 4 ans et les déclarer sur le <a href="https://bilans-ges.ademe.fr/fr">site de l’ADEME</a>.
     </p>
 
     <p>
@@ -62,21 +65,21 @@
           <h5 class="p-0">
             <i class="fas fa-sitemap"></i>
           </h5>
-          <h5 class="bg-kc-lightblue">
+          <h5 class="">
             Entités
           </h5>
         </div>
         <div class="col-5">
           <p>
-            Toutes personne morale de droit privé de plus de 500 salariés
+            Toute personne morale de droit privé de plus de 500 salariés
           </p>
         </div>
         <div class="col-5">
           <p>
-            Les sociétés côtées avec un chiffre d’affaires >40m€  et un bilan >20m€
+            Les <strong>sociétés côtées</strong> avec un chiffre d’affaires >40m€  et un bilan >20m€
           </p>
           <p>
-            Les sociétés non-côtées avec un chiffre d’affaires ou un bilan >100m€
+            Les <strong>sociétés non-côtées</strong> avec un chiffre d’affaires ou un bilan >100m€
           </p>
           <p>
             NB : les SAS ne sont pas concernées
@@ -90,18 +93,26 @@
           <h5 class="p-0">
             <i class="fas fa-smog"></i>
           </h5>
-          <h5 class="bg-kc-lightblue">
+          <h5 class="">
             Emissions
           </h5>
         </div>
         <div class="col-5 smaller-text top-border">
           <p>
-            Les émissions directes, et indirectes associées à la consommation d'électricité, de chaleur ou de vapeur (scope 1 et 2)
+            <strong>Scopes 1 et 2 : </strong>
+            <br>
+            <i>
+              "émissions directes, et indirectes associées à la consommation d'électricité, de chaleur ou de vapeur"
+            </i>
           </p>
         </div>
         <div class="col-5 smaller-text top-border">
           <p>
-            <i>"Les postes significatifs d'émissions générés du fait de l'activité de la société, notamment par l'usage des biens et services qu'elle produit”</i> (scope 1, 2 et 3)
+            <strong>Principales émissions des scopes 1, 2 et 3 : </strong>
+            <br>
+            <i>
+              "postes significatifs d'émissions générés du fait de l'activité de la société, notamment par l'usage des biens et services qu'elle produit”
+            </i>
           </p>
         </div>
       </div>
@@ -112,18 +123,18 @@
           <h5 class="p-0">
             <i class="far fa-clock"></i>
           </h5>
-          <h5 class="bg-kc-lightblue">
+          <h5 class="">
             Fréquence
           </h5>
         </div>
         <div class="col-5 smaller-text top-border">
           <p>
-            Tous les ans
+            Tous les 4 ans
           </p>
         </div>
         <div class="col-5 smaller-text top-border">
           <p>
-            Tous les 4 ans
+            Tous les ans
           </p>
         </div>
       </div>
@@ -134,7 +145,7 @@
           <h5 class="p-0">
             <i class="fas fa-globe-europe"></i>
           </h5>
-          <h5 class="bg-kc-lightblue">
+          <h5 class="">
             Périmètre géographique
           </h5>
         </div>
@@ -156,7 +167,7 @@
           <h5 class="p-0">
             <i class="fas fa-calculator"></i>
           </h5>
-          <h5 class="bg-kc-lightblue">
+          <h5 class="">
             Méthode de calcul
           </h5>
         </div>
@@ -173,7 +184,7 @@
           <h5 class="p-0">
             <i class="fas fa-user-check"></i>
           </h5>
-          <h5 class="bg-kc-lightblue">
+          <h5 class="">
             Audit et contrôle
           </h5>
         </div>
@@ -198,13 +209,13 @@
           <h5 class="p-0">
             <i class="fas fa-upload"></i>
           </h5>
-          <h5 class="bg-kc-lightblue">
+          <h5 class="">
             Publication
           </h5>
         </div>
         <div class="col-5 smaller-text top-border">
           <p>
-            Sur le site dédié de l’ADEME
+            Sur le <a href="https://bilans-ges.ademe.fr/fr">site dédié de l’ADEME</a>
           </p>
         </div>
         <div class="col-5 smaller-text top-border">
@@ -245,22 +256,22 @@
     Dans la pratique  :
     <ul>
       <li>
-        <strong><i class="fas fa-database"></i> Types d'informations : </strong>La DPEF couvre un périmètre bien plus large que le bilan carbone: modèle d’affaire, risques et impacts sur l’ensemble des paramètres de soutenabilité (carbone, eau, déchets…). Qui peut le plus peut le moins!
+        <strong><i class="fas fa-database"></i> Types d'informations : </strong>La DPEF couvre un périmètre bien plus large que le bilan carbone : modèle d’affaire, risques et impacts sur l’ensemble des paramètres de soutenabilité (carbone, eau, déchets…). Qui peut le plus peut le moins!
       </li>
       <li>
-        <strong><i class="fas fa-sitemap"></i> Entités couvertes: </strong>la DPEF est réalisée au niveau du groupe, tandis que le bilan carbone doit être réalisé pour chaque entité juridique de plus de 500 employés (il peut donc y en avoir plusieurs pour un même groupe). Néanmoins, la DPEF est désormais suffisante, et il n’est plus nécessaire de déclarer un bilan carbone séparé pour chaque entité, le reporting au niveau groupe suffit.
+        <strong><i class="fas fa-sitemap"></i> Entités couvertes: </strong>la DPEF est réalisée au niveau du groupe, tandis que le bilan carbone doit être réalisé pour chaque entité juridique de plus de 500 employés (il peut donc y en avoir plusieurs pour un même groupe). Néanmoins, la DPEF est désormais suffisante, et il n’est plus nécessaire de déclarer un bilan carbone séparé pour chaque entité : reporting au niveau groupe suffit.
       </li>
       <li>
-        <strong><i class="fas fa-smog"></i> Émissions : </strong>La DPEF couvre les “postes significatifs”, dont certains peuvent être indirects : achats, utilisation des produits vendus… (le “scope 3”). Dans les faits, une entreprise mesure plus facilement ses émissions directes (scope 1) et indirectes liées à l’énergie (scope 2), et il est attendu qu’elle les fournisse dans sa DPEF.
+        <strong><i class="fas fa-smog"></i> Émissions : </strong>La DPEF couvre les “postes significatifs”, dont certains peuvent être indirects : achats, utilisation des produits vendus… (le “scope 3”). Dans les faits, une entreprise mesure plus facilement ses émissions directes (scope 1) et indirectes liées à l’énergie (scope 2), et il est attendu qu’elle les fournisse dans sa DPEF. La DPEF couvre donc a minima les émissions obligatoires pour un bilan carbone (scope 1 et 2)
       </li>
       <li>
-        <strong><i class="far fa-clock"></i> Fréquence : </strong>La DPEF est annuelle, donc plus fréquente que le bilan carbone. Ses données peuvent donc être utilisée pour la déclaration BEGES
+        <strong><i class="far fa-clock"></i> Fréquence : </strong>La DPEF est annuelle, donc plus fréquente que le bilan carbone. Ses données peuvent donc être utilisée pour la déclaration BEGES.
       </li>
       <li>
-        <strong><i class="fas fa-route"></i> Plan d’action : </strong>Le plan d’action du DPEF est valable pour le BEGES : pas besoin de produire un document spécifique pour le BEGES
+        <strong><i class="fas fa-route"></i> Plan d’action : </strong>Le plan d’action du DPEF est valable pour le BEGES : pas besoin de produire un document spécifique pour le BEGES.
       </li>
       <li>
-        <strong><i class="fas fa-upload"></i> Publication : </strong>L’entreprise doit toujours déclarer son bilan carbone sur le site de l’ADEME, en plus de la DPEF inclut chaque année dans son document de référence
+        <strong><i class="fas fa-upload"></i> Publication : </strong>L’entreprise doit toujours déclarer son bilan carbone sur le site de l’ADEME, en plus de la DPEF inclut chaque année dans son document de référence.
       </li>
     </ul>
     </p>

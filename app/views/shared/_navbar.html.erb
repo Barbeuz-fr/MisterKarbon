@@ -10,8 +10,11 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "My projects", reports_path, class: "nav-link" %>
+        <li class="nav-item">
+          <%= link_to "Ressources", articles_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Mes projects", reports_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
            <%# link_to "Messages", "#", class: "nav-link" %>
@@ -24,6 +27,9 @@
           </div>
         </li>
       <% else %>
+        <li class="nav-item">
+          <%= link_to "Ressources", articles_path, class: "nav-link" %>
+        </li>
         <li class="nav-item">
           <%= link_to "Login", new_user_session_path, class: "nav-link" %>
         </li>
