@@ -1,0 +1,83 @@
+// General layout
+  .article {
+    width: 75%;
+  }
+
+// -------------------------------------------------------------------------
+// Polices de caractère
+// -------------------------------------------------------------------------
+
+// Titre
+.article h2 {
+  font-size: 1.75rem;
+}
+
+// Chapeau
+.article h4 {
+  font-size: 1.25rem;
+}
+
+// Sous-titre
+.article h5 {
+  font-size: 1rem;
+  color: #1A2980;
+}
+
+// Texte
+.article p {
+  font-size: 0.9rem;
+  color: #293241;
+}
+
+// Liste
+.article li {
+  color: #293241;
+  font-size: 0.9rem;
+  line-height: 1.7rem;
+}
+
+// -------------------------------------------------------------------------
+// Tableau
+
+// -------------------------------------------------------------------------
+
+.article .table-header {
+  background-color: #E0F8F8;
+}
+
+.article .first-column {
+  background-color: #E0F8F8;
+  display:flex;
+  align-items: center;
+}
+
+.article .first-column h5 {
+  padding-left: 0.5rem;
+  padding-right: 0.2rem;
+}
+
+.top-border {
+  border-color:#E0F8F8;
+  border-style: solid;
+  border-bottom: 0px;
+  border-left: 0px;
+  border-right: 0px;
+}
+
+// Image
+
+.article .illustration {
+  width: 70%;
+}
+
+.smaller-text p {
+  font-size: 0.8rem;
+  line-height: 1.6rem;
+}
+
+.smaller-text h5 {
+  font-size: 0.8rem;
+  line-height: 1.6rem;
+  display: flex;
+  align-items: center;
+}

@@ -11,6 +11,10 @@ class ArticlesController < ApplicationController
     render :layout => 'home'
   end
 
+  def reglementation_entreprise
+    render :layout => 'home'
+  end
+
   def new
     @article = Article.new()
     render :layout => 'home'
