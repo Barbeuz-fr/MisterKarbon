@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :show ]
+  skip_before_action :authenticate_user!, only: [ :show, :reglementation_entreprise ]
 
   def index
     @articles = Article.all()
@@ -8,6 +8,10 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    render :layout => 'home'
+  end
+
+  def reglementation_entreprise
     render :layout => 'home'
   end
 

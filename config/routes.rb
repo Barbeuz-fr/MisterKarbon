@@ -49,4 +49,8 @@ Rails.application.routes.draw do
   # Routes pour les articles
   resources :articles
 
+  # Routes directes vers articles
+  get 'reglementation_entreprise', to: 'articles#reglementation_entreprise'
+
+
 end
