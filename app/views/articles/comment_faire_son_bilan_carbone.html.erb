@@ -9,7 +9,9 @@
         </h1>
         <!-- Chapeau -->
         <p>
-          Le bilan carbone, c’est une obligation réglementaire, mais c’est surtout la première étape pour construire sa stratégie bas-carbone. Alors, comment le réaliser pour faire de cet exercice un outil fédérateur et pas une simple collecte de données? Suivez le guide!
+          Le bilan carbone, c’est une obligation réglementaire, mais c’est surtout la première étape de sa stratégie bas-carbone.
+          <br>
+          Comment le réaliser pour faire de cet exercice un outil fédérateur et pas une simple collecte de données? Suivez le guide!
         </p>
       </div>
     </div>
@@ -25,14 +27,26 @@
         <h4>
           1. Nommer un responsable
         </h4>
-        <p>
-          Première étape : nommer un responsable en charge de la réalisation du bilan carbone.
-          Il devra piloter l’ensemble de l’exercice, notamment coordonner la collecte des données à travers l’entreprise et s’assurer que les bons leviers sont identifiés dans le plan d’action.
-        </p>
+        <div class="row">
 
-        <p>
-          Même dans le cas où vous êtes accompagnés par un bureau d’étude ou un cabinet de conseil, il est indispensable d’avoir un responsable en interne pour que votre entreprise s’approprie les résultats et puisse mettre en oeuvre le plan d’action.
-        </p>
+          <div class="col-8">
+            <p>
+              Première étape : nommer un responsable en charge de la réalisation du bilan carbone.
+              <br>
+              Il devra piloter l’ensemble de l’exercice, notamment coordonner la collecte des données à travers l’entreprise et s’assurer que les bons leviers sont identifiés dans le plan d’action.
+            </p>
+
+            <p>
+              Même dans le cas où vous êtes accompagnés par un bureau d’étude ou un cabinet de conseil, il est indispensable d’avoir un responsable en interne pour que votre entreprise s’approprie les résultats et puisse mettre en oeuvre le plan d’action.
+            </p>
+          </div>
+
+          <div class="col-4">
+            <div class="centered-image mb-1">
+              <%= image_tag 'articles/comment-faire-bilan/I-want-you-bilan-carbone.png', class: "illustration-35vh"%>
+            </div>
+          </div>
+        </div>
 
 
         <!-- Paragraphe-->
@@ -45,35 +59,39 @@
         </h5>
 
         <p>
-          Le bilan carbone fait l’inventaire des émissions sur une période et pour une organisation donnée. Il faut donc définir cet inventaire pour trois éléments :
+          Le bilan carbone fait l’inventaire des émissions sur une période et pour une organisation donnée.
+          Il faut donc définir au préalable trois éléments :
         </p>
 
         <ol>
           <li>
-            Le type d’émissions :
+            Le <span class="bg-kc-lightblue"><strong>type d’émissions</strong></span> :
             <ul>
               <li>
                 Pour un BEGES réglementaire, les émissions directes (scope 1) et indirectes liées à l’énergie (scope 2) sont obligatoires.
               </li>
               <li>
-                Pour la DPEF, les postes “significatifs”  doivent être couverts, donc potentiellement des émissions indirectes (scope 3) tels les achats ou le transport.
-                L’ADEME propose des guides sectoriels qui précisent quelles émissions doivent être couvertes par secteur.
+                Pour la DPEF, les postes “significatifs”  doivent être couverts, donc potentiellement des émissions indirectes (scope 3) tels que les achats ou le transport.
+                <br>
+                L’ADEME propose des <a href="https://bilans-ges.ademe.fr/fr/ressource/guide-sectoriel-list">guides sectoriels</a> qui précisent quelles émissions doivent être couvertes par secteur.
               </li>
             </ul>
           </li>
+          <br>
           <li>
-            Le périmètre organisationnel et géographique : un bilan carbone couvre les émissions de l’entreprise, avec une subtilité réglementaire :
+            Le <span class="bg-kc-lightblue"><strong>périmètre organisationnel et géographique</strong></span> : un bilan carbone couvre les émissions de l’entreprise, avec une subtilité réglementaire :
             <ul>
               <li>
                 Le BEGES s’applique à chaque entité juridique de plus de 500 salariés (par exemple une filiale), pour les émissions en France uniquement.
               </li>
               <li>
-                La DPEF couvre l’ensemble du groupe et des émissions dans le monde. Et elle se substitue au BEGES si les filiales sont actives dans le même secteur [Détailler]
+                La DPEF couvre l’ensemble du groupe et des émissions dans le monde. Et elle se substitue au BEGES si les filiales sont actives dans le même secteur.
               </li>
             </ul>
           </li>
+          <br>
           <li>
-            La période de référence : typiquement, on prend l’exercice comptable précédent pour pouvoir s’appuyer sur les données de reporting existantes
+            La <span class="bg-kc-lightblue"><strong>période de référence</strong></span> : typiquement, on prend l’exercice comptable précédent pour pouvoir s’appuyer sur les données de reporting existantes
           </li>
         </ol>
 
@@ -89,7 +107,18 @@
           La plupart des directions sont mobilisées.
         </p>
 
+        <div class="centered-image mb-5">
+          <%= image_tag 'articles/comment-faire-bilan/travolta.gif', class: "illustration"%>
+          <div class="mt-3">
+            <p><small><i>
+              Responsable bilan carbone sans contributeurs métiers
+            </i></small></p>
+          </div>
+        </div>
 
+
+
+        <!-- TO DO - tableau des contributeurs et postes types -->
         <!-- Paragraphe-->
         <h4>
           3. Collecter les données et calculer son empreinte
@@ -99,12 +128,21 @@
           Pour calculer l’empreinte carbone de son entreprise, il n’y a qu’une formule (simple!) à retenir :
         </p>
 
+        <div class="text-center">
+          <p>
+            <span class="bg-kc-lightblue"><strong>Donnée d’activité </strong></span>
+              x
+            <span class="bg-kc-lightblue"><strong>Facteur d’émission</strong></span>
+          </p>
+        </div>
+
         <p>
-          Donnée d’activité x Facteur d’émission
-        </p>
           Par exemple, pour l’empreinte carbone de l’électricité consommée, on prend la consommation (en kWh) et on la multiplie par le facteur d’émission (en kgCO2/kWh) fourni par l’ADEME.
+        </p>
         <p>
-          Tous les facteurs d’émissions standards sont accessibles gratuitement sur le site de l’ADEME, et bien sûr intégrés dans KarbonChain. Si vous avez des facteurs spécifiques, vous pouvez les ajouter pour gagner en précision.
+          Tous les facteurs d’émissions standards sont <a href="https://www.bilans-ges.ademe.fr/">accessibles gratuitement sur le site de l’ADEME</a>, et bien sûr intégrés dans KarbonChain. Si vous avez des facteurs spécifiques, vous pouvez les ajouter pour gagner en précision.
+        </p>
+        <p>
           Pour les données d’activités, c’est là que les contributeurs sont clés : ce sont eux qui ont accès aux données dans l’entreprise et sauront les renseigner.
         </p>
 
@@ -121,20 +159,20 @@
         </p>
 
         <p>
-          Quatre principes pour un plan de réduction d’émissions réussi :
+          <span class="bg-kc-lightblue"><strong>Quatre principes</strong></span> pour un plan de réduction d’émissions réussi :
         </p>
         <ol>
           <li>
-            Prioriser les postes d’émissions les plus importants, même si cela peut être des postes d’émission plus complexes (ex: logistique, achats). Souvent, réduire ses émissions, c’est être plus efficace, donc faire des économies.
+            <span class="bg-kc-lightblue"><strong>Prioriser les postes d’émissions</strong></span> les plus importants, même si cela peut être des postes d’émission plus complexes (ex: logistique, achats). Souvent, réduire ses émissions, c’est être plus efficace, donc faire des économies.
           </li>
           <li>
-            Identifier pour chaque action un responsable métier. Car seul lui pourra porter l’action opérationnellement.
+            <span class="bg-kc-lightblue"><strong>Identifier un responsable métier pour chaque action.</strong></span> Car seul lui pourra porter l’action opérationnellement.
           </li>
           <li>
-            Décliner en indicateur opérationnel chaque objectif de réduction. Par exemple : “augmenter le taux de remplissage des camions de 10%”, “mener des travaux d’isolation sur la moitié du parc immobilier”, “diminuer la consommation d’énergie de nos produits de 10%”, etc.
+            <span class="bg-kc-lightblue"><strong>Décliner en indicateur opérationnel</strong></span> chaque objectif de réduction. Par exemple : “augmenter le taux de remplissage des camions de 10%”, “mener des travaux d’isolation sur la moitié du parc immobilier”, “diminuer la consommation d’énergie de nos produits de 10%”, etc.
           </li>
           <li>
-            Rendre compte de l’avancement à votre direction et communiquer en interne.
+            <span class="bg-kc-lightblue"><strong>Rendre compte de l’avancement</strong></span> à votre direction et communiquer en interne.
           </li>
         </ol>
 
