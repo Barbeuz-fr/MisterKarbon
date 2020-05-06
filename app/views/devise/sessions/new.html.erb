@@ -1,7 +1,7 @@
 <div class="log-in-background">
   <div class="container d-flex justify-content-center">
-    <div class="log-in-card col-5">
-    <h2>Log in</h2>
+    <div class="log-in-card col-12 col-sm-8 col-lg-6">
+    <h2 class="text-center mb-4">Accédez à votre espace</h2>
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-inputs">
         <%= f.input :email,
@@ -13,7 +13,7 @@
                     input_html: { autocomplete: "current-password" } %>
       </div>
 
-          <%= f.button :submit, "Log in", class: "btn btn-primary mt-3 mb-5" %>
+          <%= f.button :submit, "Je me connecte", class: "btn btn-turquoise mt-3 mb-5" %>
 
       <% end %>
 

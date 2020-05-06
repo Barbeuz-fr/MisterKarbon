@@ -158,9 +158,8 @@ html {
 }
 
 p {
-  color: $kc-blue;
+  color: $kc-black;
   font-family: 'Poppins', sans-serif;
-  line-height: 1.7rem;
 }
 
 h1, h2, h3 {
@@ -189,4 +188,8 @@ h6 {
 
 .text-kc-orange {
   color: $kc-orange;
+}
+
+.text-kc-blue {
+  color: $kc-blue;
 }
