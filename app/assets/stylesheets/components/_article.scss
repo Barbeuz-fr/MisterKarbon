@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------
-// Article product (from )
+// Article product (adapted Wagon UI kitt)
 
 .cards {
   display: grid;
@@ -30,7 +30,11 @@
   padding: 1rem;
 }
 
+.card-image {
+height: 10vh;
+}
 
+// ---------------------------------------------------------------------
 
 
 // General layout article
@@ -42,6 +46,7 @@
 .centered-image {
   text-align: center;
 }
+
 // -------------------------------------------------------------------------
 // Polices de caractère
 // -------------------------------------------------------------------------
@@ -113,6 +118,11 @@
 .article .illustration {
   width: 100%;
 }
+
+.article .illustration-35vh {
+  height: 35vh;
+}
+
 
 @media (min-width: 768px) {
   .article .illustration {
