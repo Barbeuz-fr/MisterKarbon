@@ -4,49 +4,39 @@
 .cards {
   display: grid;
   grid-template-column: 1fr 1fr;
-  grid-gap: 16px;
+  grid-gap: 1rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 .card-article {
   overflow: hidden;
-  height: 200px;
+  //height: 200px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  display: flex;
+  //display: flex;
   align-items: center;
+  border-radius: 5px;
+
 }
 
 .card-article img {
-  height: 100%;
-  width: 25%;
+  //height: 100%;
+  width: 100%;
   object-fit: cover;
 }
 
-.card-article h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.card-article p {
-  font-size: 12px;
-  line-height: 1.4;
-  opacity: .7;
-  margin-bottom: 0;
-  margin-top: 8px;
-}
-
 .card-article .card-article-infos {
-  padding: 16px;
+  padding: 1rem;
 }
 
 
 
 
 // General layout article
-  .article {
-    width: 75%;
-  }
+.article {
+  //width: 75%;
+}
 
 
 .centered-image {
@@ -56,35 +46,35 @@
 // Polices de caractère
 // -------------------------------------------------------------------------
 
-// Titre
-.article h2 {
-  font-size: 1.75rem;
-}
+// // Titre
+// .article h2 {
+//   font-size: 1.75rem;
+// }
 
-// Chapeau
-.article h4 {
-  font-size: 1.25rem;
-}
+// // Chapeau
+// .article h4 {
+//   font-size: 1.25rem;
+// }
 
-// Sous-titre
-.article h5 {
-  font-size: 1rem;
-  color: #1A2980;
-}
+// // Sous-titre
+// .article h5 {
+//   font-size: 1rem;
+//   color: #1A2980;
+// }
 
-// Texte
-.article p {
-  font-size: 0.9rem;
-  color: #293241;
-}
+// // Texte
+// .article p {
+//   font-size: 0.9rem;
+//   color: #293241;
+// }
 
-// Liste
-.article li {
-  color: #293241;
-  font-size: 0.9rem;
-  line-height: 1.7rem;
-  margin-bottom: 1rem;
-}
+// // Liste
+// .article li {
+//   color: #293241;
+//   font-size: 0.9rem;
+//   line-height: 1.7rem;
+//   margin-bottom: 1rem;
+// }
 
 .article a {
   color: #1A2980;
@@ -96,11 +86,11 @@
 // -------------------------------------------------------------------------
 
 .article .table-header {
-  background-color: #E0F8F8;
+  background-color: $kc-lightblue;
 }
 
 .article .first-column {
-  background-color: #E0F8F8;
+  background-color: $kc-lightblue;
   display:flex;
   align-items: center;
 }
@@ -111,7 +101,7 @@
 }
 
 .top-border {
-  border-color:#E0F8F8;
+  border-color:$kc-lightblue;
   border-style: solid;
   border-bottom: 0px;
   border-left: 0px;
@@ -121,7 +111,13 @@
 // Image
 
 .article .illustration {
-  width: 70%;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .article .illustration {
+    width: 70%;
+  }
 }
 
 .smaller-text p {

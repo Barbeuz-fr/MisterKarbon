@@ -96,7 +96,7 @@ html{scroll-behavior:smooth};
 
 @media (min-width: 992px) {
   .differentation-card {
-    height: 280px;
+    height: 250px;
     width: 100%;
   }
 }
@@ -154,13 +154,13 @@ html {
 
 // Voir https://css-tricks.com/snippets/css/fluid-typography/
 html {
-  font-size: calc(14px + (20 - 14) * ((100vw - 300px) / (1600 - 300)));
+  font-size: calc(14px + (18 - 14) * ((100vw - 300px) / (1600 - 300)));
 }
 
-p {
-  color: $kc-blue;
+p, li {
+  color: $kc-black;
   font-family: 'Poppins', sans-serif;
-  line-height: 1.7rem;
+  //line-height: 1.7rem;
 }
 
 h1, h2, h3 {
@@ -171,6 +171,13 @@ h1, h2, h3 {
 h3 {
   letter-spacing: 0.04rem;
   line-height: 2rem;
+}
+
+h4 {
+  font-family: 'Poppins', sans-serif;
+  color: $kc-blue;
+  letter-spacing: 0.02rem;
+  line-height: 2.3rem;
 }
 
 h5 {
