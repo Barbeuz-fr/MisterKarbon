@@ -1,61 +1,62 @@
-<div class="bg-white">
-  <div class="container bg-white article">
+<div class="bg-kc-lightblue py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <%= link_to "< Retour aux articles", articles_path, class:"btn btn-small btn-light"  %>
+        <!-- Titre -->
+        <h1 class="my-4">
+          Bilan carbone, déclaration extra-financière : quelle réglementation pour votre entreprise ?
+        </h1>
+        <!-- Chapeau -->
+        <p>
+          BEGES, DPEF, OTI, scope 3… La réglementation pour le reporting des émissions de gaz à effet de serre peut paraître complexe. On vous aide à y voir plus clair!
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <h1><%= link_to "Retour à la page d'accueil", root_path, class:"btn brn-small btn-light"  %></h1>
+<div class="bg-white py-5">
+  <div class="container article">
+    <div class="row justify-content-center mb-5">
+      <div class="col-12 col-lg-8">
+        <!-- Illustration -->
+        <div class="centered-image mb-5">
+          <%= image_tag 'articles/reglementation-entreprise/beges-dpef-meme2.png', class: "illustration"%>
+          <p><small><i>Responsable RSE découvrant la réglementation française pour le reporting carbone</i></small></p>
+        </div>
 
-    <!-- Titre -->
-    <h2>
-      Bilan carbone, déclaration extra-financière : <br>quelle réglementation pour votre entreprise?
-    </h2>
-    <br>
+        <!-- Debut article-->
+        <h4>
+          Bilan carbone, BEGES,  DPEF : quelles différences?
+        </h4>
+        <p>
+          Au commencement était le <span class="bg-kc-lightblue"><strong>BEGES</strong></span>, c’est à dire le <i>Bilan des Émissions de Gaz à Effet de Serre</i>, plus communément appelé <span class="bg-kc-lightblue"><strong>bilan carbone</strong></span>.
+          Cette réglementation pionnière créée en 2010 oblige les entreprises de plus de 500 salariés à faire un bilan de leurs émissions tous les 4 ans et les déclarer sur le <a href="https://bilans-ges.ademe.fr/fr">site de l’ADEME</a>.
+        </p>
 
+        <p>
+          Puis vint la <span class="bg-kc-lightblue"><strong>DPEF</strong></span> - <i>Déclaration de Performance Extra-Financière</i>. Mise en place avec la Loi de Transition Energétique, elle oblige les entreprises d’une certaine taille à faire chaque année l’inventaire de leurs “postes significatifs d’émissions” et de les publier dans leur document de référence. Cette réglementation est la transposition d’une directive européenne de 2014 sur la transparence et la publication d’informations extra-financières.
+        </p>
 
-    <!-- Chapeau -->
-    <h4>
-      BEGES, DPEF, OTI, scope 3… La réglementation pour le reporting des émissions de gaz à effet de serre peut paraître complexe. On vous aide à y voir plus clair!
-    </h4>
-    <br>
-
-    <!-- Debut article-->
-    <h5><strong>
-      Bilan carbone, BEGES,  DPEF: quelles différences?
-    </strong></h5>
-
-    <!-- Illustration -->
-    <div class="centered-image">
-      <%= image_tag 'articles/reglementation-entreprise/beges-dpef-meme2.png', class: "illustration"%>
-      <p><small><i>Responsable RSE découvrant la réglementation française pour le reporting carbone</i></small></p>
+        <p>
+          BEGES et DPEF : deux réglementations qui se recouvrent donc en partie, mais diffèrent sur de nombreux points. Un tableau n’est pas de trop pour y voir plus clair.
+        </p>
+      </div>
     </div>
 
-    <br>
-
-    <p>
-      Au commencement était le <strong>BEGES</strong>, c’est à dire le <i>Bilan des Émissions de Gaz à Effet de Serre</i>, plus communément appelé <strong>bilan carbone</strong>.
-      Cette réglementation pionnière créée en 2010 oblige les entreprises de plus de 500 salariés à faire un bilan de leurs émissions tous les 4 ans et les déclarer sur le <a href="https://bilans-ges.ademe.fr/fr">site de l’ADEME</a>.
-    </p>
-
-    <p>
-      Puis vint la <strong>DPEF</strong> - <i>Déclaration de Performance Extra-Financière</i>. Mise en place avec la Loi de Transition Energétique, elle oblige les entreprises d’une certaine taille à faire chaque année l’inventaire de leurs “postes significatifs d’émissions” et de les publier dans leur document de référence. Cette réglementation est la transposition d’une directive européenne de 2014 sur la transparence et la publication d’informations extra-financières.
-    </p>
-
-    <br>
-
-    <p>
-      BEGES et DPEF : deux réglementations qui se recouvrent donc en partie, mais diffèrent sur de nombreux points. Un tableau n’est pas de trop pour y voir plus clair.
-    </p>
 
     <!-- Tableau de comparatif -->
     <div class="container">
       <!-- Header tableau -->
-      <div class="row smaller-text">
+      <div class="row smaller-text align-items-center">
         <div class="col-2">
-
         </div>
         <div class="col-5 table-header">
-          <h5>Bilan carbone (BEGES)</h5>
+          <h5>BEGES</h5>
         </div>
         <div class="col-5 table-header">
-          <h5>Déclaration de performance <br>extra-financière (DPEF)</h5>
+          <h5>DPEF</h5>
         </div>
       </div>
 
@@ -65,7 +66,7 @@
           <h5 class="p-0">
             <i class="fas fa-sitemap"></i>
           </h5>
-          <h5 class="">
+          <h5>
             Entités
           </h5>
         </div>
@@ -76,10 +77,10 @@
         </div>
         <div class="col-5">
           <p>
-            Les <strong>sociétés côtées</strong> avec un chiffre d’affaires >40m€  et un bilan >20m€
+            Les <strong>sociétés côtées</strong> avec un CA >40m€  et un bilan >20m€
           </p>
           <p>
-            Les <strong>sociétés non-côtées</strong> avec un chiffre d’affaires ou un bilan >100m€
+            Les <strong>sociétés non-côtées</strong> avec un CA ou un bilan >100m€
           </p>
           <p>
             NB : les SAS ne sont pas concernées
@@ -229,64 +230,71 @@
 
     <br>
 
-    <p>
-      Deux remarques pour compléter cette comparaison :
-      <ul>
-        <li>
-          La DPEF a un périmètre beaucoup plus large que le bilan carbone : l’entreprise doit décrire son modèle d’affaires, l’ensemble des risques et impacts sur l’environnement (carbone, eau, déchets…).
-        </li>
-        <li>
-          Le bilan carbone et la DPEF requièrent tous deux de décrire le “plan d’action” pour réduire les émissions
-        </li>
-      </ul>
-    </p>
+    <div class="row justify-content-center my-5">
+      <div class="col-12 col-lg-8">
+        <p>
+          Deux remarques pour compléter cette comparaison :
+          <ul>
+            <li>
+              La DPEF a un périmètre beaucoup plus large que le bilan carbone : l’entreprise doit décrire son modèle d’affaires, l’ensemble des risques et impacts sur l’environnement (carbone, eau, déchets…).
+            </li>
+            <li>
+              Le bilan carbone et la DPEF requièrent tous deux de décrire le “plan d’action” pour réduire les émissions
+            </li>
+          </ul>
+        </p>
 
-    <br>
+        <br>
 
-    <h5><strong>
-      Quelle complémentarité entre bilan carbone et déclaration extra-financière?
-    </strong></h5>
+        <h4>
+          Quelle complémentarité entre bilan carbone et déclaration extra-financière?
+        </h4>
 
-    <p>
-      Admettons que mon entreprise soit non-cotée, avec un chiffre d’affaires supérieur à 100 millions d’euros et emploie plus de 500 personnes : je dois donc réaliser un bilan carbone (BEGES) et une déclaration de performance extra-financière. Puis-je “fusionner” les deux? Est-ce que la DPEF ne recouvre pas déjà les obligations du bilan carbone?
-    </p>
+        <p>
+          Admettons que mon entreprise soit non-cotée, avec un chiffre d’affaires supérieur à 100 millions d’euros et emploie plus de 500 personnes : je dois donc réaliser un bilan carbone (BEGES) et une déclaration de performance extra-financière. Puis-je “fusionner” les deux? Est-ce que la DPEF ne recouvre pas déjà les obligations du bilan carbone?
+        </p>
 
-    <p>
-    Globalement, il est possible de se limiter aux éléments produits dans la DPEF, si celle-ci comprend bien la mesure des émissions de gaz à effet de serre et un plan d’action pour les réduire.
-    Dans la pratique  :
-    <ul>
-      <li>
-        <strong><i class="fas fa-database"></i> Types d'informations : </strong>La DPEF couvre un périmètre bien plus large que le bilan carbone : modèle d’affaire, risques et impacts sur l’ensemble des paramètres de soutenabilité (carbone, eau, déchets…). Qui peut le plus peut le moins!
-      </li>
-      <li>
-        <strong><i class="fas fa-sitemap"></i> Entités couvertes: </strong>la DPEF est réalisée au niveau du groupe, tandis que le bilan carbone doit être réalisé pour chaque entité juridique de plus de 500 employés (il peut donc y en avoir plusieurs pour un même groupe). Néanmoins, la DPEF est désormais suffisante, et il n’est plus nécessaire de déclarer un bilan carbone séparé pour chaque entité : reporting au niveau groupe suffit.
-      </li>
-      <li>
-        <strong><i class="fas fa-smog"></i> Émissions : </strong>La DPEF couvre les “postes significatifs”, dont certains peuvent être indirects : achats, utilisation des produits vendus… (le “scope 3”). Dans les faits, une entreprise mesure plus facilement ses émissions directes (scope 1) et indirectes liées à l’énergie (scope 2), et il est attendu qu’elle les fournisse dans sa DPEF. La DPEF couvre donc a minima les émissions obligatoires pour un bilan carbone (scope 1 et 2)
-      </li>
-      <li>
-        <strong><i class="far fa-clock"></i> Fréquence : </strong>La DPEF est annuelle, donc plus fréquente que le bilan carbone. Ses données peuvent donc être utilisée pour la déclaration BEGES.
-      </li>
-      <li>
-        <strong><i class="fas fa-route"></i> Plan d’action : </strong>Le plan d’action du DPEF est valable pour le BEGES : pas besoin de produire un document spécifique pour le BEGES.
-      </li>
-      <li>
-        <strong><i class="fas fa-upload"></i> Publication : </strong>L’entreprise doit toujours déclarer son bilan carbone sur le site de l’ADEME, en plus de la DPEF inclut chaque année dans son document de référence.
-      </li>
-    </ul>
-    </p>
+        <p>
+        Globalement, il est possible de se limiter aux éléments produits dans la DPEF, si celle-ci comprend bien la mesure des émissions de gaz à effet de serre et un plan d’action pour les réduire.
+        Dans la pratique  :
+        <ul>
+          <li>
+            <i class="fas fa-database"></i> <span class="bg-kc-lightblue">Types d'informations</span> : La DPEF couvre un périmètre bien plus large que le bilan carbone : modèle d’affaire, risques et impacts sur l’ensemble des paramètres de soutenabilité (carbone, eau, déchets…). Qui peut le plus peut le moins!
+          </li>
+          <br>
+          <li>
+            <i class="fas fa-sitemap"></i> <span class="bg-kc-lightblue">Entités couvertes</span> : la DPEF est réalisée au niveau du groupe, tandis que le bilan carbone doit être réalisé pour chaque entité juridique de plus de 500 employés (il peut donc y en avoir plusieurs pour un même groupe). Néanmoins, la DPEF est désormais suffisante, et il n’est plus nécessaire de déclarer un bilan carbone séparé pour chaque entité : reporting au niveau groupe suffit.
+          </li>
+          <br>
+          <li>
+            <i class="fas fa-smog"></i> <span class="bg-kc-lightblue">Émissions</span> : La DPEF couvre les “postes significatifs”, dont certains peuvent être indirects : achats, utilisation des produits vendus… (le “scope 3”). Dans les faits, une entreprise mesure plus facilement ses émissions directes (scope 1) et indirectes liées à l’énergie (scope 2), et il est attendu qu’elle les fournisse dans sa DPEF. La DPEF couvre donc a minima les émissions obligatoires pour un bilan carbone (scope 1 et 2)
+          </li>
+          <br>
+          <li>
+            <i class="far fa-clock"></i> <span class="bg-kc-lightblue">Fréquence</span> : La DPEF est annuelle, donc plus fréquente que le bilan carbone. Ses données peuvent donc être utilisée pour la déclaration BEGES.
+          </li>
+          <br>
+          <li>
+            <i class="fas fa-route"></i> <span class="bg-kc-lightblue">Plan d’action</span> : Le plan d’action du DPEF est valable pour le BEGES : pas besoin de produire un document spécifique pour le BEGES.
+          </li>
+          <br>
+          <li>
+            <i class="fas fa-upload"></i> <span class="bg-kc-lightblue">Publication</span> : L’entreprise doit toujours déclarer son bilan carbone sur le site de l’ADEME, en plus de la DPEF inclut chaque année dans son document de référence.
+          </li>
+        </ul>
+        </p>
 
-    <p>
-      Bien sûr, si mon entreprise est en dessous du seuil de la DPEF mais au-dessus de celui du bilan carbone (500 employés), je suis soumis uniquement au bilan carbone.
-    </p>
+        <p>
+          Bien sûr, si mon entreprise est en dessous du seuil de la DPEF mais au-dessus de celui du bilan carbone (500 employés), je suis soumis uniquement au bilan carbone.
+        </p>
 
-    <p>
-      Au-delà de ces obligations réglementaires, l’essentiel n’est pas le reporting “en soi”, mais l’objectif qu’il sert : comprendre son empreinte carbone, pour mieux la réduire.
-      Et c’est la mission que nous nous sommes donnés chez KarbonChain.
-    </p>
+        <p>
+          Au-delà de ces obligations réglementaires, l’essentiel n’est pas le reporting “en soi”, mais l’objectif qu’il sert : comprendre son empreinte carbone, pour mieux la réduire.
+          Et c’est la mission que nous nous sommes donnés chez KarbonChain.
+        </p>
+      </div>
+    </div>
+
+  <%= link_to "< Retour aux articles", articles_path, class:"btn btn-small btn-light"  %>
   </div>
-
-  <br>
-  <br>
-
 </div>
