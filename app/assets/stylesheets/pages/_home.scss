@@ -159,12 +159,12 @@ html {
 
 p {
   color: $kc-blue;
-  font-family: 'Poppins';
+  font-family: 'Poppins', sans-serif;
   line-height: 1.7rem;
 }
 
 h1, h2, h3 {
-  font-family: Viga;
+  font-family: Viga, sans-serif;
   color: $kc-blue;
 }
 
@@ -174,14 +174,14 @@ h3 {
 }
 
 h5 {
-  font-family: 'Poppins';
+  font-family: 'Poppins', sans-serif;
   color: $kc-blue;
   letter-spacing: 0.02rem;
   line-height: 2.3rem;
 }
 
 h6 {
-  font-family: 'Poppins';
+  font-family: 'Poppins', sans-serif;
   color: $kc-blue;
   letter-spacing: 0.02rem;
   line-height: 1.5rem;
