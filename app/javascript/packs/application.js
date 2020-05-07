@@ -24,7 +24,7 @@ import '../plugins/dropdown_dashboard';
 import { initSubmit } from '../plugins/submit';
 import { dropdownSelected } from '../plugins/dropdown_dashboard';
 import { activeQueryDashboard} from '../plugins/tab-dashboard';
-
+import { stickyMultiHeaderFunction } from "../plugins/sticky_multi_headers";
 
 initAjaxScroll();
 
@@ -32,6 +32,7 @@ document.addEventListener('turbolinks:load', function () {
   if (document.getElementById('mybarChart')) {
     stackedBar();
   }
+  stickyMultiHeaderFunction();
   initToolTip();
   initSubmit();
   preserveTab();
