@@ -20,6 +20,7 @@ import "bootstrap";
 import { initAjaxScroll, preserveTab } from '../plugins/ajax_scroll';
 import { stackedBar } from '../plugins/bar_chart';
 import { initToolTip } from '../components/init_tooltip';
+import { initActiveNavItem } from '../components/init_active_nav_item';
 import '../plugins/dropdown_dashboard';
 import { initSubmit } from '../plugins/submit';
 import { dropdownSelected } from '../plugins/dropdown_dashboard';
@@ -32,6 +33,7 @@ document.addEventListener('turbolinks:load', function () {
   if (document.getElementById('mybarChart')) {
     stackedBar();
   }
+  initActiveNavItem();
   initToolTip();
   initSubmit();
   preserveTab();
