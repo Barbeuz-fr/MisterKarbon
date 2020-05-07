@@ -1,32 +1,5 @@
 // Specific CSS for your home-page
 
-// ----------------------------------------------------------------------------------
-//  Background colors
-// ----------------------------------------------------------------------------------
-
-.bg-kc-lightblue {
-  background-color: $kc-lightblue;
-}
-
-.bg-kc-orange {
-  background-color: $kc-orange;
-}
-
-.bg-kc-yellow {
-  background-color: $kc-yellow;
-}
-
-.bg-kc-pink {
-  background-color: $kc-pink;
-}
-
-.bg-kc-turquoise {
-  background-color: $kc-turquoise;
-}
-
-.bg-kc-blue {
-  background-color: $kc-blue;
-}
 
 // ----------------------------------------------------------------------------------
 //  Images & picto
@@ -111,16 +84,6 @@ html{scroll-behavior:smooth};
 //  Buttons
 // ----------------------------------------------------------------------------------
 
-.btn-turquoise {
-  background-color: $kc-turquoise;
-  color: white;
-}
-
-.btn-lightblue {
-  background-color: $kc-lightblue;
-  color: $kc-blue;
-}
-
 .home-button {
   background-color: $kc-turquoise;
   display: inline-block;
@@ -138,66 +101,4 @@ html{scroll-behavior:smooth};
   line-height: 1.5;
   border-radius: 4px;
   // transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-// ----------------------------------------------------------------------------------
-//  Text classes
-// ----------------------------------------------------------------------------------
-
-a:hover {
-  color: lightgrey;
-}
-
-html {
-  font-size: 100%;
-}
-
-// Voir https://css-tricks.com/snippets/css/fluid-typography/
-html {
-  font-size: calc(14px + (18 - 14) * ((100vw - 300px) / (1600 - 300)));
-}
-
-p, li {
-  color: $kc-black;
-  font-family: 'Poppins', sans-serif;
-  //line-height: 1.7rem;
-}
-
-h1, h2, h3 {
-  font-family: Viga, sans-serif;
-  color: $kc-blue;
-}
-
-h3 {
-  letter-spacing: 0.04rem;
-  line-height: 2rem;
-}
-
-h4 {
-  font-family: 'Poppins', sans-serif;
-  color: $kc-blue;
-  letter-spacing: 0.02rem;
-  line-height: 2.3rem;
-}
-
-h5 {
-  font-family: 'Poppins', sans-serif;
-  color: $kc-blue;
-  letter-spacing: 0.02rem;
-  line-height: 2.3rem;
-}
-
-h6 {
-  font-family: 'Poppins', sans-serif;
-  color: $kc-blue;
-  letter-spacing: 0.02rem;
-  line-height: 1.5rem;
-}
-
-.text-kc-orange {
-  color: $kc-orange;
-}
-
-.text-kc-blue {
-  color: $kc-blue;
 }
