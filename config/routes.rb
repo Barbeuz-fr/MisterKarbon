@@ -47,7 +47,7 @@ Rails.application.routes.draw do
   resources :testorgas, only: [:index]
 
   # Routes pour les articles
-  resources :articles
+  resources :articles, path: "ressources"
 
   # Routes directes vers articles
   get '/ressources/reglementation_entreprise', to: 'articles#reglementation_entreprise'

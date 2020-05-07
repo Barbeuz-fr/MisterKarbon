@@ -1,14 +1,74 @@
-.navbar-lewagon {
+.navbar-kc {
   justify-content: space-between;
-  background: white;
+  background: rgb(250, 250,250);
   box-shadow: 0px 1px 16px rgba(0,0,0,0.3);
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-kc .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-kc .navbar-brand img {
   height: 2.5rem;
   max-height: 40px;
 }
+
+.navbar-toggler {
+  //border-color: $kc-blue;
+  background-color: $kc-lightblue;
+}
+
+.toggler-icon {
+  color: $kc-turquoise;
+}
+
+// ----------------------------------------------------------------------------------
+//  Nav items
+// ----------------------------------------------------------------------------------
+
+.arrow-right-selected {
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+
+  border-left: 20px solid  $primary;
+}
+
+.arrow-right-not-selected {
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+
+  border-left: 20px solid #CCD0D6;
+}
+
+// .arrow-left-background {
+
+// }
+
+.nav-link {
+  color: $kc-blue;
+  &:hover {
+    color: $kc-turquoise;
+  }
+  &.active {
+    color: $kc-turquoise;
+  }
+}
+
+@media (min-width: 576px) {
+  .navbar-expand-sm .navbar-nav .nav-link {
+    padding: .5rem .8rem .5rem .8rem;
+    //padding-left: .8rem;
+  }
+  .nav-link {
+    &.active {
+      color: $kc-turquoise;
+      border-bottom: 2px solid $kc-turquoise;
+    }
+  }
+}
+
+
