@@ -3,17 +3,10 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-//= require jquery3
-//= require jquery_ujs
-//= require bootstrap.min
-//= require_tree .
-
-
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -32,10 +25,8 @@ import '../plugins/dropdown_dashboard';
 import { initSubmit } from '../plugins/submit';
 import { dropdownSelected } from '../plugins/dropdown_dashboard';
 import { activeQueryDashboard} from '../plugins/tab-dashboard';
-// import { testJs } from '../plugins/test-jquery';
-// import '../plugins/sticky_multi_headers';
 
-// testJs();
+
 initAjaxScroll();
 
 document.addEventListener('turbolinks:load', function () {
@@ -48,7 +39,7 @@ document.addEventListener('turbolinks:load', function () {
   preserveTab();
   dropdownSelected();
   activeQueryDashboard();
-}, false);
+}, false)
 
 // ----------------------------------------------------
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
