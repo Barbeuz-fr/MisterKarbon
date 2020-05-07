@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :tutorials
   devise_for :users
   root to: 'pages#home'
 
@@ -53,7 +52,6 @@ Rails.application.routes.draw do
   # Routes directes vers articles
   get '/ressources/reglementation_entreprise', to: 'articles#reglementation_entreprise'
   get '/ressources/comment_faire_son_bilan_carbone', to: 'articles#comment_faire_son_bilan_carbone'
-  get '/ressources/test', to: 'articles#test'
 
 
 
