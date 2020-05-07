@@ -32,7 +32,7 @@ import { initSubmit } from '../plugins/submit';
 import { dropdownSelected } from '../plugins/dropdown_dashboard';
 import { activeQueryDashboard} from '../plugins/tab-dashboard';
 // import { testJs } from '../plugins/test-jquery';
-import '../plugins/sticky_multi_headers';
+// import '../plugins/sticky_multi_headers';
 
 // testJs();
 initAjaxScroll();
