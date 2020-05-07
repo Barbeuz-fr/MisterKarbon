@@ -3,7 +3,8 @@ class ArticlesController < ApplicationController
                       only: [ :show,
                               :index,
                               :reglementation_entreprise,
-                              :comment_faire_son_bilan_carbone]
+                              :comment_faire_son_bilan_carbone,
+                              :test]
 
   def index
     @articles = Article.all()
@@ -22,6 +23,11 @@ class ArticlesController < ApplicationController
   def comment_faire_son_bilan_carbone
     render :layout => 'home'
   end
+
+  def test
+    render :layout => 'home'
+  end
+
 
   def new
     @article = Article.new()
