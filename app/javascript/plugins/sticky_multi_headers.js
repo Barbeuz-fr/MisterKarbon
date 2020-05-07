@@ -1,8 +1,9 @@
 // Sticky Multi Header Scroll Plugin
 // Author: Samson.Onna <Email : samson3d@gmail.com>
 
- const stickyMultiHeaderFunction = () => {
-  console.log("test1");
+  console.log("test");
+  console.log($);
+  (function ($) {
     $.fn.extend({
         stickyMultiHeader: function (options) {
         //Set the default values, use comma to separate the settings, example:
@@ -24,6 +25,7 @@
           $navLink = $stickyHeader.find('.stickyNavLink'),
           $tabContainer = $stickyHeader.find(".stickyTabContainer"),
           headLength = $header.length;
+          console.log("test4");
 
           if(sHeight){
             $mainSidebar.height(sHeight +"px")
@@ -78,6 +80,6 @@
             });
         }
     });
-};
+})(jQuery);
 
-export {stickyMultiHeaderFunction};
+console.log("test");

@@ -43,6 +43,9 @@ gem 'simple_form'
 gem 'faker'
 # charts
 gem 'chart-js-rails'
+# jquery
+# gem 'jquery-rails'
+
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
