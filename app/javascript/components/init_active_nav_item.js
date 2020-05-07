@@ -6,6 +6,8 @@ const initActiveNavItem = () => {
     items[0].classList.add("active");
   } else if (url.includes("ressources")) {
     items[1].classList.add("active");
+  } else if (url.includes("articles")) {
+    items[1].classList.add("active");
   } else if (url.includes("about")) {
     items[2].classList.add("active");
   } else if (url.includes("contacts/new")) {
