@@ -1,5 +1,7 @@
-// ---------------------------------------------------------------
-// Article product (adapted Wagon UI kitt)
+// -------------------------------------------------------------------------
+// Article index
+// -------------------------------------------------------------------------
+// Article cards (adapted Wagon UI kitt)
 
 .cards {
   display: grid;
@@ -37,16 +39,6 @@ height: 10vh;
 // ---------------------------------------------------------------------
 
 
-// General layout article
-.article {
-  //width: 75%;
-}
-
-
-.centered-image {
-  text-align: center;
-}
-
 // Divider entre sections
 
 .divider {
@@ -60,69 +52,61 @@ height: 10vh;
 // Polices de caractère
 // -------------------------------------------------------------------------
 
-// // Titre
-// .article h2 {
-//   font-size: 1.75rem;
-// }
-
-// // Chapeau
-// .article h4 {
-//   font-size: 1.25rem;
-// }
-
-// // Sous-titre
-// .article h5 {
-//   font-size: 1rem;
-//   color: #1A2980;
-// }
-
-// // Texte
-// .article p {
-//   font-size: 0.9rem;
-//   color: #293241;
-// }
-
-// // Liste
-// .article li {
-//   color: #293241;
-//   font-size: 0.9rem;
-//   line-height: 1.7rem;
-//   margin-bottom: 1rem;
-// }
-
 .article a {
   color: #1A2980;
   font-weight: 500;
 }
 // -------------------------------------------------------------------------
 // Tableau
-
 // -------------------------------------------------------------------------
 
-.article .table-header {
-  background-color: $kc-lightblue;
+// .table-responsive {
+//        width: 100%;
+//        margin-bottom: 15px;
+//        overflow-x: auto;
+//        overflow-y: hidden;
+//        -webkit-overflow-scrolling: touch;
+//        -ms-overflow-style: -ms-autohiding-scrollbar;
+//        border: 1px solid #DDD;
+//    }
+table {
+  min-width: 600px;
 }
 
-.article .first-column {
-  background-color: $kc-lightblue;
-  display:flex;
-  align-items: center;
+.table-striped>tbody>tr:nth-child(even)>td,
+.table-striped>tbody>tr:nth-child(even)>th {
+   background-color: rgba(239, 149, 59, 0.07);
+ }
+
+ .table-striped>tbody>tr:nth-child(odd)>td,
+ .table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: white;
+  }
+
+.article table td {
+  vertical-align: middle;
 }
 
-.article .first-column h5 {
-  padding-left: 0.5rem;
-  padding-right: 0.2rem;
+.article table th {
+  text-align: center;
 }
 
-.top-border {
-  border-color:$kc-lightblue;
-  border-style: solid;
-  border-bottom: 0px;
-  border-left: 0px;
-  border-right: 0px;
+.article table ul {
+  padding: 0 0 0 1rem;
+  margin: 0 0 .5rem;
 }
 
+.article table {
+  color: $kc-black;
+}
+
+// -------------------------------------------------------------------------
 // Image
+// -------------------------------------------------------------------------
+
+.centered-image {
+  text-align: center;
+}
 
 .article .illustration {
   width: 100%;
@@ -132,22 +116,11 @@ height: 10vh;
   height: 35vh;
 }
 
-
 @media (min-width: 768px) {
   .article .illustration {
     width: 70%;
   }
 }
 
-.smaller-text p {
-  font-size: 0.8rem;
-  margin-bottom: 0.3rem;
-  line-height: 1.6rem;
-}
 
-.smaller-text h5 {
-  font-size: 0.8rem;
-  line-height: 1.3rem;
-  display: flex;
-  align-items: center;
-}
+
