@@ -43,10 +43,36 @@ height: 10vh;
 
 .divider {
   background-color: #E0F8F8;
-  width: 90%;
+  width: 100%;
   height: 2px;
+  margin-bottom: 2vh;
 }
 
+.box-conclusion {
+  display: flex;
+  background-color: #E0F8F8;
+  width: 80%;
+  padding: 2vh;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  border-radius: 10px;
+  box-shadow: 3px 2px 3px lightgrey;
+  align-items: center;
+}
+
+
+.box-conclusion .box-left {
+  width: 10vw;
+}
+
+
+.box-conclusion .box-right {
+  padding-left: 2vh;
+}
+
+.box-conclusion .logo {
+  width: 100%;
+}
 
 // -------------------------------------------------------------------------
 // Polices de caractère
