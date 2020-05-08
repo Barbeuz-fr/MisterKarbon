@@ -43,6 +43,9 @@ gem 'simple_form'
 gem 'faker'
 # charts
 gem 'chart-js-rails'
+# Google Analytics
+gem 'google-analytics-rails', '1.1.0'
+
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
