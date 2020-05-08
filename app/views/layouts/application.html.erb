@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+
     <title>KarbonChain | Accélerez votre transition bas-carbone</title>
     <%= favicon_link_tag 'logo-round.png' %>
     <%= csrf_meta_tags %>
@@ -20,23 +21,10 @@
 
     <!-- End Facebook Open Graph data -->
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <% if Rails.env.production? %>
-      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-165936086-1">
-      </script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'UA-165936086-1');
-      </script>
-    <% end %>
-    <!-- End Google Analytics -->
 
 
-  <!-- Google Analytics with gem google-analytics-rails'  -->
-  <!--   <%= analytics_init if GoogleAnalytics.valid_tracker? %> -->
+    <!-- Google Analytics with gem google-analytics-rails'  -->
+    <!--   <%= analytics_init if GoogleAnalytics.valid_tracker? %> -->
 
 
 
