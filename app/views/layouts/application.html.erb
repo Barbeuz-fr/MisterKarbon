@@ -21,20 +21,23 @@
     <!-- End Facebook Open Graph data -->
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-165936086-1">
-    </script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+    <% if Rails.env.production? %>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-165936086-1">
+      </script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-      gtag('config', 'UA-165936086-1');
-    </script> -->
+        gtag('config', 'UA-165936086-1');
+      </script>
+    <% end %>
     <!-- End Google Analytics -->
 
 
   <!-- Google Analytics with gem google-analytics-rails'  -->
-  <%= analytics_init if GoogleAnalytics.valid_tracker? %>
+  <!--   <%= analytics_init if GoogleAnalytics.valid_tracker? %> -->
+
 
 
   </head>
