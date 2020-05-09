@@ -19,13 +19,17 @@
   //display: flex;
   align-items: center;
   border-radius: 5px;
-
 }
 
 .card-article img {
   //height: 100%;
   width: 100%;
   object-fit: cover;
+  filter: brightness(90%);
+}
+.card-article:hover > img {
+  filter: brightness(110%);
+  transition: filter .2s;
 }
 
 .card-article .card-article-infos {
