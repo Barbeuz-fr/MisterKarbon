@@ -1,0 +1,26 @@
+.about-avatars {
+  display: block;
+}
+
+@media (min-width: 576px) {
+  .about-avatars {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.about-avatar-img {
+  width: 150px;
+  filter: brightness(90%);
+}
+
+@media (min-width: 576px) {
+  .about-avatar-img {
+    width: 80%
+  }
+}
+
+.about-avatar:hover > .about-avatar-img {
+  filter: brightness(100%);
+  transition: filter .2s;
+}
