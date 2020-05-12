@@ -1,0 +1,227 @@
+// -------------------------------------------------------------------------
+// Boutons pleins
+// -------------------------------------------------------------------------
+
+.btn-turquoise {
+  background-color: $kc-turquoise;
+  color: white;
+}
+
+.btn-lightblue {
+  background-color: $kc-lightblue;
+  color: $kc-blue;
+}
+
+.btn-kc-blue {
+  background-color: $kc-blue;
+  border: 3px solid $kc-blue;
+  border-radius: 0;
+  color: white;
+  transition: filter .3s ease, box-shadow .3s ease;
+  &:hover {
+    filter: brightness(115%);
+    color: white;
+    box-shadow: 0px 0px 6px rgba(0,0,0,0.4);
+  }
+}
+
+.btn-kc-lightblue {
+  background-color: $kc-lightblue;
+  border: 3px solid $kc-lightblue;
+  border-radius: 0;
+  color: $kc-blue;
+  transition: filter .3s ease, box-shadow .3s ease;
+  &:hover {
+    filter: brightness(103%);
+    color: $kc-blue;
+    box-shadow: 0px 0px 6px rgba(0,0,0,0.4);
+  }
+}
+
+.btn-kc-turquoise {
+  background-color: $kc-turquoise;
+  border: 3px solid $kc-turquoise;
+  border-radius: 0;
+  color: white;
+  transition: filter .3s ease, box-shadow .3s ease;
+  &:hover {
+    filter: brightness(103%);
+    color: white;
+    box-shadow: 0px 0px 6px rgba(0,0,0,0.4);
+  }
+}
+
+.btn-kc-orange {
+  background-color: $kc-orange;
+  border: 3px solid $kc-orange;
+  border-radius: 0;
+  color: white;
+  transition: filter .3s ease, box-shadow .3s ease;
+  &:hover {
+    filter: brightness(105%);
+    color: white;
+    box-shadow: 0px 0px 6px rgba(0,0,0,0.4);
+  }
+}
+
+.btn-kc-yellow {
+  background-color: $kc-yellow;
+  border: 3px solid $kc-yellow;
+  border-radius: 0;
+  color: $kc-blue;
+  transition: filter .3s ease, box-shadow .3s ease;
+  &:hover {
+    filter: brightness(103%);
+    color: $kc-blue;
+    box-shadow: 0px 0px 6px rgba(0,0,0,0.4);
+  }
+}
+
+.btn-kc-pink {
+  background-color: $kc-pink;
+  border: 3px solid $kc-pink;
+  border-radius: 0;
+  color: white;
+  transition: filter .3s ease, box-shadow .3s ease;
+  &:hover {
+    filter: brightness(105%);
+    color: white;
+    box-shadow: 0px 0px 6px rgba(0,0,0,0.4);
+  }
+}
+
+.btn-kc-black {
+  background-color: $kc-black;
+  border: 3px solid $kc-black;
+  border-radius: 0;
+  color: white;
+  transition: filter .3s ease, box-shadow .3s ease;
+  &:hover {
+    filter: brightness(115%);
+    color: white;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
+  }
+}
+
+.btn-kc-lightgray {
+  background-color: rgb(245, 245, 245);
+  border: 3px solid rgb(245, 245, 245);
+  border-radius: 0;
+  color: $kc-black;
+  transition: filter .3s ease, box-shadow .3s ease;
+  &:hover {
+    filter: brightness(105%);
+    color: $kc-black;
+    box-shadow: 0px 0px 6px rgba(0,0,0,0.4);
+  }
+}
+
+
+
+// -------------------------------------------------------------------------
+// Boutons outline
+// -------------------------------------------------------------------------
+
+.btn-kc-outline-blue {
+  background-color: transparent;
+  border: 3px solid $kc-blue;
+  border-radius: 0;
+  color: $kc-blue;
+  transition: background-color .3s ease, color .2s ease, box-shadow .3s ease;
+  &:hover {
+    background-color: $kc-blue;
+    color: white;
+    box-shadow: 0px 0px 6px rgba(0,0,0,0.4);
+  }
+}
+
+.btn-kc-outline-lightblue {
+  background-color: transparent;
+  border: 3px solid $kc-lightblue;
+  border-radius: 0;
+  color: $kc-lightblue;
+  transition: background-color .3s ease, color .2s ease, box-shadow .3s ease;
+  &:hover {
+    background-color: $kc-lightblue;
+    color: $kc-blue;
+    box-shadow: 0px 0px 6px rgba(0,0,0,0.4);
+  }
+}
+
+.btn-kc-outline-turquoise {
+  background-color: transparent;
+  border: 3px solid $kc-turquoise;
+  border-radius: 0;
+  color: $kc-turquoise;
+  transition: background-color .3s ease, color .2s ease, box-shadow .3s ease;
+  &:hover {
+    background-color: $kc-turquoise;
+    color: white;
+    box-shadow: 0px 0px 6px rgba(0,0,0,0.4);
+  }
+}
+
+.btn-kc-outline-orange {
+  background-color: transparent;
+  border: 3px solid $kc-orange;
+  border-radius: 0;
+  color: $kc-orange;
+  transition: background-color .3s ease, color .2s ease, box-shadow .3s ease;
+  &:hover {
+    background-color: $kc-orange;
+    color: white;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  }
+}
+
+.btn-kc-outline-yellow {
+  background-color: transparent;
+  border: 3px solid $kc-yellow;
+  border-radius: 0;
+  color: $kc-yellow;
+  transition: background-color .3s ease, color .2s ease, box-shadow .3s ease;
+  &:hover {
+    background-color: $kc-yellow;
+    color: $kc-blue;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  }
+}
+
+.btn-kc-outline-pink {
+  background-color: transparent;
+  border: 3px solid $kc-pink;
+  border-radius: 0;
+  color: $kc-pink;
+  transition: background-color .3s ease, color .2s ease, box-shadow .3s ease;
+  &:hover {
+    background-color: $kc-pink;
+    color: white;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  }
+}
+
+.btn-kc-outline-black {
+  background-color: transparent;
+  border: 3px solid $kc-black;
+  border-radius: 0;
+  color: $kc-black;
+  transition: background-color .3s ease, color .2s ease, box-shadow .3s ease;
+  &:hover {
+    background-color: $kc-black;
+    color: white;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  }
+}
+
+.btn-kc-outline-lightgray {
+  background-color: transparent;
+  border: 3px solid rgb(245, 245, 245);
+  border-radius: 0;
+  color: rgb(245, 245, 245);
+  transition: background-color .3s ease, color .2s ease, box-shadow .3s ease;
+  &:hover {
+    background-color: rgb(245, 245, 245);
+    color: $kc-black;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  }
+}

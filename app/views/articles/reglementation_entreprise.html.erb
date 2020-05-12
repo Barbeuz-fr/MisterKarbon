@@ -2,14 +2,17 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <%= link_to "< Retour aux articles", articles_path, class:"btn btn-small btn-light"  %>
+        <%= link_to "< Retour aux articles", articles_path, class:"btn btn-kc-outline-orange"  %>
         <!-- Titre -->
         <h1 class="my-4">
-          Bilan carbone, déclaration extra-financière : quelle réglementation pour votre entreprise ?
+          Bilan carbone, déclaration extra-financière : quelle réglementation
+          pour votre entreprise ?
         </h1>
         <!-- Chapeau -->
         <p>
-          BEGES, DPEF, OTI, scope 3… La réglementation pour le reporting des émissions de gaz à effet de serre peut paraître complexe. On vous aide à y voir plus clair !
+          BEGES, DPEF, OTI, scope 3… La réglementation pour le reporting des
+          émissions de gaz à effet de serre peut paraître complexe. On vous
+          aide à y voir plus clair !
         </p>
       </div>
     </div>
@@ -23,7 +26,8 @@
         <!-- Illustration -->
         <div class="centered-image mb-5">
           <%= image_tag 'articles/reglementation-entreprise/beges-dpef-meme2.png', class: "illustration"%>
-          <p><small><i>Responsable RSE découvrant la réglementation française pour le reporting carbone</i></small></p>
+          <p><small><i>Responsable RSE découvrant la réglementation française
+          pour le reporting carbone</i></small></p>
         </div>
 
         <!-- Debut article-->
@@ -31,16 +35,31 @@
           Bilan carbone, BEGES,  DPEF : quelles différences ?
         </h4>
         <p>
-          Au commencement était le <span class="bg-kc-lightblue text-kc-blue"><strong>BEGES</strong></span>, c’est à dire le <i>Bilan des Émissions de Gaz à Effet de Serre</i>, plus communément appelé <span class="bg-kc-lightblue text-kc-blue"><strong>bilan carbone</strong></span>.
-          Cette réglementation pionnière créée en 2010 oblige les entreprises de plus de 500 salariés à faire un bilan de leurs émissions tous les 4 ans et les déclarer sur le <a href="https://bilans-ges.ademe.fr/fr">site de l’ADEME</a>.
+          Au commencement était le
+          <span class="bg-kc-lightblue text-kc-blue"><strong>BEGES</strong></span>,
+          c’est à dire le <i>Bilan des Émissions de Gaz à Effet de Serre</i>,
+          plus communément appelé <span class="bg-kc-lightblue text-kc-blue"><strong>bilan carbone</strong></span>.
+          Cette réglementation pionnière créée en 2010 oblige les entreprises
+          de plus de 500 salariés à faire un bilan de leurs émissions tous les 4 ans
+          et les déclarer sur le <a href="https://bilans-ges.ademe.fr/fr" class="blue-link"
+          target="_blank">site de l’ADEME</a>.
         </p>
 
         <p>
-          Puis vint la <span class="bg-kc-lightblue text-kc-blue"><strong>DPEF</strong></span> - <i>Déclaration de Performance Extra-Financière</i>. Mise en place avec la Loi de Transition Energétique, elle oblige les entreprises d’une certaine taille à faire chaque année l’inventaire de leurs “postes significatifs d’émissions” et de les publier dans leur document de référence. Cette réglementation est la transposition d’une directive européenne de 2014 sur la transparence et la publication d’informations extra-financières.
+          Puis vint la <span class="bg-kc-lightblue text-kc-blue"><strong>DPEF</strong></span>
+          - <i>Déclaration de Performance Extra-Financière</i>. Mise en place
+          avec la Loi de Transition Energétique, elle oblige les entreprises
+          d’une certaine taille à faire chaque année l’inventaire de leurs “postes
+          significatifs d’émissions” et de les publier dans leur document de
+          référence. Cette réglementation est la transposition d’une directive
+          européenne de 2014 sur la transparence et la publication d’informations
+          extra-financières.
         </p>
 
         <p>
-          BEGES et DPEF : deux réglementations qui se recouvrent donc en partie, mais diffèrent sur de nombreux points. Un tableau n’est pas de trop pour y voir plus clair.
+          BEGES et DPEF : deux réglementations qui se recouvrent donc en partie,
+          mais diffèrent sur de nombreux points. Un tableau n’est pas de trop
+          pour y voir plus clair.
         </p>
       </div>
     </div>
@@ -49,91 +68,91 @@
     <!-- Tableau de comparatif -->
 
 
-        <div class="table-responsive">
-          <table class="table small table-striped table-bordered">
-            <!-- header tableau -->
-            <thead class="bg-kc-orange text-white">
-              <tr>
-                <th scope="col"></th>
-                <th scope="col">BEGES</th>
-                <th scope="col">DPEF</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- ligne 1 -->
-              <tr>
-                <th scope="row" class="align-middle"><i class="fas fa-sitemap"></i><br>Entités</th>
-                <td class="align-middle">Toute personne morale de droit privé de plus de 500 salariés</td>
-                <td>
-                  <ul>
-                    <li>Les <span class="bg-kc-lightblue">sociétés cotées</span> avec un CA > 40m€  et un bilan > 20m€</li>
-                    <li>Les <span class="bg-kc-lightblue">sociétés non-cotées</span> avec un CA ou un bilan > 100m€</li>
-                  </ul>
-                  <span class="small">NB : les SAS ne sont pas concernées</span>
-                </td>
-              </tr>
-              <!-- ligne 2 -->
-              <tr>
-                <th scope="row" class="align-middle"><i class="fas fa-smog"></i><br>Émissions</th>
-                <td>
-                    <ul>
-                      <li>
-                        <span class="bg-kc-lightblue">Scopes 1 et 2 obligatoires</span>
-                        <br>
-                        <i>
-                          "émissions directes, et indirectes associées à la consommation d'électricité, de chaleur ou de vapeur"
-                        </i>
-                      </li>
-                      <li>
-                        <span class="bg-kc-lightblue">Scope 3 recommandé</span>
-                      </li>
-                    </ul>
-                </td>
-                <td>
-                  <span class="bg-kc-lightblue">Principales émissions des scopes 1, 2 et 3</span>
-                  <br>
-                  <i>
-                    "postes significatifs d'émissions générés du fait de l'activité de la société, notamment par l'usage des biens et services qu'elle produit”
-                  </i>
-                </td>
-              </tr>
-              <!-- ligne 3 -->
-              <tr>
-                <th scope="row" class="align-middle"><i class="far fa-clock"></i><br>Fréquence</th>
-                <td class="text-center">Tous les 4 ans</td>
-                <td class="text-center">Tous les ans</td>
-              </tr>
-              <!-- ligne 4 -->
-              <tr>
-                <th scope="row" class="align-middle"><i class="fas fa-globe-europe"></i> <br>Périmètre géographique</th>
-                <td class="text-center">France</td>
-                <td class="text-center">Monde</td>
-              </tr>
-              <!-- ligne 5 -->
-              <tr>
-                <th scope="row" class="align-middle"><i class="fas fa-calculator"></i><br>Méthode de calcul</th>
-                <td  class="text-center" colspan="2">Pas de méthodologie imposée, mais les guides sectoriels de l’ADEME font référence en la matière</td>
-              </tr>
-              <!-- ligne 6 -->
-              <tr>
-                <th scope="row" class="align-middle"><i class="fas fa-user-check"></i><br>Audit et contrôle</th>
-                <td>
-                  <ul>
-                    <li>Pas d’audit</li>
-                    <li>Contrôle par les DREAL et sanction possible (1500€)</li>
-                  </ul>
-                </td>
-                <td>Audit par un organisme tiers indépendant (OTI) obligatoire pour les entreprises  > 500 salariés avec un chiffre d’affaires ou un bilan > 100m€</td>
-              </tr>
-              <!-- ligne 7 -->
-              <tr>
-                <th scope="row" class="align-middle"><i class="fas fa-upload"></i><br>Publication</th>
-                <td class="text-center">Sur le <a href="https://bilans-ges.ademe.fr/fr">site dédié de l’ADEME</a></td>
-                <td class="text-center">Dans le document de référence</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+    <div class="table-responsive">
+      <table class="table small table-striped table-bordered">
+        <!-- header tableau -->
+        <thead class="bg-kc-orange text-white">
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">BEGES</th>
+            <th scope="col">DPEF</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- ligne 1 -->
+          <tr>
+            <th scope="row" class="align-middle"><i class="fas fa-sitemap"></i><br>Entités</th>
+            <td class="align-middle">Toute personne morale de droit privé de plus de 500 salariés</td>
+            <td>
+              <ul>
+                <li>Les <span class="bg-kc-lightblue">sociétés cotées</span> avec un CA > 40m€  et un bilan > 20m€</li>
+                <li>Les <span class="bg-kc-lightblue">sociétés non-cotées</span> avec un CA ou un bilan > 100m€</li>
+              </ul>
+              <span class="small">NB : les SAS ne sont pas concernées</span>
+            </td>
+          </tr>
+          <!-- ligne 2 -->
+          <tr>
+            <th scope="row" class="align-middle"><i class="fas fa-smog"></i><br>Émissions</th>
+            <td>
+                <ul>
+                  <li>
+                    <span class="bg-kc-lightblue">Scopes 1 et 2 obligatoires</span>
+                    <br>
+                    <i>
+                      "émissions directes, et indirectes associées à la consommation d'électricité, de chaleur ou de vapeur"
+                    </i>
+                  </li>
+                  <li>
+                    <span class="bg-kc-lightblue">Scope 3 recommandé</span>
+                  </li>
+                </ul>
+            </td>
+            <td>
+              <span class="bg-kc-lightblue">Principales émissions des scopes 1, 2 et 3</span>
+              <br>
+              <i>
+                "postes significatifs d'émissions générés du fait de l'activité de la société, notamment par l'usage des biens et services qu'elle produit”
+              </i>
+            </td>
+          </tr>
+          <!-- ligne 3 -->
+          <tr>
+            <th scope="row" class="align-middle"><i class="far fa-clock"></i><br>Fréquence</th>
+            <td class="text-center">Tous les 4 ans</td>
+            <td class="text-center">Tous les ans</td>
+          </tr>
+          <!-- ligne 4 -->
+          <tr>
+            <th scope="row" class="align-middle"><i class="fas fa-globe-europe"></i> <br>Périmètre géographique</th>
+            <td class="text-center">France</td>
+            <td class="text-center">Monde</td>
+          </tr>
+          <!-- ligne 5 -->
+          <tr>
+            <th scope="row" class="align-middle"><i class="fas fa-calculator"></i><br>Méthode de calcul</th>
+            <td  class="text-center" colspan="2">Pas de méthodologie imposée, mais les guides sectoriels de l’ADEME font référence en la matière</td>
+          </tr>
+          <!-- ligne 6 -->
+          <tr>
+            <th scope="row" class="align-middle"><i class="fas fa-user-check"></i><br>Audit et contrôle</th>
+            <td>
+              <ul>
+                <li>Pas d’audit</li>
+                <li>Contrôle par les DREAL et sanction possible (1500€)</li>
+              </ul>
+            </td>
+            <td>Audit par un organisme tiers indépendant (OTI) obligatoire pour les entreprises  > 500 salariés avec un chiffre d’affaires ou un bilan > 100m€</td>
+          </tr>
+          <!-- ligne 7 -->
+          <tr>
+            <th scope="row" class="align-middle"><i class="fas fa-upload"></i><br>Publication</th>
+            <td class="text-center">Sur le <a href="https://bilans-ges.ademe.fr/fr">site dédié de l’ADEME</a></td>
+            <td class="text-center">Dans le document de référence</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
 
     <!-- fin tableau -->
@@ -240,7 +259,7 @@
         </p>
       </div>
     </div>
-    <%= link_to "< Retour aux articles", articles_path, class:"btn btn-small btn-light my-4"  %>
+    <%= link_to "< Retour aux articles", articles_path, class:"btn btn-kc-outline-blue my-4"  %>
   </div>
 </div>
 
