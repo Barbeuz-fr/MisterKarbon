@@ -17,9 +17,15 @@
 //  General font classes
 // ----------------------------------------------------------------------------------
 
-// a:hover {
-//   color: lightgrey;
-// }
+.blue-link {
+  color: $kc-blue;
+  text-decoration: underline;
+  &:hover {
+    color: $kc-turquoise;
+    text-decoration: underline;
+    text-decoration-color: $kc-turquoise;
+  }
+}
 
 html {
   font-size: 100%;
@@ -75,19 +81,6 @@ h6 {
   color: $kc-blue;
 }
 
-// ----------------------------------------------------------------------------------
-//  Buttons
-// ----------------------------------------------------------------------------------
-
-.btn-turquoise {
-  background-color: $kc-turquoise;
-  color: white;
-}
-
-.btn-lightblue {
-  background-color: $kc-lightblue;
-  color: $kc-blue;
-}
 
 // ----------------------------------------------------------------------------------
 //  Background colors
