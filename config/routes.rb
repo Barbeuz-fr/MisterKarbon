@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get '/about', to: 'pages#about'
+  get '/mentions-legales', to: 'pages#mentions_legales'
 
 
   # Lien vers formulaire de contact par email
