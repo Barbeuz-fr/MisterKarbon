@@ -1,0 +1,307 @@
+<div class="bg-kc-yellow py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <%= link_to "< Retour aux articles", articles_path, class:"btn btn-kc-outline-orange"  %>
+        <!-- Titre -->
+        <h1 class="my-4">
+          Scope 1, scope 2, scope 3 : quels périmètres? Comment les calculer?
+        </h1>
+        <!-- Chapeau -->
+        <p>
+          Si vous vous intéressez au bilan carbone, vous avez sûrement entendu parler de <i>“scope 1”</i>, <i>“scope 2”</i>, <i>“scope 3”</i>.
+          On vous détaille ici quelles émissions ils couvrent et comment les calculer.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Début de l'article -->
+
+<div class="bg-white pt-5 pb-3">
+  <div class="container article">
+
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-8">
+
+<!-- GIF d'intro -->
+        <div class="centered-image">
+          <%= image_tag 'articles/scope_1_2_3/un-dos-tres.gif',
+          width: "50%"%>
+          <p><small><i>Un, deux, trois scopes!</i></small></p>
+        </div>
+
+<!-- texte d'intro -->
+        <p>
+          Les “scopes” (“périmètres”) correspondent aux émissions de gaz à effet de serre d’une organisation, selon qu’il s’agisse d’émissions directes ou indirectes :
+        </p>
+        <ul>
+          <li>
+            <span class="bg-kc-lightblue text-kc-blue"><strong>Scope 1</strong></span> :
+            émissions directes issues de combustibles fossiles (pétrole, gaz, charbon…).
+          </li>
+          <li>
+            <span class="bg-kc-lightblue text-kc-blue"><strong>Scope 2</strong></span> :
+            émissions indirectes issues de la consommation d'électricité et des réseaux de chaleur / froid
+          </li>
+          <li>
+            <span class="bg-kc-lightblue text-kc-blue"><strong>Scope 3</strong></span> :
+            toutes les émissions indirectes hors scope 2 : produits et services achetés, transport et logistique, déchets, etc.
+          </li>
+        </ul>
+        <p>
+          Les scope 1 et 2 sont obligatoires pour un BEGES (bilan d’émissions de gaz à effet de serre), mais couvrent souvent à peine 10% à 20% de l’ensemble des émissions.
+          En effet, le scope 3 a un périmètre étendu, comme l’indique le schéma ci-dessous :
+        </p>
+      </div>
+    </div>
+
+<!-- section avec image -->
+<!-- TO DO transformer image en grid reactive avec text on-click -->
+    <div class="col-12">
+      <div class="centered-image mb-1">
+        <%= image_tag 'articles/scope_1_2_3/scope_1_2_3.png',
+            width: "75%",
+            alt: "Cartographie des postes d'emissions "
+        %>
+        <p><small><i>
+          Source : KarbonChain, d'après le GHG Protocol
+        </i></small></p>
+      </div>
+
+    </div>
+
+<!-- TO DO - lien vers les questions -->
+<!-- Sommaire FAQ -->
+    <div class="row justify-content-center mt-5">
+      <div class="col-12 col-lg-8">
+        <p>
+          Voici quelques une des principales questions auxquelles sont confrontées les entreprises lors de la réalisation de leur bilan. Si vous en avez d’autres, n’hésitez pas à nous écrire!
+        </p>
+
+        <ul>
+          <li><a href="#question-1">
+            Où trouver les informations pour calculer les émissions?
+          </li></a>
+          <li><a href="#question-2">
+            Faut-il inclure les émissions passées ou futures?
+          </li></a>
+          <li><a href="#question-3">
+            Pour l’électricité (scope 2), comment prendre en compte les contrats “verts”?
+          </li></a>
+          <li><a href="#question-4">
+            Jusqu’où “remonter” pour le calcul les émissions indirectes (scope 3)?
+          </li></a>
+          <li><a href="#question-5">
+            Est-ce que mes émissions indirectes (scope 3) sont comptées en double avec mes fournisseurs et clients?
+          </li></a>
+        </ul>
+      </div>
+    </div>
+
+<!--  TO DO questions cachées avec class active -->
+<!-- Question 1  -->
+    <div id="question-1" class="mb-5">
+    </div>
+    <br>
+
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-8">
+        <h4 class="bg-white">
+          Où trouver les informations pour calculer les émissions?
+        </h4>
+        <p>
+          Les données d’activités nécessaires pour le calcul des émissions indirectes sont parfois difficiles à obtenir, quand elles existent!
+          Il est généralement possible d’obtenir une première estimation avec vos données internes en s’adressant au bon département.
+          En revanche, il est généralement nécessaire de demander des informations à ses fournisseurs pour obtenir des données plus précises.
+        </p>
+        <p>
+          Ces données d’activités sont ensuite multipliées par les facteurs d’émissions correspondant le cas échéant.
+        </p>
+
+<!-- TO DO Ajout du tableau -->
+
+      </div>
+    </div>
+
+<!-- Question 2  -->
+    <div id="question-2" class="mb-5">
+    </div>
+    <br>
+
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-8">
+        <h4 class="bg-white">
+          Faut-il inclure les émissions passées ou futures?
+        </h4>
+
+        <p>
+          Pour le scope 1 et 2, la règle est simple : il faut simplement considérer les émissions de la période, par exemple l’année passée.
+        </p>
+        <p>
+          Pour le scope 3, la réponse dépend de chaque poste. Par exemple :
+        </p>
+        <ul>
+          <li>
+            les émissions liées à la production et au transport des produits achetés ont eu lieu précédemment, potentiellement les années précédentes
+          </li>
+          <li>
+            Les émissions liées aux déchets auront lieu plus tard, lors de leur élimination
+          </li>
+        </ul>
+        <p>
+          Voici pour chaque poste une synthèse du périmètre temporel des émissions :
+        </p>
+
+        <!-- TO DO traduire image -->
+        <div class="centered-image mb-1">
+          <%= image_tag 'articles/scope_1_2_3/GHG-scope-3-timing.png',
+              width: "100%",
+              alt: "Périmètre temporelle des postes du scope 3"
+          %>
+          <div class="mt-3">
+            <p><small><i>
+              Source : GHG Protocol
+            </i></small></p>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+<!-- Question 3  -->
+    <div id="question-3" class="mb-5">
+    </div>
+    <br>
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-8">
+        <h4 class="bg-white">
+          Pour l’électricité (scope 2), comment prendre en compte les contrats “verts”?
+        </h4>
+
+        <p>
+          Lorsqu’on est connecté à un réseau électrique, on ne choisit généralement pas
+          d’où provient l’électricité que l’on consomme à un instant donné :
+          personne n’ordonne à un électron d’aller d’une éolienne à une maison particulière!
+        </p>
+
+        <p>
+          Par ailleurs, il peut être trompeur d’affirmer avoir un approvisionnement “100% renouvelable”.
+          En effet, c’est parce qu’il y a d’autres sources de production pilotables (nucléaire, hydroélectrique, gaz…)
+          que le réseau “tient”, et que l’on peut avoir certains acteurs qui décident d’avoir des contrats qui garantissent l’origine de leur électricité.
+        </p>
+        <p>
+          C’est pour cette raison que les émissions dues à la production d’électricité doivent être comptabilisée selon deux méthodes :
+        </p>
+        <ul>
+          <li>
+            <span class="bg-kc-lightblue text-kc-blue"><strong>L’approche géographique (<i>“location-based"</i>) </strong></span>:
+            Cette approche prend en compte les émissions moyennes liées à la production d’électricité dans la zone où elle est consommée (par exemple la France). Par exemple, la consommation lors de la pointe hivernale sera plus carbonée car le réseau fait appel à des centrales à gaz.
+
+          </li>
+          <li>
+            <span class="bg-kc-lightblue text-kc-blue"><strong>L’approche contractuelle (<i>“market-based”</i>) </strong></span> :
+            Cette approche prend en compte les contrats d’approvisionnement de l’entreprise.
+            Par exemple, une entreprise couvrant 100% de sa consommation avec des contrats
+            garantissant l’origine renouvelable pourra calculer une empreinte faible
+            même pendant la pointe hivernale, car elle aura payé pour garantir que
+            sa consommation provient de sources renouvelables.
+          </li>
+        </ul>
+
+  <!-- TO DO ajout illustration du calcul location / market based -->
+
+      </div>
+    </div>
+
+<!-- Question 4  -->
+    <div id="question-4" class="mb-5">
+    </div>
+    <br>
+
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-8">
+        <h4 class="bg-white">
+          Jusqu’où “remonter” pour le calcul les émissions indirectes?
+        </h4>
+
+
+<!-- GIF poupées russes -->
+        <div class="centered-image">
+          <%= image_tag 'articles/scope_1_2_3/galshir-babushka.gif',
+          width: "50%"%>
+          <div class="ml-5 mr-5">
+          <p><small><i>
+            “Pour  le transport des produits, il faut prendre en compte le carburant des camions.
+            Quid de l’usine qui a fabriqué le camion?
+            Et le carburant du tractopelle qui a permis de construire l’usine?
+            Et l’électricité de l’usine qui a construit le tractopelle? Etc.”
+          </i></small></p>
+          </div>
+        </div>
+
+
+        <p>
+          Le calcul des émissions indirectes peut rapidement causer de problèmes a priori insolubles :
+          il faudrait récupérer des informations sur des centaines d’activités en amont et en aval,
+          de dizaines d’industries différentes, pour calculer correctement son empreinte carbone.
+        </p>
+        <p>
+          L’exercice est effectivement difficile, mais pas impossible,
+          et surtout l’intérêt est d’abord de mieux comprendre les émissions “influençables”,
+          pas de construire une cartographie exhaustive.
+        </p>
+        <p>
+          Ensuite, deux éléments permettent de réaliser l’exercice dans le cadre d’un bilan carbone :
+        </p>
+        <ul>
+          <li>
+            Les <span class="bg-kc-lightblue text-kc-blue"><strong>recommandations des standards</strong></span> comme le GHG protocol  ou le Bilan Carbone™ permettent de définir un périmètre “requis” :
+            il est ambitieux, mais il ne s’étend pas “à l’infini” en amont ou en aval
+          </li>
+          <li>
+            Les <span class="bg-kc-lightblue text-kc-blue"><strong>analyses de cycle de vie des produits (ACV)</strong></span>
+            peuvent être utilisées pour estimer les émissions “de l’extraction des matières premières à la sortie d’usine”.
+            Ces analyses sont disponibles dans des bases de données dédiées,
+            qui permettent de faire le lien entre l’analyse de l’empreinte “orienté produit” (ACV)
+            et le bilan carbone “orienté organisation”
+          </li>
+        </ul>
+
+      </div>
+    </div>
+
+<!-- Question 5  -->
+    <div id="question-5" class="mb-5">
+    </div>
+    <br>
+
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-8">
+        <h4 class="bg-white">
+          Est-ce que mes émissions indirectes (scope 3) sont comptées en double avec mes fournisseurs et clients?
+        </h4>
+
+        <p>
+          La réponse est simple : oui 🙂
+        </p>
+        <p>
+          Le but du scope 3 est d’évaluer les émissions indirectes en amont et en aval : elles correspondent donc aux émissions directes (scope 1 et 2) d’autres acteurs. Cela n’a donc pas de sens de “sommer” les scope 3 de plusieurs entreprises dans une même chaîne de valeur.
+        </p>
+        <p>
+          En revanche, le scope 3 permet de mieux comprendre son impact indirect, que l’on peut influencer, en prenant en compte l’impact carbone de sa politique achat, sa stratégie logistique, l’efficacité énergétique de ses produits, etc.
+        </p>
+
+        <!-- TO DO ajout illustration double compte chaine de valeur -->
+
+      </div>
+    </div>
+
+
+
+    <%= link_to "< Retour aux articles", articles_path, class:"btn btn-kc-outline-blue my-4"  %>
+  </div>
+</div>
+
