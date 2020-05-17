@@ -1,0 +1,466 @@
+<!-- TO DO ajout picto pour les directions d'entreprise : RH, etc -->
+<!-- Tableau - exemples par sources -->
+    <div class="table-responsive">
+      <table class="table small table-striped table-bordered">
+        <!-- header tableau -->
+        <thead class="bg-kc-orange text-white">
+          <tr>
+            <th scope="col">Poste d'émissions</th>
+            <th scope="col">Données typiques</th>
+            <th scope="col">Exemples de sources</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <!-- ligne 1 -->
+          <tr>
+            <th scope="row" class="align-middle">
+              Scope 1 - Carburants consommé
+            </th>
+            <td class="align-middle">
+              <ul>
+                <li>
+                  Factures des consommations de combustibles (ex: gaz, fioul…)
+                </li>
+                <li>
+                  Consommation d’essence des véhicules (ex: disponibles avec les cartes essences)
+                </li>
+              </ul>
+            </td>
+            <td class="align-middle">
+              <b>Interne:</b>
+              <br>
+              services généraux, direction achats
+            </td>
+          </tr>
+
+          <!-- ligne 2 -->
+          <tr>
+            <th scope="row" class="align-middle">
+              Scope 2 : Electricité consommée
+            </th>
+            <td class="align-middle">
+              <ul>
+                <li>
+                  Factures des fournisseurs d’électricité (en kWh, €)
+                </li>
+              </ul>
+            </td>
+            <td class="align-middle">
+              <b>Interne:</b>
+              <br> services généraux, direction des achats, directeurs de sites
+              <br>
+              <b>Externe:</b>
+              <br> fournisseur d’électricité
+            </td>
+          </tr>
+
+          <!-- ligne 3 -->
+          <tr>
+            <th scope="row" class="align-middle">
+              Scope 2 : Chaleur, froid et vapeur consommée
+            </th>
+            <td class="align-middle">
+              Factures des fournisseurs d’énergie et fluides industriels (en m3, kWh, €, etc.)
+            </td>
+            <td class="align-middle">
+              <b>
+                Interne:
+              </b>
+                services généraux, direction des achats, directeurs de sites
+              <br>
+              <b>
+                Externe:
+              </b>
+                fournisseur d’électricité
+            </td>
+          </tr>
+
+          <!-- ligne 4 -->
+          <tr>
+            <th scope="row" class="align-middle">
+              Produits et services achetés
+            </th>
+            <td class="align-middle">
+              Extraction des achats de l’année par fournisseur et type de produit :
+              <ul>
+                <li>
+                  idéalement en volume pour les produits (tonnes, m3…), à défaut en euros
+                </li>
+                <li>
+                  en euros pour les services
+                </li>
+              </ul>
+            </td>
+            <td class="align-middle">
+              <b>
+                Interne:
+              </b>
+              direction des achats
+              <br>
+              <b>
+                Externe :
+              </b>
+              fournisseurs
+            </td>
+          </tr>
+
+          <!-- ligne 5 -->
+          <tr>
+            <th scope="row" class="align-middle">
+              Biens immobilisés
+            </th>
+            <td class="align-middle">
+              Extraction de l’inventaire des biens immobilisés et amortis comptablement : parc immobilier, inventaire informatique, parc de véhicules, inventaire de l’outil industriel de production...
+            </td>
+            <td class="align-middle">
+              <b>
+                Interne :
+              </b>
+                direction achat, direction financière, direction IT
+              <br>
+              <b>
+                Externe:
+              </b>
+              prestataire de facility management (inventaire immobilier), société d’info-gérance (parc informatique), etc.
+            </td>
+          </tr>
+
+          <!-- ligne 6 -->
+          <tr>
+            <th scope="row" class="align-middle">
+              Emissions liées aux combustibles et à l'énergie (hors scope 1/2)
+            </th>
+            <td class="align-middle">
+              <ul>
+                <li>
+                  Volume de combustible consommé (gaz, essence…)
+                </li>
+                <li>
+                  Consommation électrique
+                </li>
+              </ul>
+            </td>
+            <td class="align-middle">
+              <b>
+                Interne:
+              </b>
+              Direction Achats, Services Généraux…
+              <br>
+              <b>
+                Externe:
+              </b>
+              Fournisseur d’énergie
+            </td>
+          </tr>
+
+          <!-- ligne 7 -->
+          <tr>
+            <th scope="row" class="align-middle">
+              Transport amont et distribution
+            </th>
+            <td class="align-middle">
+              <ul>
+                <li>
+                  Inventaire des produits livrés (en volume et par mode de livraison : route, rail, aérien)
+                </li>
+                <li>
+                  Pour chaque livraison, informations permettant le calcul de l’empreinte carbone (du plus au moins précis):
+                <ul>
+                  <li>
+                    Empreinte carbone fournie par le transporteur
+                  </li>
+                    Carburant consommée par le transporteur au pro rata du chargement
+                  <li>
+                    t.km transportés
+                  </li>
+                  <li>
+                    km parcourus
+                  </li>
+                  <li>
+                    € dépensés en prestations de transport
+                  </li>
+                </ul>
+                </li>
+              </ul>
+              NB : les transporteurs routiers ont l’obligation de fournir des informations sur l’empreinte carbone des prestations de transports effectuées
+            </td>
+            <td class="align-middle">
+              <b>
+                Interne:
+              </b>
+              Direction supply chain / logistique, responsables de sites de production ou de stockage
+              <br>
+              <b>
+                Externe:
+              </b>
+              prestataires de transport
+            </td>
+          </tr>
+
+          <!-- ligne 8 -->
+          <tr>
+            <th scope="row" class="align-middle">
+              Déchets générés
+            </th>
+            <td class="align-middle">
+              <ul>
+                <li>
+                  Inventaire en volume des déchets générés par type
+                </li>
+                <li>
+                  Mode de traitement de chaque type de déchet
+                </li>
+              </ul>
+            </td>
+            <td class="align-middle">
+              <b>
+                Interne:
+              </b>
+              responsables de sites de production
+              <br>
+              <b>
+                Externe:
+              </b>
+              prestataire en charge de l’enlèvement et du traitement des déchets
+            </td>
+          </tr>
+
+          <!-- ligne 9 -->
+          <tr>
+            <th scope="row" class="align-middle">
+              Déplacements professionnels
+            </th>
+            <td class="align-middle">
+              Inventaire des déplacements professionnels réalisés dans l’année, avec le détail suivant
+              <ul>
+                <li>
+                  Mode de transport : voiture, train, avion…
+                </li>
+                <li>
+                  Distance (arrivée / départ)
+                </li>
+              </ul>
+            </td>
+            <td class="align-middle">
+              <b>
+                Interne:
+              </b>
+              services généraux, direction RH et paie
+              <br>
+              <b>
+                Externe:
+              </b>
+              agence de voyage
+            </td>
+          </tr>
+
+
+          <!-- ligne 10 -->
+          <tr>
+            <th scope="row" class="align-middle">
+              Déplacements domicile travail
+            </th>
+            <td class="align-middle">
+              Enquête déplacement des salariés (typiquement réalisé à l’occasion d’un Plan de Déplacement d’Entreprise), avec la part modale et la distance parcourue par salarié
+            </td>
+            <td class="align-middle">
+              <b>
+                Interne:
+              </b>
+              direction RH
+            </td>
+          </tr>
+
+          <!-- ligne 10 -->
+          <tr>
+            <th scope="row" class="align-middle">
+              Actifs en leasing amont
+            </th>
+            <td class="align-middle">
+              Consommation d’énergie (combustible, électricité…) des actifs loués par l’entreprise (ex: parc de véhicules)
+            </td>
+            <td class="align-middle">
+              <b>
+                Interne:
+              </b>
+              services généraux, direction supply chain / logistique, etc.
+            </td>
+          </tr>
+
+          <!-- ligne 11 -->
+          <tr>
+            <th scope="row" class="align-middle">
+              Transport de marchandise et distribution aval
+            </th>
+            <td class="align-middle">
+              <ul>
+                <li>
+                  Inventaire des produits livrés (en volume et par mode de livraison : route, rail, aérien)
+                </li>
+                <li>
+                  Pour chaque livraison, informations permettant le calcul de l’empreinte carbone (du plus au moins précis):
+                <ul>
+                  <li>
+                    Empreinte carbone fournie par le transporteur
+                  </li>
+                    Carburant consommée par le transporteur au pro rata du chargement
+                  <li>
+                    t.km transportés
+                  </li>
+                  <li>
+                    km parcourus
+                  </li>
+                  <li>
+                    € dépensés en prestations de transport
+                  </li>
+                </ul>
+                </li>
+              </ul>
+              NB : les transporteurs routiers ont l’obligation de fournir des informations sur l’empreinte carbone des prestations de transports effectuées
+            </td>
+            <td class="align-middle">
+              <b>
+                Interne:
+              </b>
+              Direction supply chain, responsables de sites de production ou de stockage
+              <br>
+              <b>
+                Externe:
+              </b>
+              prestataires de transport
+            </td>
+          </tr>
+
+          <!-- ligne 12 -->
+          <tr>
+            <th scope="row" class="align-middle">
+              Transformation des produits vendus
+            </th>
+            <td class="align-middle">
+              Études avec les entreprises en aval sur la transformation des produits intermédiaires vendus - peut être réalisé dans le cadre d’une analyse de cycle de vie (ACV)
+            </td>
+            <td class="align-middle">
+              <b>
+                Interne:
+              </b>
+              direction marketing, développement produit
+              <br>
+              <b>
+                Externe:
+              </b>
+              études avec les entreprises en aval (B2B)
+            </td>
+          </tr>
+
+          <!-- ligne 13 -->
+          <tr>
+            <th scope="row" class="align-middle">
+              Utilisation des produits vendus
+            </th>
+            <td class="align-middle">
+              <ul>
+                <li>
+                  Analyse de cycle de vie réalisée à la conception du produit
+                </li>
+                <li>
+                  B2C : Études sur des panels consommateurs permettant d’évaluer les conditions d’utilisation réelles des produits, leur durée de vie et leur consommation énergétique
+                </li>
+                <li>
+                  B2B : études avec les clients en aval de la chaîne de valeurs sur l’utilisation des produits
+                </li>
+              </ul>
+            </td>
+            <td class="align-middle">
+              <b>
+                Interne:
+              </b>
+              direction marketing, direction développement produit
+              <br>
+              <b>
+                Externe:
+              </b>
+              enquêtes consommateurs (B2C), études avec les entreprises en aval (B2B)
+            </td>
+          </tr>
+
+          <!-- ligne 14 -->
+          <tr>
+            <th scope="row" class="align-middle">
+              Fin de vie des produits vendus
+            </th>
+            <td class="align-middle">
+              <ul>
+                <li>
+                  Estimation de la répartition de la fin de vie des produits (recyclage, valorisation, enfouissement…)
+                </li>
+                <li>
+                  Estimation des émissions liées à chaque mode de gestion de la fin de vie de produit (fourni par des bases de données standard ou directement par le prestataire)
+                </li>
+              </ul>
+            </td>
+            <td class="align-middle">
+              <b>
+                Interne:
+              </b>
+              direction marketing, direction développement produit
+              <br>
+              <b>
+                Externe:
+              </b>
+              prestataire en charge de la valorisation et de l’élimination des déchets
+            </td>
+          </tr>
+
+          <!-- ligne 15 -->
+          <tr>
+            <th scope="row" class="align-middle">
+              Actifs en leasing aval
+            </th>
+            <td class="align-middle">
+              Consommations énergétiques et électriques (scope 1 et 2) des actifs loués, identifiés sur factures par chaque locataire
+            </td>
+            <td class="align-middle">
+              <b>
+                Externe:
+              </b>
+              locataire de l’actif, avec le support éventuel de ses fournisseurs d’énergie
+            </td>
+          </tr>
+
+          <!-- ligne 16 -->
+          <tr>
+            <th scope="row" class="align-middle">
+              Franchises en aval
+            </th>
+            <td class="align-middle">
+                Evaluation de l’empreinte carbone de la construction des locaux du franchisé
+            </td>
+            <td class="align-middle">
+              <b>
+                Externe:
+              </b>
+              Franchisés, société de BTP en charge de la construction
+            </td>
+          </tr>
+
+          <!-- ligne 17 -->
+          <tr>
+            <th scope="row" class="align-middle">
+              Investissements
+            </th>
+            <td class="align-middle">
+              Reporting scope 1 et 2 des sociétés dans lesquelles l’entreprise a des participations (ex: DPEF, BEGES…)
+            </td>
+            <td class="align-middle">
+              <b>
+                Externe:
+              </b>
+              Sociétés sous participation / gestion
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+

@@ -52,6 +52,17 @@ height: 10vh;
   margin-bottom: 2vh;
 }
 
+.divider-narrow {
+  background-color: #E0F8F8;
+  width: 100%;
+  height: 2px;
+  margin-bottom: 0.5vh;
+}
+
+
+// --------------------------------------------------------------------
+// Box conclusion
+
 .box-conclusion {
   display: flex;
   background-color: #E0F8F8;
@@ -77,6 +88,45 @@ height: 10vh;
 .box-conclusion .logo {
   width: 100%;
 }
+
+// -------------------------------------------------------------------------
+// Box scope category
+
+.box-scope-category {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  border-radius: 10px;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  padding: 1vh;
+  box-shadow: 3px 2px 3px lightgrey;
+}
+
+.box-scope-category:hover {
+  box-shadow: 4px 2px 3px darkgrey;
+  filter: brightness(0.98);
+}
+
+.box-scope-category > p {
+  margin-bottom: 0;
+  padding: 0;
+  line-height: 1rem;
+}
+
+.scope1-background {
+  background-color: #FBD724;
+}
+
+.scope2-background {
+  background-color: #ADCCDE;
+}
+
+.scope3-background {
+  background-color: #E0F8F8;
+}
+
+
 
 // -------------------------------------------------------------------------
 // Polices de caractère
@@ -124,6 +174,11 @@ table {
 
 .centered-image {
   text-align: center;
+}
+
+.small-image {
+  width: 5vh;
+  margin-right: 1vh;
 }
 
 .article .illustration {

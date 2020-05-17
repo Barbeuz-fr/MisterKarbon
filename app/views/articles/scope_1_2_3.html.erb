@@ -58,21 +58,819 @@
     </div>
 
 <!-- section avec image -->
-<!-- TO DO transformer image en grid reactive avec text on-click -->
-    <div class="col-12">
-      <div class="centered-image mb-1">
-        <%= image_tag 'articles/scope_1_2_3/scope_1_2_3.png',
-            width: "75%",
-            alt: "Cartographie des postes d'emissions "
-        %>
-        <p><small><i>
-          Source : KarbonChain, d'après le GHG Protocol
-        </i></small></p>
+<!-- TO DO
+- ajout légende en dessous
+- revoir picto pour combiner plusieurs images
+- picto cohérents pour avoir contenu "vide"
+P2:
+- ajout picto dans header modale
+- ajout éléments sur le périmètre requis et optionnel
+<%= image_tag 'articles/scope_1_2_3/scope_1_2_3.png',
+    width: "75%",
+    alt: "Cartographie des postes d'emissions "
+%>
+ -->
+
+<!-- legende -->
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-2">
+      <div class="scope1-background">
+        <p><small>Scope 1</small></p>
+      </div>
+      <div class="scope2-background">
+        <p><small>Scope 3</small></p>
       </div>
 
+      <div class="scope3-background">
+        <p><small>Scope 3</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+ -->
+
+
+<!-- Headers -->
+    <div class="row">
+      <div class="col-1">
+
+      </div>
+      <div class="col-3 text-center">
+        <h6>Activités en amont</h6>
+
+      </div>
+      <div class="col-3 text-center">
+        <h6>Activités de l'entreprise</h6>
+
+      </div>
+      <div class="col-5 text-center">
+        <h6>Activités en aval</h6>
+        <div>
+          <div class="row">
+            <div class="col-6 text-center">
+              <h6>Production et distribution</h6>
+            </div>
+            <div class="col-6 text-center">
+              <h6>Consommation finale</h6>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-<!-- TO DO - lien vers les questions -->
+<!-- Ligne 1 - Energie -->
+
+    <div class="row">
+      <div class="col-1">
+        <h6><small>Energie </small></h6>
+      </div>
+
+      <div class="col-3">
+        <!-- Scope 3 - energie -->
+        <div data-toggle="modal" data-target="#scope3_energie">
+          <div class="box-scope-category scope3-background">
+            <div class="centered-image small-image">
+              <%= image_tag 'articles/scope_1_2_3/3-emission energie charbon.png',
+              width: "100%"%>
+            </div>
+              <p>
+                <small>Emissions liées aux combustibles et à l'énergie</small>
+              </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-3">
+        <div>
+          <!-- Scope 1 -->
+          <div data-toggle="modal" data-target="#scope1">
+            <div class="box-scope-category scope1-background">
+              <div class="centered-image small-image">
+                <%= image_tag 'articles/scope_1_2_3/scope 1 - oil.png',
+                width: "100%"%>
+              </div>
+              <p>
+                <small>Carburants consommés</small>
+              </p>
+            </div>
+          </div>
+
+          <!-- Scope 2  electricité-->
+          <div data-toggle="modal" data-target="#scope2-electricite">
+            <div class="box-scope-category scope2-background">
+              <div class="centered-image small-image">
+                <%= image_tag 'articles/scope_1_2_3/2-electricite.png',
+                width: "100%"%>
+              </div>
+              <p>
+                <small>Electricité</small>
+              </p>
+            </div>
+          </div>
+
+
+          <!-- Scope 2  heating cooling network -->
+          <div data-toggle="modal" data-target="#scope2-heating">
+            <div class="box-scope-category scope2-background">
+              <div class="centered-image small-image">
+                <%= image_tag 'articles/scope_1_2_3/scope 2 - heating network.png',
+                width: "100%"%>
+              </div>
+              <p>
+                <small>Chaleur, froid et vapeur</small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-3">
+      </div>
+      <div class="col-2">
+      </div>
+    </div>
+
+<!-- Ligne 2 - Production -->
+    <div class="divider-narrow">
+    </div>
+
+    <div class="row">
+      <div class="col-1">
+        <h6><small>Production</small></h6>
+      </div>
+
+      <div class="col-3">
+        <!-- Scope 3 - Achats -->
+        <div data-toggle="modal" data-target="#scope3_achats">
+          <div class="box-scope-category scope3-background">
+            <div class="centered-image small-image">
+              <%= image_tag 'articles/scope_1_2_3/1-achats.png',
+              width: "100%"%>
+            </div>
+            <p>
+              <small>Achats de biens et services</small>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-3">
+        <!-- Scope 3 - Biens immo -->
+        <div data-toggle="modal" data-target="#scope3_immo">
+          <div class="box-scope-category scope3-background">
+            <div class="centered-image small-image">
+              <%= image_tag 'articles/scope_1_2_3/2-biens immobilises.png',
+              width: "100%"%>
+            </div>
+            <p>
+              <small>Biens immobilisés</small>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-3">
+        <!-- Scope 3 - Transformations biens -->
+        <div data-toggle="modal" data-target="#scope3_transformation">
+          <div class="box-scope-category scope3-background">
+            <div class="centered-image small-image">
+              <%= image_tag 'articles/scope_1_2_3/10-transformation produits vendus.png',
+              width: "100%"%>
+            </div>
+            <p>
+              <small>Transformation des produits vendus</small>
+            </p>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-2">
+      </div>
+    </div>
+
+<!-- Ligne 3 - Transport et déplacement -->
+    <div class="divider-narrow">
+    </div>
+
+    <div class="row">
+      <div class="col-1">
+        <h6><small>Transport</small></h6>
+      </div>
+      <div class="col-3">
+        <!-- Scope 3 - Transport amont -->
+        <div data-toggle="modal" data-target="#scope3_transport_amont">
+          <div class="box-scope-category scope3-background">
+            <div class="centered-image small-image">
+              <%= image_tag 'articles/scope_1_2_3/4-transport sea.png',
+              width: "100%"%>
+            </div>
+            <p>
+              <small>Transport et déplacement amont</small>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-3">
+        <!-- Scope 3 - Déplacement pro -->
+        <div data-toggle="modal" data-target="#scope3_deplacement_pro">
+          <div class="box-scope-category scope3-background">
+            <div class="centered-image small-image">
+              <%= image_tag 'articles/scope_1_2_3/6-deplacement-avion.png',
+              width: "100%"%>
+            </div>
+            <p>
+              <small>Déplacement professionnels</small>
+            </p>
+          </div>
+        </div>
+
+        <!-- Scope 3 - Déplacement domicile-travail -->
+        <div data-toggle="modal" data-target="#scope3_commuting">
+          <div class="box-scope-category scope3-background">
+            <div class="centered-image small-image">
+              <%= image_tag 'articles/scope_1_2_3/7-deplacement domicile.png',
+              width: "100%"%>
+            </div>
+            <p>
+              <small>Déplacement domicile-travail</small>
+            </p>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="col-3">
+        <!-- Scope 3 - Transport aval -->
+        <div data-toggle="modal" data-target="#scope3_transport_aval">
+          <div class="box-scope-category scope3-background">
+            <div class="centered-image small-image">
+              <%= image_tag 'articles/scope_1_2_3/4-transport sea.png',
+              width: "100%"%>
+            </div>
+            <p>
+              <small>Transport et déplacement aval</small>
+            </p>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-2">
+      </div>
+    </div>
+
+<!-- Ligne 4 - Consommation finale -->
+    <div class="divider-narrow">
+    </div>
+
+    <div class="row">
+      <div class="col-1">
+        <h6><small>Consommation finale</small></h6>
+      </div>
+      <div class="col-3">
+      </div>
+      <div class="col-3">
+      </div>
+      <div class="col-3">
+      </div>
+      <div class="col-2">
+        <!-- Scope 3 - Utilisation -->
+        <div data-toggle="modal" data-target="#scope3_utilisation">
+          <div class="box-scope-category scope3-background">
+            <div class="centered-image small-image">
+              <%= image_tag 'articles/scope_1_2_3/11-utilisation produits.png',
+              width: "100%"%>
+            </div>
+            <p>
+              <small>Utilisation des produits vendus</small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- Ligne 5 - Déchets -->
+    <div class="divider-narrow">
+    </div>
+
+    <div class="row">
+      <div class="col-1">
+        <h6><small>Déchets</small></h6>
+      </div>
+      <div class="col-3">
+      </div>
+      <div class="col-3">
+        <!-- Scope 3 - dechets activité -->
+        <div data-toggle="modal" data-target="#scope3_dechets_activite">
+          <div class="box-scope-category scope3-background">
+            <div class="centered-image small-image">
+              <%= image_tag 'articles/scope_1_2_3/12-fin de vie.png',
+              width: "100%"%>
+            </div>
+            <p>
+              <small>Déchets générés par l'activité</small>
+            </p>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-3">
+      </div>
+      <div class="col-2">
+        <!-- Scope 3 - dechets fin de vie -->
+        <div data-toggle="modal" data-target="#scope3_dechets_fin_vie">
+          <div class="box-scope-category scope3-background">
+            <div class="centered-image small-image">
+              <%= image_tag 'articles/scope_1_2_3/12-fin de vie.png',
+              width: "100%"%>
+            </div>
+            <p>
+              <small>Fin de vie des produits vendus</small>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+<!-- Ligne 6 - Autres -->
+    <div class="divider-narrow">
+    </div>
+
+    <div class="row">
+      <div class="col-1">
+        <h6><small>Autres</small></h6>
+      </div>
+      <div class="col-3">
+        <!-- Scope 3 - leasing amont -->
+        <div data-toggle="modal" data-target="#scope3_leasing_amont">
+          <div class="box-scope-category scope3-background">
+            <div class="centered-image small-image">
+              <%= image_tag 'articles/scope_1_2_3/8-leasing.png',
+              width: "100%"%>
+            </div>
+            <p>
+              <small>Actifs en leasing amont</small>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-3">
+      </div>
+      <div class="col-3">
+        <!-- Scope 3 - leasing aval -->
+        <div data-toggle="modal" data-target="#scope3_leasing_aval">
+          <div class="box-scope-category scope3-background">
+            <div class="centered-image small-image">
+              <%= image_tag 'articles/scope_1_2_3/8-leasing.png',
+              width: "100%"%>
+            </div>
+            <p>
+              <small>Actifs en leasing aval</small>
+            </p>
+          </div>
+        </div>
+
+        <!-- Scope 3 - franchises -->
+        <div data-toggle="modal" data-target="#scope3_franchises">
+          <div class="box-scope-category scope3-background">
+            <div class="centered-image small-image">
+              <%= image_tag 'articles/scope_1_2_3/14-franchises.png',
+              width: "100%"%>
+            </div>
+            <p>
+              <small>Franchises</small>
+            </p>
+          </div>
+        </div>
+
+
+        <!-- Scope 3 - investissements -->
+        <div data-toggle="modal" data-target="#scope3_investissements">
+          <div class="box-scope-category scope3-background">
+            <div class="centered-image small-image">
+              <%= image_tag 'articles/scope_1_2_3/15-investissements.png',
+              width: "100%"%>
+            </div>
+            <p>
+              <small>Investissements</small>
+            </p>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="col-2">
+      </div>
+    </div>
+
+<!-- Legende -->
+  <div class="col-12">
+      <p><small><i>
+        Source : KarbonChain, d'après le GHG Protocol
+      </i></small></p>
+  </div>
+
+
+<!-- Contenus modales -->
+<div>
+  <!-- Modal - scope 3 energie -->
+  <div class="modal fade bd-example-modal-lg" id="scope3_energie" tabindex="-1" role="dialog" aria-labelledby="scope3_energie" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header scope3-background">
+          <p class="modal-title" id="scope3_energie">Emissions liées aux combustibles et à l'énergie</p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Cette catégorie complète les scopes 1 et 2, qui ne couvrent que les émissions du combustible en lui-même (émises lors de combustion, c’est le principe 🙂 )
+          </p>
+          <p>
+            Il s’agit donc des émissions dues aux activités qui ont permis de produire les combustibles, par exemple :
+          </p>
+          <ul>
+            <li>
+              extraction, raffinage, transport de l’essence
+            </li>
+            <li>
+              pertes sur les réseaux électriques et de transport de chaleur / de froid
+            </li>
+          </ul>
+          <p>
+            NB : les acteurs qui achètent puis revendent de l’énergie reportent ces émissions sur ce poste
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal - scope 1 -->
+  <div class="modal fade bd-example-modal-lg" id="scope1" tabindex="-1" role="dialog" aria-labelledby="scope1" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header scope1-background">
+          <p class="modal-title" id="scope1">Carburants consommés</p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Cette catégorie couvre tous les combustibles (pétrole, gaz, charbon…) consommés par l’entreprise au cours de la période.
+          </p>
+          <p>
+            NB : on ne compte ici que les émissions du combustible (ex: l’essence consommée par un véhicule). Les émissions indirectes sont comptabilisées dans le scope 3 (ex: pour l’essence, la construction de la plateforme pétrolière, le raffinage et le transport par camion-citerne)
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal - scope 2 electricite -->
+  <div class="modal fade bd-example-modal-lg" id="scope2-electricite" tabindex="-1" role="dialog" aria-labelledby="scope2-electricite" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header scope2-background">
+          <p class="modal-title" id="scope2-electricite">Electricité</p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Cette catégorie couvre l’électricité consommée (kWh) par l’ensemble des actifs de l’entreprise (bâtiments, machines, véhicules).
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal - scope 2 heating -->
+  <div class="modal fade bd-example-modal-lg" id="scope2-heating" tabindex="-1" role="dialog" aria-labelledby="scope2-heating" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header scope2-background">
+          <p class="modal-title" id="scope2-heating">Chaleur, froid et vapeur consommée</p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Cette catégorie couvre les émissions générées par les réseaux de chaleur, froid et vapeur utilisés par l’entreprise.
+          </p>
+          <p>
+            Il peut s’agir de réseaux de chaleur urbaine pour des bâtiments tertiaires, de réseaux de vapeur à usage industriel, de systèmes de réfrigération...
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal - scope 3 achats -->
+  <div class="modal fade bd-example-modal-lg" id="scope3_achats" tabindex="-1" role="dialog" aria-labelledby="scope3_achats" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header scope3-background">
+          <p class="modal-title" id="scope3_achats">Achats de biens et services</p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Cette catégorie couvre l’ensemble des produits (matières premières, consommables) et des services achetés par l’entreprises pour réaliser son activité
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal - scope 3 biens immos -->
+  <div class="modal fade bd-example-modal-lg" id="scope3_immo" tabindex="-1" role="dialog" aria-labelledby="scope3_immo" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header scope3-background">
+          <p class="modal-title" id="scope3_immo">Biens immobilisés</p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Cette catégorie couvre l’ensemble des actifs achetés dans l’année, par exemple les équipements, machines outils, mobilier, etc.
+          </p>
+          <p>
+            Contrairement à la vision “comptable”, les émissions ne sont pas amortis sur la durée de vie des biens. Ainsi, l’ensemble des émissions d’une machine sont prise en compte uniquement l’année de son acquisition.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal - scope 3 Transformation des produits vendus -->
+  <div class="modal fade bd-example-modal-lg" id="scope3_transformation" tabindex="-1" role="dialog" aria-labelledby="scope3_transformation" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header scope3-background">
+          <p class="modal-title" id="scope3_transformation">Transformation des produits vendus</p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Cette catégorie s’applique uniquement aux produits “intermédiaires” qui sont achetés par les clients afin d’être transformés puis revendus
+          </p>
+          <p>
+            Exemple : plaques d’acier qui sont ensuite usinées, pâte à papier ensuite transformée en emballages, etc.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal - scope 3 transport amont -->
+  <div class="modal fade bd-example-modal-lg" id="scope3_transport_amont" tabindex="-1" role="dialog" aria-labelledby="scope3_transport_amont" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header scope3-background">
+          <p class="modal-title" id="scope3_transport_amont">Transport et distribution amont</p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Cette catégorie couvre les émissions de transport et logistique amont pour la livraison de l’ensemble des produits et services.
+          </p>
+          <p>
+            NB: dans le cas où l’entreprise utilise ses propres véhicules, les émissions des carburants sont déjà comptabilisées dans le scope 1 ou 2
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal - scope 3 deplacement pro -->
+  <div class="modal fade bd-example-modal-lg" id="scope3_deplacement_pro" tabindex="-1" role="dialog" aria-labelledby="scope3_deplacement_pro" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header scope3-background">
+          <p class="modal-title" id="scope3_deplacement_pro">Déplacements professionnels</p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Cette catégorie couvre les déplacements professionnels (voiture, train, avion…) réalisés avec des véhicules qui n’appartient pas à l’entreprise.
+          </p>
+          <p>
+            Si le véhicule appartient à l’entreprise, ses carburants sont comptabilisés dans le scope 1 et le véhicule est un bien immobilisé (ses émissions indirectes sont comptabilisées lors de l’achat)
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal - scope 3 commuting -->
+  <div class="modal fade bd-example-modal-lg" id="scope3_commuting" tabindex="-1" role="dialog" aria-labelledby="scope3_commuting" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header scope3-background">
+          <p class="modal-title" id="scope3_commuting">Déplacements domicile-travail</p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Cette catégorie couvre les émissions générées par le déplacement des salariés entre leur domicile et le lieu de travail, dès lors qu’il n’est pas effectué dans un véhicule d’entreprise
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal - scope 3 transport amont -->
+  <div class="modal fade bd-example-modal-lg" id="scope3_transport_aval" tabindex="-1" role="dialog" aria-labelledby="scope3_transport_aval" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header scope3-background">
+          <p class="modal-title" id="scope3_transport_aval">Transport et distribution aval</p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Cette catégorie couvre les émissions de transport et logistique aval pour la livraison de l’ensemble des produits et services.
+          </p>
+          <p>
+            NB: dans le cas où l’entreprise utilise ses propres véhicules, les émissions des carburants sont déjà comptabilisées dans le scope 1 ou 2
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal - scope 3 utilisation -->
+  <div class="modal fade bd-example-modal-lg" id="scope3_utilisation" tabindex="-1" role="dialog" aria-labelledby="scope3_utilisation" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header scope3-background">
+          <p class="modal-title" id="scope3_utilisation">Utilisation des produits vendus</p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Cette catégorie couvre les émissions des produits vendus, quand ceux-ci consomment de l’énergie pour leur fonctionnement, que ce soit directement (ex: carburant d’une voiture) ou indirectement (ex: gaz pour la cuisson d’un aliment)
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal - scope 3 dechets activité -->
+  <div class="modal fade bd-example-modal-lg" id="scope3_dechets_activite" tabindex="-1" role="dialog" aria-labelledby="scope3_dechets_activite" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header scope3-background">
+          <p class="modal-title" id="scope3_dechets_activite">Déchets générés par l'activité</p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Cette catégorie couvre les émissions liées aux déchets générés lors de la production des produits ou services (ex: chutes de matériaux, consommables de bureaux, etc.).
+          </p>
+          <p>
+            Ainsi, pour des déchets incinérés, les combustibles nécessaires à l’incinérations sont pris en compte
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal - scope 3 dechets fin de vie -->
+  <div class="modal fade bd-example-modal-lg" id="scope3_dechets_fin_vie" tabindex="-1" role="dialog" aria-labelledby="scope3_dechets_fin_vie" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header scope3-background">
+          <p class="modal-title" id="scope3_dechets_fin_vie">Déchets générés à la fin de vie des produits</p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Cette catégorie couvre les émissions liées à l’incinération, le recyclage ou la mise en décharge du produit
+          </p>
+          <p>
+            NB : on considère ici les émissions futures des produits vendus sur l’année (et non les émissions des produits vendus il y a plusieurs années et arrivés en fin de vie)
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal - leasing amont -->
+  <div class="modal fade bd-example-modal-lg" id="scope3_leasing_amont" tabindex="-1" role="dialog" aria-labelledby="scope3_leasing_amont" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header scope3-background">
+          <p class="modal-title" id="scope3_leasing_amont">Actifs en leasing amont</p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Cette catégorie couvre les émissions liées à l’utilisation d’actifs en leasing, par exemple une flotte de véhicules
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal - leasing aval -->
+  <div class="modal fade bd-example-modal-lg" id="scope3_leasing_aval" tabindex="-1" role="dialog" aria-labelledby="scope3_leasing_aval" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header scope3-background">
+          <p class="modal-title" id="scope3_leasing_aval">Actifs en leasing aval</p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Cette catégorie couvre les émissions des actifs possédés par l’entreprise et loués à un tiers (symétrique du poste "leasing amont").
+          </p>
+          <p>
+            Par exemple, une entreprise qui loue un parc de voitures à une autre entreprise comptabilise les émissions de ces voitures dans ce poste
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal - franchises -->
+  <div class="modal fade bd-example-modal-lg" id="scope3_franchises" tabindex="-1" role="dialog" aria-labelledby="scope3_franchises" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header scope3-background">
+          <p class="modal-title" id="scope3_franchises">Franchises</p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Cette catégorie couvre les émissions des franchisés  (par exemple :  points de ventes, de restauration).        </p>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal - investissements -->
+  <div class="modal fade bd-example-modal-lg" id="scope3_investissements" tabindex="-1" role="dialog" aria-labelledby="scope3_investissements" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header scope3-background">
+          <p class="modal-title" id="scope3_investissements">Investissements</p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Cette catégorie couvre uniquement les investissements financiers (l’achat d’actifs productifs est couvert par “2. Biens immobilisées”).
+          </p>
+          <p>
+            Par exemple, une banque ou un gestionnaire d’actifs  doivent faire l’inventaire des émissions des entreprises dans lesquelles ils ont des participations.
+          </p>
+          <p>
+            Le niveau de contrôle de l’actifs est pris en compte dans la part des émissions comptabilisées
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fin des modales -->
+
+<!-- TO DO - lien vers les questions - couleur du texte + effet hover-->
 <!-- Sommaire FAQ -->
     <div class="row justify-content-center mt-5">
       <div class="col-12 col-lg-8">
@@ -120,10 +918,9 @@
           Ces données d’activités sont ensuite multipliées par les facteurs d’émissions correspondant le cas échéant.
         </p>
 
-<!-- TO DO Ajout du tableau -->
-
       </div>
     </div>
+
 
 <!-- Question 2  -->
     <div id="question-2" class="mb-5">
@@ -269,7 +1066,6 @@
             et le bilan carbone “orienté organisation”
           </li>
         </ul>
-
       </div>
     </div>
 
@@ -305,3 +1101,4 @@
   </div>
 </div>
 
+<!-- Source modale : https://getbootstrap.com/docs/4.0/components/modal/ -->
