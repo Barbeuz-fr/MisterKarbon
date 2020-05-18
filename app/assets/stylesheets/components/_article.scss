@@ -100,7 +100,7 @@ height: 10vh;
   border-radius: 10px;
   margin-top: 1vh;
   margin-bottom: 1vh;
-  padding: 1vh;
+  padding: 0.5vh;
   box-shadow: 3px 2px 3px lightgrey;
 }
 
@@ -114,6 +114,18 @@ height: 10vh;
   padding: 0;
   line-height: 1rem;
 }
+
+.box-scope-category-no-hover {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  border-radius: 10px;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  padding: 0.5vh;
+  box-shadow: 3px 2px 3px lightgrey;
+}
+
 
 // -------------------------------------------------------------------------
 // Background colors
@@ -215,5 +227,14 @@ table {
   }
 }
 
+// -------------------------------------------------------------------------
+// Elements reactive
+// -------------------------------------------------------------------------
 
+#content-desktop {display: block;}
+#content-mobile {display: none;}
 
+@media (max-width: 500px) {
+  #content-desktop {display: none;};
+  #content-mobile {display: block;}
+}

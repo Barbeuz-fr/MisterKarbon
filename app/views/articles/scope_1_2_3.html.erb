@@ -17,17 +17,16 @@
   </div>
 </div>
 
+<!-- TO DO - revoir taxe article pour détailler l'intérêt du scope 3 -->
 <!-- Début de l'article -->
-
 <div class="bg-white pt-5 pb-3">
   <div class="container article">
-
     <div class="row justify-content-center">
       <div class="col-12 col-lg-8">
 
 <!-- GIF d'intro -->
         <div class="centered-image">
-          <%= image_tag 'articles/scope_1_2_3/un-dos-tres.gif',
+          <%= image_tag 'articles/scope_1_2_3/un_dos_tres_caption.gif',
           width: "50%"%>
           <p><small><i>Un, deux, trois scopes!</i></small></p>
         </div>
@@ -59,382 +58,389 @@
 
 <!-- TO DO
 - revoir picto pour combiner plusieurs images
-- picto cohérents pour avoir contenu "vide"
+- version mobile : elements clicables en dessous?
 P2:
-- ajout picto dans header modale
 - ajout éléments sur le périmètre requis et optionnel dans chaque modale
  -->
-
 
 <!-- Titre -->
     <h5>Synthèse des émissions couvertes par les scopes 1, 2 et 3</h5>
 
 <!-- Legende -->
 <div class="mb-3">
-  <div class="d-inline box-scope-category mr-3 scope1-background">Scope 1</div>
-  <div class="d-inline box-scope-category mr-3 scope2-background">Scope 2</div>
-  <div class="d-inline box-scope-category mr-3 scope3-background">Scope 3</div>
+  <div class="d-inline box-scope-category-no-hover mr-3 scope1-background"><small>Scope 1</small></div>
+  <div class="d-inline box-scope-category-no-hover mr-3 scope2-background"><small>Scope 2</small></div>
+  <div class="d-inline box-scope-category-no-hover mr-3 scope3-background"><small>Scope 3</small></div>
 </div>
 
-<!-- Headers -->
-    <div class="row">
-      <div class="col-2">
+<!-- Image pour version mobile -->
+<div id="content-mobile">
+  <div class="centered-image">
+    <%= image_tag 'articles/scope_1_2_3/mobile-scopes-shema.png',
+    width: "100%"%>
+  </div>
+</div>
 
-      </div>
-      <div class="col-3 pt-2 column-background text-center">
-        <h6>Activités en amont</h6>
+<!-- Tableau pour large screen -->
+<div id="content-desktop">
 
-      </div>
-      <div class="col-4 pt-2 column-background text-center">
-        <h6>Activités de l'entreprise</h6>
+  <!-- Headers -->
+      <div class="row">
+        <div class="col-2">
+        </div>
+        <div class="col-3 pt-2 column-background text-center">
+          <h6>Activités en amont</h6>
 
-      </div>
-      <div class="col-3 pt-2 column-background text-center">
-        <h6>Activités en aval</h6>
-      </div>
-    </div>
+        </div>
+        <div class="col-4 pt-2 column-background text-center">
+          <h6>Activités de l'entreprise</h6>
 
-<!-- Ligne 1 - Energie -->
-
-    <div class="row">
-      <div class="col-2 pt-2 column-background">
-        <h6><small>Energie </small></h6>
-      </div>
-
-      <div class="col-3">
-        <!-- Scope 3 - energie -->
-        <div data-toggle="modal" data-target="#scope3_energie">
-          <div class="box-scope-category scope3-background">
-            <div class="centered-image small-image">
-              <%= image_tag 'articles/scope_1_2_3/3-emission energie charbon.png',
-              width: "100%"%>
-            </div>
-              <p>
-                <small>Emissions liées aux combustibles et à l'énergie</small>
-              </p>
-          </div>
+        </div>
+        <div class="col-3 pt-2 column-background text-center">
+          <h6>Activités en aval</h6>
         </div>
       </div>
 
-      <div class="col-4">
-        <div>
-          <!-- Scope 1 -->
-          <div data-toggle="modal" data-target="#scope1">
-            <div class="box-scope-category scope1-background">
+  <!-- Ligne 1 - Energie -->
+
+      <div class="row">
+        <div class="col-2 pt-2 column-background">
+          <h6><small>Energie </small></h6>
+        </div>
+
+        <div class="col-3">
+          <!-- Scope 3 - energie -->
+          <a href="" data-toggle="modal" data-target="#scope3_energie">
+            <div class="box-scope-category scope3-background">
               <div class="centered-image small-image">
-                <%= image_tag 'articles/scope_1_2_3/scope 1 - oil.png',
+                <%= image_tag 'articles/scope_1_2_3/3-emission energie charbon.png',
                 width: "100%"%>
               </div>
-              <p>
-                <small>Carburants consommés</small>
-              </p>
+                <p>
+                  <small>Emissions liées aux combustibles et à l'énergie</small>
+                </p>
             </div>
-          </div>
+          </a>
+        </div>
 
-          <!-- Scope 2  electricité-->
-          <div data-toggle="modal" data-target="#scope2-electricite">
-            <div class="box-scope-category scope2-background">
-              <div class="centered-image small-image">
-                <%= image_tag 'articles/scope_1_2_3/2-electricite.png',
-                width: "100%"%>
+        <div class="col-4">
+          <div>
+            <!-- Scope 1 -->
+            <a href="" data-toggle="modal" data-target="#scope1">
+              <div class="box-scope-category scope1-background">
+                <div class="centered-image small-image">
+                  <%= image_tag 'articles/scope_1_2_3/scope 1 - oil.png',
+                  width: "100%"%>
+                </div>
+                <p>
+                  <small>Carburants consommés</small>
+                </p>
               </div>
-              <p>
-                <small>Electricité</small>
-              </p>
-            </div>
-          </div>
+            </a>
 
-
-          <!-- Scope 2  heating cooling network -->
-          <div data-toggle="modal" data-target="#scope2-heating">
-            <div class="box-scope-category scope2-background">
-              <div class="centered-image small-image">
-                <%= image_tag 'articles/scope_1_2_3/scope 2 - heating network.png',
-                width: "100%"%>
+            <!-- Scope 2  electricité-->
+            <a href="" data-toggle="modal" data-target="#scope2-electricite">
+              <div class="box-scope-category scope2-background">
+                <div class="centered-image small-image">
+                  <%= image_tag 'articles/scope_1_2_3/2-electricite.png',
+                  width: "100%"%>
+                </div>
+                <p>
+                  <small>Electricité</small>
+                </p>
               </div>
-              <p>
-                <small>Chaleur, froid et vapeur</small>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+            </a>
 
-      <div class="col-3">
-      </div>
-    <!--       <div class="col-2">
-      </div> -->
-    </div>
 
-<!-- Ligne 2 - Production -->
-    <div class="divider-narrow">
-    </div>
-
-    <div class="row">
-      <div class="col-2 pt-2 column-background">
-        <h6><small>Production</small></h6>
-      </div>
-
-      <div class="col-3">
-        <!-- Scope 3 - Achats -->
-        <div data-toggle="modal" data-target="#scope3_achats">
-          <div class="box-scope-category scope3-background">
-            <div class="centered-image small-image">
-              <%= image_tag 'articles/scope_1_2_3/1-achats.png',
-              width: "100%"%>
-            </div>
-            <p>
-              <small>Achats de biens et services</small>
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-4">
-        <!-- Scope 3 - Biens immo -->
-        <div data-toggle="modal" data-target="#scope3_immo">
-          <div class="box-scope-category scope3-background">
-            <div class="centered-image small-image">
-              <%= image_tag 'articles/scope_1_2_3/2-biens immobilises.png',
-              width: "100%"%>
-            </div>
-            <p>
-              <small>Biens immobilisés</small>
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-3">
-        <!-- Scope 3 - Transformations biens -->
-        <div data-toggle="modal" data-target="#scope3_transformation">
-          <div class="box-scope-category scope3-background">
-            <div class="centered-image small-image">
-              <%= image_tag 'articles/scope_1_2_3/10-transformation produits vendus.png',
-              width: "100%"%>
-            </div>
-            <p>
-              <small>Transformation des produits vendus</small>
-            </p>
+            <!-- Scope 2  heating cooling network -->
+            <a href="" data-toggle="modal" data-target="#scope2-heating">
+              <div class="box-scope-category scope2-background">
+                <div class="centered-image small-image">
+                  <%= image_tag 'articles/scope_1_2_3/scope 2 - heating network.png',
+                  width: "100%"%>
+                </div>
+                <p>
+                  <small>Chaleur, froid et vapeur</small>
+                </p>
+              </div>
+            </a>
           </div>
         </div>
 
-      </div>
-    </div>
-
-<!-- Ligne 3 - Transport et déplacement -->
-    <div class="divider-narrow">
-    </div>
-
-    <div class="row">
-      <div class="col-2 pt-2 column-background">
-        <h6><small>Transport</small></h6>
-      </div>
-      <div class="col-3">
-        <!-- Scope 3 - Transport amont -->
-        <div data-toggle="modal" data-target="#scope3_transport_amont">
-          <div class="box-scope-category scope3-background">
-            <div class="centered-image small-image">
-              <%= image_tag 'articles/scope_1_2_3/4-transport sea.png',
-              width: "100%"%>
-            </div>
-            <p>
-              <small>Transport et déplacement amont</small>
-            </p>
-          </div>
+        <div class="col-3">
         </div>
-      </div>
-      <div class="col-4">
-        <!-- Scope 3 - Déplacement pro -->
-        <div data-toggle="modal" data-target="#scope3_deplacement_pro">
-          <div class="box-scope-category scope3-background">
-            <div class="centered-image small-image">
-              <%= image_tag 'articles/scope_1_2_3/6-deplacement-avion.png',
-              width: "100%"%>
-            </div>
-            <p>
-              <small>Déplacement professionnels</small>
-            </p>
-          </div>
-        </div>
-
-        <!-- Scope 3 - Déplacement domicile-travail -->
-        <div data-toggle="modal" data-target="#scope3_commuting">
-          <div class="box-scope-category scope3-background">
-            <div class="centered-image small-image">
-              <%= image_tag 'articles/scope_1_2_3/7-deplacement domicile.png',
-              width: "100%"%>
-            </div>
-            <p>
-              <small>Déplacement domicile-travail</small>
-            </p>
-          </div>
-        </div>
-
-
-      </div>
-      <div class="col-3">
-        <!-- Scope 3 - Transport aval -->
-        <div data-toggle="modal" data-target="#scope3_transport_aval">
-          <div class="box-scope-category scope3-background">
-            <div class="centered-image small-image">
-              <%= image_tag 'articles/scope_1_2_3/4-transport sea.png',
-              width: "100%"%>
-            </div>
-            <p>
-              <small>Transport et déplacement aval</small>
-            </p>
-          </div>
-        </div>
-
-      </div>
       <!--       <div class="col-2">
+        </div> -->
       </div>
-      -->
-    </div>
 
-<!-- Ligne 4 - Consommation finale -->
-    <div class="divider-narrow">
-    </div>
+  <!-- Ligne 2 - Production -->
+      <div class="divider-narrow">
+      </div>
 
-    <div class="row">
-      <div class="col-2 pt-2 column-background">
-        <h6><small>Consommation finale</small></h6>
-      </div>
-      <div class="col-3">
-      </div>
-      <div class="col-4">
-      </div>
-      <div class="col-3">
-        <!-- Scope 3 - Utilisation -->
-        <div data-toggle="modal" data-target="#scope3_utilisation">
-          <div class="box-scope-category scope3-background">
-            <div class="centered-image small-image">
-              <%= image_tag 'articles/scope_1_2_3/11-utilisation produits.png',
-              width: "100%"%>
-            </div>
-            <p>
-              <small>Utilisation des produits vendus</small>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-<!-- Ligne 5 - Déchets -->
-    <div class="divider-narrow">
-    </div>
-
-    <div class="row">
-      <div class="col-2 pt-2 column-background">
-        <h6><small>Déchets</small></h6>
-      </div>
-      <div class="col-3">
-      </div>
-      <div class="col-4">
-        <!-- Scope 3 - dechets activité -->
-        <div data-toggle="modal" data-target="#scope3_dechets_activite">
-          <div class="box-scope-category scope3-background">
-            <div class="centered-image small-image">
-              <%= image_tag 'articles/scope_1_2_3/12-fin de vie.png',
-              width: "100%"%>
-            </div>
-            <p>
-              <small>Déchets générés par l'activité</small>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-3">
-        <!-- Scope 3 - dechets fin de vie -->
-        <div data-toggle="modal" data-target="#scope3_dechets_fin_vie">
-          <div class="box-scope-category scope3-background">
-            <div class="centered-image small-image">
-              <%= image_tag 'articles/scope_1_2_3/12-fin de vie.png',
-              width: "100%"%>
-            </div>
-            <p>
-              <small>Fin de vie des produits vendus</small>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-<!-- Ligne 6 - Autres -->
-    <div class="divider-narrow">
-    </div>
-
-    <div class="row">
-      <div class="col-2 pt-2 column-background">
-        <h6><small>Autres</small></h6>
-      </div>
-      <div class="col-3">
-        <!-- Scope 3 - leasing amont -->
-        <div data-toggle="modal" data-target="#scope3_leasing_amont">
-          <div class="box-scope-category scope3-background">
-            <div class="centered-image small-image">
-              <%= image_tag 'articles/scope_1_2_3/8-leasing.png',
-              width: "100%"%>
-            </div>
-            <p>
-              <small>Actifs en leasing amont</small>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-4">
-      </div>
-      <div class="col-3">
-        <!-- Scope 3 - leasing aval -->
-        <div data-toggle="modal" data-target="#scope3_leasing_aval">
-          <div class="box-scope-category scope3-background">
-            <div class="centered-image small-image">
-              <%= image_tag 'articles/scope_1_2_3/8-leasing.png',
-              width: "100%"%>
-            </div>
-            <p>
-              <small>Actifs en leasing aval</small>
-            </p>
-          </div>
+      <div class="row">
+        <div class="col-2 pt-2 column-background">
+          <h6><small>Production</small></h6>
         </div>
 
-        <!-- Scope 3 - franchises -->
-        <div data-toggle="modal" data-target="#scope3_franchises">
-          <div class="box-scope-category scope3-background">
-            <div class="centered-image small-image">
-              <%= image_tag 'articles/scope_1_2_3/14-franchises.png',
-              width: "100%"%>
+        <div class="col-3">
+          <!-- Scope 3 - Achats -->
+          <a href="" data-toggle="modal" data-target="#scope3_achats">
+            <div class="box-scope-category scope3-background">
+              <div class="centered-image small-image">
+                <%= image_tag 'articles/scope_1_2_3/1-achats.png',
+                width: "100%"%>
+              </div>
+              <p>
+                <small>Achats de biens et services</small>
+              </p>
             </div>
-            <p>
-              <small>Franchises</small>
-            </p>
-          </div>
+          </a>
         </div>
 
-
-        <!-- Scope 3 - investissements -->
-        <div data-toggle="modal" data-target="#scope3_investissements">
-          <div class="box-scope-category scope3-background">
-            <div class="centered-image small-image">
-              <%= image_tag 'articles/scope_1_2_3/15-investissements.png',
-              width: "100%"%>
+        <div class="col-4">
+          <!-- Scope 3 - Biens immo -->
+          <a href="" data-toggle="modal" data-target="#scope3_immo">
+            <div class="box-scope-category scope3-background">
+              <div class="centered-image small-image">
+                <%= image_tag 'articles/scope_1_2_3/2-biens immobilises.png',
+                width: "100%"%>
+              </div>
+              <p>
+                <small>Biens immobilisés</small>
+              </p>
             </div>
-            <p>
-              <small>Investissements</small>
-            </p>
-          </div>
+          </a>
         </div>
 
+        <div class="col-3">
+          <!-- Scope 3 - Transformations biens -->
+          <a href="" data-toggle="modal" data-target="#scope3_transformation">
+            <div class="box-scope-category scope3-background">
+              <div class="centered-image small-image">
+                <%= image_tag 'articles/scope_1_2_3/10-transformation produits vendus.png',
+                width: "100%"%>
+              </div>
+              <p>
+                <small>Transformation des produits vendus</small>
+              </p>
+            </div>
+          </a>
 
+        </div>
       </div>
-    </div>
+
+  <!-- Ligne 3 - Transport et déplacement -->
+      <div class="divider-narrow">
+      </div>
+
+      <div class="row">
+        <div class="col-2 pt-2 column-background">
+          <h6><small>Transport</small></h6>
+        </div>
+        <div class="col-3">
+          <!-- Scope 3 - Transport amont -->
+          <a href="" data-toggle="modal" data-target="#scope3_transport_amont">
+            <div class="box-scope-category scope3-background">
+              <div class="centered-image small-image">
+                <%= image_tag 'articles/scope_1_2_3/4-transport road.png',
+                width: "100%"%>
+              </div>
+              <p>
+                <small>Transport et distribution amont</small>
+              </p>
+            </div>
+          </a>
+        </div>
+        <div class="col-4">
+          <!-- Scope 3 - Déplacement pro -->
+          <a href="" data-toggle="modal" data-target="#scope3_deplacement_pro">
+            <div class="box-scope-category scope3-background">
+              <div class="centered-image small-image">
+                <%= image_tag 'articles/scope_1_2_3/6-deplacement-avion.png',
+                width: "100%"%>
+              </div>
+              <p>
+                <small>Déplacement professionnels</small>
+              </p>
+            </div>
+          </a>
+
+          <!-- Scope 3 - Déplacement domicile-travail -->
+          <a href="" data-toggle="modal" data-target="#scope3_commuting">
+            <div class="box-scope-category scope3-background">
+              <div class="centered-image small-image">
+                <%= image_tag 'articles/scope_1_2_3/7-deplacement domicile.png',
+                width: "100%"%>
+              </div>
+              <p>
+                <small>Déplacement domicile-travail</small>
+              </p>
+            </div>
+          </a>
+
+
+        </div>
+        <div class="col-3">
+          <!-- Scope 3 - Transport aval -->
+          <a href="" data-toggle="modal" data-target="#scope3_transport_aval">
+            <div class="box-scope-category scope3-background">
+              <div class="centered-image small-image">
+                <%= image_tag 'articles/scope_1_2_3/4-transport road.png',
+                width: "100%"%>
+              </div>
+              <p>
+                <small>Transport et distribution aval</small>
+              </p>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+  <!-- Ligne 4 - Consommation finale -->
+      <div class="divider-narrow">
+      </div>
+
+      <div class="row">
+        <div class="col-2 pt-2 column-background">
+          <h6><small>Consommation finale</small></h6>
+        </div>
+        <div class="col-3">
+        </div>
+        <div class="col-4">
+        </div>
+        <div class="col-3">
+          <!-- Scope 3 - Utilisation -->
+          <a href="" data-toggle="modal" data-target="#scope3_utilisation">
+            <div class="box-scope-category scope3-background">
+              <div class="centered-image small-image">
+                <%= image_tag 'articles/scope_1_2_3/11-utilisation produits.png',
+                width: "100%"%>
+              </div>
+              <p>
+                <small>Utilisation des produits vendus</small>
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+  <!-- Ligne 5 - Déchets -->
+      <div class="divider-narrow">
+      </div>
+
+      <div class="row">
+        <div class="col-2 pt-2 column-background">
+          <h6><small>Déchets</small></h6>
+        </div>
+        <div class="col-3">
+        </div>
+        <div class="col-4">
+          <!-- Scope 3 - dechets activité -->
+          <a href="" data-toggle="modal" data-target="#scope3_dechets_activite">
+            <div class="box-scope-category scope3-background">
+              <div class="centered-image small-image">
+                <%= image_tag 'articles/scope_1_2_3/12-fin de vie.png',
+                width: "100%"%>
+              </div>
+              <p>
+                <small>Déchets générés par l'activité</small>
+              </p>
+            </div>
+          </a>
+        </div>
+        <div class="col-3">
+          <!-- Scope 3 - dechets fin de vie -->
+          <a href="" data-toggle="modal" data-target="#scope3_dechets_fin_vie">
+            <div class="box-scope-category scope3-background">
+              <div class="centered-image small-image">
+                <%= image_tag 'articles/scope_1_2_3/12-fin de vie.png',
+                width: "100%"%>
+              </div>
+              <p>
+                <small>Fin de vie des produits vendus</small>
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+  <!-- Ligne 6 - Autres -->
+      <div class="divider-narrow">
+      </div>
+
+      <div class="row">
+        <div class="col-2 pt-2 column-background">
+          <h6><small>Autres</small></h6>
+        </div>
+        <div class="col-3">
+          <!-- Scope 3 - leasing amont -->
+          <a href="" data-toggle="modal" data-target="#scope3_leasing_amont">
+            <div class="box-scope-category scope3-background">
+              <div class="centered-image small-image">
+                <%= image_tag 'articles/scope_1_2_3/8-leasing.png',
+                width: "100%"%>
+              </div>
+              <p>
+                <small>Actifs en leasing amont</small>
+              </p>
+            </div>
+          </a>
+        </div>
+        <div class="col-4">
+        </div>
+        <div class="col-3">
+          <!-- Scope 3 - leasing aval -->
+          <a href="" data-toggle="modal" data-target="#scope3_leasing_aval">
+            <div class="box-scope-category scope3-background">
+              <div class="centered-image small-image">
+                <%= image_tag 'articles/scope_1_2_3/8-leasing.png',
+                width: "100%"%>
+              </div>
+              <p>
+                <small>Actifs en leasing aval</small>
+              </p>
+            </div>
+          </a>
+
+          <!-- Scope 3 - franchises -->
+          <a href="" data-toggle="modal" data-target="#scope3_franchises">
+            <div class="box-scope-category scope3-background">
+              <div class="centered-image small-image">
+                <%= image_tag 'articles/scope_1_2_3/14-franchises.png',
+                width: "100%"%>
+              </div>
+              <p>
+                <small>Franchises</small>
+              </p>
+            </div>
+          </a>
+
+
+          <!-- Scope 3 - investissements -->
+          <a href="" data-toggle="modal" data-target="#scope3_investissements">
+            <div class="box-scope-category scope3-background">
+              <div class="centered-image small-image">
+                <%= image_tag 'articles/scope_1_2_3/15-investissements.png',
+                width: "100%"%>
+              </div>
+              <p>
+                <small>Investissements</small>
+              </p>
+            </div>
+          </a>
+
+
+        </div>
+      </div>
+
+</div>
 
 <!-- Legende -->
   <div class="row justify-content-center">
     <div class="col-12 mt-3">
         <p><small><i>
-          Source : KarbonChain, d'après le GHG Protocol
+          Source : KarbonChain, d'après le <a href="https://ghgprotocol.org/standards/scope-3-standard" style="color: #1A2980">GHG Protocol</a>
         </i></small></p>
     </div>
   </div>
@@ -447,6 +453,10 @@ P2:
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope3-background">
+            <div class="centered-image small-image">
+              <%= image_tag 'articles/scope_1_2_3/3-emission energie charbon.png',
+              width: "100%"%>
+            </div>
           <p class="modal-title" id="scope3_energie">Emissions liées aux combustibles et à l'énergie</p>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -481,6 +491,10 @@ P2:
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope1-background">
+          <div class="centered-image small-image">
+            <%= image_tag 'articles/scope_1_2_3/scope 1 - oil.png',
+            width: "100%"%>
+          </div>
           <p class="modal-title" id="scope1">Carburants consommés</p>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -503,6 +517,10 @@ P2:
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope2-background">
+          <div class="centered-image small-image">
+            <%= image_tag 'articles/scope_1_2_3/2-electricite.png',
+            width: "100%"%>
+          </div>
           <p class="modal-title" id="scope2-electricite">Electricité</p>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -522,6 +540,10 @@ P2:
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope2-background">
+          <div class="centered-image small-image">
+            <%= image_tag 'articles/scope_1_2_3/scope 2 - heating network.png',
+            width: "100%"%>
+          </div>
           <p class="modal-title" id="scope2-heating">Chaleur, froid et vapeur consommée</p>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -544,6 +566,10 @@ P2:
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope3-background">
+          <div class="centered-image small-image">
+            <%= image_tag 'articles/scope_1_2_3/1-achats.png',
+            width: "100%"%>
+          </div>
           <p class="modal-title" id="scope3_achats">Achats de biens et services</p>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -563,6 +589,10 @@ P2:
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope3-background">
+          <div class="centered-image small-image">
+            <%= image_tag 'articles/scope_1_2_3/2-biens immobilises.png',
+            width: "100%"%>
+          </div>
           <p class="modal-title" id="scope3_immo">Biens immobilisés</p>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -585,6 +615,10 @@ P2:
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope3-background">
+          <div class="centered-image small-image">
+            <%= image_tag 'articles/scope_1_2_3/10-transformation produits vendus.png',
+            width: "100%"%>
+          </div>
           <p class="modal-title" id="scope3_transformation">Transformation des produits vendus</p>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -607,6 +641,10 @@ P2:
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope3-background">
+          <div class="centered-image small-image">
+            <%= image_tag 'articles/scope_1_2_3/4-transport road.png',
+            width: "100%"%>
+          </div>
           <p class="modal-title" id="scope3_transport_amont">Transport et distribution amont</p>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -629,6 +667,10 @@ P2:
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope3-background">
+          <div class="centered-image small-image">
+            <%= image_tag 'articles/scope_1_2_3/6-deplacement-avion.png',
+            width: "100%"%>
+          </div>
           <p class="modal-title" id="scope3_deplacement_pro">Déplacements professionnels</p>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -651,6 +693,10 @@ P2:
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope3-background">
+          <div class="centered-image small-image">
+            <%= image_tag 'articles/scope_1_2_3/7-deplacement domicile.png',
+            width: "100%"%>
+          </div>
           <p class="modal-title" id="scope3_commuting">Déplacements domicile-travail</p>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -670,6 +716,10 @@ P2:
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope3-background">
+          <div class="centered-image small-image">
+            <%= image_tag 'articles/scope_1_2_3/4-transport road.png',
+            width: "100%"%>
+          </div>
           <p class="modal-title" id="scope3_transport_aval">Transport et distribution aval</p>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -692,6 +742,10 @@ P2:
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope3-background">
+          <div class="centered-image small-image">
+            <%= image_tag 'articles/scope_1_2_3/11-utilisation produits.png',
+            width: "100%"%>
+          </div>
           <p class="modal-title" id="scope3_utilisation">Utilisation des produits vendus</p>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -711,6 +765,10 @@ P2:
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope3-background">
+          <div class="centered-image small-image">
+            <%= image_tag 'articles/scope_1_2_3/12-fin de vie.png',
+            width: "100%"%>
+          </div>
           <p class="modal-title" id="scope3_dechets_activite">Déchets générés par l'activité</p>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -733,6 +791,10 @@ P2:
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope3-background">
+          <div class="centered-image small-image">
+            <%= image_tag 'articles/scope_1_2_3/12-fin de vie.png',
+            width: "100%"%>
+          </div>
           <p class="modal-title" id="scope3_dechets_fin_vie">Déchets générés à la fin de vie des produits</p>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -755,6 +817,10 @@ P2:
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope3-background">
+          <div class="centered-image small-image">
+            <%= image_tag 'articles/scope_1_2_3/8-leasing.png',
+            width: "100%"%>
+          </div>
           <p class="modal-title" id="scope3_leasing_amont">Actifs en leasing amont</p>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -774,6 +840,10 @@ P2:
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope3-background">
+          <div class="centered-image small-image">
+            <%= image_tag 'articles/scope_1_2_3/8-leasing.png',
+            width: "100%"%>
+          </div>
           <p class="modal-title" id="scope3_leasing_aval">Actifs en leasing aval</p>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -797,6 +867,10 @@ P2:
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope3-background">
+          <div class="centered-image small-image">
+            <%= image_tag 'articles/scope_1_2_3/14-franchises.png',
+            width: "100%"%>
+          </div>
           <p class="modal-title" id="scope3_franchises">Franchises</p>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -816,6 +890,10 @@ P2:
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope3-background">
+          <div class="centered-image small-image">
+            <%= image_tag 'articles/scope_1_2_3/15-investissements.png',
+            width: "100%"%>
+          </div>
           <p class="modal-title" id="scope3_investissements">Investissements</p>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -838,12 +916,11 @@ P2:
 </div>
 <!-- Fin des modales -->
 
-<!-- TO DO - lien vers les questions - couleur du texte + effet hover-->
 <!-- Sommaire FAQ -->
     <div class="row justify-content-center mt-5">
       <div class="col-12 col-lg-8">
         <p>
-          Voici quelques une des principales questions auxquelles sont confrontées les entreprises lors de la réalisation de leur bilan. Si vous en avez d’autres, n’hésitez pas à nous écrire!
+          Voici quelques une des principales questions auxquelles sont confrontées les entreprises lors de la réalisation de leur bilan. Si vous en avez d’autres, n’hésitez pas à  <a href="/contacts/new" style="color: #1A2980">nous écrire</a>!
         </p>
 
 <!-- Question 1 -->
@@ -900,7 +977,7 @@ P2:
             %>
             <div class="mt-3">
               <p><small><i>
-                Source : GHG Protocol
+                Source :  <a href="https://ghgprotocol.org/standards/scope-3-standard" style="color: #1A2980">GHG Protocol</a>
               </i></small></p>
             </div>
           </div>
@@ -909,7 +986,7 @@ P2:
 <!-- Question 3 -->
         <h5 class="faq-link">
           <a data-toggle="collapse" href="#question-3" role="button" aria-expanded="false" aria-controls="collapseExample">
-            Pour l’électricité (scope 2), comment prendre en compte les contrats “verts”?
+            Pour l’électricité, comment prendre en compte les contrats “verts”?
           </a>
         </h5>
 
@@ -951,7 +1028,7 @@ P2:
 <!-- Question 4 -->
         <h5 class="faq-link">
           <a data-toggle="collapse" href="#question-4" role="button" aria-expanded="false" aria-controls="collapseExample">
-            Jusqu’où “remonter” pour le calcul les émissions indirectes (scope 3)?
+            Jusqu’où “remonter” pour le calcul les émissions indirectes?
           </a>
         </h5>
 
@@ -1003,7 +1080,7 @@ P2:
 <!-- Question 5 -->
         <h5 class="faq-link">
           <a data-toggle="collapse" href="#question-5" role="button" aria-expanded="false" aria-controls="collapseExample">
-            Est-ce que mes émissions indirectes (scope 3) sont comptées en double avec mes fournisseurs et clients?
+            Est-ce que mes émissions indirectes sont comptées en double avec mes fournisseurs et clients?
           </a>
         </h5>
 
