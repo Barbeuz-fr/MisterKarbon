@@ -54,6 +54,7 @@ Rails.application.routes.draw do
   get '/ressources/reglementation_entreprise', to: 'articles#reglementation_entreprise'
   get '/ressources/comment_faire_son_bilan_carbone', to: 'articles#comment_faire_son_bilan_carbone'
   get '/ressources/scope_1_2_3', to: 'articles#scope_1_2_3'
+  get '/ressources/pourquoi_faire_son_bilan_carbone', to: 'articles#pourquoi_faire_son_bilan_carbone'
 
 
 
