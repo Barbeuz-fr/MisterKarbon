@@ -17,7 +17,6 @@
   </div>
 </div>
 
-<!-- TO DO - revoir taxe article pour détailler l'intérêt du scope 3 -->
 <!-- Début de l'article -->
 <div class="bg-white pt-5 pb-3">
   <div class="container article">
@@ -35,10 +34,17 @@
         <p>
           Les “scopes” (“périmètres”) correspondent aux émissions de gaz à effet de serre d’une organisation, selon qu’il s’agisse d’émissions directes ou indirectes :
         </p>
+        <p>
+          Les <b>émissions directes</b> sont émises “directement” par l’entreprise (par exemple en consommant un carburant ou du gaz),
+          tandis que les <b>émissions indirectes</b> sont émises “ailleurs” mais n’auraient pas eu lieu sans l’activité de l’entreprise.
+        </p>
+        <p>
+          Les différents standards (Bilan Carbone™ , GHG Protocol, ISO…) distinguent traditionnellement 3 scopes :
+        </p>
         <ul>
           <li>
             <span class="bg-kc-lightblue text-kc-blue"><strong>Scope 1</strong></span> :
-            émissions directes issues de combustibles fossiles (pétrole, gaz, charbon…).
+              toutes les émissions directes, issues de combustibles fossiles (pétrole, gaz, charbon…).
           </li>
           <li>
             <span class="bg-kc-lightblue text-kc-blue"><strong>Scope 2</strong></span> :
@@ -50,8 +56,22 @@
           </li>
         </ul>
         <p>
-          Les scope 1 et 2 sont obligatoires pour un BEGES (bilan d’émissions de gaz à effet de serre), mais couvrent souvent à peine 10% à 20% de l’ensemble des émissions.
-          En effet, le scope 3 a un périmètre étendu, comme l’indique le schéma ci-dessous :
+          Les <b>scopes 1 et 2 sont obligatoires pour un BEGES</b> (bilan d’émissions de gaz à effet de serre),
+          mais couvrent souvent à peine 10% à 20% de l’ensemble des émissions.
+          En effet, le scope 3 a un périmètre étendu, allant des produits achetés par l’entreprise à leur utilisation par le client final,
+          en passant par le transport ou la gestion des déchets. Pour calculer ces émissions indirectes
+        </p>
+        <p>
+          Au vu de la part très significative des émissions indirectes,
+          <b>la réglementation évolue et requiert désormais de calculer les “postes significatifs d’émissions”</b>,
+          qu'elles soient directes ou indirectes.
+          Par exemple, si une entreprise a une part importante de ses émissions générés par ses achats d’intrants ou
+          la logistique amont/aval, elle a l’obligation de calculer ces postes d’émission.
+          Cette obligation est déjà en place pour la DPEF, et le décret d’application est en cours de rédaction
+          pour faire évoluer le BEGES.
+        </p>
+        <p>
+          Voyons plus en détail quels sont les postes couverts par les trois scopes :
         </p>
       </div>
     </div>
@@ -450,7 +470,7 @@ P2:
 <div>
   <!-- Modal - scope 3 energie -->
   <div class="modal fade bd-example-modal-lg" id="scope3_energie" tabindex="-1" role="dialog" aria-labelledby="scope3_energie" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope3-background">
             <div class="centered-image small-image">
@@ -488,7 +508,7 @@ P2:
 
   <!-- Modal - scope 1 -->
   <div class="modal fade bd-example-modal-lg" id="scope1" tabindex="-1" role="dialog" aria-labelledby="scope1" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope1-background">
           <div class="centered-image small-image">
@@ -514,7 +534,7 @@ P2:
 
   <!-- Modal - scope 2 electricite -->
   <div class="modal fade bd-example-modal-lg" id="scope2-electricite" tabindex="-1" role="dialog" aria-labelledby="scope2-electricite" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope2-background">
           <div class="centered-image small-image">
@@ -537,7 +557,7 @@ P2:
 
   <!-- Modal - scope 2 heating -->
   <div class="modal fade bd-example-modal-lg" id="scope2-heating" tabindex="-1" role="dialog" aria-labelledby="scope2-heating" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope2-background">
           <div class="centered-image small-image">
@@ -563,7 +583,7 @@ P2:
 
   <!-- Modal - scope 3 achats -->
   <div class="modal fade bd-example-modal-lg" id="scope3_achats" tabindex="-1" role="dialog" aria-labelledby="scope3_achats" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope3-background">
           <div class="centered-image small-image">
@@ -586,7 +606,7 @@ P2:
 
   <!-- Modal - scope 3 biens immos -->
   <div class="modal fade bd-example-modal-lg" id="scope3_immo" tabindex="-1" role="dialog" aria-labelledby="scope3_immo" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope3-background">
           <div class="centered-image small-image">
@@ -612,7 +632,7 @@ P2:
 
   <!-- Modal - scope 3 Transformation des produits vendus -->
   <div class="modal fade bd-example-modal-lg" id="scope3_transformation" tabindex="-1" role="dialog" aria-labelledby="scope3_transformation" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope3-background">
           <div class="centered-image small-image">
@@ -638,7 +658,7 @@ P2:
 
   <!-- Modal - scope 3 transport amont -->
   <div class="modal fade bd-example-modal-lg" id="scope3_transport_amont" tabindex="-1" role="dialog" aria-labelledby="scope3_transport_amont" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope3-background">
           <div class="centered-image small-image">
@@ -664,7 +684,7 @@ P2:
 
   <!-- Modal - scope 3 deplacement pro -->
   <div class="modal fade bd-example-modal-lg" id="scope3_deplacement_pro" tabindex="-1" role="dialog" aria-labelledby="scope3_deplacement_pro" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope3-background">
           <div class="centered-image small-image">
@@ -690,7 +710,7 @@ P2:
 
   <!-- Modal - scope 3 commuting -->
   <div class="modal fade bd-example-modal-lg" id="scope3_commuting" tabindex="-1" role="dialog" aria-labelledby="scope3_commuting" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope3-background">
           <div class="centered-image small-image">
@@ -713,7 +733,7 @@ P2:
 
   <!-- Modal - scope 3 transport amont -->
   <div class="modal fade bd-example-modal-lg" id="scope3_transport_aval" tabindex="-1" role="dialog" aria-labelledby="scope3_transport_aval" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope3-background">
           <div class="centered-image small-image">
@@ -739,7 +759,7 @@ P2:
 
   <!-- Modal - scope 3 utilisation -->
   <div class="modal fade bd-example-modal-lg" id="scope3_utilisation" tabindex="-1" role="dialog" aria-labelledby="scope3_utilisation" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope3-background">
           <div class="centered-image small-image">
@@ -762,7 +782,7 @@ P2:
 
   <!-- Modal - scope 3 dechets activité -->
   <div class="modal fade bd-example-modal-lg" id="scope3_dechets_activite" tabindex="-1" role="dialog" aria-labelledby="scope3_dechets_activite" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope3-background">
           <div class="centered-image small-image">
@@ -788,7 +808,7 @@ P2:
 
   <!-- Modal - scope 3 dechets fin de vie -->
   <div class="modal fade bd-example-modal-lg" id="scope3_dechets_fin_vie" tabindex="-1" role="dialog" aria-labelledby="scope3_dechets_fin_vie" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope3-background">
           <div class="centered-image small-image">
@@ -814,7 +834,7 @@ P2:
 
   <!-- Modal - leasing amont -->
   <div class="modal fade bd-example-modal-lg" id="scope3_leasing_amont" tabindex="-1" role="dialog" aria-labelledby="scope3_leasing_amont" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope3-background">
           <div class="centered-image small-image">
@@ -837,7 +857,7 @@ P2:
 
   <!-- Modal - leasing aval -->
   <div class="modal fade bd-example-modal-lg" id="scope3_leasing_aval" tabindex="-1" role="dialog" aria-labelledby="scope3_leasing_aval" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope3-background">
           <div class="centered-image small-image">
@@ -864,7 +884,7 @@ P2:
 
   <!-- Modal - franchises -->
   <div class="modal fade bd-example-modal-lg" id="scope3_franchises" tabindex="-1" role="dialog" aria-labelledby="scope3_franchises" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope3-background">
           <div class="centered-image small-image">
@@ -887,7 +907,7 @@ P2:
 
   <!-- Modal - investissements -->
   <div class="modal fade bd-example-modal-lg" id="scope3_investissements" tabindex="-1" role="dialog" aria-labelledby="scope3_investissements" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header scope3-background">
           <div class="centered-image small-image">
@@ -920,7 +940,14 @@ P2:
     <div class="row justify-content-center mt-5">
       <div class="col-12 col-lg-8">
         <p>
-          Voici quelques une des principales questions auxquelles sont confrontées les entreprises lors de la réalisation de leur bilan. Si vous en avez d’autres, n’hésitez pas à  <a href="/contacts/new" style="color: #1A2980">nous écrire</a>!
+          L’enjeu pour votre entreprise n’est donc plus de calculer le “scope 1 et 2”,
+          mais bien d’identifier  les postes “significatifs” sur l’ensemble de votre chaîne de valeur,
+          pour ensuite travailler en interne et en externe à la réduction des émissions.
+        </p>
+        <p>
+          Voici quelques une des principales questions auxquelles sont confrontées les entreprises lors de la réalisation de leur bilan GES.
+          <br>
+          Si vous en avez d’autres, n’hésitez pas à  <a href="/contacts/new" style="color: #1A2980">nous écrire</a>!
         </p>
 
 <!-- Question 1 -->
@@ -1038,16 +1065,15 @@ P2:
           <div class="centered-image">
             <%= image_tag 'articles/scope_1_2_3/galshir-babushka.gif',
             width: "50%"%>
-            <div class="ml-5 mr-5">
-            <p><small><i>
-              “Pour  le transport des produits, il faut prendre en compte le carburant des camions.
-              Quid de l’usine qui a fabriqué le camion?
-              Et le carburant du tractopelle qui a permis de construire l’usine?
-              Et l’électricité de l’usine qui a construit le tractopelle? Etc.”
-            </i></small></p>
+            <div class="ml-5 mr-5 mt-2">
+              <p><small><i>
+                “Pour  le transport des produits, il faut inclure le carburant des camions.
+                <br>Mais quid de l’usine qui a fabriqué ce camion?
+                <br>Et le carburant du tractopelle qui a permis de construire l’usine?
+                <br>Et l’électricité de l’usine qui a construit le tractopelle? Etc.”
+              </i></small></p>
             </div>
           </div>
-
 
           <p>
             Le calcul des émissions indirectes peut rapidement causer de problèmes a priori insolubles :
