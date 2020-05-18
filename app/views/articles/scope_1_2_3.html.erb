@@ -57,72 +57,47 @@
       </div>
     </div>
 
-<!-- section avec image -->
 <!-- TO DO
-- ajout légende en dessous
 - revoir picto pour combiner plusieurs images
 - picto cohérents pour avoir contenu "vide"
 P2:
 - ajout picto dans header modale
-- ajout éléments sur le périmètre requis et optionnel
-<%= image_tag 'articles/scope_1_2_3/scope_1_2_3.png',
-    width: "75%",
-    alt: "Cartographie des postes d'emissions "
-%>
+- ajout éléments sur le périmètre requis et optionnel dans chaque modale
  -->
 
-<!-- legende -->
-<!-- <div class="container">
-  <div class="row">
-    <div class="col-2">
-      <div class="scope1-background">
-        <p><small>Scope 1</small></p>
-      </div>
-      <div class="scope2-background">
-        <p><small>Scope 3</small></p>
-      </div>
 
-      <div class="scope3-background">
-        <p><small>Scope 3</small></p>
-      </div>
-    </div>
-  </div>
+<!-- Titre -->
+    <h5>Synthèse des émissions couvertes par les scopes 1, 2 et 3</h5>
+
+<!-- Legende -->
+<div class="mb-3">
+  <div class="d-inline box-scope-category mr-3 scope1-background">Scope 1</div>
+  <div class="d-inline box-scope-category mr-3 scope2-background">Scope 2</div>
+  <div class="d-inline box-scope-category mr-3 scope3-background">Scope 3</div>
 </div>
- -->
-
 
 <!-- Headers -->
     <div class="row">
-      <div class="col-1">
+      <div class="col-2">
 
       </div>
-      <div class="col-3 text-center">
+      <div class="col-3 pt-2 column-background text-center">
         <h6>Activités en amont</h6>
 
       </div>
-      <div class="col-3 text-center">
+      <div class="col-4 pt-2 column-background text-center">
         <h6>Activités de l'entreprise</h6>
 
       </div>
-      <div class="col-5 text-center">
+      <div class="col-3 pt-2 column-background text-center">
         <h6>Activités en aval</h6>
-        <div>
-          <div class="row">
-            <div class="col-6 text-center">
-              <h6>Production et distribution</h6>
-            </div>
-            <div class="col-6 text-center">
-              <h6>Consommation finale</h6>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
 
 <!-- Ligne 1 - Energie -->
 
     <div class="row">
-      <div class="col-1">
+      <div class="col-2 pt-2 column-background">
         <h6><small>Energie </small></h6>
       </div>
 
@@ -141,7 +116,7 @@ P2:
         </div>
       </div>
 
-      <div class="col-3">
+      <div class="col-4">
         <div>
           <!-- Scope 1 -->
           <div data-toggle="modal" data-target="#scope1">
@@ -187,8 +162,8 @@ P2:
 
       <div class="col-3">
       </div>
-      <div class="col-2">
-      </div>
+    <!--       <div class="col-2">
+      </div> -->
     </div>
 
 <!-- Ligne 2 - Production -->
@@ -196,7 +171,7 @@ P2:
     </div>
 
     <div class="row">
-      <div class="col-1">
+      <div class="col-2 pt-2 column-background">
         <h6><small>Production</small></h6>
       </div>
 
@@ -215,7 +190,7 @@ P2:
         </div>
       </div>
 
-      <div class="col-3">
+      <div class="col-4">
         <!-- Scope 3 - Biens immo -->
         <div data-toggle="modal" data-target="#scope3_immo">
           <div class="box-scope-category scope3-background">
@@ -245,8 +220,6 @@ P2:
         </div>
 
       </div>
-      <div class="col-2">
-      </div>
     </div>
 
 <!-- Ligne 3 - Transport et déplacement -->
@@ -254,7 +227,7 @@ P2:
     </div>
 
     <div class="row">
-      <div class="col-1">
+      <div class="col-2 pt-2 column-background">
         <h6><small>Transport</small></h6>
       </div>
       <div class="col-3">
@@ -271,7 +244,7 @@ P2:
           </div>
         </div>
       </div>
-      <div class="col-3">
+      <div class="col-4">
         <!-- Scope 3 - Déplacement pro -->
         <div data-toggle="modal" data-target="#scope3_deplacement_pro">
           <div class="box-scope-category scope3-background">
@@ -315,8 +288,9 @@ P2:
         </div>
 
       </div>
-      <div class="col-2">
+      <!--       <div class="col-2">
       </div>
+      -->
     </div>
 
 <!-- Ligne 4 - Consommation finale -->
@@ -324,16 +298,14 @@ P2:
     </div>
 
     <div class="row">
-      <div class="col-1">
+      <div class="col-2 pt-2 column-background">
         <h6><small>Consommation finale</small></h6>
       </div>
       <div class="col-3">
       </div>
-      <div class="col-3">
+      <div class="col-4">
       </div>
       <div class="col-3">
-      </div>
-      <div class="col-2">
         <!-- Scope 3 - Utilisation -->
         <div data-toggle="modal" data-target="#scope3_utilisation">
           <div class="box-scope-category scope3-background">
@@ -354,12 +326,12 @@ P2:
     </div>
 
     <div class="row">
-      <div class="col-1">
+      <div class="col-2 pt-2 column-background">
         <h6><small>Déchets</small></h6>
       </div>
       <div class="col-3">
       </div>
-      <div class="col-3">
+      <div class="col-4">
         <!-- Scope 3 - dechets activité -->
         <div data-toggle="modal" data-target="#scope3_dechets_activite">
           <div class="box-scope-category scope3-background">
@@ -372,11 +344,8 @@ P2:
             </p>
           </div>
         </div>
-
       </div>
       <div class="col-3">
-      </div>
-      <div class="col-2">
         <!-- Scope 3 - dechets fin de vie -->
         <div data-toggle="modal" data-target="#scope3_dechets_fin_vie">
           <div class="box-scope-category scope3-background">
@@ -389,7 +358,6 @@ P2:
             </p>
           </div>
         </div>
-
       </div>
     </div>
 
@@ -398,7 +366,7 @@ P2:
     </div>
 
     <div class="row">
-      <div class="col-1">
+      <div class="col-2 pt-2 column-background">
         <h6><small>Autres</small></h6>
       </div>
       <div class="col-3">
@@ -415,7 +383,7 @@ P2:
           </div>
         </div>
       </div>
-      <div class="col-3">
+      <div class="col-4">
       </div>
       <div class="col-3">
         <!-- Scope 3 - leasing aval -->
@@ -460,15 +428,15 @@ P2:
 
 
       </div>
-      <div class="col-2">
-      </div>
     </div>
 
 <!-- Legende -->
-  <div class="col-12">
-      <p><small><i>
-        Source : KarbonChain, d'après le GHG Protocol
-      </i></small></p>
+  <div class="row justify-content-center">
+    <div class="col-12 mt-3">
+        <p><small><i>
+          Source : KarbonChain, d'après le GHG Protocol
+        </i></small></p>
+    </div>
   </div>
 
 
