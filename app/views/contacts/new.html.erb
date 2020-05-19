@@ -1,14 +1,17 @@
-<div class="bg-kc-orange py-5">
+<div class="bg-kc-lightblue py-5">
   <div class="container">
     <div class="row">
       <div class="col">
         <!-- Titre -->
-        <h1 class="my-4 text-white">
+        <h1 class="my-3 text-kc-blue">
           Contact
         </h1>
         <!-- Chapeau -->
-        <p>
-          Des questions ? Envie d'une démo ? Dites-nous tout.
+        <p class="">
+          Des questions ? Envie d'une démo ?
+          <br>
+          Dites-nous tout ici ou écrivez-nous à
+          <span class="bg-kc-blue"><%= mail_to "contact@karbonchain.com", "contact@karbonchain.com", style:"color: white" %></span>
         </p>
       </div>
     </div>
@@ -16,13 +19,10 @@
 </div>
 
 <div class="py-5"
-    style="background-image:
-            url(https://res.cloudinary.com/dkybxjjy2/image/upload/c_scale,q_auto:good,w_1920/v1589558048/three-pink-green-and-yellow-houses-2904142_xtltl1.jpg);
-            background-size: cover;
-            background-position: center;">
+      style="background-color: white">
+<!--  Previous image: https://res.cloudinary.com/dkybxjjy2/image/upload/c_scale,q_auto:good,w_1920/v1589558048/three-pink-green-and-yellow-houses-2904142_xtltl1.jpg-->
   <div class="container article">
     <div class="row justify-content-center mb-5">
-
       <div class="col-12 col-sm-8 col-lg-6">
         <%= form_for(@contact) do |f| %>
           <div class="field mb-3 d-flex justify-content-between">
@@ -35,7 +35,6 @@
           <div class="field mb-3">
             <%= check_box_tag(:newsletter) %>
             <%= f.label "Je souhaite recevoir les actualités de KarbonChain"%>
-
           </div>
           <div class="d-flex justify-content-end">
 
@@ -46,9 +45,6 @@
         <% end %>
         <br>
         <br>
-        <p>Vous pouvez également nous écrire directement à l'adresse
-        <span class="bg-kc-lightblue text-kc-blue"><%= mail_to "contact@karbonchain.com", "contact@karbonchain.com" %></span>, à bientôt !
-        </p>
       </div>
 
     </div>

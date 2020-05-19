@@ -12,4 +12,6 @@ class PagesController < ApplicationController
   def mentions_legales
     render :layout => 'home'
   end
+
 end
+
