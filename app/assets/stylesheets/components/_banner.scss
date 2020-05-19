@@ -5,6 +5,13 @@
   background-position: top;
 }
 
+.banner p {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+  text-align: center;
+}
+
 .banner h1 {
   margin: 0;
   color: white;
@@ -17,7 +24,7 @@
 @media (orientation: landscape) and (max-width: 900px) {
   .banner {
     padding: 3rem 0;
-    height: 120vh;
+    height: 140vh;
   }
 }
 
@@ -26,13 +33,6 @@
   padding: 5vw;
   height: 100vh;
   background-position: center;
-}
-
-.banner p {
-  font-size: 20px;
-  color: #1A2980;
-  opacity: .7;
-  // text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
 .banner .buttons {
@@ -50,6 +50,12 @@
 
   .banner .buttons {
     text-align: left;
+  }
+
+  .banner p {
+    text-align: left;
+    color: $kc-blue;
+    text-shadow: none;
   }
 }
 
