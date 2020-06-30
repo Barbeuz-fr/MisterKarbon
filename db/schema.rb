@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_19_094903) do
+ActiveRecord::Schema.define(version: 2020_06_30_122112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,47 @@ ActiveRecord::Schema.define(version: 2020_04_19_094903) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "newsletter"
+  end
+
+  create_table "emission_factors", force: :cascade do |t|
+    t.string "source"
+    t.integer "id_base_carbone"
+    t.string "line_type"
+    t.string "step"
+    t.string "ef_level_1"
+    t.string "ef_level_2"
+    t.string "ef_level_3"
+    t.float "ef_value_total"
+    t.float "ef_value_co2"
+    t.float "ef_value_ch4"
+    t.float "ef_value_n2o"
+    t.float "ef_value_co2b"
+    t.string "ef_value_ch4b"
+    t.float "ef_value_other_ges"
+    t.integer "ef_uncertainty"
+    t.string "ef_unit"
+    t.string "data_unit_1"
+    t.string "data_unit_2"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "localization_1"
+    t.string "localization_2"
+    t.boolean "item_1_fixed_energy"
+    t.boolean "item_2_electricity"
+    t.boolean "item_3_network"
+    t.boolean "item_4_mobile_fuel"
+    t.boolean "item_5_transport"
+    t.boolean "item_6_business_travel"
+    t.boolean "item_7_commuting"
+    t.boolean "item_8_client_visits"
+    t.boolean "item_9_procurement"
+    t.boolean "item_10_amortization"
+    t.boolean "item_11_waste_city"
+    t.boolean "item_12_waste_private"
+    t.boolean "item_13_water"
+    t.boolean "item_14_product_use"
+    t.boolean "item_15_product_waste"
+    t.boolean "item_16_fugitive"
   end
 
   create_table "emission_modules", force: :cascade do |t|
@@ -165,6 +206,13 @@ ActiveRecord::Schema.define(version: 2020_04_19_094903) do
   create_table "testorgas", force: :cascade do |t|
     t.string "name"
     t.integer "parent_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tutorials", force: :cascade do |t|
+    t.string "title"
+    t.string "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
