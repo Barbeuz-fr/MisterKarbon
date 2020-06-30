@@ -1,0 +1,50 @@
+<!-- Page used for tests only - displaying the emission factors used on MVP -->
+
+<div class="container">
+  <div>
+    <h3>
+      Test display emission factors
+    </h3>
+  </div>
+
+  <!-- Table headers -->
+    <div class="row justify-content-center">
+      <div class="col-2">
+        <p> Level 1 </p>
+      </div>
+      <div class="col-2">
+        <p> Level 2</p>
+      </div>
+      <div class="col-4">
+        <p> Level 3 </p>
+      </div>
+      <div class="col-3">
+        <p> Value </p>
+      </div>
+    </div>
+
+
+  <!-- Table contents -->
+  <% @emission_factors.each do |emission_factor| %>
+    <div class="row justify-content-center mt-1">
+      <div class="col-2">
+          <%= emission_factor.ef_level_1 %>
+      </div>
+      <div class="col-2">
+        <%= emission_factor.ef_level_2 %>
+      </div>
+      <div class="col-4">
+        <%= emission_factor.ef_level_3 %>
+      </div>
+      <div class="col-3">
+        <%= emission_factor.ef_value_total %> <%= emission_factor.ef_unit %>
+      </div>
+
+    </div>
+  <% end %>
+
+
+  <%= link_to "< Retour à l'accueil", root_path, class:"btn btn-kc-outline-blue my-4"  %>
+</div>
+
+

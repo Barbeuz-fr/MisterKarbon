@@ -3,8 +3,7 @@
 # ==============================================================================
 
 require "open-uri"
-# # ajout photo pour users et emission_module
-# # ajout orga à 2 ou 3 niveaux
+require 'csv'
 
 # ==============================================================================
 # RESET SEED
@@ -12,17 +11,85 @@ require "open-uri"
 
   p "reset database"
 
+  # Utilisé pour demo WAGON
   ReportScopeOrgaUser.destroy_all
   ReportScopeOrga.destroy_all
   Orga.destroy_all
   Answer.destroy_all
   Question.destroy_all
-  AdemeEmissionFactor.destroy_all
+  # AdemeEmissionFactor.destroy_all
   ReportScope.destroy_all
   Report.destroy_all
   User.destroy_all
   Company.destroy_all
   EmissionModule.destroy_all
+
+
+  # Utilisé pour MVP
+  EmissionFactor.destroy_all
+
+# ==============================================================================
+# ==============================================================================
+# ==============================================================================
+# SEED MVP
+# ==============================================================================
+# ==============================================================================
+# ==============================================================================
+
+  count = 0
+  csv_ef_text = File.read(Rails.root.join('lib', 'seeds', 'mvp_ef_database.csv'))
+  csv_ef = CSV.parse(csv_ef_text, :headers => true, :encoding => 'ISO-8859-1')
+  csv_ef.each do |row|
+    count += 1
+    t = EmissionFactor.new()
+    t.source = row['source']
+    t.id_base_carbone = row['id_base_carbone']
+    t.line_type = row['line_type']
+    t.step = row['step']
+    t.ef_level_1 = row['ef_level_1']
+    t.ef_level_2 = row['ef_level_2']
+    t.ef_level_3 = row['ef_level_3']
+    t.ef_value_total = row['ef_value_total']
+    t.ef_value_co2 = row['ef_value_co2']
+    t.ef_value_ch4 = row['ef_value_ch4']
+    t.ef_value_n2o = row['ef_value_n2o']
+    t.ef_value_co2b = row['ef_value_co2b']
+    t.ef_value_ch4b = row['ef_value_ch4b']
+    t.ef_value_other_ges = row['ef_value_other_ges']
+    t.ef_uncertainty = row['ef_uncertainty']
+    t.ef_unit = row['ef_unit']
+    t.data_unit_1 = row['data_unit_1']
+    t.data_unit_2 = row['data_unit_2']
+    t.localization_1 = row['localization_1']
+    t.localization_2 = row['localization_2']
+    t.item_1_fixed_energy = row['item_1_fixed_energy']
+    t.item_2_electricity = row['item_2_electricity']
+    t.item_3_network = row['item_3_network']
+    t.item_4_mobile_fuel = row['item_4_mobile_fuel']
+    t.item_5_transport = row['item_5_transport']
+    t.item_6_business_travel = row['item_6_business_travel']
+    t.item_7_commuting = row['item_7_commuting']
+    t.item_8_client_visits = row['item_8_client_visits']
+    t.item_9_procurement = row['item_9_procurement']
+    t.item_10_amortization = row['item_10_amortization']
+    t.item_11_waste_city = row['item_11_waste_city']
+    t.item_12_waste_private = row['item_12_waste_private']
+    t.item_13_water = row['item_13_water']
+    t.item_14_product_use = row['item_14_product_use']
+    t.item_15_product_waste = row['item_15_product_waste']
+    t.item_16_fugitive = row['item_16_fugitive']
+    t.save
+  end
+
+# ==============================================================================
+# ==============================================================================
+# ==============================================================================
+# SEED DEMO WAGON
+# ==============================================================================
+# ==============================================================================
+# ==============================================================================
+
+
 
 # ==============================================================================
 # IMAGES REPORTS
@@ -49,37 +116,31 @@ require "open-uri"
   avatar_2_file = URI.open('https://3wpie932p5cn1pgjba40gtkbm83-wpengine.netdna-ssl.com/wp-content/uploads/2018/10/Julien-Lachance.jpg')
   avatar_3_file = URI.open('http://www.agenceartistique.com/DATA/PHOTO/359_grande.jpg')
 
+
 # --------------------------------------------------------------------------------------
 # IMPORTATION CSV ADEME
 # ==============================================================================
 
 
-  require 'csv'
-  p "starting csv import ADEME"
-  count = 0
-  csv_text = File.read(Rails.root.join('lib', 'seeds', 'csv_for_seed.csv'))
-  csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-  csv.each do |row|
-    count += 1
-    t = AdemeEmissionFactor.new()
-    t.count = count
-    # p row['Code de la catégorie']
-    t.name = row['Code de la catégorie']
-    t.emission_value = row['Somme de Total poste non décomposé2']
-    # p t.emission_value
-    t.unit = row['Unité anglais']
-    t.id_ademe = row["Identifiant de l'élément"]
-    t.nom_base = row['Nom base français']
-    t.save
-  end
+  # p "starting csv import ADEME"
+  # count = 0
+  # csv_text = File.read(Rails.root.join('lib', 'seeds', 'csv_for_seed.csv'))
+  # csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+  # csv.each do |row|
+  #   count += 1
+  #   t = AdemeEmissionFactor.new()
+  #   t.count = count
+  #   # p row['Code de la catégorie']
+  #   t.name = row['Code de la catégorie']
+  #   t.emission_value = row['Somme de Total poste non décomposé2']
+  #   # p t.emission_value
+  #   t.unit = row['Unité anglais']
+  #   t.id_ademe = row["Identifiant de l'élément"]
+  #   t.nom_base = row['Nom base français']
+  #   t.save
+  # end
 
-  p "import done"
-
-  # p "last line ADEME emission factor"
-  # p AdemeEmissionFactor.last
-
-  # p "count ADEME line"
-  # AdemeEmissionFactor.count
+  # p "import done"
 
 # ==============================================================================
 # COMPANY
