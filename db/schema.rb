@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_30_122112) do
+ActiveRecord::Schema.define(version: 2020_06_30_185315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,22 @@ ActiveRecord::Schema.define(version: 2020_06_30_122112) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "activity_data", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.float "value_1"
+    t.float "value_2"
+    t.float "amount_spend"
+    t.string "amount_unit"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.string "transport_payment"
+    t.string "vehicle_control"
+    t.integer "beges_item"
+    t.bigint "emission_factor_id"
+    t.index ["emission_factor_id"], name: "index_activity_data_on_emission_factor_id"
   end
 
   create_table "ademe_emission_factors", force: :cascade do |t|
@@ -97,7 +113,6 @@ ActiveRecord::Schema.define(version: 2020_06_30_122112) do
     t.float "ef_value_ch4"
     t.float "ef_value_n2o"
     t.float "ef_value_co2b"
-    t.string "ef_value_ch4b"
     t.float "ef_value_other_ges"
     t.integer "ef_uncertainty"
     t.string "ef_unit"
@@ -123,6 +138,7 @@ ActiveRecord::Schema.define(version: 2020_06_30_122112) do
     t.boolean "item_14_product_use"
     t.boolean "item_15_product_waste"
     t.boolean "item_16_fugitive"
+    t.float "ef_value_ch4b"
   end
 
   create_table "emission_modules", force: :cascade do |t|
@@ -236,6 +252,7 @@ ActiveRecord::Schema.define(version: 2020_06_30_122112) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "activity_data", "emission_factors"
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "report_scope_orgas"
   add_foreign_key "orgas", "companies"

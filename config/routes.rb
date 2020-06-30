@@ -57,7 +57,10 @@ Rails.application.routes.draw do
   get '/ressources/pourquoi_faire_son_bilan_carbone', to: 'articles#pourquoi_faire_son_bilan_carbone'
 
 
-  # Routes test pour emission factor
+  # Routes test pour emission_factor et activity_data
   get '/emission_factors', to: 'emission_factors#index'
+  get '/fixed_energy', to: 'activity_data#fixed_energy'
+
+
 
 end
