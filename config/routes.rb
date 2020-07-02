@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  get 'welcome/index'
   devise_for :users
-  root to: 'pages#home'
+  # root to: 'pages#home'
   get '/about', to: 'pages#about'
   get '/mentions-legales', to: 'pages#mentions_legales'
 
@@ -61,6 +62,15 @@ Rails.application.routes.draw do
   get '/emission_factors', to: 'emission_factors#index'
   get '/fixed_energy', to: 'activity_data#fixed_energy'
 
+
+  # Routes test dropdown dynamique
+  # get 'welcome/index', to: "welcome#index"
+  # get 'welcome/update_cities', as: 'update_cities'
+  # get 'welcome/show'
+
+  get 'welcome/update_artists', :as => 'update_artists'
+  get 'welcome/update_songs', :as => 'update_songs'
+  root :to => "welcome#index"
 
 
 end

@@ -1,0 +1,8 @@
+<%= collection_select(nil, :genre_id,  @genres,  :id, :name, {:prompt   => "Select a Genre"}, {:id => 'genres_select'}) %>
+<br/>
+<%= collection_select(nil, :artist_id, @artists, :id, :name, {:prompt   => "Select an Artist"}, {:id => 'artists_select'}) %>
+<br/>
+<%= collection_select(nil, :song_id, @songs, :id, :title, {:prompt   => "Select a Song"}, {:id => 'songs_select'}) %>
+
+<script>
+</script>

@@ -1,4 +1,4 @@
-// This file is automatically compiled by Webpack, along with any other files
+ // This file is automatically compiled by Webpack, along with any other files
 // present in this directory. You're encouraged to place your actual application logic in
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
@@ -24,10 +24,11 @@ import '../plugins/dropdown_dashboard';
 import { initSubmit } from '../plugins/submit';
 import { dropdownSelected } from '../plugins/dropdown_dashboard';
 import { activeQueryDashboard} from '../plugins/tab-dashboard';
-
+import "../plugins/welcome";
+import "../plugins/update_cities";
+// import "../../views/welcome/update_cities";
 
 initAjaxScroll();
-
 
 
 document.addEventListener('turbolinks:load', function () {

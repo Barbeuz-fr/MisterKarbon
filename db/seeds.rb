@@ -28,6 +28,35 @@ require 'csv'
   # Utilisé pour MVP
   EmissionFactor.destroy_all
 
+
+# ==============================================================================
+# ==============================================================================
+# ==============================================================================
+# TO DELETE - DROPDOWN TEST
+# ==============================================================================
+# ==============================================================================
+# ==============================================================================
+
+3.times do |x|
+  genre  = Genre.find_or_create_by(:name => "Genre #{x}")
+  3.times do |y|
+    artist = Artist.find_or_create_by(:name => "Artist #{x}.#{y}")
+    3.times do |z|
+      Song.find_or_create_by(:title => "Song #{x}.#{y}.#{z}")
+    end
+  end
+end
+
+
+
+Country.create(name: "france")
+Country.create(name: "italy")
+
+City.create(name: "paris", country_id: Country.find_by(name: "france").id)
+City.create(name: "nice", country_id: Country.find_by(name: "france").id)
+City.create(name: "roma", country_id: Country.find_by(name: "italy").id)
+City.create(name: "venezia", country_id: Country.find_by(name: "italy").id)
+
 # ==============================================================================
 # ==============================================================================
 # ==============================================================================

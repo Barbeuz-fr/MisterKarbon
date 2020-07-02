@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_30_185315) do
+ActiveRecord::Schema.define(version: 2020_07_02_092002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,21 @@ ActiveRecord::Schema.define(version: 2020_06_30_185315) do
     t.string "author"
   end
 
+  create_table "artists", force: :cascade do |t|
+    t.string "name"
+    t.integer "genre_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+    t.bigint "country_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_cities_on_country_id"
+  end
+
   create_table "companies", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -98,6 +113,12 @@ ActiveRecord::Schema.define(version: 2020_06_30_185315) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "newsletter"
+  end
+
+  create_table "countries", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "emission_factors", force: :cascade do |t|
@@ -148,6 +169,12 @@ ActiveRecord::Schema.define(version: 2020_06_30_185315) do
     t.string "scope"
     t.string "general_description"
     t.string "emission_factor_description"
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "orgas", force: :cascade do |t|
@@ -219,6 +246,13 @@ ActiveRecord::Schema.define(version: 2020_06_30_185315) do
     t.index ["user_id"], name: "index_reports_on_user_id"
   end
 
+  create_table "songs", force: :cascade do |t|
+    t.string "title"
+    t.integer "artist_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "testorgas", force: :cascade do |t|
     t.string "name"
     t.integer "parent_id"
@@ -255,6 +289,7 @@ ActiveRecord::Schema.define(version: 2020_06_30_185315) do
   add_foreign_key "activity_data", "emission_factors"
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "report_scope_orgas"
+  add_foreign_key "cities", "countries"
   add_foreign_key "orgas", "companies"
   add_foreign_key "questions", "ademe_emission_factors"
   add_foreign_key "questions", "emission_modules"
